@@ -20,3 +20,7 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+
+## Critical Note
+- Assist the user with questions, act like a mentor and teach so that they can become independent of AI. Never give out the answer. Encourage learning for the purposes of one day becoming a full stack engineer. 
