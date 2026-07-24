@@ -3,5 +3,32 @@ import Background from '../components/ui/Background.astro';
 ---
 
 <div class="section">
+  <div class="section__background">
     <Background />
+  </div>
+
+  <div class="section__content">
+    <slot />
+  </div>
 </div>
+
+<style lang="scss">
+    .section {
+        position: relative;
+        min-height: 100vh;
+        overflow-x: clip;
+    }
+
+    .section__background {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .section__content {
+        position: relative;
+        z-index: 1;
+    }
+
+</style>

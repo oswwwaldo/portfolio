@@ -1,20 +1,49 @@
 ---
-import SectionLayout from "../../layouts/SectionLayout.astro"
+import Icon from '../ui/AppIcon.astro';
+import Button from '../ui/Button.astro';
 ---
 
-<SectionLayout>
-    <section class="hero">
-        <h1> Oswaldo De Los Santos </h1>
-    </section>
-</SectionLayout>
+<section class="hero">
+    <h2 class="hero__position"> Full Stack Engineer </h2>
+    <h1 class="hero__title"> Oswaldo De Los Santos </h1>
+    <div class="hero__actions">
+        <div class="hero__buttons">
+            <Button textContent="Contact" href="/contact"></Button>
+            <Button textContent="Resume" href="/resume"></Button>
+        </div>
+        <div class="hero__socials">
+            <Icon name="fa6-solid:envelope"></Icon>
+            <Icon name="fa6-brands:instagram"></Icon>
+            <Icon name="fa6-brands:github"></Icon>
+            <Icon name="fa6-brands:linkedin"></Icon>
+        </div>
+    </div>
+</section>
 
 <style lang="scss">
-  @use '../../styles/variables.scss' as *;
+    @use '../../styles/variables.scss' as *;
 
-  .hero {
-    color: $color--white;
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-    position: relative; 
-    index: 1;
-  }
+        width: 100%;
+
+
+        color: $color--white;
+
+        // position: relative; 
+        margin: 0 auto;
+        index: 1;
+
+        &__actions {
+            &__buttons {}
+            
+            &__socials {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+    }
 </style>

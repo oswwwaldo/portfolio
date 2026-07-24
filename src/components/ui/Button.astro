@@ -1,0 +1,33 @@
+---
+
+interface Props {
+    textContent: string;
+    href?: string;
+    inverted?: boolean;
+}
+
+const {textContent, href, inverted = false } = Astro.props;
+
+const rawUuid = crypto.randomUUID();
+const elementId = `btn-id-${rawUuid}`;
+
+---
+
+<button id={elementId}>
+    {textContent}
+</button>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    button {
+        background-color: $color--white;
+        border: 1px solid $color--black;
+        color: $color--black;
+
+        padding: 1rem 2rem;
+    }
+</style> 
+<script>
+
+</script>

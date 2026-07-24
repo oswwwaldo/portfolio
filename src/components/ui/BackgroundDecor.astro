@@ -1,10 +1,15 @@
 ---
-import GrindLines from '../ui/GridLines.astro';
+import GridLines from '../ui/GridLines.astro';
+import DiagonalLines from '../ui/DiagonalLines.astro';
+import Ellipse from '../ui/Ellipse.astro';
+
+/* Randomize the position of DiagonalLines on an axis, and Ellipse */
 ---
 
 <div class="decor">
-    <GrindLines />
-    <!-- <slot /> -->
+    <GridLines />
+    <DiagonalLines />
+    <Ellipse />
 </div>
 
 <style lang="scss">

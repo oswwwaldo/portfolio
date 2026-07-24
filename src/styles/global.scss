@@ -42,14 +42,77 @@ table {
 	border-spacing: 0;
 }
 
-.aboreto-regular {
-  font-family: "Aboreto", system-ui;
-  font-weight: 400;
-  font-style: normal;
+// .aboreto-regular {
+//   font-family: "Aboreto", system-ui;
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// body, h1, h2, h3, h4, p {
+//   font-family: "Aboreto", system-ui;
+//   font-weight: 400;
+//   font-style: normal;
+// }
+
+// global.scss
+
+// Define Font Families
+$font-heading: "Aboreto", cursive;
+$font-body: "Times New Roman", Times, serif;
+
+// Base text elements
+body, p, a, span, label {
+  font-family: $font-body;
 }
 
-body, h1, h2, h3, h4, p {
-  font-family: "Aboreto", system-ui;
-  font-weight: 400;
-  font-style: normal;
+// Heading elements
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  font-weight: normal; 
 }
+
+// Display Token
+.display {
+  font-size: 7.5rem; // 120px
+}
+
+// Heading Sizes
+h1 {
+  font-size: 4rem; // 64px
+}
+
+h2 {
+  font-size: 2.5rem; // 40px
+}
+
+h3 {
+  font-size: 2rem; // 32px
+}
+
+// Body Sizes
+p {
+  font-size: 1rem; // body: 16px
+}
+
+p.body-lg, .body-lg {
+  font-size: 1.25rem; // 20px
+}
+
+// Label Size
+.label {
+  font-size: 0.6875rem; // 11px
+}
+
+// Variables.scss snippet
+// $color--black: #0E0E0E;
+// $color--white: #E6E6E6;
+
+// html.light {
+//   --primary-color: #0E0E0E;
+//   --secondary-color: #432d2d;
+// }
+
+// html.dark {
+//   --primary-color: #E6E6E6;
+//   --secondary-color: #432d2d;
+// }

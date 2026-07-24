@@ -1,0 +1,45 @@
+---
+const hardcodedValues: boolean = true;
+---
+
+<div class="lines">
+    <div class="lines__line"></div>
+    <div class="lines__line"></div>
+    <div class="lines__line"></div>
+</div>
+    
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+        
+    /* Hardcoded values */
+    /* Will need to randomize */
+    .lines {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 20%;
+
+        position: absolute;
+        top: 0; left: 70%;
+
+        transform: translateX(-50%);
+        pointer-events: none;
+
+
+        width: 10%;
+        top: -35%; left: 60%;
+        rotate: 130deg;
+    
+        &__line {
+            background: $color--white;
+            width: 1px;
+            height: 100vh;
+
+            &:nth-child(2):nth-last-child(2) {
+                height: 140vh;
+            }
+        }
+    }
+    
+</style>
