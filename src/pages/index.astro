@@ -1,17 +1,25 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingHero from '../components/sections/LandingHero.astro';
+
+const pageTitle = "oswwwaldo"
+const today = new Date().toLocaleDateString('en-US');
+
+const pages = [
+  { title: "Core", slug: "/", completed: true },
+  { title: "Home", slug: "/home", completed: false },
+  { title: "About", slug: "/about", completed: false },
+  { title: "Projects", slug: "/projects", completed: false },
+  { title: "Contact", slug: "/contact-us", completed: false },
+  { title: "Resume", slug: "/resume", completed: false },
+  { title: "Now", slug: "/now", completed: false },
+  { title: "Gallery", slug: "/gallery", completed: false },
+  { title: "Video", slug: "/video", completed: false },
+  { title: "Thoughts", slug: "/blog", completed: false },
+];
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+   <LandingHero />
+</BaseLayout>

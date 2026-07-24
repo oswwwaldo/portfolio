@@ -1,0 +1,35 @@
+---
+---
+
+<div class="lines">
+    <div class="lines__line"></div>
+    <div class="lines__line"></div>
+    <div class="lines__line"></div>
+    <div class="lines__line"></div>
+    <div class="lines__line"></div>
+</div>
+    
+<style lang="scss">
+  @use '../../styles/variables.scss' as *;
+        
+            
+    .lines {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+
+        position: absolute;
+        top: 0; left: 50%;
+
+        transform: translateX(-50%);
+        pointer-events: none;
+    
+        &__line {
+            background: $color--white;
+            width: 1px;
+            height: 100vh;
+        }
+    }
+    
+</style>

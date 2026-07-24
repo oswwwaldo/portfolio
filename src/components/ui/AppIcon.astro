@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  name: string;
+  size?: number | string;
+  class?: string;
+  [key: string]: any; // Allows passing extra HTML/SVG attributes (aria-labels, onClick, etc.)
+}
+
+const { name, size = 24, class: className, ...restProps } = Astro.props;
+// Imported:
+// fa6-solid
+// fa6-brands
+// mdi-light
+// mynaui
+---
+
+<Icon 
+  name={name} 
+  size={size} 
+  class={className} 
+  {...restProps} 
+/>
