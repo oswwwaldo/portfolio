@@ -3,8 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 import LandingHero from '../components/sections/LandingHero.astro';
 
-import ThemeIcon from '../components/ui/ThemeIcon.astro';
-
 const pageTitle = "oswwwaldo"
 const today = new Date().toLocaleDateString('en-US');
 
@@ -25,7 +23,6 @@ const pages = [
 
 <BaseLayout pageTitle={pageTitle}>
   <SectionLayout>
-    <ThemeIcon />
     <LandingHero />
   </SectionLayout>
 </BaseLayout>
