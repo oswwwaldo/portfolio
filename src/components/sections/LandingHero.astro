@@ -1,20 +1,33 @@
 ---
+import { Image } from 'astro:assets';
+import stoneNotInFocus from '../../assets/media/stone-not-in-focus.jpg';
 import Icon from '../ui/AppIcon.astro';
 import Button from '../ui/Button.astro';
 ---
 
 
 <section class="hero">
+    <div class="hero__image">
+        <Image 
+            src={stoneNotInFocus}
+            alt="A monkey holding a phone." 
+        />
+    </div>
     <h2 class="hero__position"> Full Stack Engineer </h2>
-    <h1 class="hero__title"> Oswaldo De Los Santos </h1>
+    <h1 class="hero__title"> 
+        <span class="first-name"> Oswaldo </span>
+        <span class="middle-name"> Fabrizio </span>
+        <span class="last-name"> De Los Santos </span>
+        <span class="middle-name"> Ascencio </span>
+    </h1>
     <div class="hero__actions">
         <div class="hero__buttons">
             <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
-            <Button class="hero__buttons__btn" textContent="Resume" type="button"></Button>
+            <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
         </div>
         <div class="hero__socials">
-            <Icon class="hero__socials__btn" name="fa6-solid:envelope"></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:instagram"></Icon>
+            <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
+            <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
             <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
             <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
         </div>
@@ -37,7 +50,7 @@ import Button from '../ui/Button.astro';
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 2rem;
+        gap: 0.5rem;
         padding: 2rem;
 
         width: fit-content;
@@ -45,28 +58,96 @@ import Button from '../ui/Button.astro';
         color: var(--secondary-color);
         z-index: 1;
 
+        &__image {
+            position: absolute;
+            top: 35%; left: 60%;
+            transform: translate(-50%, -50%);
+
+            width:  50%;
+            height: auto;
+            // aspect-ratio: 3 / 2;
+            aspect-ratio: 2 / 1;
+            object-fit: cover;
+
+            z-index: -1;
+
+            // background-color: black;
+            // opacity: 40%;
+            // background-color: rgba(0,0,0,0.4);
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0; /* Shorthand for top, bottom, left, right: 0 */
+                box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8);
+                // pointer-events: none;
+            }
+
+            &:hover {
+                &::before {
+                    // box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.8);
+                    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+                }
+            }
+            
+
+            img {
+                width: 100%;
+                height: 100%;
+                max-width: none;
+                object-fit: cover;
+            }
+        }
+
         &__position {
+            font-size: 30px;
             width: fit-content;
         }
         &__title {
             flex-grow: 1;
-            width: fit-content;
+            // width: fit-content;  
+            width: auto;
             transition: text-shadow 300ms ease-out;
             
             &:hover {
                 text-shadow: 0 0 6px #ffffff;
             }
+
+            span {
+                font-family: inherit;
+                font-size: inherit;
+                font-size: clamp(2.5rem, 2.455rem + 2.73vw, 100px);
+                font-size: 100px;
+
+                &.middle-name {
+                    display: none;
+                }
+                &.last-name {
+                    white-space: nowrap;
+                }
+            }
         }
 
         &__actions {
-            width: fit-content;
+            display: flex;
+            align-items: start;
+            flex-direction: row;
+            justify-content: space-between;
+            width: auto;
+
+            .hero__buttons {
+                display: flex;
+                gap: 2rem;
+            }
 
             .hero__buttons__btn {
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-around;
                 height: calc(32px + var(--button-height));
                 width: calc((64px * 2.5) + var(--button-height));
+                width: calc((69px * 2.5) + var(--button-height));
+                
             }
 
             .hero__socials__btn {
