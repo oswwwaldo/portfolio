@@ -24,7 +24,7 @@ const elementId = `btn-id-${rawUuid}`;
   class:list={['button', className, { invert: isPrimary }]}
   {...rest} 
 >
-  <p class="button__text body-lg">{textContent}</p>
+  <span class="button__text body-lg">{textContent}</span>
   {icon && (
     <span class="button__icon">
       <Icon name={icon}></Icon>
