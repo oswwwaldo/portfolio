@@ -1,16 +1,96 @@
 ---
-
+import Icon from '../components/ui/AppIcon.astro';
 ---
 
 <div class="nav-wrapper">
+    <div class="nav-logo">
+        <a class="nav-logo__title label" href="/"> oswwwaldo </a>
+    </div>
     <nav class="nav-links">
-        <a class="nav-links__link" href="/about"> About </a>
-        <a class="nav-links__link" href="/about"> Home </a>
-        <a class="nav-links__link" href="/about"> Projects </a>
-        <a class="nav-links__link" href="/about"> Contacts </a>
-        <button class="nav-links__hamburger"></button>
+        <a class="nav-links__link label" href="/about"> About </a>
+        <a class="nav-links__link label" href="/"> Home </a>
+        <a class="nav-links__link label" href="/projects"> Projects </a>
+        <a class="nav-links__link label" href="/contact"> Contact </a>
+        <button class="nav-links__hamburger">
+            <Icon name="mynaui:menu"></Icon>
+        </button>
     </nav>
 </div>
 <style lang="scss">
-    
+    @use '../styles/global.scss' as *;
+
+    a {
+        color: var(--secondary-color);
+        font-family: $font-heading;
+        letter-spacing: 5.2px;
+        text-decoration: none;
+        &:hover {   
+            font-weight: bold;
+        }
+    }
+    .nav-wrapper {
+        position: absolute;
+        top: 0; left: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 999;
+
+        padding: 1rem 2rem;
+
+        & .nav-logo {
+        }
+
+        & .nav-links {
+            display: flex;
+            gap: 2rem;
+
+            &__link {
+                display: flex;
+                align-items: center;
+            }
+
+            &__hamburger {
+                display: none;
+                background: none;
+                border: none;
+
+                svg {
+
+                    color: var(--secondary-color);
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (width < 768px) {
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-wrapper {
+            justify-content: center;
+        }
+    }
+
+    @media only screen and (width < 630px) {
+        .nav-wrapper {
+            justify-content: end;
+        }
+        .nav-links__link {
+            display: none !important;
+        }
+
+        .nav-links__hamburger {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+        }
+}
 </style>
