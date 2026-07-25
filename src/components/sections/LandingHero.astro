@@ -13,18 +13,22 @@ import Button from '../ui/Button.astro';
             alt="A monkey holding a phone." 
         />
     </div>
+
     <h2 class="hero__position"> Full Stack Engineer </h2>
+
     <h1 class="hero__title"> 
         <span class="first-name"> Oswaldo </span>
         <span class="middle-name"> Fabrizio </span>
         <span class="last-name"> De Los Santos </span>
         <span class="middle-name"> Ascencio </span>
     </h1>
+
     <div class="hero__actions">
         <div class="hero__buttons">
             <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
-            <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
+            <Button class="hero__buttons__btn hero__buttons__btn--ratio-27" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
         </div>
+
         <div class="hero__socials">
             <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
             <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
@@ -40,33 +44,21 @@ import Button from '../ui/Button.astro';
     .hero {
         --hero-position-size: clamp(1.5rem, calc(var(--hero-title-size) * 0.4), 32px);
         --hero-title-size: clamp(3.5rem, 2.5rem + 4vw, 100px);
-        --hero-icon-size: clamp(3rem, 32px, 3.5rem);
-        --hero-button-height: calc(var(--hero-icon-size) * 2);
+        --hero-button-height: clamp(3.5rem, 5.625vw, 5.0625rem);
+        --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
         position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: clamp(0.5rem, 1vw, 1rem);
         gap: clamp(0.5rem, 2vw, 1rem);
         padding: clamp(1.25rem, 3vw, 2rem);
 
         width: 100%;
-        // max-width: 72rem;
-
         color: var(--secondary-color);
         z-index: 1;
 
         &__image {
-            // position: absolute;
-            // top: 35%;
-            // left: 60%;
-            // transform: translate(-50%, -50%);
-
-            // width: min(50%, 42rem);
-            // height: auto;
-            // aspect-ratio: 2 / 1;
-
             position: absolute;
             top: 32%;
             left: 64%;
@@ -79,7 +71,7 @@ import Button from '../ui/Button.astro';
             &::before {
                 content: "";
                 position: absolute;
-                inset: 0; /* Shorthand for top, bottom, left, right: 0 */
+                inset: 0;
                 box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8);
                 pointer-events: none;
             }
@@ -89,7 +81,7 @@ import Button from '../ui/Button.astro';
                     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
                 }
             }
-            
+
             img {
                 width: 100%;
                 height: 100%;
@@ -100,7 +92,6 @@ import Button from '../ui/Button.astro';
 
         &__position {
             font-size: var(--hero-position-size);
-            // line-height: 1;
             width: fit-content;
             max-width: 100%;
         }
@@ -112,7 +103,6 @@ import Button from '../ui/Button.astro';
             width: auto;
             max-width: 100%;
             font-size: var(--hero-title-size);
-            // line-height: 0.9;
             transition: text-shadow 300ms ease-out;
             
             &:hover {
@@ -141,8 +131,7 @@ import Button from '../ui/Button.astro';
         &__actions {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
-            // justify-content: flex-start;
+            align-items: start;
             justify-content: space-between;
             gap: 1rem 1.5rem;
             width: 100%;
@@ -156,16 +145,6 @@ import Button from '../ui/Button.astro';
             align-items: center;
         }
 
-        &__buttons__btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: var(--hero-button-height);
-            padding: 1rem 2rem;
-            gap: 2rem;
-            font-size: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
-        }
-
         &__socials {
             display: flex;
             align-items: center;
@@ -173,8 +152,8 @@ import Button from '../ui/Button.astro';
             gap: 1rem;
 
             &__btn {
-                height: var(--hero-icon-size);
-                width: var(--hero-icon-size);
+                height: var(--hero-social-icon-size);
+                width: var(--hero-social-icon-size);
             }
         }
     }
@@ -183,7 +162,8 @@ import Button from '../ui/Button.astro';
         .hero {
             --hero-title-size: clamp(2.5rem, 9vw, 4.5rem);
             --hero-position-size: clamp(1.25rem, calc(var(--hero-title-size) * 0.4), 1.9rem);
-            --hero-icon-size: clamp(2rem, calc(var(--hero-position-size) * 1.05), 2.75rem);
+            --hero-button-height: clamp(3rem, 7vw, 3.75rem);
+            --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
             align-items: center;
             text-align: center;
