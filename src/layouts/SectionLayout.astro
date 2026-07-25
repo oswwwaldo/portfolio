@@ -12,8 +12,11 @@ import Background from '../components/ui/Background.astro';
   </div>
 
   <!-- These are helper lines to track [outer-left] & [outer-right] grid lines and sync them with <GridLines> -->
-  <div class="red-line left-line"></div>
-  <div class="red-line right-line"></div>
+  <!-- <div class="red-line left-line"></div> -->
+  <!-- <div class="red-line right-line"></div> -->
+
+  <!--- This is meant to track the progress the user is within their journey to the bottom of the page -->
+  <div class="bg-scroll-indicator"></div>
 </div>
 
 <style lang="scss">
@@ -43,6 +46,14 @@ import Background from '../components/ui/Background.astro';
           justify-content: center;
           align-items: flex-start;
         }
+    }
+
+    .bg-scroll-indicator {
+      grid-column: 6;
+      grid-row: 1 / -1;
+      z-index: -1;
+      background-color: var(--primary-color);
+      opacity: 20%;
     }
 
     .red-line {
