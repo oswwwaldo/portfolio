@@ -9,14 +9,14 @@ import Button from '../ui/Button.astro';
     <h1 class="hero__title"> Oswaldo De Los Santos </h1>
     <div class="hero__actions">
         <div class="hero__buttons">
-            <Button textContent="Contact" type="button" href="/contact"></Button>
-            <Button textContent="Resume" type="button" href="/resume"></Button>
+            <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
+            <Button class="hero__buttons__btn" textContent="Resume" type="button"></Button>
         </div>
         <div class="hero__socials">
-            <Icon name="fa6-solid:envelope"></Icon>
-            <Icon name="fa6-brands:instagram"></Icon>
-            <Icon name="fa6-brands:github"></Icon>
-            <Icon name="fa6-brands:linkedin"></Icon>
+            <Icon class="hero__socials__btn" name="fa6-solid:envelope"></Icon>
+            <Icon class="hero__socials__btn" name="fa6-brands:instagram"></Icon>
+            <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
+            <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
         </div>
     </div>
 </section>
@@ -25,16 +25,15 @@ import Button from '../ui/Button.astro';
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
+    :root {
+        --button-height: 50px;
+    }
+
     .hero__wrapper {
         position: relative;
     }
 
     .hero {
-        // position: absolute;
-        // top: 50%;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
-        
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -55,20 +54,30 @@ import Button from '../ui/Button.astro';
             transition: text-shadow 300ms ease-out;
             
             &:hover {
-                // font-weight: bold;
                 text-shadow: 0 0 6px #ffffff;
             }
         }
 
-
         &__actions {
             width: fit-content;
-            &__buttons {}
-            
-            &__socials {
-                display: flex;
-                gap: 1rem;
+
+            .hero__buttons__btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(32px + var(--button-height));
+                width: calc((64px * 2.5) + var(--button-height));
             }
+
+            .hero__socials__btn {
+                height: var(--button-height);
+                width: var(--button-height);
+            }
+        }
+
+        &__socials {
+            display: flex;
+            gap: 1rem;
         }
     }
 </style>

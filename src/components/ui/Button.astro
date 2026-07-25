@@ -9,17 +9,23 @@ interface Props extends Omit<HTMLAttributes<'button'>, 'type'> {
   textContent: string;
   type?: ButtonType;
   icon?: string;
+  isPrimary?: boolean;
 }
 
-const {textContent, type = "button", icon = null, ...rest } = Astro.props;
+const {textContent, type = "button", icon = null, isPrimary = false, class: className, ...rest } = Astro.props;
 
 const rawUuid = crypto.randomUUID();
 const elementId = `btn-id-${rawUuid}`;
 
----``
+---
 
-<button id={elementId} type={type}>
-    <p> {textContent}</p>
+<button 
+    id={elementId} 
+    type={type} 
+    class:list={[className, { invert: isPrimary }]}
+    {...rest} 
+>
+    <p class="body-lg"> {textContent}</p>
     {icon && (
         <span class="button__icon">
             <Icon name={icon}></Icon>
@@ -39,15 +45,28 @@ const elementId = `btn-id-${rawUuid}`;
 
         padding: 1rem 2rem;
 
-        width: 250px;
-        height: 90px;
+        // width: 250px;
+        // height: 90px;
 
         &:hover {
             background-color: var(--secondary-color);
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
         }
+
+        &.invert {  
+            background-color: var(--secondary-color);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+
+            &:hover {
+                background-color: var(--primary-color);
+                border: 1px solid var(--secondary-color);
+                color: var(--secondary-color);
+            }
+        }
     }
+    
 </style> 
 <script>
 
