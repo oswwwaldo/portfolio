@@ -1,7 +1,12 @@
 ---
+export interface Props {
+  isEntirePage?: boolean;
+}
+
+const { isEntirePage = false } = Astro.props;
 ---
 
-<div class="lines">
+<div class:list={['lines', { 'lines--full-page': isEntirePage }]}>
     <div class="lines__line"></div>
     <div class="lines__line"></div>
     <div class="lines__line"></div>
@@ -24,11 +29,19 @@
 
         transform: translateX(-50%);
         pointer-events: none;
+
+        height: 100vh;
+
+        &--full-page {
+            height: 100%;
+            bottom: 0;
+        }
     
         &__line {
             background: var(--secondary-color);
             width: 1px;
-            height: 100vh;
+            // height: 100vh;
+            height: 100%;
         }
     }
 
