@@ -19,12 +19,18 @@ const pages = [
   { title: "Video", slug: "/video", completed: false },
   { title: "Thoughts", slug: "/blog", completed: false },
 ];
-
+// Crutch: you'll have to rely on giving every section a SectionLayout for now without massive refactoring
+// Section layout is to enforce sections from touching the page and snapping to the grid layout
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+
   <SectionLayout>
     <LandingHero />
+    <TransitionStatement />
   </SectionLayout>
-  <TransitionStatement />
+
+  <!-- <SectionLayout>
+  </SectionLayout> -->
+
 </BaseLayout>

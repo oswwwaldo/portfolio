@@ -1,6 +1,7 @@
 ---
 import SiteHeader from '../components/global/SiteHeader.astro';
 import SiteFooter from '../components/global/SiteFooter.astro';
+import BackgroundLayout from './BackgroundLayout.astro';
 
 import '../styles/global.scss';
 
@@ -24,7 +25,9 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <SiteHeader />
-    <slot />
+      <BackgroundLayout>
+        <slot />
+      </BackgroundLayout>
     <SiteFooter />
   </body>
 </html>

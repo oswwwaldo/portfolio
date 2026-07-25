@@ -3,26 +3,22 @@ import Background from '../components/ui/Background.astro';
 ---
 
 <div class="section">
-  <div class="section__background">
-    <Background />
-  </div>
-
   <div class="section__content">
     <slot />
   </div>
-
-  <div class="bg-scroll-indicator"></div>
 </div>
 
 <style lang="scss">
   .section {
-    position: relative;
+    position: absolute;
     min-height: 100vh;
     overflow-x: clip;
 
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: minmax(0, 1fr) [outer-left] repeat(4, minmax(0, 1fr)) [outer-right] minmax(0, 1fr);
+    margin-top: 25vh;
+
     &__background {
       grid-column: 1 / -1;
       grid-row: 1 / -1;
@@ -39,6 +35,7 @@ import Background from '../components/ui/Background.astro';
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      gap: 25vh;
     }
   }
 
