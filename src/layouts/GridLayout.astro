@@ -2,15 +2,14 @@
 import Background from '../components/ui/Background.astro';
 ---
 
-<div class="section">
-  <div class="section__content">
+<div class="grid">
+  <div class="grid__content">
     <slot />
   </div>
 </div>
 
 <style lang="scss">
-  .section {
-    position: absolute;
+  .grid {
     min-height: 100vh;
     overflow-x: clip;
 
@@ -26,6 +25,7 @@ import Background from '../components/ui/Background.astro';
       pointer-events: none;
     }
 
+    /* This is where most of the site's content will live */
     &__content {
       grid-column: outer-left / outer-right;
       grid-row: 1 / -1;
@@ -39,27 +39,14 @@ import Background from '../components/ui/Background.astro';
     }
   }
 
-  .bg-scroll-indicator {
-    grid-column: 6;
-    grid-row: 1 / -1;
-    z-index: 0;
-    pointer-events: none;
-    background-color: var(--primary-color);
-    opacity: 20%;
-  }
-
   @media (max-width: 770px) {
-    .section {
+    .grid {
       grid-template-columns: minmax(1rem, 1fr) repeat(4, minmax(0, 1fr)) minmax(1rem, 1fr);
     }
 
-    .section__content {
+    .grid__content {
       grid-column: 1 / -1;
       padding-inline: clamp(1rem, 3vw, 1.5rem);
-    }
-
-    .bg-scroll-indicator {
-      grid-column: 1 / -1;
     }
   }
 </style>

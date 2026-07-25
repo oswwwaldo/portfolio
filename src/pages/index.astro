@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionLayout from '../layouts/SectionLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
 import LandingHero from '../components/sections/LandingHero.astro';
 import TransitionStatement from '../components/sections/TransitionStatement.astro'
 
@@ -19,18 +19,18 @@ const pages = [
   { title: "Video", slug: "/video", completed: false },
   { title: "Thoughts", slug: "/blog", completed: false },
 ];
-// Crutch: you'll have to rely on giving every section a SectionLayout for now without massive refactoring
+// Crutch: you'll have to rely on giving every section a GridLayout for now without massive refactoring
 // Section layout is to enforce sections from touching the page and snapping to the grid layout
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 
-  <SectionLayout>
+  <GridLayout>
     <LandingHero />
     <TransitionStatement />
-  </SectionLayout>
+  </GridLayout>
 
-  <!-- <SectionLayout>
-  </SectionLayout> -->
+  <!-- <GridLayout>
+  </GridLayout> -->
 
 </BaseLayout>

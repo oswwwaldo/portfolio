@@ -6,7 +6,7 @@ import Background from '../components/ui/Background.astro';
   <div class="site__wrapper__background">
     <Background />
   </div>
-  <div class="site__wrapper__scroll-indicator"></div>
+  <!-- <div class="site__wrapper__scroll-indicator"></div> -->
   <slot />
 </div>
 
@@ -16,26 +16,16 @@ import Background from '../components/ui/Background.astro';
     min-height: 100vh;
     overflow-x: clip;
 
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: minmax(0, 1fr) [outer-left] repeat(4, minmax(0, 1fr)) [outer-right] minmax(0, 1fr);
-
     z-index: -50;
-    
-    &__background {
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      z-index: 0;
-      pointer-events: none;
-    }
+  
 
     &__scroll-indicator {
         grid-column: 6;
         grid-row: 1 / -1;
         z-index: 0;
         pointer-events: none;
-        background-color: var(--primary-color);
-        opacity: 20%;
+        background-color: var(--secondary-color);
+        opacity: 100%;
     }
   }
 

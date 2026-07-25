@@ -1,6 +1,4 @@
 ---
-// import './SideRays.css';
-
 export interface Props {
   speed?: number;
   rayColor1?: string;
@@ -70,6 +68,7 @@ const {
     private renderer: any = null;
     private animationId: number | null = null;
     private observer: IntersectionObserver | null = null;
+    private resizeObserver: ResizeObserver | null = null;
     private uniforms: any = null;
     private updateSizeCallback: (() => void) | null = null;
 
@@ -87,7 +86,7 @@ const {
         (entries) => {
           const entry = entries[0];
           this.isVisible = entry.isIntersecting;
-          
+
           if (this.isVisible && !this.renderer) {
             this.initializeWebGL();
           }
@@ -111,11 +110,12 @@ const {
         case 'data-raycolor2': this.uniforms.iRayColor2.value = hexToRgb(newValue); break;
         case 'data-intensity': this.uniforms.iIntensity.value = parseFloat(newValue); break;
         case 'data-spread': this.uniforms.iSpread.value = parseFloat(newValue); break;
-        case 'data-origin': 
+        case 'data-origin': {
           const [flipX, flipY] = originToFlip(newValue);
           this.uniforms.iFlipX.value = flipX;
           this.uniforms.iFlipY.value = flipY;
           break;
+        }
         case 'data-tilt': this.uniforms.iTilt.value = parseFloat(newValue); break;
         case 'data-saturation': this.uniforms.iSaturation.value = parseFloat(newValue); break;
         case 'data-blend': this.uniforms.iBlend.value = parseFloat(newValue); break;
@@ -167,11 +167,14 @@ const {
         float rayStrength(vec2 raySource, vec2 rayRefDirection, vec2 coord, float seedA, float seedB, float speed) {
           vec2 sourceToCoord = coord - raySource;
           float cosAngle = dot(normalize(sourceToCoord), rayRefDirection);
+
+          float distanceFalloff = clamp((1.25 - length(sourceToCoord)) / 1.25, 0.5, 1.0);
+
           return clamp(
             (0.45 + 0.15 * sin(cosAngle * seedA + iTime * speed)) +
             (0.3 + 0.2 * cos(-cosAngle * seedB + iTime * speed)),
             0.0, 1.0) *
-            clamp((iResolution.x - length(sourceToCoord)) / iResolution.x, 0.5, 1.0);
+            distanceFalloff;
         }
 
         void main() {
@@ -179,8 +182,16 @@ const {
           if (iFlipX > 0.5) fragCoord.x = iResolution.x - fragCoord.x;
           if (iFlipY > 0.5) fragCoord.y = iResolution.y - fragCoord.y;
 
-          vec2 coord = vec2(fragCoord.x, iResolution.y - fragCoord.y);
-          vec2 rayPos = vec2(iResolution.x * 1.1, -0.5 * iResolution.y);
+          float referenceWidth = max(iResolution.x, 1.0);
+
+          // Width-based coordinate space keeps the rays' shape stable while height changes.
+          vec2 coord = vec2(
+            fragCoord.x / referenceWidth,
+            (iResolution.y - fragCoord.y) / referenceWidth
+          );
+
+          // Decouple ray origin from viewport height so extending the canvas reveals more of the rays.
+          vec2 rayPos = vec2(1.1, -0.5);
 
           float tiltRad = iTilt * 3.14159265 / 180.0;
           float cs = cos(tiltRad);
@@ -197,7 +208,7 @@ const {
 
           vec4 color = rays1 * (1.0 - iBlend) * 0.9 + rays2 * iBlend * 0.9;
 
-          float distanceToLight = length(fragCoord.xy - vec2(rayPos.x, iResolution.y - rayPos.y)) / iResolution.y;
+          float distanceToLight = length(coord - rayPos);
           float brightness = iIntensity * 0.4 / pow(max(distanceToLight, 0.001), iFalloff);
           color.rgb *= brightness;
 
@@ -209,7 +220,7 @@ const {
         }`;
 
       const [flipX, flipY] = originToFlip(this.dataset.origin || 'top-right');
-      
+
       this.uniforms = {
         iTime: { value: 0 },
         iResolution: { value: [1, 1] },
@@ -232,30 +243,36 @@ const {
       const mesh = new Mesh(gl, { geometry, program });
 
       this.updateSizeCallback = () => {
-        if (!this.isConnected || !this.renderer) return;
-        renderer.dpr = Math.min(window.devicePixelRatio, 2);
-        const w = this.clientWidth;
-        const h = this.clientHeight;
-        renderer.setSize(w, h);
-        this.uniforms.iResolution.value = [w * renderer.dpr, h * renderer.dpr];
-        console.log(this.clientWidth, this.clientHeight);
+        if (!this.isConnected || !this.renderer || !this.uniforms) return;
+
+        const w = Math.max(1, this.clientWidth);
+        const h = Math.max(1, this.clientHeight);
+
+        this.renderer.dpr = Math.min(window.devicePixelRatio, 2);
+        this.renderer.setSize(w, h);
+        this.uniforms.iResolution.value = [w * this.renderer.dpr, h * this.renderer.dpr];
       };
+
+      this.resizeObserver = new ResizeObserver(() => {
+        this.updateSizeCallback?.();
+      });
+      this.resizeObserver.observe(this);
 
       window.addEventListener('resize', this.updateSizeCallback);
       this.updateSizeCallback();
 
       const loop = (t: number) => {
         if (!this.renderer || !this.uniforms) return;
-        
+
         if (this.isVisible) {
           this.uniforms.iTime.value = t * 0.001;
           try {
-            renderer.render({ scene: mesh });
-          } catch (e) {
+            this.renderer.render({ scene: mesh });
+          } catch {
             return;
           }
         }
-        
+
         this.animationId = requestAnimationFrame(loop);
       };
 
@@ -267,23 +284,36 @@ const {
         cancelAnimationFrame(this.animationId);
         this.animationId = null;
       }
+
       if (this.updateSizeCallback) {
         window.removeEventListener('resize', this.updateSizeCallback);
       }
+
+      if (this.resizeObserver) {
+        this.resizeObserver.disconnect();
+        this.resizeObserver = null;
+      }
+
       if (this.observer) {
         this.observer.disconnect();
         this.observer = null;
       }
+
       if (this.renderer) {
         try {
           const loseCtx = this.renderer.gl.getExtension('WEBGL_lose_context');
           if (loseCtx) loseCtx.loseContext();
+
           const canvas = this.renderer.gl.canvas;
           if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
-        } catch (e) {}
+        } catch {
+          // no-op
+        }
       }
+
       this.renderer = null;
       this.uniforms = null;
+      this.updateSizeCallback = null;
     }
   }
 
@@ -291,19 +321,23 @@ const {
 </script>
 
 <style>
-  /* Ensure the custom element behaves like a block container */
   side-rays {
     display: block;
     position: absolute;
-    width: 100%;
+    top: 0;
+    left: 50%;
+    width: 100vw;
     height: 100%;
-
-    top: 0; left: 0;
+    transform: translateX(-50%);
     z-index: 999;
-
     opacity: 100% !important;
   }
 
-  .side-rays-container { display: block; }
-  :global(.dark) .side-rays-container { display: none; }
+  .side-rays-container {
+    display: block;
+  }
+
+  :global(.dark) .side-rays-container {
+    display: none;
+  }
 </style>
