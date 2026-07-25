@@ -42,11 +42,29 @@ table {
 	border-spacing: 0;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
 // global.scss
 
 // Define Font Families
 $font-heading: "Aboreto", cursive;
 $font-body: "Times New Roman", Times, serif;
+
+body {
+	line-height: 1.5;
+	font-family: $font-body;
+	color: var(--primary-color);
+	background-color: var(--bg-color);
+	line-height: 1.5; 
+	-webkit-font-smoothing: antialiased
+}
 
 // Base text elements
 body, p, a, span, label {
@@ -59,48 +77,51 @@ h1, h2, h3, h4 {
   font-weight: normal; 
 }
 
+// Note: when cross-referencing Figma typography sizes, please note the last parameter in clamp is what you need to match
 // Display Token
 .display {
-  font-size: 7.5rem; // 120px
+  font-size: clamp(4.5rem, 3.409rem + 5.45vw, 7.5rem);
 }
 
 // Heading Sizes
 h1 {
-  font-size: 4rem; // 64px
+  font-size: clamp(2.5rem, 1.955rem + 2.73vw, 4rem);
 }
 
 h2 {
-  font-size: 2.5rem; // 40px
+  font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);
 }
 
 h3 {
-  font-size: 2rem; // 32px
+  font-size: clamp(1.25rem, 0.977rem + 1.36vw, 2rem);
 }
 
 // Body Sizes
 p {
-  font-size: 1rem; // body: 16px
+	font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
 }
 
 p.body-lg, .body-lg {
-  font-size: 1.25rem; // 20px
+  font-size: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+}
+
+button p.body-lg {
+	font-family: $font-heading;
 }
 
 // Label Size
 .label {
-  font-size: 0.6875rem; // 11px
+  font-size: clamp(0.625rem, 0.602rem + 0.11vw, 0.6875rem);
 }
 
-// Variables.scss snippet
-// $color--black: #0E0E0E;
-// $color--white: #E6E6E6;
+:root, html.light {
+  --primary-color: #432d2d;
+  --secondary-color: #432d2d;
+  --bg-color: #f9f9f9; // special white
+}
 
-// html.light {
-//   --primary-color: #0E0E0E;
-//   --secondary-color: #432d2d;
-// }
-
-// html.dark {
-//   --primary-color: #E6E6E6;
-//   --secondary-color: #432d2d;
-// }
+html.dark {
+  --primary-color: #E6E6E6;
+  --secondary-color: #432d2d;
+  --bg-color: #432d2d;
+}
