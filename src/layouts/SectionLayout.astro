@@ -45,7 +45,8 @@ import Background from '../components/ui/Background.astro';
   .bg-scroll-indicator {
     grid-column: 6;
     grid-row: 1 / -1;
-    z-index: 1;
+    z-index: 0;
+    pointer-events: none;
     background-color: var(--primary-color);
     opacity: 20%;
   }
