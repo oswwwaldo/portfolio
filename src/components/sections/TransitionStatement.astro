@@ -24,7 +24,7 @@ const {} = Astro.props
 
     .transition {
         display: flex;
-        align-items: center;
+        align-items: start;
         justify-content: space-evenly;
 
         color: var(--secondary-color);
@@ -48,16 +48,17 @@ const {} = Astro.props
 
                 aspect-ratio: 1;
                 border-radius: 100%;
-                background-color: rgb(from var(--primary-color) r g b / 0.1);
+                background-color: rgb(from var(--secondary-color) r g b / 0.1);
 
                 &:first-child {
-                    height: 50%;
+                    min-height: 100px;
+                    max-height: 300px;
                 }
 
                 &:last-child {
-                    height: 25%;
+                    height: 35%;
                     position: absolute;
-                    top: -30%; right: 30%;
+                    top: -25%; right: 20%;
                 }
             }
         }
