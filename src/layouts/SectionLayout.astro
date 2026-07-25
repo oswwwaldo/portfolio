@@ -11,82 +11,57 @@ import Background from '../components/ui/Background.astro';
     <slot />
   </div>
 
-  <!-- These are helper lines to track [outer-left] & [outer-right] grid lines and sync them with <GridLines> -->
-  <!-- <div class="red-line left-line"></div> -->
-  <!-- <div class="red-line right-line"></div> -->
-
-  <!--- This is meant to track the progress the user is within their journey to the bottom of the page -->
   <div class="bg-scroll-indicator"></div>
 </div>
 
 <style lang="scss">
-    .section {
-        position: relative;
-        min-height: 100vh;
-        overflow-x: clip;
+  .section {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: clip;
 
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: minmax(0, 1fr) [outer-left] repeat(4, minmax(0, 1fr)) [outer-right] minmax(0, 1fr);        
-
-        &__background {
-          grid-column: 1 / -1;
-          grid-row: 1 / -1;
-          z-index: 0;
-          pointer-events: none;
-        }
-
-        &__content {
-          grid-column: outer-left / outer-right;
-          grid-row: 1 / -1;
-          z-index: 1;
-
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-start;
-        }
-    }
-
-    .bg-scroll-indicator {
-      grid-column: 6;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: minmax(0, 1fr) [outer-left] repeat(4, minmax(0, 1fr)) [outer-right] minmax(0, 1fr);
+    &__background {
+      grid-column: 1 / -1;
       grid-row: 1 / -1;
-      z-index: -1;
-      background-color: var(--primary-color);
-      opacity: 20%;
-    }
-
-    .red-line {
-      background: red;
-      width: 1px;
-      height: 100vh;
-      grid-row: 1 / -1;
-      z-index: 9999;
+      z-index: 0;
       pointer-events: none;
     }
 
-    .left-line {
-      grid-column: outer-left;
-      justify-self: start;
+    &__content {
+      grid-column: outer-left / outer-right;
+      grid-row: 1 / -1;
+      z-index: 1;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+
+  .bg-scroll-indicator {
+    grid-column: 6;
+    grid-row: 1 / -1;
+    z-index: 1;
+    background-color: var(--primary-color);
+    opacity: 20%;
+  }
+
+  @media (max-width: 770px) {
+    .section {
+      grid-template-columns: minmax(1rem, 1fr) repeat(4, minmax(0, 1fr)) minmax(1rem, 1fr);
     }
 
-    .right-line {
-      grid-column: outer-right;
-      justify-self: start;
+    .section__content {
+      grid-column: 1 / -1;
+      padding-inline: clamp(1rem, 3vw, 1.5rem);
     }
 
-    // .section__background {
-    //     position: absolute;
-    //     inset: 0;
-    //     z-index: 0;
-    //     pointer-events: none;
-    // }
-
-    // .section__content {
-    //     position: absolute;
-    //     z-index: 1;
-    //     width: 100%;
-    //     height: 100%;
-    // }
-
+    .bg-scroll-indicator {
+      grid-column: 1 / -1;
+    }
+  }
 </style>
