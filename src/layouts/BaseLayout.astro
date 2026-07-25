@@ -33,7 +33,7 @@ const { pageTitle } = Astro.props;
   @use '../styles/variables.scss' as *;
 
   body {
-    background-color: $color--black;
+    background-color: var(--primary-color);
 
     overflow-x: clip;
   }

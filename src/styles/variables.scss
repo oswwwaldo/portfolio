@@ -12,8 +12,8 @@ $text--paragraph-2: 1rem;
 $text--paragraph-3: 0.8854rem;
 $text--monospace: 1rem;
 
-$color--black: var(--color--primary);
-$color--white: var(--color--secondary);
+// $color--black: var(--color--primary);
+// $color--white: var(--color--secondary);
 
 :root, html {
     --primary-color: #0E0E0E;
@@ -21,7 +21,7 @@ $color--white: var(--color--secondary);
 }
 
 :root.dark, html.dark {
-    --primary-color: #E6E6E6;
+    --primary-color: #E6E6E6;   
     --secondary-color: #0E0E0E;
 }
 

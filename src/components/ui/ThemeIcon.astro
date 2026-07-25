@@ -12,14 +12,14 @@
     border: 0;
     background: none;
   }
-  .sun { fill: black; }
-  .moon { fill: transparent; }
-
+  .sun { fill: var(--secondary-color); }
   :global(.dark) .sun { fill: transparent; }
-  :global(.dark) .moon { fill: white; }
+  
+  .moon { fill: transparent; }
+  :global(.dark) .moon { fill: var(--secondary-color); } 
 </style>
-<script is:inline>
 
+<script is:inline>
   const theme = (() => {
     const localStorageTheme = localStorage?.getItem("theme") ?? '';
         if (['dark', 'light'].includes(localStorageTheme)) {
@@ -46,7 +46,6 @@
 
     const isDark = element.classList.contains("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
-    console.log("Website is now being displayed in ")
   }
 
   document.getElementById("themeToggle")?.addEventListener("click", handleToggleClick);
