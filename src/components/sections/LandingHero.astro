@@ -13,18 +13,22 @@ import Button from '../ui/Button.astro';
             alt="A monkey holding a phone." 
         />
     </div>
+
     <h2 class="hero__position"> Full Stack Engineer </h2>
+
     <h1 class="hero__title"> 
         <span class="first-name"> Oswaldo </span>
         <span class="middle-name"> Fabrizio </span>
         <span class="last-name"> De Los Santos </span>
         <span class="middle-name"> Ascencio </span>
     </h1>
+
     <div class="hero__actions">
         <div class="hero__buttons">
             <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
-            <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
+            <Button class="hero__buttons__btn button--ratio-27" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
         </div>
+
         <div class="hero__socials">
             <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
             <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
@@ -34,45 +38,40 @@ import Button from '../ui/Button.astro';
     </div>
 </section>
 
-
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
-    :root {
-        --button-height: 50px;
-    }
-
-    .hero__wrapper {
-        position: relative;
-    }
-
     .hero {
+        --hero-position-size: clamp(1.5rem, calc(var(--hero-title-size) * 0.4), 32px);
+        --hero-title-size: clamp(3.5rem, 2.5rem + 4vw, 100px);
+        --hero-button-height: clamp(3.5rem, 5.625vw, 5.0625rem);
+        --hero-social-icon-size: calc(var(--hero-button-height) / 2);
+
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 0.5rem;
-        padding: 2rem;
+        gap: clamp(0.5rem, 2vw, 1rem);
+        padding: clamp(1.25rem, 3vw, 2rem);
 
-        width: fit-content;
-
+        width: 100%;
         color: var(--secondary-color);
         z-index: 1;
 
         &__image {
             position: absolute;
-            top: 35%; left: 60%;
+            top: 32%;
+            left: 64%;
             transform: translate(-50%, -50%);
-
-            width:  50%;
+            width: min(70%, 50rem);
             height: auto;
             aspect-ratio: 2 / 1;
-
             z-index: -1;
 
             &::before {
                 content: "";
                 position: absolute;
-                inset: 0; /* Shorthand for top, bottom, left, right: 0 */
+                inset: 0;
                 box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8);
                 pointer-events: none;
             }
@@ -82,7 +81,7 @@ import Button from '../ui/Button.astro';
                     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
                 }
             }
-            
+
             img {
                 width: 100%;
                 height: 100%;
@@ -92,29 +91,37 @@ import Button from '../ui/Button.astro';
         }
 
         &__position {
-            font-size: 30px;
+            font-size: var(--hero-position-size);
             width: fit-content;
+            max-width: 100%;
         }
         
         &__title {
-            flex-grow: 1;
-            // width: fit-content;  
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.15em 0.25em;
             width: auto;
+            max-width: 100%;
+            font-size: var(--hero-title-size);
             transition: text-shadow 300ms ease-out;
             
             &:hover {
                 text-shadow: 0 0 6px #ffffff;
             }
 
+            :global(.dark) &:hover { 
+                text-shadow: none; 
+            } 
+
             span {
                 font-family: inherit;
                 font-size: inherit;
-                font-size: clamp(2.5rem, 2.455rem + 2.73vw, 100px);
-                font-size: 100px;
+                line-height: inherit;
 
                 &.middle-name {
                     display: none;
                 }
+
                 &.last-name {
                     white-space: nowrap;
                 }
@@ -123,35 +130,66 @@ import Button from '../ui/Button.astro';
 
         &__actions {
             display: flex;
+            flex-wrap: wrap;
             align-items: start;
-            flex-direction: row;
             justify-content: space-between;
-            width: auto;
+            gap: 1rem 1.5rem;
+            width: 100%;
+            max-width: 100%;
+        }
 
-            .hero__buttons {
-                display: flex;
-                gap: 2rem;
-            }
-
-            .hero__buttons__btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: space-around;
-                height: calc(32px + var(--button-height));
-                width: calc((64px * 2.5) + var(--button-height));
-                width: calc((69px * 2.5) + var(--button-height));
-                
-            }
-
-            .hero__socials__btn {
-                height: var(--button-height);
-                width: var(--button-height);
-            }
+        &__buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
         }
 
         &__socials {
             display: flex;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 1rem;
+
+            &__btn {
+                height: var(--hero-social-icon-size);
+                width: var(--hero-social-icon-size);
+            }
+        }
+    }
+
+    @media (max-width: 770px) {
+        .hero {
+            --hero-title-size: clamp(2.5rem, 9vw, 4.5rem);
+            --hero-position-size: clamp(1.25rem, calc(var(--hero-title-size) * 0.4), 1.9rem);
+            --hero-button-height: clamp(3rem, 7vw, 3.75rem);
+            --hero-social-icon-size: calc(var(--hero-button-height) / 2);
+
+            align-items: center;
+            text-align: center;
+
+            &__image {
+                width: min(80vw, 32rem);
+                left: 50%;
+                top: 30%;
+            }
+
+            &__title,
+            &__position {
+                justify-content: center;
+            }
+
+            &__actions {
+                justify-content: center;
+            }
+
+            &__buttons {
+                justify-content: center;
+            }
+
+            &__socials {
+                justify-content: center;
+            }
         }
     }
 </style>
