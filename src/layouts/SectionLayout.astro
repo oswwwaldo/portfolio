@@ -1,68 +1,30 @@
 ---
-import Background from '../components/ui/Background.astro';
+type Props = {
+    noMargins?: boolean;
+}
+
+const { noMargins = false } = Astro.props
+
 ---
-
-<div class="section">
-  <div class="section__background">
-    <Background />
-  </div>
-
-  <div class="section__content">
+<section class:list={['section', { 'no-margins': noMargins }]}>
     <slot />
-  </div>
-
-  <div class="bg-scroll-indicator"></div>
-</div>
+</section>
 
 <style lang="scss">
-  .section {
-    position: relative;
-    min-height: 100vh;
-    overflow-x: clip;
-
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: minmax(0, 1fr) [outer-left] repeat(4, minmax(0, 1fr)) [outer-right] minmax(0, 1fr);
-    &__background {
-      grid-column: 1 / -1;
-      grid-row: 1 / -1;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    &__content {
-      grid-column: outer-left / outer-right;
-      grid-row: 1 / -1;
-      z-index: 1;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-  }
-
-  .bg-scroll-indicator {
-    grid-column: 6;
-    grid-row: 1 / -1;
-    z-index: 0;
-    pointer-events: none;
-    background-color: var(--primary-color);
-    opacity: 20%;
-  }
-
-  @media (max-width: 770px) {
+    @use '../styles/variables.scss' as *;
     .section {
-      grid-template-columns: minmax(1rem, 1fr) repeat(4, minmax(0, 1fr)) minmax(1rem, 1fr);
+        display: flex;
+        flex-direction: column;
+        margin: 0 var(--grid-margin);
+        padding: clamp(1.25rem, 3vw, 2rem);
+
+        @media (max-width: 770px) {
+            --grid-margin: clamp(1rem, 3vw, 1.5rem);
+        }
+
+        &.section.no-margins {
+            margin: 0;
+        }
     }
 
-    .section__content {
-      grid-column: 1 / -1;
-      padding-inline: clamp(1rem, 3vw, 1.5rem);
-    }
-
-    .bg-scroll-indicator {
-      grid-column: 1 / -1;
-    }
-  }
 </style>
