@@ -54,6 +54,8 @@ import Button from '../ui/Button.astro';
         gap: clamp(0.5rem, 2vw, 1rem);
         padding: clamp(1.25rem, 3vw, 2rem);
 
+        // margin-top: 25vh;
+
         width: 100%;
         color: var(--secondary-color);
         z-index: 1;
@@ -94,6 +96,7 @@ import Button from '../ui/Button.astro';
             font-size: var(--hero-position-size);
             width: fit-content;
             max-width: 100%;
+            pointer-events: none;
         }
         
         &__title {
@@ -104,10 +107,8 @@ import Button from '../ui/Button.astro';
             max-width: 100%;
             font-size: var(--hero-title-size);
             transition: text-shadow 300ms ease-out;
-            
-            &:hover {
-                text-shadow: 0 0 6px #ffffff;
-            }
+
+            pointer-events: none;
 
             :global(.dark) &:hover { 
                 text-shadow: none; 
@@ -117,6 +118,11 @@ import Button from '../ui/Button.astro';
                 font-family: inherit;
                 font-size: inherit;
                 line-height: inherit;
+                pointer-events: all;
+
+                &:hover {
+                    text-shadow: 0 0 6px #ffffff;
+                }
 
                 &.middle-name {
                     display: none;
