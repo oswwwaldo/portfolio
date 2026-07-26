@@ -1,0 +1,52 @@
+---
+type Props = {
+
+}
+
+const {} = Astro.props
+
+---
+<div class="eof">
+    <h1> END OF <span></span>.</h1>
+</div>
+
+<style>
+    .eof {
+        display: flex;
+        justify-content: end;
+        margin: 0 5rem;
+        padding: 10vw 4vw;
+
+        h1 {
+            font-size: clamp(60px, 4.375rem, 90px);
+            /* opacity: 5%; */
+            color: rgb(from var(--secondary-color) r g b / .2);
+
+            & span {
+                display: inline-grid;
+                transition: all 1s ease-in-out;
+
+                &::before, &::after {
+                    grid-area: 1/1;
+                }
+                &::before {
+                    content: "PAGE";
+                    opacity: 1;
+                }
+                &::after {
+                    content: "FILE";
+                    opacity: 0;
+                }
+                &:hover::before {
+                    opacity: 0;
+                } 
+                &:hover::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+</style>
+
+<script></script>
