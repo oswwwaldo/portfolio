@@ -26,11 +26,11 @@ const { size = '24' } = Astro.props;
     border: 0;
     background: none;
   }
-  .sun { fill: transparent; }
-  :global(.dark) .sun { fill: var(--secondary-color); }
+  .sun { fill: var(--secondary-color); }
+  :global(.dark) .sun { fill: transparent; }
   
-  .moon { fill: var(--secondary-color); }
-  :global(.dark) .moon { fill: transparent; } 
+  .moon { fill: transparent; }
+  :global(.dark) .moon { fill: var(--secondary-color); } 
 </style>
 
 <script is:inline>
