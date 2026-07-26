@@ -1,0 +1,42 @@
+---
+import CardShowcase from '../ui/CardShowcase.astro'
+type Props = {
+
+}
+
+const {} = Astro.props
+
+---
+<section class="selected-works">
+    <div class="selected-works__header">
+        <h2> Selected Works </h2>
+    </div>
+    <div class="selected-works__cards">
+        <CardShowcase />
+        <CardShowcase />    
+    </div>
+</section>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;  
+    
+    .selected-works {
+        display: flex;
+        flex-direction: column;
+
+        color: var(--secondary-color);  
+
+        &__header {
+            
+        }
+
+        &__cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            width: 100%;
+        }
+    }
+
+</style>
