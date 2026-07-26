@@ -8,9 +8,14 @@ const {} = Astro.props
 ---
 <div class="transition">
     <div class="statement">
-        <h2> Full-stack engineer fluent in modern ecosystems with two years of experience. </h2>
+        <h2> 
+            <span>Full-stack engineer fluent in </span> 
+            <span class="statement__emphasis">modern ecosystems </span>
+            <span>with </span> 
+            <span class="statement__emphasis">two years of experience. </span>
+        </h2>
     </div>
-    <div class="orbit">
+    <div class="orbit"> 
         <p class="body-lg"> Come take a look at my portfolio and get to know me, either through my work or via my about me! </p>
         <div class="orbit__planets">
             <div class="orbit__planets__planet"><a> About me </a></div>
@@ -24,19 +29,44 @@ const {} = Astro.props
 
     .transition {
         display: flex;
-        align-items: center;
-        justify-content: space-evenly;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
 
         color: var(--secondary-color);
     }
 
     .statement {
-        flex-grow: 2;
+        width: clamp(600px, 40rem, 700px);
+
+        h2 {
+            // display: inline-block;
+            
+            & span {
+                display: inline;
+                font-family: inherit;
+                font-size: inherit;
+            }
+        }
+            
+        &__emphasis {
+            font-family: var(--font-heading);
+            font-size: inherit;
+            background: var(--highlight-color);
+
+            &:hover {
+                background:var(--highlight-hover-color);
+            }
+        }
     }
 
     .orbit {
         display: flex;
         flex-direction: column;
+        // width: calc(100vw/4);
+        width: clamp(100px, 184px, 230px);
+        gap: 2rem;
+        height: auto;
         &__planets {
             position: relative;
             width: 100%;
@@ -48,16 +78,18 @@ const {} = Astro.props
 
                 aspect-ratio: 1;
                 border-radius: 100%;
-                background-color: rgb(from var(--primary-color) r g b / 0.1);
+                background-color: rgb(from var(--secondary-color) r g b / 0.4);
 
                 &:first-child {
-                    height: 50%;
+                    // height: 50%;
+                    height: clamp(100px, 10rem, 180px);
                 }
 
                 &:last-child {
-                    height: 25%;
+                    height: 45%;
+                    height: clamp(75px, 2rem, 180px);
                     position: absolute;
-                    top: -30%; right: 30%;
+                    top: -30%; right: -25%;
                 }
             }
         }
