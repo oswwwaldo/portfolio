@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+    src: ImageMetadata;
+    alt: string;
+    scale?: number;
+}
+
+const { src, alt, scale = 1.1 } = Astro.props;
+---
+
+<div class="landing-image" data-scale={scale}>
+    <Image src={src} alt={alt} class="photo" />
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .landing-image {
+        position: absolute;
+        top: 5%;
+        left: 40%;
+        transform: translate(-50%, -50%, 0);
+        width: min(70%, 50rem);
+        height: auto;
+        aspect-ratio: 2 / 1;
+        z-index: -1;
+        overflow: hidden;
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: cover;
+
+            backface-visibility: hidden; 
+            transform: translateZ(0); 
+            will-change: transform;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1; 
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.0);
+            transition: box-shadow 0.3s ease;
+        }
+
+        :global(.dark) &::before { 
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8); 
+        } 
+        
+        &:hover {
+            &::before { box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.05); }
+            :global(.dark) &::before { box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6); }
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap"; 
+
+    const initHoverImages = () => {
+        const tiles = document.querySelectorAll('.landing-image');
+
+        tiles.forEach((tile) => {
+            const photo = tile.querySelector('.photo');
+            const scale = parseFloat(tile.getAttribute('data-scale') || '1.1');
+
+            const onHover = (event: Event) => {
+                gsap.to(photo, {
+                    duration: scale, 
+                    ease: 'power4.out',
+                    scale: event.type === 'mouseover' ? scale : 1,
+                });
+            };
+
+            const onMove = (event: MouseEvent) => {
+                const rect = tile.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                const xPercent = (x / rect.width) * 100;
+                const yPercent = (y / rect.height) * 100;
+
+                gsap.set(photo, {
+                    transformOrigin: `${xPercent}% ${yPercent}%`,
+                });
+            };
+
+            tile.addEventListener('mouseover', onHover);
+            tile.addEventListener('mouseout', onHover);
+            tile.addEventListener('mousemove', onMove);
+        });
+    };
+
+    initHoverImages();
+    // enable if you switch to astro view transitions
+    // document.addEventListener('astro:page-load', initHoverImages);
+</script>

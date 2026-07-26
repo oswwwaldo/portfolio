@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import LandingImage from '../ui/LandingImage.astro';
 import stoneNotInFocus from '../../assets/media/stone-not-in-focus.jpg';
 import Icon from '../ui/AppIcon.astro';
 import Button from '../ui/Button.astro';
@@ -7,12 +7,11 @@ import Button from '../ui/Button.astro';
 
 
 <section class="hero">
-    <div class="hero__image">
-        <Image 
-            src={stoneNotInFocus}
-            alt="A monkey holding a phone." 
-        />
-    </div>
+
+    <LandingImage 
+        src={stoneNotInFocus} 
+        alt="A monkey holding a phone">
+    </LandingImage>
 
     <h2 class="hero__position"> Full Stack Engineer </h2>
 
@@ -60,37 +59,9 @@ import Button from '../ui/Button.astro';
         color: var(--secondary-color);
         z-index: 1;
 
-        &__image {
-            position: absolute;
-            top: 32%;
-            left: 64%;
-            transform: translate(-50%, -50%);
-            width: min(70%, 50rem);
-            height: auto;
-            aspect-ratio: 2 / 1;
-            z-index: -1;
-
-            &::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8);
-                pointer-events: none;
-            }
-
-            &:hover {
-                &::before {
-                    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
-                }
-            }
-
-            img {
-                width: 100%;
-                height: 100%;
-                max-width: none;
-                object-fit: cover;
-            }
-        }
+        // &__image {
+        //     position: relative;
+        // }
 
         &__position {
             font-size: var(--hero-position-size);
