@@ -1,21 +1,137 @@
 ---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Tag from '../ui/Tag.astro';
 ---
 
 <div class="work-experience">
-    <div class="work-experience__header">
-        <h2> Work Experience </h2>
-    </div>
+    <SectionHeader textContent="Work" secondLine="Experience"/>
     <div class="work-experience__history">
-        
-    </div>
-    <div class="work-experience__stats">
-
+        <div class="job">
+            <div class="job__date"> 2026 - 2027 </div>
+            <div class="job__position">
+                <div class="job__position__title"> Software Engineer </div>
+                <div class="job__position__company"> Marcy Lab </div>
+                <div class="job__position__description"> 
+                    Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit.  
+                </div>
+            </div>
+            <div class="job__skills">
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+            </div>
+        </div>
+        <div class="job">
+            <div class="job__date"> 2026 - 2027 </div>
+            <div class="job__position">
+                <div class="job__position__title"> Software Engineer </div>
+                <div class="job__position__company"> Marcy Lab </div>
+                <div class="job__position__description"> 
+                    Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit.  
+                </div>
+            </div>
+            <div class="job__skills">
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+            </div>
+        </div>
+        <div class="job">
+            <div class="job__date"> 2026 - 2027 </div>
+            <div class="job__position">
+                <div class="job__position__title"> Software Engineer </div>
+                <div class="job__position__company"> Marcy Lab </div>
+                <div class="job__position__description"> 
+                    Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit.  
+                </div>
+            </div>
+            <div class="job__skills">
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+                <Tag textContent="PHP"/>
+            </div>
+        </div>
     </div>
     <div class="work-experience__info">
-        <div class="work-experience__certifications"></div>
-        <div class="work-experience__tech-stack"></div>
+        <div class="info">
+            <h4 class="info__header"> Certifications </h4>
+            <ul class="info__list">
+                <li class="info__list__item"> AWS Developer - Associate</li>
+                <li class="info__list__item"> MongoDB Associate Developer</li>
+            </ul>
+        </div>
+        <div class="info">
+            <h4 class="info__header"> Education </h4>
+            <ul class="info__list">
+                <li class="info__list__item"> City College of New York - Computer Science (B.S)</li>
+                <li class="info__list__item"> Academy for Software Engineering</li>
+            </ul>
+        </div>
     </div>
-    <div claass="work-experience__footer"></div>
+    <div class="work-experience__stats">
+        <div class="stats">
+            <div class="stats__item">
+                <h2 class="stats__item__num"> 6+ </h2>
+                <p class="stats__item__description"> Years of experience </p>
+            </div>
+            <div class="stats__item">
+                <h2 class="stats__item__num"> 5+ </h2>
+                <p class="stats__item__description"> Hackathons won </p>
+            </div>
+            <div class="stats__item">
+                <h2 class="stats__item__num"> $120k+ </h2>
+                <p class="stats__item__description"> Revenue generated </p>
+            </div>
+            <div class="stats__item">
+                <h2 class="stats__item__num"> 12+ </h2>
+                <p class="stats__item__description"> Deployed projects </p>
+            </div>
+        </div>
+    </div>
+    <div class="work-experience__info">
+        <div class="info">
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+            <Tag textContent="PHP"/>
+        </div>
+    </div>
+    <div class="list-footer">
+        <div class="list-footer__item">
+            <div class="list-footer__item__header"> Based In </div>
+            <div class="list-footer__item__content"> New York, NY </div>
+        </div>
+
+        <div class="list-footer__item">
+            <div class="list-footer__item__header"> Github </div>
+            <div class="list-footer__item__content"> github.com/oswwwaldo </div>
+        </div>
+
+        <div class="list-footer__item">
+            <div class="list-footer__item__header"> LinkedIn </div>
+            <div class="list-footer__item__content"> linkedin.com/in/oswwwaldo/ </div>
+        </div>
+    </div>
 
 </div>
 <style lang="scss">
@@ -26,6 +142,129 @@
         flex-direction: column;
         justify-content: center;
         gap: 5vw;
+
+        margin-top: 10vh;
+
+        color: var(--secondary-color);
+
+        &__history {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            .job {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                box-sizing: border-box;
+
+                padding: 40px 30px;
+                gap: 10px;
+
+                border-bottom: 1px solid black;
+                min-height: 100px;
+                width: 100%;
+
+                &__date {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    height: 100%;
+                }
+
+                &__position {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1rem;
+
+                    // // margin: 0 auto;
+                    // width: 486px;
+                    // height: 112px;
+                    height: 100%;
+                    width: fit-content;
+
+ 
+                    &__title {
+                        min-height: 40px;
+
+                        font-family: var(--font-heading);
+                        font-size: 32px;
+                    }
+
+                    &__company {
+                        min-height: 20px;
+
+                        font-family: var(--font-body);
+                        font-size: 1.25rem;
+                    }
+                    &__description {
+                        min-height: 35px;
+
+                        font-family: var(--font-body);
+                        font-size: 1rem;
+                    }
+                }
+
+                &__skills {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                    align-content: flex-start;
+                    gap: 10px;
+
+                    max-width: 150px;
+                    height: 100%;
+
+
+                    /* Inside auto layout */
+                    flex: none;
+                    order: 2;
+                    align-self: stretch;
+                    flex-grow: 0;
+
+                }
+            }
+        }
+
+        &__info {
+            display: flex;
+        }
+
+        &__stats {
+            .stats {
+                display: flex;
+            }
+        }
+        &__footer {
+
+        }
+    }
+
+    .list-footer {
+        display: flex;
+        flex-direction: row;
+        gap: 8rem;
+        width: 100%;
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            
+            &__header {
+                font-family: var(--font-heading);
+                font-size: 20px;
+                color: rgb(from var(--secondary-color) rgba / 0.8);
+            }
+            &__content {
+                font-family: var(--font-body);
+                font-size: 20px;
+                color: var(--secondary-color);
+            }
+        }
     }
 
 </style>
