@@ -1,5 +1,7 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
+
+import Detail from '../ui/Detail.astro';
 import StatsItem from '../ui/StatsItem.astro';
 import Tag from '../ui/Tag.astro';
 ---
@@ -61,20 +63,15 @@ import Tag from '../ui/Tag.astro';
         </div>
     </div>
     <div class="work-experience__info">
-        <div class="info">
-            <h4 class="info__header"> Certifications </h4>
-            <ul class="info__list">
-                <li class="info__list__item"> AWS Developer - Associate</li>
-                <li class="info__list__item"> MongoDB Associate Developer</li>
-            </ul>
-        </div>
-        <div class="info">
-            <h4 class="info__header"> Education </h4>
-            <ul class="info__list">
-                <li class="info__list__item"> City College of New York - Computer Science (B.S)</li>
-                <li class="info__list__item"> Academy for Software Engineering</li>
-            </ul>
-        </div>
+        <Detail 
+            type="Certifications" 
+            items={["AWS Developer - Associate", "MongoDB Associate Developer"]};>
+        </Detail>
+
+        <Detail 
+            type="Education"
+            items={["City College of New York - Computer Science (B.S)", "Borough of Manhattan Community College - Computer (A.S)"]};>
+        </Detail>
     </div>
     <div class="work-experience__stats">
         <StatsItem stat="6+" caption="Years of experience" />
@@ -82,8 +79,7 @@ import Tag from '../ui/Tag.astro';
         <StatsItem stat="$120k+" caption="Revenue generated" />
         <StatsItem stat="12+" caption="Deployed projects" />
     </div>
-    <div class="work-experience__info">
-        <div class="info">
+    <div class="work-experience__tech">
             <Tag textContent="PHP"/>
             <Tag textContent="PHP"/>
             <Tag textContent="PHP"/>
@@ -101,7 +97,6 @@ import Tag from '../ui/Tag.astro';
             <Tag textContent="PHP"/>
             <Tag textContent="PHP"/>
             <Tag textContent="PHP"/>
-        </div>
     </div>
     <div class="list-footer">
         <div class="list-footer__item">
@@ -218,6 +213,22 @@ import Tag from '../ui/Tag.astro';
 
         &__info {
             display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+
+        }
+
+        &__tech {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+            gap: 15px;
+
         }
 
         &__stats {
