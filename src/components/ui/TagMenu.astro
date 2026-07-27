@@ -1,0 +1,19 @@
+---
+interface Props {
+    title: string;
+    sum: number;
+    src: ImageMetadata;
+    type?: string;
+}
+
+const { title, sum, src, type = null} = Astro.props;
+---
+
+<div class="tag-header">
+    <h1 class="tag-header__text"> {title} </h1> 
+    <p class="tag-header__number"> {sum} </p>
+</div>
+
+<style lang="scss">
+
+</style>
