@@ -1,4 +1,5 @@
 ---
+import ListItem from '../ui/ListItem.astro'
 import Tag from '../ui/Tag.astro';
 ---
 
@@ -15,7 +16,7 @@ import Tag from '../ui/Tag.astro';
         </h2>
     </div>
 
-    <!-- 
+    
     <div class="projects__nav">
         <div class="projects__nav__options">
             <p class="projects__nav__options__header"> Sort by </p>
@@ -27,7 +28,15 @@ import Tag from '../ui/Tag.astro';
             <div class="projects__nav__views__btn"> Panarmomic </div>
         </div>
     </div> 
-    -->
+
+    <ListItem 
+        itemType = "Project"
+        itemIndex = {1};
+        itemTitle = "Portfolio"
+        itemDescription = "Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery"
+        itemTimeline = "2024"
+        itemSkills = {["JavaScript", "Astro.js", "GSAP", "SCSS", "HTML", "Supabase"]};
+    />
 
     <div class="project">
         <div class="project__index"> 01 </div>
@@ -167,9 +176,9 @@ import Tag from '../ui/Tag.astro';
             border-bottom: 0.5px solid #E6E6E6;
 
             @media (max-width: 768px) {
-            flex-direction: column;
-            gap: 24px;
-            padding: 0 16px 24px;
+                flex-direction: column;
+                gap: 24px;
+                padding: 0 16px 24px;
             }
 
             &__options,
@@ -198,7 +207,12 @@ import Tag from '../ui/Tag.astro';
 
             
         }
-        @media (max-width: 500px) {
+        @media (max-width: 1200px) {
+            .projects__nav__options {
+                width: 100%;
+                justify-content: space-between;
+            }
+
             .projects__nav__views {
                 display: none;
             }
@@ -218,10 +232,10 @@ import Tag from '../ui/Tag.astro';
             }
 
             &__index {
-            font-family: var(--font-heading);
-            font-size: 11px;
-            letter-spacing: 4.4px;
-            padding-top: 16px; // Aligns with the cap height of the title
+                font-family: var(--font-heading);
+                font-size: 11px;
+                letter-spacing: 4.4px;
+                padding-top: 16px; 
             }
 
             &__info {

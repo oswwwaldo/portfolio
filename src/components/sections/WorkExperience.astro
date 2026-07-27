@@ -1,6 +1,7 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
 
+import ListItem from '../ui/ListItem.astro';
 import Detail from '../ui/Detail.astro';
 import StatsItem from '../ui/StatsItem.astro';
 import Tag from '../ui/Tag.astro';
@@ -9,58 +10,30 @@ import Tag from '../ui/Tag.astro';
 <div class="work-experience">
     <SectionHeader textContent="Work" secondLine="Experience"/>
     <div class="work-experience__history">
-        <div class="job">
-            <div class="job__date"> 2026 - 2027 </div>
-            <div class="job__position">
-                <div class="job__position__title"> Software Engineer </div>
-                <div class="job__position__company"> Marcy Lab </div>
-                <div class="job__position__description"> 
-                    Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit.  
-                </div>
-            </div>
-            <div class="job__skills">
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-            </div>
-        </div>
-        <div class="job">
-            <div class="job__date"> 2026 - 2027 </div>
-            <div class="job__position">
-                <div class="job__position__title"> Software Engineer </div>
-                <div class="job__position__company"> Marcy Lab </div>
-                <div class="job__position__description"> 
-                    Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit.  
-                </div>
-            </div>
-            <div class="job__skills">
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-            </div>
-        </div>
-        <div class="job">
-            <div class="job__date"> 2026 - 2027 </div>
-            <div class="job__position">
-                <div class="job__position__title"> Software Engineer </div>
-                <div class="job__position__company"> Marcy Lab </div>
-                <div class="job__position__description"> 
-                    Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit.  
-                </div>
-            </div>
-            <div class="job__skills">
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-                <Tag textContent="PHP"/>
-            </div>
-        </div>
+        <ListItem 
+            itemType = "Job"
+            itemTitle = "Software Engineer"
+            itemCaption = "Marcy Lab School"
+            itemDescription = "Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit."
+            itemTimeline = "2017 — 2027"
+            itemSkills = {["React", "Express.js", "Next.js", "PostgreSQL", "Postman"]};
+        />  
+        <ListItem 
+            itemType = "Job"
+            itemTitle = "Frontend Techincal Lead"
+            itemCaption = "Nunchi Health"
+            itemDescription = "Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit."
+            itemTimeline = "2017 — 2027"
+            itemSkills = {["JavaScript", "AppsScript", "A/B Testing", "Astro.js"]};
+        />
+        <ListItem 
+            itemType = "Job"
+            itemTitle = "Software Engineer Intern"
+            itemCaption = "Cognizant"
+            itemDescription = "Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit."
+            itemTimeline = "2017 — 2027"
+            itemSkills = {["React", "JavaScript", "Django", "SQL", "SCSS", "HTML", "Python"]};
+        />
     </div>
     <div class="work-experience__info">
         <Detail 
@@ -80,23 +53,24 @@ import Tag from '../ui/Tag.astro';
         <StatsItem stat="12+" caption="Deployed projects" />
     </div>
     <div class="work-experience__tech">
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
-            <Tag textContent="PHP"/>
+        <h4> TECH STACK </h4>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
+        <Tag textContent="PHP"/>
     </div>
     <div class="list-footer">
         <div class="list-footer__item">
@@ -229,6 +203,10 @@ import Tag from '../ui/Tag.astro';
             align-content: flex-start;
             gap: 15px;
 
+            h4 {
+                width: 100%;
+                margin: 1   .5rem 0;
+            }
         }
 
         &__stats {
