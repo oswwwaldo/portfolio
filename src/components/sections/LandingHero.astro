@@ -10,7 +10,8 @@ import Button from '../ui/Button.astro';
 
     <LandingImage 
         src={stoneNotInFocus} 
-        alt="A monkey holding a phone">
+        alt="A monkey holding a phone"
+        class="hero__image">
     </LandingImage>
 
     <h2 class="hero__position"> Full Stack Engineer </h2>
@@ -144,12 +145,6 @@ import Button from '../ui/Button.astro';
 
             align-items: center;
             text-align: center;
-
-            &__image {
-                width: min(80vw, 32rem);
-                left: 50%;
-                top: 30%;
-            }
 
             &__title,
             &__position {

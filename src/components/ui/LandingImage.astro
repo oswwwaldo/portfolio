@@ -1,16 +1,19 @@
 ---
 import { Image } from 'astro:assets';
+import { check } from 'astro:schema';
 
 interface Props {
     src: ImageMetadata;
     alt: string;
+    class?: string;
     scale?: number;
+    duration?: number;
 }
 
-const { src, alt, scale = 1.1 } = Astro.props;
+const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
 ---
 
-<div class="landing-image" data-scale={scale}>
+<div class:list={["landing-image", className]} data-scale={scale}>
     <Image src={src} alt={alt} class="photo" />
 </div>
 
@@ -19,9 +22,11 @@ const { src, alt, scale = 1.1 } = Astro.props;
 
     .landing-image {
         position: absolute;
-        top: 5%;
-        left: 40%;
-        transform: translate(-50%, -50%, 0);
+        // top: 5%;
+        // left: 40%;
+        top: 30%;
+        left: 70%;
+        transform: translate3d(-50%, -50%, 0);
         width: min(70%, 50rem);
         height: auto;
         aspect-ratio: 2 / 1;
@@ -59,6 +64,14 @@ const { src, alt, scale = 1.1 } = Astro.props;
             :global(.dark) &::before { box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6); }
         }
     }
+
+    @media (max-width: 770px){
+        .landing-image {
+            width: min(80vw, 32rem);
+            left:50%;
+            top: 30%;
+        }
+    }
 </style>
 
 <script>
@@ -73,7 +86,7 @@ const { src, alt, scale = 1.1 } = Astro.props;
 
             const onHover = (event: Event) => {
                 gsap.to(photo, {
-                    duration: scale, 
+                    duration: scale,
                     ease: 'power4.out',
                     scale: event.type === 'mouseover' ? scale : 1,
                 });
@@ -94,7 +107,7 @@ const { src, alt, scale = 1.1 } = Astro.props;
 
             tile.addEventListener('mouseover', onHover);
             tile.addEventListener('mouseout', onHover);
-            tile.addEventListener('mousemove', onMove);
+            tile.addEventListener('mousemove', onMove as EventListener);
         });
     };
 
