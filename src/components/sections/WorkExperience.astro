@@ -1,5 +1,6 @@
 ---
 import SectionHeader from '../ui/SectionHeader.astro';
+import StatsItem from '../ui/StatsItem.astro';
 import Tag from '../ui/Tag.astro';
 ---
 
@@ -76,24 +77,10 @@ import Tag from '../ui/Tag.astro';
         </div>
     </div>
     <div class="work-experience__stats">
-        <div class="stats">
-            <div class="stats__item">
-                <h2 class="stats__item__num"> 6+ </h2>
-                <p class="stats__item__description"> Years of experience </p>
-            </div>
-            <div class="stats__item">
-                <h2 class="stats__item__num"> 5+ </h2>
-                <p class="stats__item__description"> Hackathons won </p>
-            </div>
-            <div class="stats__item">
-                <h2 class="stats__item__num"> $120k+ </h2>
-                <p class="stats__item__description"> Revenue generated </p>
-            </div>
-            <div class="stats__item">
-                <h2 class="stats__item__num"> 12+ </h2>
-                <p class="stats__item__description"> Deployed projects </p>
-            </div>
-        </div>
+        <StatsItem stat="6+" caption="Years of experience" />
+        <StatsItem stat="5+" caption="Hackathons won" />
+        <StatsItem stat="$120k+" caption="Revenue generated" />
+        <StatsItem stat="12+" caption="Deployed projects" />
     </div>
     <div class="work-experience__info">
         <div class="info">
@@ -234,10 +221,17 @@ import Tag from '../ui/Tag.astro';
         }
 
         &__stats {
-            .stats {
-                display: flex;
-            }
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            align-content: center;
+
+            width: 100%;
+            min-height: 120px;
         }
+
         &__footer {
 
         }
