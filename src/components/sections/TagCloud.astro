@@ -1,0 +1,27 @@
+---
+import TagHeader from "../ui/TagHeader.astro";
+---
+
+<div class="tag-cloud">
+    <TagHeader title="Through" sum={49} type="word"></TagHeader>
+    <TagHeader title="Over" sum={10} type="word"></TagHeader>
+    <TagHeader title="Under" sum={13} type="word"></TagHeader>
+    <TagHeader title="Across" sum={17} type="word"></TagHeader>
+    <TagHeader title="Within" sum={81} type="word"></TagHeader>
+    <TagHeader title="Cross" sum={81} type="word"></TagHeader>
+    <TagHeader title="Before" sum={81} type="word"></TagHeader>
+    <TagHeader title="Us" sum={81} type="word"></TagHeader>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+    .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .vertical {
+        flex-direction: column;
+    }
+</style>
+
