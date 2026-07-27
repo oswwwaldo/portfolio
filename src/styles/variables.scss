@@ -3,6 +3,12 @@
 :root {
     --font-heading: "Aboreto", cursive;
     --font-body: "Times New Roman", Times, serif;
+
+
+
+    
+    --tag-border: 1px solid rgb(from var(--secondary-color) r g b / 0.3);
+    --tag-text: rgb(from var(--secondary-color) r g b / 0.5);
 }
 
 // platinum: F2F3F4
@@ -15,6 +21,7 @@
 
     --highlight-color: #dadada;
     --highlight-hover-color: #d0d0d0;
+
 }
 
 // responsive for grid margin: padding-inline: clamp(1rem, 3vw, 1.5rem)

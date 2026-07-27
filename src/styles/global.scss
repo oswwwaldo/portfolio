@@ -5,7 +5,7 @@ Display : 7.5rem    : 120px : Used for hero name and extra large text
 h1      : 4rem      : 64px  : Used for section headings and decorative watermarks/background text
 h2      : 2.5rem    : 48px  : Project titles, feature text
 h3      : 2rem      : 32px  : Job titles
-h4      : 1.5rem    :       :
+h4      : 1.5rem    : 24px  : —SET THIS
 body-lg : 1.25rem   : 20px  : Descriptions, certificate headers
 body    : 1rem      : 16px  : Dates, small body text, company names
 label   : 0.6875rem : 10px  : Tags, nav links, years, index numbers
@@ -35,7 +35,6 @@ h1, h2, h3, h4 {
   font-weight: normal; 
 }
 
-// Note: when cross-referencing Figma typography sizes, please note the last parameter in clamp is what you need to match
 // Display Token
 .display {
   font-size: clamp(4.5rem, 3.409rem + 5.45vw, 7.5rem);
@@ -54,6 +53,9 @@ h3 {
   font-size: clamp(1.25rem, 0.977rem + 1.36vw, 2rem);
 }
 
+h4 {
+  font-size: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
+}
 // Body Sizes
 p {
 	font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
