@@ -17,11 +17,14 @@ const { textContent, target } = Astro.props
     .tag {
         display: flex;
         align-items: center;
-        justify-self: center;
+        justify-content: center;
 
         border: 1px solid var(--secondary-color);
         aspect-ratio: 5/1;  
-        padding: 1rem;
+        padding: 0.3rem 1rem;
+
+        font-family: var(--font-heading);
+        text-transform: uppercase;
     }
 
 </style>

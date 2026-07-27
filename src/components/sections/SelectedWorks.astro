@@ -9,7 +9,7 @@ const {} = Astro.props
 ---
 <section class="selected-works">
     <div class="selected-works__header">
-        <h2> Selected Works </h2>
+        <h1> Selected <br> Works </h1>
     </div>
     <div class="selected-works__cards">
         <CardShowcase />
@@ -27,15 +27,27 @@ const {} = Astro.props
         color: var(--secondary-color);  
 
         &__header {
+            // width: 50%;
+            margin-bottom: 1rem;
             
         }
 
         &__cards {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            // justify-content: space-between;
+            gap: 5vw;
 
             width: 100%;
+        }
+    }
+
+    @media (max-width: 770px){
+        .selected-works__cards {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10vh;
         }
     }
 
