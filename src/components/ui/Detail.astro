@@ -14,7 +14,9 @@ const {type, items} = Astro.props
         {
             items.map((item) => (
                 <li class="detail__list__item">
-                    {item}
+                    <span class="detail__list__item__span">
+                        {item}
+                    </span>
                 </li>
             ))
         }
@@ -32,7 +34,7 @@ const {type, items} = Astro.props
         padding: 48px 40px;
         gap: 32px;
         margin: 0 auto;
-        width: 100%;
+        width: 50%;
 
         &__header {
             font-family: var(--font-heading);
@@ -47,22 +49,80 @@ const {type, items} = Astro.props
             width: 100%;
 
             &__item {
+                container-type: inline-size;
                 width: 100%;
                 padding: 1rem 1rem 1rem 0.50rem;
 
                 border-bottom: 1px solid var(--secondary-color);
                 font-family: var(--font-body);
                 font-size: 1rem;
-                transition: all 200ms ease-in-out;
+                transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
 
+                white-space: nowrap;      
+                overflow: hidden;        
                 text-overflow: ellipsis;
+
+
+                span {
+                    display: inline-block;
+                    padding-right: 0.5rem;
+                    animation: hoverOutScroll 1.5s ease-in forwards;
+                }
 
                 &:hover {
                     background-color: var(--secondary-color);
                     color: var(--primary-color);
+                    text-overflow: clip;
+
+                    &.--is-scrollable span {
+                        animation: hoverInScroll 1.5s ease-in-out forwards;
+                    }
                 }
             }
         }
 
     }
+
+    /* 
+       We calculate the exact difference between the container's width (100cqi) 
+       minus the horizontal padding (1.5rem), and the span's total width (100%).
+       min(0px, ...) ensures that if the text is shorter than the container, 
+       it resolves to 0px and doesn't scroll at all!
+    */
+
+    @keyframes hoverInScroll {
+        0%, 15% {
+            transform: translateX(0);
+        }
+        85%, 100% {
+            transform: translateX(min(0px, calc(100cqi - 1.7rem - 100%)));
+        }
+    }
+
+    @keyframes hoverOutScroll {
+        0%, 15% {
+            transform: translateX((min(0px, calc(100cqi - 1.7rem - 100%))));
+        }
+        85%, 100% {
+            transform: translateX(0);
+        }
+    }   
 </style>
+<script>
+    const checkOverflow = () => {
+        const detailListItems = document.querySelectorAll('.detail__list__item');
+
+        detailListItems.forEach((item) => {
+            if (item.scrollWidth > item.clientWidth) {
+                item.classList.add('--is-scrollable');
+            } else {
+                item.classList.remove('--is-scrollable');
+            }
+        });
+    };
+
+    checkOverflow();
+
+    window.addEventListener('resize', checkOverflow);
+
+</script>
