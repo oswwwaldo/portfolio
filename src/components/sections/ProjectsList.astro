@@ -15,7 +15,6 @@ import Tag from '../ui/Tag.astro';
             </span>
         </h2>
     </div>
-
     
     <div class="projects__nav">
         <div class="projects__nav__options">
@@ -38,80 +37,14 @@ import Tag from '../ui/Tag.astro';
         itemSkills = {["JavaScript", "Astro.js", "GSAP", "SCSS", "HTML", "Supabase"]};
     />
 
-    <div class="project">
-        <div class="project__index"> 01 </div>
-        <div class="project__info">
-            <div class="project__info__title"> New Tab Chess </div>
-            <div class="project__info__description"> 
-                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
-            </div>
-            <div class="project__info__skills">
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-            </div>
-        </div>
-        <div class="project__date">
-            <p class="project__date__text"> 2024 </p>
-        </div>
-    </div>
-
-    <div class="project">
-        <div class="project__index"> 01 </div>
-        <div class="project__info">
-            <div class="project__info__title"> New Tab Chess </div>
-            <div class="project__info__description"> 
-                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
-            </div>
-            <div class="project__info__skills">
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-            </div>
-        </div>
-        <div class="project__date">
-            <p class="project__date__text"> 2024 </p>
-        </div>
-    </div>
-
-    <div class="project">
-        <div class="project__index"> 01 </div>
-        <div class="project__info">
-            <div class="project__info__title"> New Tab Chess </div>
-            <div class="project__info__description"> 
-                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
-            </div>
-            <div class="project__info__skills">
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-            </div>
-        </div>
-        <div class="project__date">
-            <p class="project__date__text"> 2024 </p>
-        </div>
-    </div>
-    <div class="project">
-        <div class="project__index"> 01 </div>
-        <div class="project__info">
-            <div class="project__info__title"> New Tab Chess </div>
-            <div class="project__info__description"> 
-                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
-            </div>
-            <div class="project__info__skills">
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-                <Tag textContent="Astro.js"></Tag>
-            </div>
-        </div>
-        <div class="project__date">
-            <p class="project__date__text"> 2024 </p>
-        </div>
-    </div>
+    <ListItem 
+        itemType = "Project"
+        itemIndex = {2};
+        itemTitle = "New Tab Chess"
+        itemDescription = "Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery"
+        itemTimeline = "2025"
+        itemSkills = {["JavaScript", "Astro.js", "GSAP", "SCSS", "HTML", "Supabase"]};
+    />
 
 </div>
 <style lang="scss">
@@ -136,6 +69,9 @@ import Tag from '../ui/Tag.astro';
 
             font-family: var(--font-heading);
             font-size: clamp(32px, 5vw, 64px);
+
+            gap: 2.5rem;
+            justify-content: center;
         }
 
         &__image {
@@ -161,10 +97,8 @@ import Tag from '../ui/Tag.astro';
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 1050px;
-        margin: 0 auto;
-        padding: 192px 0; 
-        color: #E6E6E6;
+        padding: 10vh 0; 
+        color: var(--secondary-color);
 
 
         &__nav {
