@@ -13,26 +13,60 @@ interface Props {
 const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
 ---
 
-<div class:list={["landing-image", className]} data-scale={scale}>
-    <Image src={src} alt={alt} class="photo" />
+<div 
+    class:list={["landing-image", className]} 
+    id="image-track"
+    data-scale={scale}
+    data-mouse-down-at={0}  
+    data-prev-percentage={0}
+    >
+
+    <Image src={src} alt={alt} class="photo" draggable="false"/>
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
+    <Image src={src} alt={alt} class="track-photo" draggable="false" />
 </div>
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
     .landing-image {
+        display: flex;
+        gap: 4vmin;
         position: absolute;
-        // top: 5%;
-        // left: 40%;
-        top: 30%;
-        left: 70%;
-        transform: translate3d(-50%, -50%, 0);
-        width: min(70%, 50rem);
-        height: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(0%, -50%);
+
+        > .track-photo {
+            width: 40vmin;
+            height: 56vmin;
+            object-fit: cover;
+            object-position: 100% center;
+        }   
+
+        .active {
+            display: flex;
+            gap: 4vmin;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(0%, -50%);
+        }
+    }
+
+    .landing-image {
+        position: absolute;
+
         aspect-ratio: 2 / 1;
         z-index: -1;
-        overflow: hidden;
-        -webkit-mask-image: -webkit-radial-gradient(white, black);
+        // overflow: hidden0;
+        // -webkit-mask-image: -webkit-radial-gradient(white, black);
 
         .photo {
             width: 100%;
@@ -40,9 +74,9 @@ const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
             max-width: none;
             object-fit: cover;
 
-            backface-visibility: hidden; 
-            transform: translateZ(0); 
-            will-change: transform;
+            // backface-visibility: hidden; 
+            // transform: translateZ(0); 
+            // will-change: transform;
         }
 
         &::before {
@@ -53,15 +87,6 @@ const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
             z-index: 1; 
             box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.0);
             transition: box-shadow 0.3s ease;
-        }
-
-        :global(.dark) &::before { 
-            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.8); 
-        } 
-        
-        &:hover {
-            &::before { box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.05); }
-            :global(.dark) &::before { box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.6); }
         }
     }
 
@@ -77,12 +102,47 @@ const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
 <script>
     import { gsap } from "gsap"; 
 
-    const initHoverImages = () => {
-        const tiles = document.querySelectorAll('.landing-image');
-
-        tiles.forEach((tile) => {
+    const initImageInteraction = () => {
+        // const tile = document.querySelector('.landing-image');
+        const tile = document.getElementById("image-track");
+        
+        if (tile !== null) {
             const photo = tile.querySelector('.photo');
             const scale = parseFloat(tile.getAttribute('data-scale') || '1.1');
+
+            const handleOnDown = e => tile.dataset.mouseDownAt = e.clientX;
+
+            const handleOnUp = () => {
+                tile.dataset.mouseDownAt = "0";
+                tile.dataset.prevPercentage = tile.dataset.percentage;
+            }
+            
+            const handleOnMove = e => {
+                if (tile.dataset.mouseDownAt === "0") return;
+
+                const mouseDelta: number = parseFloat(tile.dataset.mouseDownAt) - e.clientX, maxDelta = window.innerWidth / 2;
+
+                const percentage: number = (mouseDelta / maxDelta) * -100, nextPercentageUnconstrained = parseFloat(tile.dataset.prevPercentage) + percentage, nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+                tile.dataset.percentage = nextPercentage;
+                
+                tile.animate({
+                    transform: `translate(${nextPercentage}%, -50%)`
+                }, { duration: 1200, fill: "forwards" });
+
+                // for (const photo of tile.getElementsByClassName("track-photo")) {
+                //     tile.animate({
+                //         objectPosition: `${100 + nextPercentage}% center`
+                //     }, {duration: 1200, fill: "forwards" });
+                // }
+            }
+
+            window.onmousedown = e => handleOnDown(e);
+            window.ontouchstart = e => handleOnDown(e.touches[0]);
+            window.onmouseup = e => handleOnUp(e);
+            window.ontouchend = e => handleOnUp(e.touches[0]);
+            window.onmousemove = e => handleOnMove(e);
+            window.ontouchmove = e => handleOnMove(e.touches[0]);
 
             const onHover = (event: Event) => {
                 gsap.to(photo, {
@@ -105,13 +165,14 @@ const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
                 });
             };
 
-            tile.addEventListener('mouseover', onHover);
-            tile.addEventListener('mouseout', onHover);
-            tile.addEventListener('mousemove', onMove as EventListener);
-        });
+            // tile.addEventListener('mouseover', onHover);
+            // tile.addEventListener('mouseout', onHover);
+            // tile.addEventListener('mousemove', onMove as EventListener);
+
+        }
     };
 
-    initHoverImages();
+    initImageInteraction();
     // enable if you switch to astro view transitions
     // document.addEventListener('astro:page-load', initHoverImages);
 </script>

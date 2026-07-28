@@ -5,7 +5,6 @@ import Icon from '../ui/AppIcon.astro';
 import Button from '../ui/Button.astro';
 ---
 
-
 <section class="hero">
 
     <LandingImage 
@@ -13,7 +12,7 @@ import Button from '../ui/Button.astro';
         alt="A monkey holding a phone"
         class="hero__image">
     </LandingImage>
-
+<!-- 
     <h2 class="hero__position"> Full Stack Engineer </h2>
 
     <h1 class="hero__title"> 
@@ -30,45 +29,54 @@ import Button from '../ui/Button.astro';
         </div>
 
         <div class="hero__socials">
-            <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
+            <a href="mailto:ofdelossantosa" aria-label="Email">
+                <Icon class="hero__socials__btn" name="fa6-solid:envelope"></Icon>
+            </a>
+            <a href="https://instagram.com/byoswwwaldo" aria-label="Instagram">
+                <Icon class="hero__socials__btn" name="fa6-brands:instagram"></Icon>
+            </a>
+            <a href="#" aria-label="GitHub">
+                <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
+            </a>
         </div>
-    </div>
+    </div> -->
 </section>
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
     .hero {
-        --hero-position-size: clamp(1.5rem, calc(var(--hero-title-size) * 0.4), 32px);
-        --hero-title-size: clamp(3.5rem, 2.5rem + 4vw, 100px);
-        --hero-button-height: clamp(3.5rem, 5.625vw, 5.0625rem);
+        --hero-position-size: clamp(1rem, 3vw, 32px);
+        --hero-title-size: clamp(2rem, 7vw, 100px);
+        --hero-button-height: clamp(3rem, 5vw, 5rem);
         --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
         position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: clamp(0.5rem, 2vw, 1rem);
-        padding: clamp(1.25rem, 3vw, 2rem);
-
-        // margin-top: 25vh;
+        
+        gap: clamp(1.5rem, 4vw, 3rem);
+        padding: clamp(2rem, 5vw, 4rem);
+        min-height: 80vh; 
+        box-sizing: border-box;
 
         width: 100%;
         color: var(--secondary-color);
         z-index: 1;
 
-        // &__image {
-        //     position: relative;
-        // }
+        pointer-events: none;
+        user-select: none;
 
         &__position {
             font-size: var(--hero-position-size);
             width: fit-content;
             max-width: 100%;
             pointer-events: none;
+            margin: 0;
         }
         
         &__title {
@@ -79,7 +87,7 @@ import Button from '../ui/Button.astro';
             max-width: 100%;
             font-size: var(--hero-title-size);
             transition: text-shadow 300ms ease-out;
-
+            margin: 0;
             pointer-events: none;
 
             :global(.dark) &:hover { 
@@ -109,11 +117,12 @@ import Button from '../ui/Button.astro';
         &__actions {
             display: flex;
             flex-wrap: wrap;
-            align-items: start;
+            align-items: center;
             justify-content: space-between;
-            gap: 1rem 1.5rem;
+            gap: 2rem;
             width: 100%;
             max-width: 100%;
+            margin-top: 1rem; 
         }
 
         &__buttons {
@@ -127,7 +136,19 @@ import Button from '../ui/Button.astro';
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: inherit;
+                transition: transform 0.2s ease;
+                
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
 
             &__btn {
                 height: var(--hero-social-icon-size);
@@ -136,15 +157,16 @@ import Button from '../ui/Button.astro';
         }
     }
 
-    @media (max-width: 770px) {
+    @media (max-width: 768px) {
         .hero {
-            --hero-title-size: clamp(2.5rem, 9vw, 4.5rem);
-            --hero-position-size: clamp(1.25rem, calc(var(--hero-title-size) * 0.4), 1.9rem);
-            --hero-button-height: clamp(3rem, 7vw, 3.75rem);
-            --hero-social-icon-size: calc(var(--hero-button-height) / 2);
+            --hero-title-size: clamp(1.75rem, 8vw, 3rem);
+            --hero-position-size: clamp(1rem, 4vw, 1.5rem);
+            --hero-button-height: clamp(3rem, 12vw, 3.5rem);
 
             align-items: center;
             text-align: center;
+            padding: clamp(1.5rem, 5vw, 2rem);
+            min-height: 90vh; 
 
             &__title,
             &__position {
@@ -152,15 +174,32 @@ import Button from '../ui/Button.astro';
             }
 
             &__actions {
+                flex-direction: column;
                 justify-content: center;
+                gap: 3.5rem; 
             }
 
             &__buttons {
-                justify-content: center;
+                flex-direction: column; 
+                width: 100%;
+                max-width: 320px;
+
+                &__btn {
+                    width: 100%;
+                }
             }
 
             &__socials {
+                display: grid;
+                grid-template-columns: repeat(2, auto); 
+                gap: 2rem 3rem; 
                 justify-content: center;
+                width: auto;
+
+                &__btn {
+                    width: clamp(1.75rem, 10vw, 2.5rem);
+                    height: clamp(1.75rem, 10vw, 2.5rem);
+                }
             }
         }
     }
