@@ -37,11 +37,7 @@ const {} = Astro.props
     }
 
     .statement {
-        width: clamp(600px, 40rem, 700px);
-
         h2 {
-            // display: inline-block;
-            
             & span {
                 display: inline;
                 font-family: inherit;
@@ -63,8 +59,8 @@ const {} = Astro.props
     .orbit {
         display: flex;
         flex-direction: column;
-        // width: calc(100vw/4);
         width: clamp(100px, 184px, 230px);
+        // width: calc(100vw/4);
         gap: 2rem;
         height: auto;
         &__planets {
@@ -89,10 +85,40 @@ const {} = Astro.props
                     height: 45%;
                     height: clamp(75px, 2rem, 180px);
                     position: absolute;
-                    top: -30%; right: -25%;
+                    top: -40%; right: -35%;
                 }
             }
         }
     }
+    
+    @media (max-width: 768px) {
+        .orbit {
+            display: none;
+        }
+    }  
+    
+    @media (max-width: 1024px) {
+        .transition {
+            flex-direction: column;
+            // gap: 4rem;
+        }
+
+        .orbit {
+            width: 100%;
+            align-items: center;
+
+            &__planets {
+                max-width: 300px; 
+                justify-content: center;
+                
+                &__planet:last-child {
+                    top: -20%;
+                    right: 20%; 
+                }
+            }
+        }
+    }    
+
+    
 
 </style>
