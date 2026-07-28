@@ -1,0 +1,285 @@
+---
+import ListItem from '../ui/ListItem.astro'
+import Tag from '../ui/Tag.astro';
+---
+
+<div class="projects">
+    <!-- Pill header -->
+    <div class="projects__header">
+        <h2 class="pill-header">
+            <span class="pill-header__row"> A collection </span>
+            <span class="pill-header__row"> 
+                of my
+                <span class="pill-header__image"></span>
+                work
+            </span>
+        </h2>
+    </div>
+
+    
+    <div class="projects__nav">
+        <div class="projects__nav__options">
+            <p class="projects__nav__options__header"> Sort by </p>
+            <p class="projects__nav__options__header"> Filter by </p>
+        </div>
+        <div class="projects__nav__views">
+            <div class="projects__nav__views__btn"> List </div>
+            <div class="projects__nav__views__btn"> Cards </div>
+            <div class="projects__nav__views__btn"> Panarmomic </div>
+        </div>
+    </div> 
+
+    <ListItem 
+        itemType = "Project"
+        itemIndex = {1};
+        itemTitle = "Portfolio"
+        itemDescription = "Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery"
+        itemTimeline = "2024"
+        itemSkills = {["JavaScript", "Astro.js", "GSAP", "SCSS", "HTML", "Supabase"]};
+    />
+
+    <div class="project">
+        <div class="project__index"> 01 </div>
+        <div class="project__info">
+            <div class="project__info__title"> New Tab Chess </div>
+            <div class="project__info__description"> 
+                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
+            </div>
+            <div class="project__info__skills">
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+            </div>
+        </div>
+        <div class="project__date">
+            <p class="project__date__text"> 2024 </p>
+        </div>
+    </div>
+
+    <div class="project">
+        <div class="project__index"> 01 </div>
+        <div class="project__info">
+            <div class="project__info__title"> New Tab Chess </div>
+            <div class="project__info__description"> 
+                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
+            </div>
+            <div class="project__info__skills">
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+            </div>
+        </div>
+        <div class="project__date">
+            <p class="project__date__text"> 2024 </p>
+        </div>
+    </div>
+
+    <div class="project">
+        <div class="project__index"> 01 </div>
+        <div class="project__info">
+            <div class="project__info__title"> New Tab Chess </div>
+            <div class="project__info__description"> 
+                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
+            </div>
+            <div class="project__info__skills">
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+            </div>
+        </div>
+        <div class="project__date">
+            <p class="project__date__text"> 2024 </p>
+        </div>
+    </div>
+    <div class="project">
+        <div class="project__index"> 01 </div>
+        <div class="project__info">
+            <div class="project__info__title"> New Tab Chess </div>
+            <div class="project__info__description"> 
+                Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery 
+            </div>
+            <div class="project__info__skills">
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+                <Tag textContent="Astro.js"></Tag>
+            </div>
+        </div>
+        <div class="project__date">
+            <p class="project__date__text"> 2024 </p>
+        </div>
+    </div>
+
+</div>
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .pill-header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 5rem;
+        width: 100%;
+
+        &__row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            margin: 0 auto;
+
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 5vw, 64px);
+        }
+
+        &__image {
+            display: inline-block;
+            vertical-align: middle;
+            width: clamp(120px, 20vw, 252px);
+            height: clamp(36px, 6vw, 74px);
+            background: #D9D9D9;
+            margin: 0 16px;
+        }
+
+        @media (max-width: 500px) {
+            &__row {
+                flex-direction: column;
+            }
+            &__image {
+                margin: 1rem auto;
+            }
+        }
+    }
+
+    .projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 192px 0; 
+        color: #E6E6E6;
+
+
+        &__nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 48px 24px;
+            border-bottom: 0.5px solid #E6E6E6;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+                gap: 24px;
+                padding: 0 16px 24px;
+            }
+
+            &__options,
+            &__views {
+                display: flex;
+                gap: 32px;
+                align-items: center;
+            }
+
+            &__options__header,
+            &__views__btn {
+                font-family: var(--font-heading);
+                font-size: 11px;
+                letter-spacing: 5.2px;
+                text-transform: uppercase;
+            }
+
+            &__views__btn {
+                cursor: pointer;
+                transition: opacity 0.2s ease;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+
+            
+        }
+        @media (max-width: 1200px) {
+            .projects__nav__options {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .projects__nav__views {
+                display: none;
+            }
+        }
+        /* Individual Project Row */
+        .project {
+            display: grid;
+            grid-template-columns: 80px 1fr 80px;
+            width: 100%;
+            padding: 40px 24px 96px 16px;
+            border-bottom: 0.5px solid #E6E6E6;
+
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 32px 16px 64px;
+            }
+
+            &__index {
+                font-family: var(--font-heading);
+                font-size: 11px;
+                letter-spacing: 4.4px;
+                padding-top: 16px; 
+            }
+
+            &__info {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                &__title {
+                    font-family: var(--font-heading);
+                    font-size: clamp(24px, 4vw, 40px);
+                    letter-spacing: 0.8px;
+                    text-transform: uppercase;
+                }
+
+                &__description {
+                    font-family: var(--font-body);
+                    font-size: 16px;
+                    line-height: 1.33;
+                    letter-spacing: 0.8px;
+                    max-width: 622px;
+                }
+
+                &__skills {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 12px;
+                    margin-top: 24px;
+                }
+            }
+
+            &__date {
+                display: flex;
+                justify-content: end;
+
+                @media (max-width: 768px) {
+                    justify-content: start;
+                }
+
+                &__text {
+                    font-family: var(--font-body);
+                    font-size: 11px;
+                    letter-spacing: 4.08px;
+                }
+            }
+        }
+    }
+</style>

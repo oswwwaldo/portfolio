@@ -1,0 +1,68 @@
+---
+type Props = {
+    type: string;
+    items: string[];
+}
+
+const {type, items} = Astro.props
+---
+<div class="detail">
+    <h4 class="detail__header">
+        {type}
+    </h4>
+    <ul class="detail__list">
+        {
+            items.map((item) => (
+                <li class="detail__list__item">
+                    {item}
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .detail {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: flex-start;
+        padding: 48px 40px;
+        gap: 32px;
+        margin: 0 auto;
+        width: 100%;
+
+        &__header {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--secondary-color);
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            width: 100%;
+
+            &__item {
+                width: 100%;
+                padding: 1rem 1rem 1rem 0.50rem;
+
+                border-bottom: 1px solid var(--secondary-color);
+                font-family: var(--font-body);
+                font-size: 1rem;
+                transition: all 200ms ease-in-out;
+
+                text-overflow: ellipsis;
+
+                &:hover {
+                    background-color: var(--secondary-color);
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+    }
+</style>

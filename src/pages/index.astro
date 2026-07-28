@@ -1,9 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 import LandingHero from '../components/sections/LandingHero.astro';
+import TransitionStatement from '../components/sections/TransitionStatement.astro';
+import SelectedWorks from '../components/sections/SelectedWorks.astro';
+import WorkExperience from '../components/sections/WorkExperience.astro';
+import ProjectsList from '../components/sections/ProjectsList.astro';
+import AboutMe from '../components/sections/AboutMe.astro';
+import Contact from '../components/sections/Contact.astro';
+import TagCloud from '../components/sections/TagCloud.astro';
 
-const pageTitle = "oswwwaldo"
+// import LogoLoop from '../components/ui/LogoLoop.astro';
+
+// const pageTitle = "oswwwaldo"
+const pageTitle = "oswaldo de los santos (@byoswwwaldo)";
 const today = new Date().toLocaleDateString('en-US');
 
 const pages = [
@@ -19,10 +30,41 @@ const pages = [
   { title: "Thoughts", slug: "/blog", completed: false },
 ];
 
+const languages = ["English", "Español", "Français"];
+
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <SectionLayout>
+  <GridLayout>
     <LandingHero />
+  </GridLayout>
+
+  <SectionLayout>
+    <TransitionStatement />
   </SectionLayout>
+
+  <SectionLayout>
+    <SelectedWorks />
+  </SectionLayout>
+
+  <SectionLayout>
+    <WorkExperience />
+  </SectionLayout>
+
+  <SectionLayout>
+    <ProjectsList />
+  </SectionLayout>
+
+  <SectionLayout>
+    <AboutMe />
+  </SectionLayout>
+
+  <SectionLayout>
+    <Contact />
+  </SectionLayout>
+
+  <SectionLayout>
+    <TagCloud />
+  </SectionLayout>
+  
 </BaseLayout>

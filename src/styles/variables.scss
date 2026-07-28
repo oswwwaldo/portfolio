@@ -1,24 +1,41 @@
 // #region SCSS/CSS variables
 
-$text--heading-1: 4rem;
-$text--heading-2: 2.75rem;
-$text--heading-3: 2.2rem;
-$text--heading-4: 1.2rem;
+:root {
+    --font-heading: "Aboreto", cursive;
+    --font-body: "Times New Roman", Times, serif;
 
-$text--paragraph-1: 1.4rem;
-$text--paragraph-2: 1rem;
-$text--paragraph-3: 0.8854rem;
-$text--monospace: 1rem;
 
-:root, html {
-    --primary-color: #0E0E0E;
-    --secondary-color: #E6E6E6;
+
+    
+    --tag-border: 1px solid rgb(from var(--secondary-color) r g b / 0.3);
+    --tag-text: rgb(from var(--secondary-color) r g b / 0.5);
 }
+
+// platinum: F2F3F4
+:root, html {
+    --primary-color: #F2F3F4;
+    --secondary-color: #3a3939;
+    --grid-margin: calc(100% / 6);
+
+    --decor-opacity: 10%;
+
+    --highlight-color: #dadada;
+    --highlight-hover-color: #d0d0d0;
+
+}
+
+// responsive for grid margin: padding-inline: clamp(1rem, 3vw, 1.5rem)
 
 :root.dark, html.dark {
-    --primary-color: #E6E6E6;   
-    --secondary-color: #0E0E0E;
+    --primary-color: #0E0E0E;   
+    --secondary-color: #E6E6E6;
+
+    --highlight-color: #2B2B2B;
+    --highlight-hover-color: #434343;
 }
+
+// Upcoming themes:: andrea laszlo de simone, ascii, sketchpaper, yoji shinkawa
+
 
 // #dddddd & #a32929
 // #endregion

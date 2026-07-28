@@ -1,0 +1,75 @@
+---
+import ImagePlaceholder from '../../components/ui/ImagePlaceholder.astro';
+import thumbnail from '../../assets/media/thumbnail.png';
+import Tag from '../../components/ui/Tag.astro';
+type Props = {
+    
+}
+
+const {} = Astro.props
+
+---
+<div class="card">
+    <div class="card__image">
+        <ImagePlaceholder alt="placeholder-image" src={thumbnail}/>
+    </div>
+    <div class="card__title">
+        <h2> New Tab Chess </h2>
+    </div>
+    <div class="card__description">
+        <p class="body-lg"> Abstract data visualization dashboard for modern enterprise analytics </p>
+    </div>
+    <div class="card__tags">
+        <Tag textContent = 'A/B Testing'></Tag>
+        <Tag textContent = 'User Research'></Tag>
+        <Tag textContent = 'Prototyping'></Tag>
+        <Tag textContent = 'Wireframing'></Tag>
+    </div>
+</div>
+
+<style lang="scss">
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        
+        width: 100%; 
+        min-width: 320px; 
+        max-width: 500px; 
+        margin: 0 auto; 
+
+        &__image {
+            width: 100%;
+            height: auto;
+            
+            :global(img), :global(svg) { 
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: cover;
+            }
+        }
+
+        &__title {
+            width: 100%;
+        }
+
+        &__description {
+            width: 100%;
+        }
+
+        &__tags {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 770px) {
+        .card {
+            gap: 1.5rem; 
+        }
+    }
+</style>

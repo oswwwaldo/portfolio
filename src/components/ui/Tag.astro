@@ -1,0 +1,34 @@
+---
+type Props = {
+    textContent: string;
+    target?: string;
+}
+
+const { textContent, target } = Astro.props
+
+---
+<div class="tag">
+    <a class="label" href={target}> {textContent} </a>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .tag {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.4rem 1rem;
+        
+        aspect-ratio: 5/1;  
+        border: var(--tag-border);
+    
+        a {
+            font-family: var(--font-heading);
+            letter-spacing: 0.10em;
+            color: var(--tag-text);
+        }
+    }
+
+</style>

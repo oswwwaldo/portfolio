@@ -1,0 +1,229 @@
+---
+
+import Tag from '../ui/Tag.astro';
+
+type BaseProps = {
+    itemTitle: string;
+    itemDescription: string;
+    itemTimeline: string;
+    itemSkills: string[]; 
+};
+
+type JobProps = BaseProps & {
+    itemType: "Job";
+    itemCaption: string;
+    itemIndex?: number;
+};
+
+type ProjectProps = BaseProps & {
+    itemType: "Project";
+    itemCaption?: string;
+    itemIndex: number;
+};
+
+type Props = JobProps | ProjectProps;
+
+const { 
+    itemType, 
+    itemIndex,
+    itemTitle, 
+    itemCaption, 
+    itemDescription, 
+    itemTimeline, 
+    itemSkills 
+} = Astro.props;
+---
+{
+    itemType == "Job" ? 
+        <div class="job">
+            <div class="job__date"> 
+                {itemTimeline}
+            </div>
+            <div class="job__position">
+                <div class="job__position__title"> 
+                    {itemTitle} 
+                </div>
+                <div class="job__position__company"> 
+                    {itemCaption} 
+                </div>
+                <div class="job__position__description"> 
+                    {itemDescription}
+                </div>
+            </div>
+            <div class="job__skills">
+                { 
+                    itemSkills.map((skill) => (
+                        <Tag textContent={skill} />
+                    ))
+                }
+            </div>
+        </div>
+    :
+
+    <div class="project">
+        <div class="project__index">  
+            <span> {itemIndex} </span>
+        </div>
+        <div class="project__info">
+            <div class="project__info__title"> 
+                {itemTitle}
+            </div>
+            <div class="project__info__description"> 
+                {itemDescription}
+            </div>
+            <div class="project__info__skills">
+                { 
+                    itemSkills.map((skill) => (
+                        <Tag textContent={skill} />
+                    ))
+                }
+            </div>
+        </div>
+        <div class="project__date">
+            <p class="project__date__text"> {itemTimeline} </p>
+        </div>
+    </div>
+
+}
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .job {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        box-sizing: border-box;
+
+        padding: 40px 0;
+        gap: 10px;
+
+        border-bottom: 1px solid var(--secondary-color);
+        min-height: 100px;
+        height: auto;
+        // height: 350px;
+        max-height: 300px;
+        width: 100%;
+
+        &__date {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            height: 100%;
+            margin-top: 5px; /*/ offset natural ABORETO height differences to align horizontally with position text /*/
+        }
+
+        &__position {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 1rem;
+
+            height: 100%;
+            // width: fit-content;
+            width: 50%;
+
+
+            &__title {
+                min-height: 40px;
+
+                font-family: var(--font-heading);
+                font-size: 32px;
+            }
+
+            &__company {
+                min-height: 20px;
+
+                font-family: var(--font-body);
+                font-size: 1.25rem;
+            }
+            &__description {
+                min-height: 35px;
+
+                font-family: var(--font-body);
+                font-size: 1rem;
+
+                width: fit-content;
+            }
+        }
+
+        &__skills {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+            gap: 10px;
+
+            width: 25%;
+            margin-top: 10px; /*/ offset natural ABORETO height differences to align horizontally with position text /*/
+
+        }
+    }
+
+    .project {
+        display: grid;
+        grid-template-columns: 80px 1fr 80px;
+        width: 100%;
+        padding: 40px 24px 96px 16px;
+        border-bottom: 0.5px solid #E6E6E6;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            gap: 16px;
+            padding: 32px 16px 64px;
+        }
+
+        &__index {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            letter-spacing: 4.4px;
+            padding-top: 16px; 
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            &__title {
+                font-family: var(--font-heading);
+                font-size: clamp(24px, 4vw, 40px);
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+            }
+
+            &__description {
+                font-family: var(--font-body);
+                font-size: 16px;
+                line-height: 1.33;
+                letter-spacing: 0.8px;
+                max-width: 622px;
+            }
+
+            &__skills {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-top: 24px;
+            }
+        }
+
+        &__date {
+            display: flex;
+            justify-content: end;
+
+            @media (max-width: 768px) {
+                justify-content: start;
+            }
+
+            &__text {
+                font-family: var(--font-body);
+                font-size: 11px;
+                letter-spacing: 4.08px;
+            }
+        }
+    }
+
+</style>

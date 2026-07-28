@@ -12,66 +12,103 @@ interface Props extends Omit<HTMLAttributes<'button'>, 'type'> {
   isPrimary?: boolean;
 }
 
-const {textContent, type = "button", icon = null, isPrimary = false, class: className, ...rest } = Astro.props;
+const { textContent, type = "button", icon = null, isPrimary = false, class: className, ...rest } = Astro.props;
 
 const rawUuid = crypto.randomUUID();
 const elementId = `btn-id-${rawUuid}`;
-
 ---
 
 <button 
-    id={elementId} 
-    type={type} 
-    class:list={[className, { invert: isPrimary }]}
-    {...rest} 
+  id={elementId} 
+  type={type} 
+  class:list={['button', className, { invert: isPrimary }]}
+  {...rest} 
 >
-    <p class="body-lg"> {textContent}</p>
-    {icon && (
-        <span class="button__icon">
-            <Icon name={icon}></Icon>
-        </span>
-    )}
+  <span class="button__text body-lg">{textContent}</span>
+  {icon && (
+    <span class="button__icon">
+      <Icon name={icon}></Icon>
+    </span>
+  )}
 </button>
 
 <style lang="scss">
-    @use '../../styles/variables.scss' as *;
+  @use '../../styles/variables.scss' as *;
 
-    button {
+  .button {
+    // --button-aspect-ratio: 2.5 / 1;
+    // --button-aspect-ratio: 2.7 / 1;
+    --button-aspect-ratio: 3 / 1;
+    --button-height: var(--hero-button-height, clamp(2.5rem, 3vw, 5rem));
+    --button-font-size: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
+    --button-padding-inline: clamp(1.5rem, 1.8vw, 2.25rem);
+    --button-gap: clamp(0.5rem, 0.8vw, 0.875rem);
+
+    background-color: var(--primary-color);
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--button-gap);
+    box-sizing: border-box;
+
+    block-size: var(--button-height);
+    aspect-ratio: var(--button-aspect-ratio);
+    padding-inline: var(--button-padding-inline);
+
+    font-size: var(--button-font-size);
+    line-height: 1;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      opacity: 50%;
+    }
+
+    &.invert {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+
+      &:hover {
         background-color: var(--primary-color);
         border: 1px solid var(--secondary-color);
         color: var(--secondary-color);
-
-        display: inline-flex;
-        justify-content: space-around;
-
-        // transition: all 300ms ease-in;
-
-        padding: 1rem 2rem;
-
-        // width: 250px;
-        // height: 90px;
-
-        &:hover {
-            background-color: var(--secondary-color);
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            opacity: 50%;
-        }
-
-        &.invert {  
-            background-color: var(--secondary-color);
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-
-            &:hover {
-                background-color: var(--primary-color);
-                border: 1px solid var(--secondary-color);
-                color: var(--secondary-color);
-            }
-        }
+      }
     }
-    
-</style> 
-<script>
+  }
 
-</script>
+  .button__text {
+    margin: 0;
+    line-height: 1;
+  }
+
+  .button__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    line-height: 0;
+  }
+
+  .button--ratio-27 {
+    --button-aspect-ratio: 2.7 / 1;
+  }
+
+  .button--ratio-30 {
+    --button-aspect-ratio: 3 / 1;
+  }
+
+  @media (max-width: 770px) {
+    .button {
+      --button-height: clamp(3rem, 6vw, 4rem);
+      --button-font-size: clamp(0.95rem, 2.8vw, 1rem);
+      --button-padding-inline: clamp(1.25rem, 3vw, 1.75rem);
+      --button-gap: clamp(0.5rem, 1vw, 0.75rem);
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+---
+
+<BaseLayout>
+    <div class="menu">
+        <div class="navbar">
+            <p class="watermark">Oswaldo Fabrizio De Los Santos Ascencio</p>
+        </div>
+        <div class="menu__socials">
+            <a class="label" href="instagram.com/byoswwwaldo">Instagram</a>
+            <a class="label" href="instagram.com/byoswwwaldo">Github</a>
+            <a class="label" href="instagram.com/byoswwwaldo">LinkedIn</a>
+            <a class="label" href="instagram.com/byoswwwaldo">YouTube</a>
+        </div>
+        <div class="menu__footer">
+            
+        </div>
+    </div>
+</BaseLayout>
+<style lang="scss">
+    @use '../styles/global.scss' as *;
+    @use '../styles/variables.scss' as *;
+    .watermark {
+        font-family: $font-heading;
+        font-size: clamp(11px, 1rem, 18px);
+        line-height: 19.5;
+        letter-spacing: 5px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu {
+        &__socials {
+            display: flex;
+            flex-direction: row;
+            gap: 4rem;
+
+            a {
+                color: rgb(from var(--secondary-color) r g b / 0.6);
+            }
+        }
+    }
+</style>
+<script>
+
+</script>

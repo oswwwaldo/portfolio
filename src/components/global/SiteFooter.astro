@@ -1,0 +1,288 @@
+---
+type Props = {
+
+}
+
+const {} = Astro.props
+
+---
+<div class="eof">
+    <h1> END OF <span></span>.</h1>
+</div>
+
+<div class="footer">
+
+    <div class="footer__nav">
+        <ul class="footer__nav__list">
+            <li class="footer__nav__list__item">
+                <span class="footer__nav__list__item__index"> 01. </span> 
+                <a class="footer__nav__list__item__link"> About </a> 
+            </li>
+            <li class="footer__nav__list__item">
+                <span class="footer__nav__list__item__index"> 01. </span> 
+                <a class="footer__nav__list__item__link"> Home </a> 
+            </li>
+            <li class="footer__nav__list__item">
+                <span class="footer__nav__list__item__index"> 01. </span> 
+                <a class="footer__nav__list__item__link"> Projects </a> 
+            </li>
+            <li class="footer__nav__list__item">
+                <span class="footer__nav__list__item__index"> 01. </span> 
+                <a class="footer__nav__list__item__link"> Contact </a> 
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer__links">
+
+        <div class="footer__links__socials">
+            <a class="footer__links__socials__link"> Instagram </a>
+            <a class="footer__links__socials__link"> Github </a>
+            <a class="footer__links__socials__link"> LinkedIn </a>
+            <a class="footer__links__socials__link"> YouTube </a>
+        </div>
+
+        <div class="footer__links__content">
+            <div class="footer__links__content__nav">
+                <div class="info-group">
+                    <h4 class="info-group__header">Projects (04)</h4>
+                    <p class="info-group__link">Spotify Lyrics Display</p>
+                    <p class="info-group__link">Portfolio</p>
+                    <p class="info-group__link">New Tab Chess Puzzle</p>
+                    <p class="info-group__link">RobCo Industries Terminal</p>
+                </div>
+                <div class="info-group">
+                    <h4 class="info-group__header">Explore</h4>
+                    <p class="info-group__link">Start a quest</p>
+                    <p class="info-group__link">Sign the guestbook</p>
+                    <p class="info-group__link">What am I doing?</p>
+                </div>
+                <div class="info-group">
+                    <h4 class="info-group__header">Other pages</h4>
+                    <p class="info-group__link">Now</p>
+                    <p class="info-group__link">Thoughts</p>
+                    <p class="info-group__link">Video</p>
+                </div>
+            </div>
+            <div class="footer__links__content__info">
+                <div class="footer__links__content__info__flags">
+                    <div class="us-flag">
+                        <svg width="30" height="15" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.04 6.72H30V8.28H13.04V6.72Z" fill="#CD232C"/>
+                            <path d="M0 10.08H30V11.64H0V10.08Z" fill="#CD232C"/>
+                            <path d="M0 13.44H30V15H0V13.44Z" fill="#CD232C"/>
+                            <path d="M13.04 3.36H30V4.92H13.04V3.36Z" fill="#CD232C"/>
+                            <path d="M13.04 0H30V1.56H13.04V0Z" fill="#CD232C"/>
+                            <path d="M0 0H11.04V8.28H0V0Z" fill="#204C67"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="footer__links__content__text">
+                    <a class="footer__links__content__text__link"> Sitemap </a>
+                    <p class="body-lg"> Designed, developed and deployed by </p>
+                    <p class="body-lg"> Oswaldo Fabrizio De Lo Santos Ascencio </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        justify-self: space-around;
+
+        color: var(--secondary-color);
+
+        &__nav {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            margin-bottom: 15vh;
+            &__list {
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 0px 0px 0px 64px;
+                gap: 20px;
+
+                width: 1439px;
+                min-height: 350px;
+
+                &__item {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 14px 0px;
+                    gap: 24px;
+
+                    width: 1375px;
+                    height: 80.8px;
+
+                    width: 100%;
+                    border-bottom: 1px solid rgb(from var(--secondary-color) r g b / 0.2 );
+
+                    &__index {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        padding: 0px;
+
+                        min-width: 32px;
+                        min-height: 24px;
+
+                        font-family: var(--font-heading);
+                        font-size: 14px;
+
+                        color: rgb(from var(--secondary-color) r g b / 0.4);
+                    }
+                    &__link {
+                        font-family: var(--font-heading);
+                        font-size: 80px;
+
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        min-height: 50px;
+                    }
+                }
+            }
+        }
+
+        &__links {
+            &__socials {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                width: 33%;
+            }
+
+            &__content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                border-top: 1px solid var(--secondary-color);
+
+                &__nav {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: space-around;
+
+                    min-height: 136px;
+
+                    flex-grow: 1;
+                    z-index: 0;
+
+                    .info-group {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 1rem;
+
+                        min-height: 132px;
+
+
+                        &__header {
+                            font-family: var(--font-heading);
+                            font-size: 1rem;
+                            line-height: 18px;
+                            letter-spacing: 1.3px;
+
+                            color: var(--secondary-color);
+
+                        }
+                        &__link {
+                            padding: 0 0 0 1rem ;
+                            font-family: var(--font-heading);
+                            font-size: 12px;
+                            line-height: 18px;
+                            letter-spacing: 0.8px;
+
+                            color: rgb (from var(--secondary-color) r g b / 0.6);
+
+                        }
+                    }
+                }
+
+                &__info {
+                    display: flex;
+                    flex-direction: row-reverse;
+                    justify-content: space-around;
+
+                    &__flags {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-evenly;
+
+                        &__us-flag {
+                            fill: gray;
+                        }
+                    }
+
+                    &__text {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+
+                        &__link {
+                            text-align: right;
+                        }
+
+                        .body-lg {
+                            text-align: right;
+                        }
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+
+    .eof {
+        display: flex;
+        justify-content: end;
+        margin: 0 5rem;
+        padding: 10vw 4vw;
+
+        h1 {
+            font-size: clamp(60px, 4.375rem, 90px);
+            /* opacity: 5%; */
+            color: rgb(from var(--secondary-color) r g b / 0.2);
+
+            & span {
+                display: inline-grid;
+                transition: all 1s ease-in-out;
+
+                &::before, &::after {
+                    font-family: var(--font-heading);
+                    grid-area: 1/1;
+                }
+                &::before {
+                    content: "PAGE";
+                    opacity: 1;
+                }
+                &::after {
+                    content: "FILE";
+                    opacity: 0;
+                }
+                &:hover::before {
+                    opacity: 0;
+                } 
+                &:hover::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+</style>
