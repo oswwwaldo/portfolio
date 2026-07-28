@@ -1,0 +1,93 @@
+---
+import Icon from '../ui/AppIcon.astro';
+import ThemeIcon from '../ui/ThemeIcon.astro';
+---
+
+<div class="nav-wrapper">
+    <div class="nav-logo">
+        <a class="nav-logo__title label" href="/"> oswwwaldo </a>
+    </div>
+    <nav class="nav-links">
+        <a class="nav-links__link label" href="/about"> About </a>
+        <a class="nav-links__link label" href="/"> Home </a>
+        <a class="nav-links__link label" href="/projects"> Projects </a>
+        <a class="nav-links__link label" href="/contact"> Contact </a>
+        <ThemeIcon size={20}></ThemeIcon>
+        <button class="nav-links__hamburger">
+            <Icon name="mynaui:menu"></Icon>
+        </button>
+    </nav>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    a {
+        color: var(--secondary-color);
+        font-family: var(--font-heading);
+        letter-spacing: 5.2px;
+        text-decoration: none;
+        transition: font-weight 0.2s ease;
+        &:hover {   
+            font-weight: bold;
+        }
+    }
+
+    .nav-wrapper {
+        position: absolute;
+        top: 0; 
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 999;
+        padding: 1rem 2rem;
+        box-sizing: border-box; 
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center; 
+
+        &__link {
+            display: flex;
+            align-items: center;
+        }
+
+        &__hamburger {
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            svg {
+                color: var(--secondary-color);
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-logo {
+            display: none;
+        }
+
+        .nav-wrapper {
+            justify-content: flex-end;
+        }
+
+        .nav-links {
+            &__link {
+                display: none !important; 
+            }
+
+            &__hamburger {
+                display: flex; 
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+</style>
