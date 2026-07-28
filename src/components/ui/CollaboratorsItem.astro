@@ -1,0 +1,29 @@
+---
+interface Props {
+    name: string;
+    src: ImageMetadata;
+}
+
+const { name, src } = Astro.props;
+---
+
+<div class="collaborator">
+    
+</div>
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    .collaborator {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        gap: 2.5rem;
+
+        width: 700px;
+        height: 60px;
+
+
+    }
+
+</style>
