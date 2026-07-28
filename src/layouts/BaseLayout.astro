@@ -6,7 +6,13 @@ import '../styles/reset.scss';
 import '../styles/global.scss';
 import '../styles/variables.scss';
 
-const { pageTitle } = Astro.props;
+
+interface Props {
+  pageTitle: string;
+  noHeader?: boolean;
+  noFooter?: boolean;
+}
+const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
 ---
 <html lang="en">
   <head>
@@ -25,9 +31,9 @@ const { pageTitle } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
   </head>
   <body>
-    <SiteHeader />
+    { noHeader? null : <SiteHeader /> }
     <slot />
-    <SiteFooter />
+    { noFooter? null : <SiteFooter /> }
   </body>
 </html>
 
