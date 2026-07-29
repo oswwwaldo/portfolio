@@ -7,11 +7,3 @@ The design for this website was inspired by many other portfolios and works, inc
 That's all, I don't know what else to say lol in a README.md file.
 
 
-## Incoming projects
-
-- [ ] Github Issue Wheel
-- [ ] New Tab Chess Extension
-- [ ] Spotify Lyrics Display 
-- [ ] BMCC Degree Map Builder
-- [ ] Government Watchdogs 
-- [ ] RobCo Industries Terminal
