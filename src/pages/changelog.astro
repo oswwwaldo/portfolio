@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import LandingHero from '../components/sections/LandingHero.astro';
+
+
+const pageTitle = "changelog - oswaldo de los santos (@byoswwwaldo)";
+---
+
+<BaseLayout pageTitle={pageTitle} noFooter={true}>
+  <GridLayout>
+    <section class="changelog">
+        <h1 class="changelog__header"> Change log </h1>
+        <h4 class="changelog__header"> 
+            <a href="https://github.com/oswwwaldo/portfolio">
+                github.com/oswwwaldo/portfolio    
+            </a>
+        </h4>
+        <div class="changelog__data" id="dataContainer">
+
+        </div>
+    </section>
+  </GridLayout>
+  
+</BaseLayout>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+    .changelog {
+        color: var(--secondary-color);
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 5vh;
+        
+        width: 100%;
+        margin: 15vh 0;
+
+        &__header {
+            a {
+                font-family: inherit;
+                font-size: inherit;
+                color: inherit;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        &__data {
+            width: 90%;
+        }
+    }
+
+</style>
+
+<style lang="scss" is:global>
+    @use '../styles/variables.scss' as *;
+
+    .commit-card {
+        display: flex;
+        flex-direction: row;
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        border: 1px solid black;
+        transition: background-color 1ms ease-in-out, color 1ms ease-in-out;  
+
+        padding: 1rem;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        justify-content: space-around;
+
+        &__date {
+            font-weight: bold;
+            white-space: pre;
+        }
+        &__text {
+            flex-grow: 1;
+        }
+        &__url {
+            color: inherit;
+            text-decoration: underline;
+            white-space: pre;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        &:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+    }
+</style>
+<script>
+  async function displayData() {
+        const response = await fetch('/git-data.json');
+        const cleanData = await response.json();
+
+        console.log(`Client received JSON data and it's available here: ${cleanData}`);
+
+        console.log(cleanData); 
+
+        const cleanExtractedList = cleanData.map((item: any) => {
+            return {
+                commitDate: item.commit.author?.date || 'Missing date',
+                commitMsg: item.commit.message || 'Missing message',
+                commitUrl: item.html_url || '#'
+            };
+        });
+
+        console.log(cleanExtractedList);
+
+        const container = document.querySelector('#dataContainer');
+
+        if (container) {
+            const htmlContent = cleanExtractedList.map((commit: any) => {
+                return `
+                    <div class="commit-card">
+                        <p class="commit-card__date">${new Date(commit.commitDate).toLocaleDateString()}</p>
+                        <p class="commit-card__text">${commit.commitMsg}</p>
+                        <a class="commit-card__url" href="${commit.commitUrl}" target="_blank">View Commit</a>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = htmlContent;
+        }
+    }
+
+    // commit: { author: { date: "date" } }
+    // commit: { message: "message" }
+    // commmit: { url: "url" }
+
+  displayData();
+</script>
