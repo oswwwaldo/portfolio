@@ -1,9 +1,11 @@
 ---
+
 type Props = {
     noMargins?: boolean;
+    background?: boolean;
 }
 
-const { noMargins = false } = Astro.props
+const { noMargins = false, background = false } = Astro.props
 
 ---
 <section class:list={['section', { 'no-margins': noMargins }]}>
@@ -17,13 +19,14 @@ const { noMargins = false } = Astro.props
         flex-direction: column;
         margin: 0 var(--grid-margin);
         padding: clamp(1.25rem, 3vw, 2rem);
-
+        
         @media (max-width: 768px) {
             // --grid-margin: clamp(1rem, 3vw, 1.5rem);
         }
 
         &.section.no-margins {
             margin: 0;
+            padding: 0;
         }
     }
 
