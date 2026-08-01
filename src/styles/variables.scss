@@ -5,33 +5,51 @@
     --font-body: "Times New Roman", Times, serif;
 
     --font-size-xxs: clamp(0.512rem, 0.49rem + 0.12vw, 0.576rem);
-
-    /* Micro (Stepped down /1.25) */
     --font-size-xs: clamp(0.64rem, 0.61rem + 0.15vw, 0.72rem);
-
-    /* Small (Stepped down /1.25) */
     --font-size-sm: clamp(0.8rem, 0.76rem + 0.18vw, 0.9rem);
-
-    /* Body (Base) */
     --font-size-base: clamp(1rem, 0.95rem + 0.23vw, 1.125rem);
-
-    /* Medium (Min x1.25 | Max x1.4) */
     --font-size-md: clamp(1.25rem, 1.13rem + 0.59vw, 1.575rem);
-
-    /* Heading (Min x1.25 | Max x1.4) */
     --font-size-lg: clamp(1.56rem, 1.33rem + 1.16vw, 2.2rem);
-
-    /* Display (Min x1.25 | Max x1.4) */
     --font-size-xl: clamp(1.95rem, 1.54rem + 2.05vw, 3.08rem);
-
     --font-size-2xl: clamp(2.5rem,1.955rem + 2.73vw,4rem);
-
-    /* Hero Display (The Exception - Preserved) */
     --font-size-3xl: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
 
+    --color-transparent: transparent;
+    --color-black: black;
+    --color-white: #ffffff;
+    --color-gray: gray;
+    --color-neutral-100: #e6e6e6;
+    --color-neutral-200: #d9d9d9;
+    --color-neutral-200-20: rgb(#d9d9d9 / 0.2);
 
-    --tag-border: 1px solid rgb(from var(--secondary-color) r g b / 0.3);
-    --tag-text: rgb(from var(--secondary-color) r g b / 0.5);
+    --color-secondary-20: rgb(from var(--secondary-color) r g b / 0.2);
+    --color-secondary-30: rgb(from var(--secondary-color) r g b / 0.3);
+    --color-secondary-40: rgb(from var(--secondary-color) r g b / 0.4);
+    --color-secondary-50: rgb(from var(--secondary-color) r g b / 0.5);
+    --color-secondary-60: rgb(from var(--secondary-color) r g b / 0.6);
+    --color-secondary-80: rgb(from var(--secondary-color) r g b / 0.8);
+    --color-secondary-80-alt: rgb(from var(--secondary-color) rgba / 0.8);
+
+    --color-overlay-black-00: rgba(0, 0, 0, 0);
+    --color-overlay-black-05: rgba(0, 0, 0, 0.05);
+    --color-overlay-black-60: rgba(0, 0, 0, 0.6);
+    --color-overlay-black-80: rgba(0, 0, 0, 0.8);
+
+    --color-flag-red: #cd232c;
+    --color-flag-blue: #204c67;
+
+    --border-reset: 0;
+    --border-none: none;
+    --border-thin-black: 1px solid var(--color-black);
+    --border-thin-primary: 1px solid var(--primary-color);
+    --border-thin-secondary: 1px solid var(--secondary-color);
+    --border-thin-secondary-20: 1px solid var(--color-secondary-20);
+    --border-thin-secondary-30: 1px solid var(--color-secondary-30);
+    --border-thin-secondary-50: 1px solid var(--color-secondary-50);
+    --border-half-secondary-light: 0.5px solid var(--color-neutral-100);
+
+    --tag-border: var(--border-thin-secondary-30);
+    --tag-text: var(--color-secondary-50);
 }
 
 // platinum: F2F3F4

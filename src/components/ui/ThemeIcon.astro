@@ -22,8 +22,8 @@ const { size = '20' } = Astro.props;
 
 <style>
   #themeToggle {
-    border: none;
-    background: none;
+    border: var(--border-none);
+    background: var(--color-transparent);
 
     display: flex;
     justify-content: center;
@@ -37,9 +37,9 @@ const { size = '20' } = Astro.props;
     overflow: visible;
   }
   .sun { fill: var(--secondary-color); }
-  :global(.dark) .sun { fill: transparent; }
+  :global(.dark) .sun { fill: var(--color-transparent); }
   
-  .moon { fill: transparent; }
+  .moon { fill: var(--color-transparent); }
   :global(.dark) .moon { fill: var(--secondary-color); } 
 </style>
 
