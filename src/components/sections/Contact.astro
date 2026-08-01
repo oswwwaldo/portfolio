@@ -1,4 +1,5 @@
 ---
+import Button from '../ui/Button.astro';
 ---
 
 <div class="contact">
@@ -27,7 +28,7 @@
                 <textarea class="form__group__textarea" id="message" name="message" rows="5" required></textarea>
             </div>
 
-            <button class="form__group__btn" type="submit">SEND</button>
+            <Button class="form__group__btn" textContent="SEND" type="submit" isPrimary={true}></Button>
         </form>
     </div>
 </div>
