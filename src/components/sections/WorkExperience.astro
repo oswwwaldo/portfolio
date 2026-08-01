@@ -192,7 +192,6 @@ import Tag from '../ui/Tag.astro';
             align-items: center;
             gap: 32px;
             width: 100%;
-
         }
 
         &__tech {
@@ -222,13 +221,13 @@ import Tag from '../ui/Tag.astro';
             align-content: center;
 
             width: 100%;
-            min-height: 120px;
+            row-gap: 2rem;
         }
 
         &__footer {
             display: flex;
             flex-direction: row;
-            gap: 8rem;
+            justify-content: space-between;
             width: 100%;
 
             &__item {
@@ -248,6 +247,20 @@ import Tag from '../ui/Tag.astro';
                 }
             }
 
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .work-experience__info {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .work-experience__footer {
+            flex-direction: column;
+            gap: 2rem;
         }
     }
 

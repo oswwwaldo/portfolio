@@ -83,6 +83,14 @@ const {type, items} = Astro.props
 
     }
 
+    @media (max-width: 1024px) {
+        .detail {
+            width: 100%;
+        }
+    }
+
+    /* Not perfect, plays hoverOutScroll anim on page load which can look bad */
+
     /* 
        We calculate the exact difference between the container's width (100cqi) 
        minus the horizontal padding (1.5rem), and the span's total width (100%).
