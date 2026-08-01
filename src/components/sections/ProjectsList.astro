@@ -1,19 +1,12 @@
 ---
-import ListItem from '../ui/ListItem.astro'
-import Tag from '../ui/Tag.astro';
+import ListItem from '../ui/ListItem.astro';
+import PillHeader from '../ui/PillHeader.astro';
 ---
 
 <div class="projects">
-    <!-- Pill header -->
+
     <div class="projects__header">
-        <h2 class="pill-header">
-            <span class="pill-header__row"> A collection </span>
-            <span class="pill-header__row"> 
-                of my
-                <span class="pill-header__image"></span>
-                work
-            </span>
-        </h2>
+        <PillHeader />
     </div>
     
     <div class="projects__nav">
@@ -50,49 +43,6 @@ import Tag from '../ui/Tag.astro';
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
-    .pill-header {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 5rem;
-        width: 100%;
-
-        &__row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            width: 100%;
-            margin: 0 auto;
-
-            font-family: var(--font-heading);
-            font-size: clamp(32px, 5vw, 64px);
-
-            gap: 2.5rem;
-            justify-content: center;
-        }
-
-        &__image {
-            display: inline-block;
-            vertical-align: middle;
-            width: clamp(120px, 20vw, 252px);
-            height: clamp(36px, 6vw, 74px);
-            background: #D9D9D9;
-            margin: 0 16px;
-        }
-
-        @media (max-width: 500px) {
-            &__row {
-                flex-direction: column;
-            }
-            &__image {
-                margin: 1rem auto;
-            }
-        }
-    }
-
     .projects {
         display: flex;
         flex-direction: column;
@@ -107,7 +57,7 @@ import Tag from '../ui/Tag.astro';
             align-items: center;
             width: 100%;
             padding: 0 48px 24px;
-            border-bottom: 0.5px solid #E6E6E6;
+            border-bottom: var(--border-thin-secondary);
 
             @media (max-width: 768px) {
                 flex-direction: column;
@@ -125,7 +75,7 @@ import Tag from '../ui/Tag.astro';
             &__options__header,
             &__views__btn {
                 font-family: var(--font-heading);
-                font-size: 11px;
+                font-size: var(--font-size-xs);
                 letter-spacing: 5.2px;
                 text-transform: uppercase;
             }
@@ -149,70 +99,6 @@ import Tag from '../ui/Tag.astro';
 
             .projects__nav__views {
                 display: none;
-            }
-        }
-        /* Individual Project Row */
-        .project {
-            display: grid;
-            grid-template-columns: 80px 1fr 80px;
-            width: 100%;
-            padding: 40px 24px 96px 16px;
-            border-bottom: 0.5px solid #E6E6E6;
-
-            @media (max-width: 768px) {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                padding: 32px 16px 64px;
-            }
-
-            &__index {
-                font-family: var(--font-heading);
-                font-size: 11px;
-                letter-spacing: 4.4px;
-                padding-top: 16px; 
-            }
-
-            &__info {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-
-                &__title {
-                    font-family: var(--font-heading);
-                    font-size: clamp(24px, 4vw, 40px);
-                    letter-spacing: 0.8px;
-                    text-transform: uppercase;
-                }
-
-                &__description {
-                    font-family: var(--font-body);
-                    font-size: 16px;
-                    line-height: 1.33;
-                    letter-spacing: 0.8px;
-                    max-width: 622px;
-                }
-
-                &__skills {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 12px;
-                    margin-top: 24px;
-                }
-            }
-
-            &__date {
-                display: flex;
-                justify-content: end;
-
-                @media (max-width: 768px) {
-                    justify-content: start;
-                }
-
-                &__text {
-                    font-family: var(--font-body);
-                    font-size: 11px;
-                    letter-spacing: 4.08px;
-                }
             }
         }
     }

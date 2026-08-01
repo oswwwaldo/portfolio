@@ -68,12 +68,12 @@ const {} = Astro.props
                 <div class="footer__links__content__info__flags">
                     <div class="us-flag">
                         <svg width="30" height="15" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.04 6.72H30V8.28H13.04V6.72Z" fill="#CD232C"/>
-                            <path d="M0 10.08H30V11.64H0V10.08Z" fill="#CD232C"/>
-                            <path d="M0 13.44H30V15H0V13.44Z" fill="#CD232C"/>
-                            <path d="M13.04 3.36H30V4.92H13.04V3.36Z" fill="#CD232C"/>
-                            <path d="M13.04 0H30V1.56H13.04V0Z" fill="#CD232C"/>
-                            <path d="M0 0H11.04V8.28H0V0Z" fill="#204C67"/>
+                            <path d="M13.04 6.72H30V8.28H13.04V6.72Z" fill="var(--color-flag-red)"/>
+                            <path d="M0 10.08H30V11.64H0V10.08Z" fill="var(--color-flag-red)"/>
+                            <path d="M0 13.44H30V15H0V13.44Z" fill="var(--color-flag-red)"/>
+                            <path d="M13.04 3.36H30V4.92H13.04V3.36Z" fill="var(--color-flag-red)"/>
+                            <path d="M13.04 0H30V1.56H13.04V0Z" fill="var(--color-flag-red)"/>
+                            <path d="M0 0H11.04V8.28H0V0Z" fill="var(--color-flag-blue)"/>
                         </svg>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ const {} = Astro.props
                     height: 80.8px;
 
                     width: 100%;
-                    border-bottom: 1px solid rgb(from var(--secondary-color) r g b / 0.2 );
+                    border-bottom: var(--border-thin-secondary-20);
 
                     &__index {
                         display: flex;
@@ -141,13 +141,13 @@ const {} = Astro.props
                         min-height: 24px;
 
                         font-family: var(--font-heading);
-                        font-size: 14px;
+                        font-size: var(--font-size-sm);
 
-                        color: rgb(from var(--secondary-color) r g b / 0.4);
+                        color: var(--color-secondary-40);
                     }
                     &__link {
                         font-family: var(--font-heading);
-                        font-size: 80px;
+                        font-size: var(--font-size-3xl);
 
                         display: flex;
                         flex-direction: column;
@@ -172,7 +172,7 @@ const {} = Astro.props
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
-                border-top: 1px solid var(--secondary-color);
+                border-top: var(--border-thin-secondary);
 
                 &__nav {
                     display: flex;
@@ -196,7 +196,7 @@ const {} = Astro.props
 
                         &__header {
                             font-family: var(--font-heading);
-                            font-size: 1rem;
+                            font-size: var(--font-size-sm);
                             line-height: 18px;
                             letter-spacing: 1.3px;
 
@@ -206,11 +206,11 @@ const {} = Astro.props
                         &__link {
                             padding: 0 0 0 1rem ;
                             font-family: var(--font-heading);
-                            font-size: 12px;
+                            font-size: var(--font-size-sm);
                             line-height: 18px;
                             letter-spacing: 0.8px;
 
-                            color: rgb (from var(--secondary-color) r g b / 0.6);
+                            color: var(--color-secondary-60);
 
                         }
                     }
@@ -227,7 +227,7 @@ const {} = Astro.props
                         justify-content: space-evenly;
 
                         &__us-flag {
-                            fill: gray;
+                            fill: var(--color-gray);
                         }
                     }
 
@@ -257,9 +257,9 @@ const {} = Astro.props
         padding: 10vw 4vw;
 
         h1 {
-            font-size: clamp(60px, 4.375rem, 90px);
+            font-size: var(--font-size-3xl);
             /* opacity: 5%; */
-            color: rgb(from var(--secondary-color) r g b / 0.2);
+            color: var(--color-secondary-20);
 
             & span {
                 display: inline-grid;

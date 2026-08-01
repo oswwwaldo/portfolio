@@ -16,7 +16,7 @@ const {} = Astro.props
         </h2>
     </div>
     <div class="orbit"> 
-        <p class="body-lg"> Come take a look at my portfolio and get to know me, either through my work or via my about me! </p>
+        <p> Come take a look at my portfolio and get to know me, either through my work or via my about me! </p>
         <div class="orbit__planets">
             <div class="orbit__planets__planet"><a> About me </a></div>
             <div class="orbit__planets__planet"><a> Projects </a></div>
@@ -31,94 +31,68 @@ const {} = Astro.props
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 1rem;
-
+        gap: 5.5rem;
         color: var(--secondary-color);
-    }
-
-    .statement {
-        h2 {
-            & span {
-                display: inline;
-                font-family: inherit;
-                font-size: inherit;
-            }
-        }
-            
-        &__emphasis {
-            font-family: var(--font-heading);
-            font-size: inherit;
-            background: var(--highlight-color);
-
-            &:hover {
-                background:var(--highlight-hover-color);
-            }
-        }
-    }
-
-    .orbit {
-        display: flex;
-        flex-direction: column;
-        width: clamp(100px, 184px, 230px);
-        // width: calc(100vw/4);
-        gap: 2rem;
-        height: auto;
-        &__planets {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            &__planet {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                aspect-ratio: 1;
-                border-radius: 100%;
-                background-color: rgb(from var(--secondary-color) r g b / 0.4);
-
-                &:first-child {
-                    // height: 50%;
-                    height: clamp(100px, 10rem, 180px);
+        
+        .statement {
+            h2 {
+                span {
+                    display: inline;
+                    font-family: inherit;
+                    font-size: inherit;
                 }
+                
+                .statement__emphasis {
+                    font-family: var(--font-heading);
+                    font-size: inherit;
+                    background: var(--highlight-color);
 
-                &:last-child {
-                    height: 45%;
-                    height: clamp(75px, 2rem, 180px);
-                    position: absolute;
-                    top: -40%; right: -35%;
+                    &:hover {
+                        background: var(--highlight-hover-color);
+                    }
                 }
             }
+
+            @media (max-width: 1200px) {
+                margin-bottom: 5vh;
+            }
         }
-    }
-    
-    @media (max-width: 768px) {
+
         .orbit {
-            display: none;
-        }
-    }  
-    
-    @media (max-width: 1024px) {
-        .transition {
+            display: flex;
             flex-direction: column;
-            // gap: 4rem;
-        }
-
-        .orbit {
-            width: 100%;
-            align-items: center;
+            width: 450px;
+            gap: 4rem;
+            height: auto;
 
             &__planets {
-                max-width: 300px; 
-                justify-content: center;
+                position: relative;
+                width: 100%;
+                height: 100%;
                 
-                &__planet:last-child {
-                    top: -20%;
-                    right: 20%; 
+                &__planet {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    aspect-ratio: 1;
+                    border-radius: 100%;
+                    background-color: var(--color-secondary-40);
+
+                    &:first-child {
+                        height: clamp(100px, 10rem, 180px);
+                    }
+
+                    &:last-child {
+                        height: clamp(75px, 5vw, 150px); 
+                        position: absolute;
+                        top: -30%; right: -20%;
+                    }
                 }
             }
+            @media (max-width: 1200px) {
+                display: none;
+            }
         }
-    }    
-
-    
-
+    }
 </style>

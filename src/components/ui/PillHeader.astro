@@ -1,0 +1,68 @@
+---
+---
+
+<h2 class="pill-header">
+    <span class="pill-header__row"> A collection </span>
+    <span class="pill-header__row"> 
+        <span class="pill-header__text">of my</span>
+        <span class="pill-header__image"></span>
+        <span class="pill-header__text">work</span>
+    </span>
+</h2>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .pill-header {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        text-align: center;
+        margin-bottom: clamp(3rem, 5vw, 5rem);
+        width: 100%;
+
+        &__row {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 100%;
+            margin: 0 auto;
+
+            font-family: var(--font-heading);
+            font-size: var(--font-size-2xl);
+
+            justify-content: center;
+
+            gap: clamp(0.5rem, 3vw, 2.5rem);
+        }
+
+        &__image {
+            display: inline-block;
+            vertical-align: middle;
+            width: clamp(120px, 20vw, 252px);
+            height: clamp(36px, 6vw, 74px);
+            background: var(--color-neutral-200);
+            // margin: 0 16px;
+        }
+
+        &__text {
+            font-family: inherit;
+            font-size: inherit;
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+        }
+
+        @media (max-width: 1150px) {
+            &__image {
+                display: none;
+            }
+        }
+    }
+
+</style>

@@ -18,10 +18,12 @@ const { src, alt, ...props } = Astro.props;
   />
 </div>
 
-<style>
+<style lang="scss">
+  @use '../../styles/variables.scss' as *;
+
   .image-placeholder {
     position: relative;
-    background-color: rgb(#D9D9D9 / 0.2); 
+    background-color: var(--color-neutral-200); 
     overflow: hidden;
   }
   .animate-pulse {

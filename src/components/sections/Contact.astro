@@ -1,33 +1,34 @@
 ---
+import Button from '../ui/Button.astro';
 ---
 
 <div class="contact">
     <div class="contact__header">
         <h1> LET'S&nbsp;BUILD SOMETHING TOGETHER </h1>
     </div>
-    <div class="contact__paragraph body-lg">
+    <div class="contact__paragraph">
         Whether you have a project in mind, an opportunity to discuss or just want to say hello<br>— my inbox is always open.
     </div>
     <div class="contact__form">
         <form class="form" action="/submit-form-endpoint" method="POST">
             <div class="form__row">
                 <div class="form__group">
-                    <label class="form__group__label body-lg" for="name">Name</label>
-                    <input class="form__group__input body-lg" type="text" id="name" name="name" required>
+                    <label class="form__group__label" for="name">Name</label>
+                    <input class="form__group__input" type="text" id="name" name="name" required>
                 </div>
                 
                 <div class="form__group">
-                    <label class="form__group__label body-lg" for="email">Email</label>
-                    <input class="form__group__input body-lg" type="email" id="email" name="email" required>
+                    <label class="form__group__label" for="email">Email</label>
+                    <input class="form__group__input" type="email" id="email" name="email" required>
                 </div>
             </div>
 
             <div class="form__group">
-                <label class="form__group__label body-lg" for="message">Message</label>
-                <textarea class="form__group__textarea body-lg" id="message" name="message" rows="5" required></textarea>
+                <label class="form__group__label" for="message">Message</label>
+                <textarea class="form__group__textarea" id="message" name="message" rows="5" required></textarea>
             </div>
 
-            <button class="form__group__btn" type="submit">SEND</button>
+            <Button class="form__group__btn" textContent="SEND" type="submit" isPrimary={true}></Button>
         </form>
     </div>
 </div>
@@ -51,11 +52,16 @@
             width: min-content;
 
             line-height: normal;
+
+            h1 {
+                font-size: var(--font-size-2xl);
+            }
         }
 
         &__paragraph {
             width: 100%;
             max-width: 400px; 
+            font-size: var(--font-size-base);
         }
 
         &__form {
@@ -93,22 +99,24 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            border-bottom: 1px solid rgb(from var(--secondary-color) r g b / 0.30); 
+            border-bottom: var(--border-thin-secondary-20); 
             width: 100%;
 
             &__label {
                 width: 100%;
                 text-align: left;
-                color: gray; 
+                color: var(--color-gray); 
+                font-size: var(--font-size-base);
             }
 
             &__input, &__textarea {
-                background: none;
+                background: transparent;
                 border: none;
                 width: 100%;
                 padding: 1rem 0 0.5rem 0; 
                 color: var(--secondary-color);
                 font-family: var(--font-body);
+                font-size: var(--font-size-base);
 
                 &:focus {
                     border: none;
@@ -136,8 +144,7 @@
                 background-color: var(--secondary-color); 
                 color: var(--primary-color);
                 font-family: var(--font-heading);
-                font-size: 1.25rem;
-                letter-spacing: 2px;
+                font-size: var(--font-size-base);
                 border: none;
                 cursor: pointer;
                 transition: opacity 0.3s ease;

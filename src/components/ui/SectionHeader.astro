@@ -20,7 +20,13 @@ const { textContent, secondLine } = Astro.props;
 </div>
 
 <style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
     .section-header {
         margin-bottom: 1rem;
+        
+        h1 {
+            font-size: var(--font-size-2xl);
+        }
     }
 </style>
