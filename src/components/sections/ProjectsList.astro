@@ -1,19 +1,12 @@
 ---
-import ListItem from '../ui/ListItem.astro'
-import Tag from '../ui/Tag.astro';
+import ListItem from '../ui/ListItem.astro';
+import PillHeader from '../ui/PillHeader.astro';
 ---
 
 <div class="projects">
-    <!-- Pill header -->
+
     <div class="projects__header">
-        <h2 class="pill-header">
-            <span class="pill-header__row"> A collection </span>
-            <span class="pill-header__row"> 
-                of my
-                <span class="pill-header__image"></span>
-                work
-            </span>
-        </h2>
+        <PillHeader />
     </div>
     
     <div class="projects__nav">
@@ -49,49 +42,6 @@ import Tag from '../ui/Tag.astro';
 </div>
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
-
-    .pill-header {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 5rem;
-        width: 100%;
-
-        &__row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            width: 100%;
-            margin: 0 auto;
-
-            font-family: var(--font-heading);
-            font-size: var(--font-size-xl);
-
-            gap: 2.5rem;
-            justify-content: center;
-        }
-
-        &__image {
-            display: inline-block;
-            vertical-align: middle;
-            width: clamp(120px, 20vw, 252px);
-            height: clamp(36px, 6vw, 74px);
-            background: #D9D9D9;
-            margin: 0 16px;
-        }
-
-        @media (max-width: 500px) {
-            &__row {
-                flex-direction: column;
-            }
-            &__image {
-                margin: 1rem auto;
-            }
-        }
-    }
 
     .projects {
         display: flex;
