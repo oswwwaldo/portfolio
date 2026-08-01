@@ -107,82 +107,6 @@ import Tag from '../ui/Tag.astro';
             display: flex;
             flex-direction: column;
             align-items: start;
-
-            .job {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-start;
-                box-sizing: border-box;
-
-                padding: 40px 30px;
-                gap: 10px;
-
-                border-bottom: 1px solid black;
-                min-height: 100px;
-                width: 100%;
-
-                &__date {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: flex-start;
-                    height: 100%;
-                }
-
-                &__position {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 1rem;
-
-                    // // margin: 0 auto;
-                    // width: 486px;
-                    // height: 112px;
-                    height: 100%;
-                    width: fit-content;
-
- 
-                    &__title {
-                        min-height: 40px;
-
-                        font-family: var(--font-heading);
-                        font-size: 32px;
-                    }
-
-                    &__company {
-                        min-height: 20px;
-
-                        font-family: var(--font-body);
-                        font-size: 1.25rem;
-                    }
-                    &__description {
-                        min-height: 35px;
-
-                        font-family: var(--font-body);
-                        font-size: 1rem;
-                    }
-                }
-
-                &__skills {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    align-items: flex-start;
-                    align-content: flex-start;
-                    gap: 10px;
-
-                    max-width: 150px;
-                    height: 100%;
-
-
-                    /* Inside auto layout */
-                    flex: none;
-                    order: 2;
-                    align-self: stretch;
-                    flex-grow: 0;
-
-                }
-            }
         }
 
         &__info {
@@ -237,12 +161,12 @@ import Tag from '../ui/Tag.astro';
                 
                 &__header {
                     font-family: var(--font-heading);
-                    font-size: 20px;
+                    font-size: var(--font-size-19);
                     color: rgb(from var(--secondary-color) rgba / 0.8);
                 }
                 &__content {
                     font-family: var(--font-body);
-                    font-size: 20px;
+                    font-size: var(--font-size-19);
                     color: var(--secondary-color);
                 }
             }

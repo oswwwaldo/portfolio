@@ -37,27 +37,27 @@ h1, h2, h3, h4 {
 
 // Heading Sizes
 h1 {
-  font-size: clamp(2.5rem, 1.955rem + 2.73vw, 4rem);
+  font-size: var(--font-size-23);
 }
 
 h2 {
-  font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);
+  font-size: var(--font-size-20);
 }
 
 h3 {
-  font-size: clamp(1.25rem, 0.977rem + 1.36vw, 2rem);
+  font-size: var(--font-size-19);
 }
 
 h4 {
-  font-size: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
+  font-size: var(--font-size-19);
 }
 // Body Sizes
 p {
-	font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
+	font-size: var(--font-size-16);
 }
 
 p.body-lg, .body-lg {
-  font-size: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+  font-size: var(--font-size-19);
 }
 
 button p.body-lg {
@@ -66,5 +66,5 @@ button p.body-lg {
 
 // Label Size
 .label {
-  font-size: clamp(0.625rem, 0.602rem + 0.11vw, 0.6875rem);
+  font-size: var(--font-size-15);
 }

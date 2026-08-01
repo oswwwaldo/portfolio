@@ -3,9 +3,57 @@
 :root {
     --font-heading: "Aboreto", cursive;
     --font-body: "Times New Roman", Times, serif;
+    
+
+    // Display (32 - 100px)
+    --font-size-25: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
+    --font-size-23: clamp(2rem, 1.955rem + 2.73vw, 4rem); 
+    
+    // Headings (24 - 40px)
+    --font-size-20: clamp(1.5rem, 4vw, 2.5rem);
+
+    // Medium (18 - 24px)
+    --font-size-19: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
+
+    // Body (15 - 18px)
+    --font-size-17: clamp(1rem, 0.9rem + 0.25vw, 1.125rem);
+
+    // Small (11 - 14px)
+    --font-size-16: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
+
+    // Micro-captions (10 - 11px)
+    --font-size-15: clamp(0.625rem, 0.602rem + 0.11vw, 0.6875rem);
+
+    
 
 
 
+
+
+    /* Micro (Stepped down /1.25) */
+    --font-size-xs: clamp(0.64rem, 0.61rem + 0.15vw, 0.72rem);
+
+    /* Small (Stepped down /1.25) */
+    --font-size-sm: clamp(0.8rem, 0.76rem + 0.18vw, 0.9rem);
+
+    /* Body (Base) */
+    --font-size-base: clamp(1rem, 0.95rem + 0.23vw, 1.125rem);
+
+    /* Medium (Min x1.25 | Max x1.4) */
+    --font-size-md: clamp(1.25rem, 1.13rem + 0.59vw, 1.575rem);
+
+    /* Heading (Min x1.25 | Max x1.4) */
+    --font-size-lg: clamp(1.56rem, 1.33rem + 1.16vw, 2.2rem);
+
+    /* Display (Min x1.25 | Max x1.4) */
+    --font-size-xl: clamp(1.95rem, 1.54rem + 2.05vw, 3.08rem);
+
+    /* Hero Display (The Exception - Preserved) */
+    --font-size-2xl: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
+
+
+
+    
     
     --tag-border: 1px solid rgb(from var(--secondary-color) r g b / 0.3);
     --tag-text: rgb(from var(--secondary-color) r g b / 0.5);
