@@ -4,7 +4,6 @@
     --font-heading: "Aboreto", cursive;
     --font-body: "Times New Roman", Times, serif;
 
-
     /* Micro (Stepped down /1.25) */
     --font-size-xs: clamp(0.64rem, 0.61rem + 0.15vw, 0.72rem);
 
@@ -27,9 +26,6 @@
     --font-size-2xl: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
 
 
-
-
-    
     --tag-border: 1px solid rgb(from var(--secondary-color) r g b / 0.3);
     --tag-text: rgb(from var(--secondary-color) r g b / 0.5);
 }
