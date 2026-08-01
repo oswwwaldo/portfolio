@@ -37,6 +37,30 @@
 
     --tag-border: var(--border-thin-secondary-30);
     --tag-text: var(--color-secondary-40);
+
+    --btn-height-sm: clamp(2.5rem, 3.5vw, 3rem);
+    --btn-height-md: clamp(3.5rem, 5.625vw, 5.0625rem); 
+    --btn-height-lg: clamp(4.5rem, 7vw, 6rem);
+    
+    --btn-padding-sm: clamp(1rem, 1.5vw, 1.25rem);
+    --btn-padding-md: clamp(1.5rem, 1.8vw, 1.75rem); 
+    --btn-padding-lg: clamp(2rem, 3vw, 2.5rem);
+
+    --btn-icon-size-sm: var(--font-size-xs);
+    --btn-icon-size-md: var(--font-size-sm);
+    --btn-icon-size-lg: var(--font-size-base);
+
+    --btn-transition-speed: 0.2s ease-out;
+    --btn-scale-active: 0.98;
+    --btn-opacity-hover: 0.6;
+    --btn-opacity-disabled: 0.4;
+    --btn-focus-ring: 2px solid var(--primary-color);
+    --btn-focus-offset: 4px;
+
+    --color-danger-bg: #dc2626;
+    --color-danger-text: #ffffff;
+    --color-danger-border: #991b1b;
+    --color-tertiary-hover-bg: rgba(150, 150, 150, 0.1);
 }
 
 // platinum: F2F3F4
