@@ -4,6 +4,25 @@
     --font-heading: "Aboreto", cursive;
     --font-body: "Times New Roman", Times, serif;
 
+    // Font size token system (8px increment scale)
+    // Audit baseline sizes found in repo before normalization:
+    // 11, 12, 14, 16, 18, 20, 24, 32, 40, 48, 60, 64, 80, 90, 100, 120
+    --fs-08: clamp(0.5rem, 0.429rem + 0.357vw, 0.75rem);   // 8px → 12px
+    --fs-16: clamp(0.75rem, 0.679rem + 0.357vw, 1rem);      // 12px → 16px
+    --fs-24: clamp(1rem, 0.857rem + 0.714vw, 1.5rem);       // 16px → 24px
+    --fs-32: clamp(1.5rem, 1.357rem + 0.714vw, 2rem);       // 24px → 32px
+    --fs-40: clamp(2rem, 1.857rem + 0.714vw, 2.5rem);       // 32px → 40px
+    --fs-48: clamp(2.5rem, 2.357rem + 0.714vw, 3rem);       // 40px → 48px
+    --fs-56: clamp(3rem, 2.857rem + 0.714vw, 3.5rem);       // 48px → 56px
+    --fs-64: clamp(3.5rem, 3.357rem + 0.714vw, 4rem);       // 56px → 64px
+    --fs-72: clamp(4rem, 3.857rem + 0.714vw, 4.5rem);       // 64px → 72px
+    --fs-80: clamp(4.5rem, 4.357rem + 0.714vw, 5rem);       // 72px → 80px
+    --fs-88: clamp(5rem, 4.857rem + 0.714vw, 5.5rem);       // 80px → 88px
+    --fs-96: clamp(5.5rem, 5.357rem + 0.714vw, 6rem);       // 88px → 96px
+    --fs-104: clamp(6rem, 5.857rem + 0.714vw, 6.5rem);      // 96px → 104px
+    --fs-112: clamp(6.5rem, 6.357rem + 0.714vw, 7rem);      // 104px → 112px
+    --fs-120: clamp(7rem, 6.857rem + 0.714vw, 7.5rem);      // 112px → 120px
+
 
 
     

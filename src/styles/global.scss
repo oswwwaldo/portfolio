@@ -1,19 +1,11 @@
 // global.scss 
-/*/
-
-Display : 7.5rem    : 120px : Used for hero name and extra large text
-h1      : 4rem      : 64px  : Used for section headings and decorative watermarks/background text
-h2      : 2.5rem    : 48px  : Project titles, feature text
-h3      : 2rem      : 32px  : Job titles
-h4      : 1.5rem    : 24px  : —SET THIS
-body-lg : 1.25rem   : 20px  : Descriptions, certificate headers
-body    : 1rem      : 16px  : Dates, small body text, company names
-label   : 0.6875rem : 10px  : Tags, nav links, years, index numbers
-
-/*/
 // Define Font Families
 $font-heading: "Aboreto", cursive;
 $font-body: "Times New Roman", Times, serif;
+
+// Font scale usage map
+// h1: --fs-64 | h2: --fs-48 | h3: --fs-32 | h4: --fs-24
+// body: --fs-16 | body-lg: --fs-24 | label: --fs-08
 
 body {
 	line-height: 1.5;
@@ -37,27 +29,27 @@ h1, h2, h3, h4 {
 
 // Heading Sizes
 h1 {
-  font-size: clamp(2.5rem, 1.955rem + 2.73vw, 4rem);
+  font-size: var(--fs-64);
 }
 
 h2 {
-  font-size: clamp(1.75rem, 1.477rem + 1.36vw, 2.5rem);
+  font-size: var(--fs-48);
 }
 
 h3 {
-  font-size: clamp(1.25rem, 0.977rem + 1.36vw, 2rem);
+  font-size: var(--fs-32);
 }
 
 h4 {
-  font-size: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
+  font-size: var(--fs-24);
 }
 // Body Sizes
 p {
-	font-size: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
+	font-size: var(--fs-16);
 }
 
 p.body-lg, .body-lg {
-  font-size: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+  font-size: var(--fs-24);
 }
 
 button p.body-lg {
@@ -66,5 +58,5 @@ button p.body-lg {
 
 // Label Size
 .label {
-  font-size: clamp(0.625rem, 0.602rem + 0.11vw, 0.6875rem);
+  font-size: var(--fs-08);
 }
