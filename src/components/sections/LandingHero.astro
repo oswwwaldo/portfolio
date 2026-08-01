@@ -51,7 +51,7 @@ import Button from '../ui/Button.astro';
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: clamp(0.5rem, 2vw, 1rem);
+        gap: clamp(0.5rem, 2rem, 3rem);
         padding: clamp(1.25rem, 3vw, 2rem);
 
         width: 100%;
@@ -123,6 +123,11 @@ import Button from '../ui/Button.astro';
             &__btn {
                 height: var(--hero-social-icon-size);
                 width: var(--hero-social-icon-size);
+
+                &:hover {
+                    // color: var(--primary-color);
+                    opacity: 60%;
+                }
             }
         }
     }
