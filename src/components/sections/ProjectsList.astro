@@ -57,7 +57,7 @@ import PillHeader from '../ui/PillHeader.astro';
             align-items: center;
             width: 100%;
             padding: 0 48px 24px;
-            border-bottom: var(--border-half-secondary-light);
+            border-bottom: var(--border-thin-secondary-50);
 
             @media (max-width: 768px) {
                 flex-direction: column;
@@ -99,70 +99,6 @@ import PillHeader from '../ui/PillHeader.astro';
 
             .projects__nav__views {
                 display: none;
-            }
-        }
-        /* Individual Project Row */
-        .project {
-            display: grid;
-            grid-template-columns: 80px 1fr 80px;
-            width: 100%;
-            padding: 40px 24px 96px 16px;
-            border-bottom: var(--border-half-secondary-light);
-
-            @media (max-width: 768px) {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                padding: 32px 16px 64px;
-            }
-
-            &__index {
-                font-family: var(--font-heading);
-                font-size: var(--font-size-xs);
-                letter-spacing: 4.4px;
-                padding-top: 16px; 
-            }
-
-            &__info {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-
-                &__title {
-                    font-family: var(--font-heading);
-                    font-size: var(--font-size-lg);
-                    letter-spacing: 0.8px;
-                    text-transform: uppercase;
-                }
-
-                &__description {
-                    font-family: var(--font-body);
-                    font-size: var(--font-size-sm);
-                    line-height: 1.33;
-                    letter-spacing: 0.8px;
-                    max-width: 622px;
-                }
-
-                &__skills {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 12px;
-                    margin-top: 24px;
-                }
-            }
-
-            &__date {
-                display: flex;
-                justify-content: end;
-
-                @media (max-width: 768px) {
-                    justify-content: start;
-                }
-
-                &__text {
-                    font-family: var(--font-body);
-                    font-size: var(--font-size-xs);
-                    letter-spacing: 4.08px;
-                }
             }
         }
     }

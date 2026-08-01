@@ -15,22 +15,16 @@
     --font-size-3xl: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
 
     --color-transparent: transparent;
-    --color-black: black;
-    --color-white: #ffffff;
+
     --color-gray: gray;
-    --color-neutral-100: #e6e6e6;
     --color-neutral-200: #d9d9d9;
-    --color-neutral-200-20: rgb(#d9d9d9 / 0.2);
 
     --color-secondary-20: rgb(from var(--secondary-color) r g b / 0.2);
-    --color-secondary-30: rgb(from var(--secondary-color) r g b / 0.3);
     --color-secondary-40: rgb(from var(--secondary-color) r g b / 0.4);
-    --color-secondary-50: rgb(from var(--secondary-color) r g b / 0.5);
     --color-secondary-60: rgb(from var(--secondary-color) r g b / 0.6);
     --color-secondary-80: rgb(from var(--secondary-color) r g b / 0.8);
-    --color-secondary-80-alt: rgb(from var(--secondary-color) rgba / 0.8);
 
-    --color-overlay-black-00: rgba(0, 0, 0, 0);
+
     --color-overlay-black-05: rgba(0, 0, 0, 0.05);
     --color-overlay-black-60: rgba(0, 0, 0, 0.6);
     --color-overlay-black-80: rgba(0, 0, 0, 0.8);
@@ -38,18 +32,13 @@
     --color-flag-red: #cd232c;
     --color-flag-blue: #204c67;
 
-    --border-reset: 0;
-    --border-none: none;
-    --border-thin-black: 1px solid var(--color-black);
     --border-thin-primary: 1px solid var(--primary-color);
     --border-thin-secondary: 1px solid var(--secondary-color);
-    --border-thin-secondary-20: 1px solid var(--color-secondary-20);
-    --border-thin-secondary-30: 1px solid var(--color-secondary-30);
-    --border-thin-secondary-50: 1px solid var(--color-secondary-50);
-    --border-half-secondary-light: 0.5px solid var(--color-neutral-100);
+    --border-thin-secondary-30: 1px solid var(--secondary-color);
+    --border-thin-secondary-50: 1px solid var(--secondary-color);
 
     --tag-border: var(--border-thin-secondary-30);
-    --tag-text: var(--color-secondary-50);
+    --tag-text: var(--color-secondary-40);
 }
 
 // platinum: F2F3F4
