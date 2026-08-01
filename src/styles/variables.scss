@@ -4,9 +4,29 @@
     --font-heading: "Aboreto", cursive;
     --font-body: "Times New Roman", Times, serif;
 
+    /* Typography token system (8px increments) */
+    --fs-08-16: clamp(8px, calc(8px + 8 * ((100vw - 320px) / 880)), 16px);
+    --fs-16-24: clamp(16px, calc(16px + 8 * ((100vw - 320px) / 880)), 24px);
+    --fs-24-32: clamp(24px, calc(24px + 8 * ((100vw - 320px) / 880)), 32px);
+    --fs-24-40: clamp(24px, calc(24px + 16 * ((100vw - 320px) / 880)), 40px);
+    --fs-32-48: clamp(32px, calc(32px + 16 * ((100vw - 320px) / 880)), 48px);
+    --fs-40-56: clamp(40px, calc(40px + 16 * ((100vw - 320px) / 880)), 56px);
+    --fs-48-64: clamp(48px, calc(48px + 16 * ((100vw - 320px) / 880)), 64px);
+    --fs-56-88: clamp(56px, calc(56px + 32 * ((100vw - 320px) / 880)), 88px);
+    --fs-64-96: clamp(64px, calc(64px + 32 * ((100vw - 320px) / 880)), 96px);
+    --fs-96-104: clamp(96px, calc(96px + 8 * ((100vw - 320px) / 880)), 104px);
 
+    /* Semantic aliases */
+    --font-size-label: var(--fs-08-16);
+    --font-size-body: var(--fs-16-24);
+    --font-size-body-lg: var(--fs-16-24);
+    --font-size-h4: var(--fs-24-32);
+    --font-size-h3: var(--fs-24-40);
+    --font-size-h2: var(--fs-32-48);
+    --font-size-h1: var(--fs-40-56);
+    --font-size-display: var(--fs-64-96);
+    --font-size-display-xl: var(--fs-96-104);
 
-    
     --tag-border: 1px solid rgb(from var(--secondary-color) r g b / 0.3);
     --tag-text: rgb(from var(--secondary-color) r g b / 0.5);
 }

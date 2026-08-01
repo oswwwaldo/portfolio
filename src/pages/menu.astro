@@ -25,7 +25,7 @@ import SectionLayout from '../layouts/SectionLayout.astro';
     @use '../styles/variables.scss' as *;
     .watermark {
         font-family: $font-heading;
-        font-size: clamp(11px, 1rem, 18px);
+        font-size: var(--font-size-label);
         line-height: 19.5;
         letter-spacing: 5px;
     }
