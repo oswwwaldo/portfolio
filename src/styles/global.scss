@@ -37,27 +37,27 @@ h1, h2, h3, h4 {
 
 // Heading Sizes
 h1 {
-  font-size: var(--font-size-23);
+  font-size: var(--font-size-xl);
 }
 
 h2 {
-  font-size: var(--font-size-20);
+  font-size: var(--font-size-lg);
 }
 
 h3 {
-  font-size: var(--font-size-19);
+  font-size: var(--font-size-md);
 }
 
 h4 {
-  font-size: var(--font-size-19);
+  font-size: var(--font-size-md);
 }
 // Body Sizes
 p {
-	font-size: var(--font-size-16);
+	font-size: var(--font-size-sm);
 }
 
 p.body-lg, .body-lg {
-  font-size: var(--font-size-19);
+  font-size: var(--font-size-md);
 }
 
 button p.body-lg {
@@ -66,5 +66,5 @@ button p.body-lg {
 
 // Label Size
 .label {
-  font-size: var(--font-size-15);
+  font-size: var(--font-size-xs);
 }

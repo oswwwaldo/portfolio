@@ -40,7 +40,7 @@ const elementId = `btn-id-${rawUuid}`;
     // --button-aspect-ratio: 2.7 / 1;
     --button-aspect-ratio: 3 / 1;
     --button-height: var(--hero-button-height, clamp(2.5rem, 3vw, 5rem));
-    --button-font-size: var(--font-size-17);
+    --button-font-size: var(--font-size-base);
     --button-padding-inline: clamp(1.5rem, 1.8vw, 2.25rem);
     --button-gap: clamp(0.5rem, 0.8vw, 0.875rem);
 
@@ -91,7 +91,7 @@ const elementId = `btn-id-${rawUuid}`;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-size-16);
+    font-size: var(--font-size-sm);
     line-height: 0;
   }
 
@@ -106,7 +106,7 @@ const elementId = `btn-id-${rawUuid}`;
   @media (max-width: 770px) {
     .button {
       --button-height: clamp(3rem, 6vw, 4rem);
-      --button-font-size: var(--font-size-16);
+      --button-font-size: var(--font-size-sm);
       --button-padding-inline: clamp(1.25rem, 3vw, 1.75rem);
       --button-gap: clamp(0.5rem, 1vw, 0.75rem);
     }
