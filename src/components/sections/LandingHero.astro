@@ -7,26 +7,26 @@ import Button from '../ui/Button.astro';
 
 
 <section class="hero">
-
+    
     <LandingImage 
-        src={stoneNotInFocus} 
+    src={stoneNotInFocus} 
         alt="A monkey holding a phone"
         class="hero__image">
     </LandingImage>
-
+    
     <h2 class="hero__position"> Full Stack Engineer </h2>
-
+    
     <h1 class="hero__title"> 
         <span class="first-name"> Oswaldo </span>
         <span class="middle-name"> Fabrizio </span>
         <span class="last-name"> De Los Santos </span>
         <span class="middle-name"> Ascencio </span>
     </h1>
-
+    
     <div class="hero__actions">
         <div class="hero__buttons">
             <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
-            <Button class="hero__buttons__btn button--ratio-27" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
+            <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
         </div>
 
         <div class="hero__socials">
@@ -42,8 +42,8 @@ import Button from '../ui/Button.astro';
     @use '../../styles/variables.scss' as *;
 
     .hero {
-        --hero-position-size: var(--font-size-lg);
-        --hero-title-size: var(--font-size-2xl);
+        --hero-position-size: var(--font-size-md);
+        --hero-title-size: var(--font-size-3xl);
         --hero-button-height: clamp(3.5rem, 5.625vw, 5.0625rem);
         --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
@@ -54,15 +54,9 @@ import Button from '../ui/Button.astro';
         gap: clamp(0.5rem, 2vw, 1rem);
         padding: clamp(1.25rem, 3vw, 2rem);
 
-        // margin-top: 25vh;
-
         width: 100%;
         color: var(--secondary-color);
         z-index: 1;
-
-        // &__image {
-        //     position: relative;
-        // }
 
         &__position {
             font-size: var(--hero-position-size);

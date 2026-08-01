@@ -8,7 +8,7 @@ const { stat, caption } = Astro.props;
 ---
 
 <div class="stats__item">
-    <h2 class="stats__item__num"> {stat} </h2>
+    <h4 class="stats__item__num"> {stat} </h4>
     <p class="stats__item__description"> {caption} </p>
 </div>
 
@@ -19,23 +19,22 @@ const { stat, caption } = Astro.props;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 30px;
+        width: fit-content;
 
-        width: 180px;
-        row-gap: 2em;
+        row-gap: 1rem;
         
         &__num {
-            width: 180px;
-            height: 56px;
-
             font-family: var(--font-heading);
             font-size: var(--font-size-xl);
+            // font-size: var(--font-size-lg);
         }
         &__description {
             font-family: var(--font-heading);
             font-size: var(--font-size-sm);
-            letter-spacing: 0.2em;
-            color: rgb(from var(--secondary-color) rgb / 0.8);
+            // font-size: var(--font-size-base);
+            letter-spacing: 0.2rem;
+            color: rgb(from var(--secondary-color) r g b / 0.8);
+            width: min-content;
         }
     }
 

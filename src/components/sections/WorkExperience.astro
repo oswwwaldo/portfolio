@@ -97,7 +97,7 @@ import Tag from '../ui/Tag.astro';
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 5vw;
+        gap: 5vh;
 
         margin-top: 10vh;
 
@@ -107,6 +107,7 @@ import Tag from '../ui/Tag.astro';
             display: flex;
             flex-direction: column;
             align-items: start;
+            // margin: 5vh 0;
         }
 
         &__info {
@@ -124,15 +125,16 @@ import Tag from '../ui/Tag.astro';
             flex-wrap: wrap;
             align-items: flex-start;
             align-content: flex-start;
-            gap: 15px;
+            gap: 1rem;
 
-            padding: 4rem 0 4rem 0;
+            padding: 4rem 0;
             border-top: 1px solid var(--secondary-color);  
             border-bottom: 1px solid var(--secondary-color); 
 
             h4 {
                 width: 100%;
-                margin: 1   .5rem 0;
+                margin: 1rem 0;
+                font-size: var(--font-size-md);
             }
         }
 
@@ -141,11 +143,9 @@ import Tag from '../ui/Tag.astro';
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: center;
-            align-content: center;
 
             width: 100%;
-            row-gap: 2rem;
+            
         }
 
         &__footer {
@@ -161,12 +161,12 @@ import Tag from '../ui/Tag.astro';
                 
                 &__header {
                     font-family: var(--font-heading);
-                    font-size: var(--font-size-md);
+                    font-size: var(--font-size-base);
                     color: rgb(from var(--secondary-color) rgba / 0.8);
                 }
                 &__content {
                     font-family: var(--font-body);
-                    font-size: var(--font-size-md);
+                    font-size: var(--font-size-base);
                     color: var(--secondary-color);
                 }
             }
