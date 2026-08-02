@@ -63,6 +63,9 @@ const {} = Astro.props
                     <p class="info-group__link">Thoughts</p>
                     <p class="info-group__link">Video</p>
                 </div>
+                <div class="info-group">
+                    <h4 class="info-group__header">EN</h4>
+                </div>
             </div>
             <div class="footer__links__content__info">
                 <div class="footer__links__content__info__flags">
@@ -77,10 +80,10 @@ const {} = Astro.props
                         </svg>
                     </div>
                 </div>
-                <div class="footer__links__content__text">
-                    <a class="footer__links__content__text__link"> Sitemap </a>
-                    <p class="body-lg"> Designed, developed and deployed by </p>
-                    <p class="body-lg"> Oswaldo Fabrizio De Lo Santos Ascencio </p>
+                <div class="footer__links__content__info__text">
+                    <a href="/sitemap"> Sitemap </a>
+                    <p> Designed, developed and deployed by </p>
+                    <p> Oswaldo Fabrizio De Lo Santos Ascencio </p>
                 </div>
             </div>
         </div>
@@ -92,7 +95,7 @@ const {} = Astro.props
     @use '../../styles/variables.scss' as *;
 
     .footer {
-        display: none !important;
+        // display: none !important;
         display: flex;
         flex-direction: column;
         justify-self: space-around;
@@ -105,6 +108,7 @@ const {} = Astro.props
             width: 100%;
 
             margin-bottom: 15vh;
+
             &__list {
                 width: 100%;
 
@@ -145,9 +149,10 @@ const {} = Astro.props
 
                         color: var(--color-secondary-40);
                     }
+
                     &__link {
                         font-family: var(--font-heading);
-                        font-size: var(--font-size-3xl);
+                        font-size: var(--font-size-2xl);
 
                         display: flex;
                         flex-direction: column;
@@ -166,19 +171,30 @@ const {} = Astro.props
                 align-items: center;
                 justify-content: space-around;
                 width: 33%;
+                margin-bottom: 1rem;
+
+                &__link {
+                    font-family: var(--font-heading);
+                    font-size: var(--font-size-xs);
+                    color: var(--color-secondary-60);
+                }
             }
 
             &__content {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
-                border-top: var(--border-thin-secondary);
+                border-top: var(--border-thin-secondary-20);
+                padding-top: 1rem;
 
                 &__nav {
                     display: flex;
                     flex-direction: row;
                     align-items: flex-start;
-                    justify-content: space-around;
+                    justify-content: flex-start;
+
+                    padding: 0 2rem;
+                    gap: 10vw;
 
                     min-height: 136px;
 
@@ -189,42 +205,35 @@ const {} = Astro.props
                         display: flex;
                         flex-direction: column;
                         align-items: flex-start;
-                        gap: 1rem;
-
-                        min-height: 132px;
-
+                        gap: 0.5rem;
 
                         &__header {
                             font-family: var(--font-heading);
-                            font-size: var(--font-size-sm);
-                            line-height: 18px;
-                            letter-spacing: 1.3px;
-
+                            font-size: var(--font-size-xs);
                             color: var(--secondary-color);
-
+                            letter-spacing: 1.3px;
                         }
+
                         &__link {
-                            padding: 0 0 0 1rem ;
                             font-family: var(--font-heading);
-                            font-size: var(--font-size-sm);
-                            line-height: 18px;
-                            letter-spacing: 0.8px;
-
+                            font-size: var(--font-size-xs);
                             color: var(--color-secondary-60);
-
+                            letter-spacing: 0.8px;
                         }
                     }
                 }
 
                 &__info {
                     display: flex;
+                    align-items: flex-start;
                     flex-direction: row-reverse;
-                    justify-content: space-around;
+                    gap: 2rem;
+
+                    padding: 0 2rem;
 
                     &__flags {
                         display: flex;
                         flex-direction: column;
-                        justify-content: space-evenly;
 
                         &__us-flag {
                             fill: var(--color-gray);
@@ -234,16 +243,19 @@ const {} = Astro.props
                     &__text {
                         display: flex;
                         flex-direction: column;
-                        justify-content: flex-start;
-
-                        &__link {
+                        
+                        a, p {
+                            font-family: var(--font-heading);
+                            font-size: var(--font-size-xs);
                             text-align: right;
+                            color: var(--color-secondary-60);
+                        }
+                        
+                        a {
+                            color: var(--color-secondary);
+                            text-decoration: none;
                         }
 
-                        .body-lg {
-                            text-align: right;
-                        }
-                        text-align: right;
                     }
                 }
             }
@@ -258,7 +270,6 @@ const {} = Astro.props
 
         h1 {
             font-size: var(--font-size-3xl);
-            /* opacity: 5%; */
             color: var(--color-secondary-20);
 
             & span {
