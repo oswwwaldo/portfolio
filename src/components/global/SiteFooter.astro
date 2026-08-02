@@ -1,4 +1,8 @@
 ---
+import Image from 'astro/components/Image.astro';
+import Knight from '../../assets/Knight.png';
+import KnightASCII from '../../assets/Knight-ASCII.png';
+
 type Props = {
 
 }
@@ -11,6 +15,14 @@ const {} = Astro.props
 </div>
 
 <div class="footer">
+
+    <div class="footer__background">
+        <Image 
+            class="footer__background__image"
+            src={KnightASCII}
+            alt="Infinity blade">
+        </Image>
+    </div>
 
     <div class="footer__nav">
         <ul class="footer__nav__list">
@@ -34,7 +46,6 @@ const {} = Astro.props
     </div>
 
     <div class="footer__links">
-
         <div class="footer__links__socials">
             <a class="footer__links__socials__link"> Instagram </a>
             <a class="footer__links__socials__link"> Github </a>
@@ -59,9 +70,10 @@ const {} = Astro.props
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Other pages</h4>
-                    <p class="info-group__link">Now</p>
-                    <p class="info-group__link">Thoughts</p>
-                    <p class="info-group__link">Video</p>
+                    <a class="info-group__link" href="/now">Now</a>
+                    <a class="info-group__link" href="/thoughts">Thoughts</a>
+                    <a class="info-group__link" href="/video">Video</a>
+                    <a class="info-group__link" href="/drop">Drop</a>
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">EN</h4>
@@ -101,6 +113,22 @@ const {} = Astro.props
         justify-self: space-around;
 
         color: var(--secondary-color);
+
+        &__background {
+            position: relative;
+
+            &__image {
+                position: absolute;
+                top: -18vh;
+                right: 0%;
+                // transform: translate(-50%, -50%);
+
+                height: 90vh;
+                width: auto;
+                object-fit: contain;
+                z-index: -1;
+            }
+        }
 
         &__nav {
             display: flex;
