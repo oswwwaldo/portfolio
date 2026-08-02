@@ -1,11 +1,11 @@
 ---
 import SiteHeader from '../components/global/SiteHeader.astro';
 import SiteFooter from '../components/global/SiteFooter.astro';
+import EndOfFile from '../components/sections/EndOfFile.astro';
 
 import '../styles/reset.scss';
 import '../styles/global.scss';
 import '../styles/variables.scss';
-
 
 interface Props {
   pageTitle: string;
@@ -32,8 +32,11 @@ const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
   </head>
   <body>
     { noHeader? null : <SiteHeader /> }
-    <slot />
-    { noFooter? null : <SiteFooter /> }
+    <div class="page">
+      <slot />
+      <EndOfFile />
+    </div>
+    { noFooter? null : <SiteFooter renderFullFooter={true}/> }
   </body>
 </html>
 
@@ -43,5 +46,14 @@ const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
     body {
         background-color: var(--primary-color);
         overflow-x: clip;
+
+        .page {
+          background-color: var(--primary-color);
+          position: relative;
+          z-index: 2;
+
+          min-height: 100vh;
+          margin-bottom: var(--footer-height, 50vh);
+        }
     }
 </style>

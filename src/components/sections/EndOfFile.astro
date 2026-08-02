@@ -1,0 +1,51 @@
+---
+---
+
+<div class="eof">
+    <h1> END OF <span></span>.</h1>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .eof {
+        display: flex;
+        justify-content: end;
+        margin: 0 5rem;
+        padding: 10vw 4vw;
+
+        position: relative;
+        z-index: 2;
+
+        margin: 50px;
+
+        h1 {
+            font-size: var(--font-size-3xl);
+            color: var(--color-secondary-20);
+
+            & span {
+                display: inline-grid;
+                transition: all 1s ease-in-out;
+
+                &::before, &::after {
+                    font-family: var(--font-heading);
+                    grid-area: 1/1;
+                }
+                &::before {
+                    content: "PAGE";
+                    opacity: 1;
+                }
+                &::after {
+                    content: "FILE";
+                    opacity: 0;
+                }
+                &:hover::before {
+                    opacity: 0;
+                } 
+                &:hover::after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+</style>
