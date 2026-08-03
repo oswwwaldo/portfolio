@@ -1,34 +1,49 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import GridLayout from '../layouts/GridLayout.astro';
-import SectionLayout from '../layouts/SectionLayout.astro';
-import LandingHero from '../components/sections/LandingHero.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
 
 const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
-
 ---
 
-<BaseLayout pageTitle={pageTitle} noFooter={true}>
+<BaseLayout pageTitle={pageTitle} noFooter={true} noEOF={true}>
     <SectionLayout noMargins={true}>
         <section class="not-found">
             <span class="not-found__bg-text"> Error 404 </span>
             <div class="text-group">
-                <h1 class="not-found__header"> Page not found </h1>
-                <h2 class="not-found__caption"> We couldn't find that page </h2>
+                <h1 class="not-found__header">Page not found</h1>
+                <h2 class="not-found__caption">We couldn't find that page</h2>
             </div>
             <div class="footer-nav">
-                <div class="footer-nav__option"> <a class="footer-nav__option__link" href="/about"> About </a> </div>
-                <div class="footer-nav__option"> <a class="footer-nav__option__link" href="/"> Home </a> </div>
-                <div class="footer-nav__option"> <a class="footer-nav__option__link" href="/Projects"> Projects </a> </div>
-                <div class="footer-nav__option"> <a class="footer-nav__option__link" href="/Contact"> Contact </a> </div>
-                <div class="footer-nav__option"> <a class="footer-nav__option__link" href="/Resume"> Resume </a> </div>
+                <div class="footer-nav__option">
+                    <a class="footer-nav__option__link" href="/about">
+                        About
+                    </a>
+                </div>
+                <div class="footer-nav__option">
+                    <a class="footer-nav__option__link" href="/"> Home </a>
+                </div>
+                <div class="footer-nav__option">
+                    <a class="footer-nav__option__link" href="/Projects">
+                        Projects
+                    </a>
+                </div>
+                <div class="footer-nav__option">
+                    <a class="footer-nav__option__link" href="/Contact">
+                        Contact
+                    </a>
+                </div>
+                <div class="footer-nav__option">
+                    <a class="footer-nav__option__link" href="/Resume">
+                        Resume
+                    </a>
+                </div>
             </div>
         </section>
     </SectionLayout>
 </BaseLayout>
 
 <style lang="scss">
-    @use '../styles/variables.scss' as *;
+    @use "../styles/variables.scss" as *;
 
     .not-found {
         display: flex;
@@ -39,7 +54,8 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
         min-height: 100dvh;
         width: 100%;
 
-        &__bg-text {}
+        &__bg-text {
+        }
 
         .text-group {
             display: flex;
@@ -50,7 +66,6 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
             top: 50%;
             left: 50%;
             transform: translate(-50%, -70%);
-
         }
         &__header {
             color: var(--secondary-color);
@@ -61,25 +76,25 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
             color: var(--secondary-color);
             text-align: left;
         }
-        
+
         .footer-nav {
             display: flex;
             flex-direction: row;
             align-items: center;
-            
+
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
 
-            width: 100%; 
-            // max-width: 600px; 
+            width: 100%;
+            // max-width: 600px;
 
             padding: 2rem;
             margin: 0 auto;
-                        
+
             border-top: var(--border-thin-secondary);
-            
+
             &__option {
                 display: flex;
                 flex-direction: column;
@@ -99,9 +114,6 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
             }
         }
     }
-        
 </style>
 
-<script>
-
-</script>
+<script></script>

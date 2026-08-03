@@ -1,21 +1,28 @@
 ---
-import SiteHeader from '../components/global/SiteHeader.astro';
-import SiteFooter from '../components/global/SiteFooter.astro';
-import EndOfFile from '../components/sections/EndOfFile.astro';
+import SiteHeader from "../components/global/SiteHeader.astro";
+import SiteFooter from "../components/global/SiteFooter.astro";
+import EndOfFile from "../components/sections/EndOfFile.astro";
 
-import DecorLayout from '../layouts/DecorLayout.astro';
+import DecorLayout from "../layouts/DecorLayout.astro";
 
-import '../styles/reset.scss';
-import '../styles/global.scss';
-import '../styles/variables.scss';
+import "../styles/reset.scss";
+import "../styles/global.scss";
+import "../styles/variables.scss";
 
 interface Props {
   pageTitle: string;
   noHeader?: boolean;
   noFooter?: boolean;
+  noEOF?: boolean;
 }
-const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
+const {
+  pageTitle,
+  noHeader = false,
+  noFooter = false,
+  noEOF = false,
+} = Astro.props;
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -28,36 +35,39 @@ const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <DecorLayout>
-        { noHeader? null : <SiteHeader /> }
-        <div class="page">
-          <slot />
-          <EndOfFile />
-        </div>
-        { noFooter? null : <SiteFooter renderFullFooter={false}/> }
+      {noHeader ? null : <SiteHeader />}
+      <div class="page">
+        <slot />
+        {noEOF ? null : <EndOfFile />}
+      </div>
+      {noFooter ? null : <SiteFooter renderFullFooter={false} />}
     </DecorLayout>
-    </body>
+  </body>
 </html>
 
 <style lang="scss">
-    @use '../styles/variables.scss' as *;
+  @use "../styles/variables.scss" as *;
 
-    body {
-        background-color: var(--primary-color);
-        overflow-x: clip;
+  body {
+    background-color: var(--primary-color);
+    overflow-x: clip;
 
-        .page {
-          background-color: var(--primary-color);
-          position: relative;
-          z-index: 2;
+    .page {
+      background-color: var(--primary-color);
+      position: relative;
+      z-index: 2;
 
-          min-height: 100vh;
-          margin-bottom: var(--footer-height, 50vh);
-        }
+      min-height: 100vh;
+      margin-bottom: var(--footer-height, 50vh);
     }
+  }
 </style>
