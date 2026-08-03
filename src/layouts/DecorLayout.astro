@@ -1,83 +1,104 @@
 ---
-import GridLines from '../components/ui/GridLines.astro';
-import DiagonalLines from '../components/ui/DiagonalLines.astro';
-import Ellipse from '../components/ui/Ellipse.astro';
+import GridLines from "../components/ui/GridLines.astro";
+import DiagonalLines from "../components/ui/DiagonalLines.astro";
+import Ellipse from "../components/ui/Ellipse.astro";
 
-import SideRays from '../components/ui/SideRays.astro';
+import SideRays from "../components/ui/SideRays.astro";
 const sideRays: boolean = false;
-const stretchFull: boolean = false;
 
+const ellipseCount = 8;
+const diagonalCount = 4;
+
+const generateDecor = (type: "ellipse" | "diagonal", count: number) => {
+    return Array.from({ length: count }).map((_, index) => {
+        const segment = 100 / count;
+        const top = index * segment + Math.random() * (segment * 0.8);
+        const left = Math.random() * 85;
+        const rotation = Math.random() * 360;
+        return { type, top, left, rotation };
+    });
+};
+
+const ellipses = generateDecor("ellipse", ellipseCount);
+const diagonals = generateDecor("diagonal", diagonalCount);
+const allDecorations = [...ellipses, ...diagonals];
 ---
 
-{sideRays && 
-    <SideRays
-        speed={2.5}
-        rayColor1="#EAB308"
-        rayColor2="#96c8ff"
-        intensity={2}
-        spread={2}
-        origin="top-right"
-        tilt={0}
-        saturation={1.5}
-        blend={0.75}
-        falloff={1.6}
-        opacity={1}
-    />
+{
+    sideRays && (
+        <SideRays
+            speed={2.5}
+            rayColor1="#EAB308"
+            rayColor2="#96c8ff"
+            intensity={2}
+            spread={2}
+            origin="top-right"
+            tilt={0}
+            saturation={1.5}
+            blend={0.75}
+            falloff={1.6}
+            opacity={1}
+        />
+    )
 }
 
-<div class="background">
-    <!-- 
-    <div class="decor">
-        <GridLines isEntirePage = {true}/>
-        <DiagonalLines />
-        <Ellipse />
-    </div> 
-    -->
-    <DiagonalLines />
-    <div class="decor">
-        <GridLines isEntirePage = {true}/>
+<div class="decor-layout">
+    <div class="decor-layout__decor" aria-hidden="true">
+        <GridLines isEntirePage={true} />
+
+        {
+            allDecorations.map((shape) => (
+                <>
+                    {shape.type === "diagonal" ? (
+                        <>
+                            <DiagonalLines
+                                top={shape.top}
+                                left={shape.left}
+                                rotate={shape.rotation}
+                            />
+                            {console.log("Diagonal line spawned")}
+                        </>
+                    ) : (
+                        <>
+                            <Ellipse top={shape.top} left={shape.left} />
+                            {console.log("Ellipse spawned")}
+                        </>
+                    )}
+                </>
+            ))
+        }
     </div>
-    <div class="content">
+
+    <div class="decor-layout__content">
         <slot />
     </div>
 </div>
 
 <style lang="scss">
-    @use '../styles/variables.scss' as *;
+    @use "../styles/variables.scss" as *;
 
-    // .decor {
-    //     opacity: 100% !important;
-    //     position: absolute;
-    // }
-
-    // .background {
-    //     position: relative;
-    //     width: 100%;
-    //     background-color: var(--primary-color);
-    //     // background: rgba(92, 108, 108, 0.2) !important;
-
-    //     z-index: 1;
-    //     isolation: isolate;
-
-    // }
-
-    .background {
+    .decor-layout {
         position: relative;
-    }
+        min-height: 100vh;
 
-    .decor {
-        position: static;
-        height: stretch;
-
-        &__ellipse {
-            display: contents;
+        /*
+         * The decor layer is position:absolute and stretches to fill
+         * the entire height of .decor-layout (which grows with content).
+         * This way GridLines run from top to bottom of the full page,
+         * and DiagonalLines + Ellipse are positioned absolutely within.
+         */
+        &__decor {
             position: absolute;
-            opacity: var(--decor-opacity);
+            inset: 0;
+            overflow: hidden;
 
-            * > {
-                background-color: lime !important;
-            }
+            pointer-events: none;
+            z-index: var(--decor-layer);
+        }
+
+        &__content {
+            position: relative;
+            z-index: 1;
         }
     }
-
 </style>
