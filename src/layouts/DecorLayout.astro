@@ -1,0 +1,83 @@
+---
+import GridLines from '../components/ui/GridLines.astro';
+import DiagonalLines from '../components/ui/DiagonalLines.astro';
+import Ellipse from '../components/ui/Ellipse.astro';
+
+import SideRays from '../components/ui/SideRays.astro';
+const sideRays: boolean = false;
+const stretchFull: boolean = false;
+
+---
+
+{sideRays && 
+    <SideRays
+        speed={2.5}
+        rayColor1="#EAB308"
+        rayColor2="#96c8ff"
+        intensity={2}
+        spread={2}
+        origin="top-right"
+        tilt={0}
+        saturation={1.5}
+        blend={0.75}
+        falloff={1.6}
+        opacity={1}
+    />
+}
+
+<div class="background">
+    <!-- 
+    <div class="decor">
+        <GridLines isEntirePage = {true}/>
+        <DiagonalLines />
+        <Ellipse />
+    </div> 
+    -->
+    <DiagonalLines />
+    <div class="decor">
+        <GridLines isEntirePage = {true}/>
+    </div>
+    <div class="content">
+        <slot />
+    </div>
+</div>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    // .decor {
+    //     opacity: 100% !important;
+    //     position: absolute;
+    // }
+
+    // .background {
+    //     position: relative;
+    //     width: 100%;
+    //     background-color: var(--primary-color);
+    //     // background: rgba(92, 108, 108, 0.2) !important;
+
+    //     z-index: 1;
+    //     isolation: isolate;
+
+    // }
+
+    .background {
+        position: relative;
+    }
+
+    .decor {
+        position: static;
+        height: stretch;
+
+        &__ellipse {
+            display: contents;
+            position: absolute;
+            opacity: var(--decor-opacity);
+
+            * > {
+                background-color: lime !important;
+            }
+        }
+    }
+
+</style>

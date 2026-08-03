@@ -3,6 +3,8 @@ import SiteHeader from '../components/global/SiteHeader.astro';
 import SiteFooter from '../components/global/SiteFooter.astro';
 import EndOfFile from '../components/sections/EndOfFile.astro';
 
+import DecorLayout from '../layouts/DecorLayout.astro';
+
 import '../styles/reset.scss';
 import '../styles/global.scss';
 import '../styles/variables.scss';
@@ -31,13 +33,15 @@ const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
   </head>
   <body>
-    { noHeader? null : <SiteHeader /> }
-    <div class="page">
-      <slot />
-      <EndOfFile />
-    </div>
-    { noFooter? null : <SiteFooter renderFullFooter={true}/> }
-  </body>
+    <DecorLayout>
+        { noHeader? null : <SiteHeader /> }
+        <div class="page">
+          <slot />
+          <EndOfFile />
+        </div>
+        { noFooter? null : <SiteFooter renderFullFooter={false}/> }
+    </DecorLayout>
+    </body>
 </html>
 
 <style lang="scss">

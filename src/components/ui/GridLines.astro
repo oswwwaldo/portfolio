@@ -30,18 +30,19 @@ const { isEntirePage = false } = Astro.props;
         transform: translateX(-50%);
         pointer-events: none;
 
-        height: 100vh;
-
+        opacity: var(--decor-opacity);
+        
         &--full-page {
+            height: stretch;
             height: 100%;
             bottom: 0;
+
+            z-index: var(--decor-layer);
         }
     
         &__line {
             background: var(--secondary-color);
             width: 1px;
-            // height: 100vh;
-            // height: 100%;
             height: stretch;
         }
     }
