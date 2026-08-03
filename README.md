@@ -6,4 +6,7 @@ The design for this website was inspired by many other portfolios and works, inc
 
 That's all, I don't know what else to say lol in a README.md file.
 
+Current milestone:
+https://github.com/oswwwaldo/portfolio/milestone/2
+
 
