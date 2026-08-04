@@ -13,7 +13,6 @@
     --font-size-xl: clamp(1.95rem, 1.54rem + 2.05vw, 3.08rem);
     --font-size-2xl: clamp(2.5rem,1.955rem + 2.73vw,4rem);
     --font-size-3xl: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
-
     --color-gray: gray;
     --color-neutral-200: #d9d9d9;
 
@@ -40,15 +39,17 @@
     --tag-border: var(--border-thin-secondary-20);
     --tag-text: var(--color-secondary-40);
 
-    --decor-layer: 3;
-    --decor-opacity: 10%;
+    --decor-layer: 2;
+    --decor-opacity: 5%;
+    
+    --content-layer: 1;
 
     --btn-height-sm: clamp(2.5rem, 3.5vw, 3rem);
     --btn-height-md: clamp(3.5rem, 5.625vw, 5.0625rem); 
     --btn-height-lg: clamp(4.5rem, 7vw, 6rem);
     
     --btn-padding-sm: clamp(1rem, 1.5vw, 1.25rem);
-    --btn-padding-md: clamp(1.5rem, 1.8vw, 1.75rem); 
+    --btn-padding-md: clamp(1.25rem, 1.8vw, 1.75rem); 
     --btn-padding-lg: clamp(2rem, 3vw, 2.5rem);
 
     --btn-icon-size-sm: var(--font-size-xs);
