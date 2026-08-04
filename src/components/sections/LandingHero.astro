@@ -45,6 +45,7 @@ import Button from '../ui/Button.astro';
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
+    /* Not the most beautiful style sheet */
 
     .hero {
         --hero-position-size: var(--font-size-md);
@@ -111,8 +112,8 @@ import Button from '../ui/Button.astro';
             align-items: start;
             justify-content: space-between;
             gap: 1rem 1.5rem;
-            width: 100%;
-            max-width: 100%;
+            width: 97%;
+            max-width: 97%;
         }
 
         &__actions-wrapper {
@@ -124,12 +125,16 @@ import Button from '../ui/Button.astro';
                 flex-wrap: wrap-reverse;
                 justify-content: space-between;
                 gap: 1rem 1.5rem;
-                width: 100%;
+                width: 97%;
 
                 & .hero__buttons {
                     gap: 0rem;
                     flex-wrap: nowrap;
-                    justify-content: flex-end;
+
+                    & .hero__buttons__btn {
+                        color: red;
+                        max-width: 200px;
+                    }
                 }
             }
 
@@ -148,6 +153,12 @@ import Button from '../ui/Button.astro';
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
+            flex-grow: 1;
+
+            &__btn {
+                flex-grow: 1;
+                max-width: 250px;
+            }
         }
 
         &__socials {
@@ -170,24 +181,32 @@ import Button from '../ui/Button.astro';
 
     @media (max-width: 768px) {
         .hero {
-            --hero-title-size: clamp(2rem,1.955rem + 2.73vw,4rem);
+            --hero-title-size: clamp(1rem, 10vw, 4rem);
             --hero-position-size: var(--font-size-sm);
             --hero-button-height: clamp(3rem, 7vw, 3.75rem);
             --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
 
             top: 20vh;
-            gap: 0rem;
+            gap: 1rem;
 
             &__image {
-                top: 10%;
-
+                top: 50% !important;
             }
 
             &__title {
                 flex-basis: 100%;
+                line-height: normal;
+
+                &__span {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    &.last-name {
+                        white-space: revert;
+                    }
+                }
             }
-        
         }
     }
 </style>
