@@ -45,7 +45,6 @@ import Button from '../ui/Button.astro';
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
-    /* Not the most beautiful style sheet */
 
     .hero {
         --hero-position-size: var(--font-size-md);
@@ -118,34 +117,6 @@ import Button from '../ui/Button.astro';
 
         &__actions-wrapper {
             display: contents; 
-
-            @media (max-width: 768px) {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap-reverse;
-                justify-content: space-between;
-                gap: 1rem 1.5rem;
-                width: 97%;
-
-                & .hero__buttons {
-                    gap: 0rem;
-                    flex-wrap: nowrap;
-
-                    & .hero__buttons__btn {
-                        color: red;
-                        max-width: 200px;
-                    }
-                }
-            }
-
-            @media (max-width: 425px) {
-                flex-direction: column-reverse;
-
-                & .hero__buttons {
-                    justify-content: flex-start;
-                    width: 100%;
-                }
-            }
         }
 
         &__buttons {
@@ -172,7 +143,6 @@ import Button from '../ui/Button.astro';
                 width: var(--hero-social-icon-size);
 
                 &:hover {
-                    // color: var(--primary-color);
                     opacity: 60%;
                 }
             }
@@ -206,6 +176,35 @@ import Button from '../ui/Button.astro';
                         white-space: revert;
                     }
                 }
+            }
+
+            &__actions-wrapper {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap-reverse;
+                justify-content: space-between;
+                gap: 1rem 1.5rem;
+                width: 97%;
+
+                & .hero__buttons {
+                    gap: 0rem;
+                    flex-wrap: nowrap;
+
+                    & .hero__buttons__btn {
+                        max-width: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        .hero__actions-wrapper {
+            flex-direction: column-reverse;
+            
+            & .hero__buttons {
+                justify-content: flex-start;
+                width: 100%;
             }
         }
     }
