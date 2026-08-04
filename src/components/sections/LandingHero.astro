@@ -9,31 +9,36 @@ import Button from '../ui/Button.astro';
 <section class="hero">
     
     <LandingImage 
-    src={stoneNotInFocus} 
+        src={stoneNotInFocus} 
         alt="A monkey holding a phone"
         class="hero__image">
     </LandingImage>
     
-    <h2 class="hero__position"> Full Stack Engineer </h2>
-    
-    <h1 class="hero__title"> 
-        <span class="first-name"> Oswaldo </span>
-        <span class="middle-name"> Fabrizio </span>
-        <span class="last-name"> De Los Santos </span>
-        <span class="middle-name"> Ascencio </span>
-    </h1>
+    <div class="hero__text-wrapper">
+
+        <h2 class="hero__position"> Full Stack Engineer </h2>
+        
+        <h1 class="hero__title"> 
+            <span class="first-name"> Oswaldo </span>
+            <span class="middle-name"> Fabrizio </span>
+            <span class="last-name"> De Los Santos </span>
+            <span class="middle-name"> Ascencio </span>
+        </h1>
+    </div>
     
     <div class="hero__actions">
-        <div class="hero__buttons">
-            <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
-            <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
-        </div>
-
-        <div class="hero__socials">
-            <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
+        <div class="hero__actions-wrapper">
+            <div class="hero__buttons">
+                <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
+                <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
+            </div>
+            
+            <div class="hero__socials">
+                <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
+                <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
+                <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
+                <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
+            </div>
         </div>
     </div>
 </section>
@@ -58,6 +63,10 @@ import Button from '../ui/Button.astro';
         color: var(--secondary-color);
         z-index: 1;
 
+        &__text-wrapper {
+            display: contents;
+        }
+
         &__position {
             font-size: var(--hero-position-size);
             width: fit-content;
@@ -68,7 +77,6 @@ import Button from '../ui/Button.astro';
         &__title {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.15em 0.25em;
             width: auto;
             max-width: 100%;
             font-size: var(--hero-title-size);
@@ -107,11 +115,39 @@ import Button from '../ui/Button.astro';
             max-width: 100%;
         }
 
+        &__actions-wrapper {
+            display: contents; 
+
+            @media (max-width: 768px) {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap-reverse;
+                justify-content: space-between;
+                gap: 1rem 1.5rem;
+                width: 100%;
+
+                & .hero__buttons {
+                    gap: 0rem;
+                    flex-wrap: nowrap;
+                    justify-content: flex-end;
+                }
+            }
+
+            @media (max-width: 425px) {
+                flex-direction: column-reverse;
+
+                & .hero__buttons {
+                    justify-content: flex-start;
+                    width: 100%;
+                }
+            }
+        }
+
         &__buttons {
             display: flex;
+            align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            align-items: center;
         }
 
         &__socials {
@@ -132,32 +168,26 @@ import Button from '../ui/Button.astro';
         }
     }
 
-    @media (max-width: 770px) {
+    @media (max-width: 768px) {
         .hero {
-            --hero-title-size: var(--font-size-xl);
-            --hero-position-size: var(--font-size-md);
+            --hero-title-size: clamp(2rem,1.955rem + 2.73vw,4rem);
+            --hero-position-size: var(--font-size-sm);
             --hero-button-height: clamp(3rem, 7vw, 3.75rem);
             --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
-            align-items: center;
-            text-align: center;
 
-            &__title,
-            &__position {
-                justify-content: center;
+            top: 20vh;
+            gap: 0rem;
+
+            &__image {
+                top: 10%;
+
             }
 
-            &__actions {
-                justify-content: center;
+            &__title {
+                flex-basis: 100%;
             }
-
-            &__buttons {
-                justify-content: center;
-            }
-
-            &__socials {
-                justify-content: center;
-            }
+        
         }
     }
 </style>
