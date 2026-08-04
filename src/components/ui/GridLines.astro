@@ -48,8 +48,17 @@ const { isEntirePage = false } = Astro.props;
     }
 
     @media screen and (max-width: 768px) {
-        .lines__line:first-of-type, .lines__line:last-of-type {
-            display: none;
+
+        .lines__line {
+            position: absolute;
+            top: 0%;
+            left: 90%;
+
+
+            
+            &:not(.lines__line:first-of-type) {
+                display: none;
+            }
         }
     }
     
