@@ -12,7 +12,9 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         <a class="nav-links__link label" href="/"> Home </a>
         <a class="nav-links__link label" href="/projects"> Projects </a>
         <a class="nav-links__link label" href="/contact"> Contact </a>
-        <ThemeIcon size={20}></ThemeIcon>
+        <div class="nav-links__theme">
+            <ThemeIcon size={20}></ThemeIcon>
+        </div>
         <button class="nav-links__hamburger">
             <Icon name="mynaui:menu"></Icon>
         </button>
@@ -71,11 +73,11 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
 
     @media (max-width: 768px) {
         .nav-logo {
-            display: none;
+            
         }
 
         .nav-wrapper {
-            justify-content: flex-end;
+            justify-content: space-between;
         }
 
         .nav-links {
@@ -83,10 +85,25 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
                 display: none !important; 
             }
 
+            &__theme {
+                display: none;
+            }
+
             &__hamburger {
                 display: flex; 
                 align-items: center;
                 justify-content: center;
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        .nav-wrapper {
+            flex-direction: row;
+            padding: 1rem;
+
+            & .nav-logo {
+                display: none;
             }
         }
     }
