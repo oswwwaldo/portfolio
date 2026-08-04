@@ -163,7 +163,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
         min-width: 100px;
 
         .button__text { font-size: var(--font-size-sm); }
-        .button__icon { font-size: var(--btn-icon-size-sm); }
     }
 
     &--lg {
@@ -172,7 +171,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
         min-width: 180px;
 
         .button__text { font-size: var(--font-size-md); }
-        .button__icon { font-size: var(--btn-icon-size-lg); }
     }
 
     &--pill {
@@ -222,7 +220,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: var(--btn-icon-size-md);
         line-height: 0;
     }
   }
@@ -234,9 +231,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
       gap: clamp(0.5rem, 1vw, 0.75rem);
       
       &__text { font-size: var(--font-size-sm); }
-
-      &__icon {
-      }
       
       &--fab {
           bottom: 1rem;
