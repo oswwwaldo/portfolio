@@ -19,10 +19,10 @@ import Button from '../ui/Button.astro';
         <h2 class="hero__position"> Full Stack Engineer </h2>
         
         <h1 class="hero__title"> 
-            <span class="first-name"> Oswaldo </span>
-            <span class="middle-name"> Fabrizio </span>
-            <span class="last-name"> De Los Santos </span>
-            <span class="middle-name"> Ascencio </span>
+            <span class="first-name">Oswaldo</span>
+            <span class="middle-name">Fabrizio</span>
+            <span class="last-name">De Los Santos</span>
+            <span class="middle-name">Ascencio</span>
         </h1>
     </div>
     
@@ -93,15 +93,13 @@ import Button from '../ui/Button.astro';
                 font-size: inherit;
                 line-height: inherit;
                 pointer-events: all;
+                white-space: nowrap;
 
 
                 &.middle-name {
                     display: none;
                 }
 
-                &.last-name {
-                    white-space: nowrap;
-                }
             }
         }
 
@@ -134,7 +132,7 @@ import Button from '../ui/Button.astro';
 
         &__socials {
             display: flex;
-            align-items: center;
+            align-items: end;
             flex-wrap: wrap;
             gap: 1rem;
 
@@ -151,10 +149,12 @@ import Button from '../ui/Button.astro';
 
     @media (max-width: 768px) {
         .hero {
-            --hero-title-size: clamp(1rem, 10vw, 4rem);
+            --hero-title-size: clamp(2.5rem, 10vw, 6rem);
             --hero-position-size: var(--font-size-sm);
             --hero-button-height: clamp(3rem, 7vw, 3.75rem);
             --hero-social-icon-size: calc(var(--hero-button-height) / 2);
+
+            padding: 0 2.25rem;
 
 
             top: 20vh;
@@ -168,13 +168,8 @@ import Button from '../ui/Button.astro';
                 flex-basis: 100%;
                 line-height: normal;
 
-                &__span {
-                    display: flex;
-                    flex-wrap: wrap;
-
-                    &.last-name {
-                        white-space: revert;
-                    }
+                & span {
+                    white-space: normal;
                 }
             }
 
