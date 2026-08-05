@@ -16,6 +16,10 @@
     --color-gray: gray;
     --color-neutral-200: #d9d9d9;
 
+
+    --color-primary-40: rgb(from var(--primary-color) r g b / 0.4);
+
+    --color-secondary-05: rgb(from var(--secondary-color) r g b / 0.05);
     --color-secondary-20: rgb(from var(--secondary-color) r g b / 0.2);
     --color-secondary-40: rgb(from var(--secondary-color) r g b / 0.4);
     --color-secondary-60: rgb(from var(--secondary-color) r g b / 0.6);
@@ -23,8 +27,11 @@
 
 
     --color-overlay-black-05: rgba(0, 0, 0, 0.05);
+    --color-overlay-black-20: rgba(0, 0, 0, 0.2);
+    --color-overlay-black-40: rgba(0, 0, 0, 0.4);
     --color-overlay-black-60: rgba(0, 0, 0, 0.6);
     --color-overlay-black-80: rgba(0, 0, 0, 0.8);
+    --color-overlay-black-100: rgba(0, 0, 0, 1);
 
     --color-flag-red: #cd232c;
     --color-flag-blue: #204c67;
