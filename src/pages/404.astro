@@ -5,10 +5,9 @@ import SectionLayout from "../layouts/SectionLayout.astro";
 const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
 ---
 
-<BaseLayout pageTitle={pageTitle} noFooter={true} noEOF={true}>
+<BaseLayout pageTitle={pageTitle} noFooter={true} noEOF={true} noPageMargin={true}>
     <SectionLayout noMargins={true}>
         <section class="not-found">
-            <span class="not-found__bg-text"> Error 404 </span>
             <div class="text-group">
                 <h1 class="not-found__header">Page not found</h1>
                 <h2 class="not-found__caption">We couldn't find that page</h2>
@@ -54,23 +53,24 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
         min-height: 100dvh;
         width: 100%;
 
-        &__bg-text {
-        }
-
         .text-group {
             display: flex;
+            align-items: center;
             flex-direction: column;
             justify-content: center;
+
             position: absolute;
-            width: max-content;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -70%);
+            
+            width: 100%;
+            padding: 0 1rem;
+            text-align: center;
         }
         &__header {
-            color: var(--secondary-color);
-            text-align: left;
             font-size: var(--font-size-3xl);
+            text-align: left;
+            color: var(--secondary-color);
         }
         &__caption {
             color: var(--secondary-color);
@@ -79,18 +79,15 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
 
         .footer-nav {
             display: flex;
-            flex-direction: row;
             align-items: center;
+            flex-direction: row;
+
 
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            left: 0; bottom: 0;
 
             width: 100%;
-            // max-width: 600px;
-
-            padding: 2rem;
+            padding: 2rem 1rem;
             margin: 0 auto;
 
             border-top: var(--border-thin-secondary);
@@ -102,18 +99,51 @@ const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
                 align-items: center;
                 gap: 3.5rem;
 
-                width: 100%;
+                width: 100%;    
 
                 &__link {
                     font-family: var(--font-heading);
                     font-size: var(--font-size-md);
-
                     color: var(--secondary-color);
+
                     text-decoration: none;
+                    transition: opacity 0.2s ease;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .not-found {
+            flex-direction: column;
+            text-align: left;
+
+            .text-group {
+                position: revert;
+                transform: revert;
+                text-align: left;
+                padding: 1rem;
+                align-items: flex-start;
+            }
+            .footer-nav {
+                align-items: center;
+                flex-direction: column;
+                justify-content: flex-start;
+
+                border-top: none;
+
+                position: revert;
+                transform: revert;
+                text-align: left;
+
+                &__option {
+                    align-items: flex-start;
                 }
             }
         }
     }
 </style>
-
-<script></script>

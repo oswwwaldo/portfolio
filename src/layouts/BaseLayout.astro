@@ -14,12 +14,16 @@ interface Props {
   noHeader?: boolean;
   noFooter?: boolean;
   noEOF?: boolean;
+  noBG?: boolean;
+  noPageMargin: boolean;
 }
 const {
   pageTitle,
   noHeader = false,
   noFooter = false,
   noEOF = false,
+  noBG = false, 
+  noPageMargin = false,
 } = Astro.props;
 ---
 
@@ -43,13 +47,23 @@ const {
     />
   </head>
   <body>
-    <DecorLayout>
-      {noHeader ? null : <SiteHeader />}
-      <div class="page">
-        <slot />
-        {noEOF ? null : <EndOfFile />}
-      </div>
-    </DecorLayout>
+    {noBG ? (
+      <>
+        {noHeader ? null : <SiteHeader />}
+        <div class:list={['page', { 'page--no-margin-btm': noPageMargin }]}>
+          <slot />
+          {noEOF ? null : <EndOfFile />}
+        </div>
+      </>
+    ) : (
+      <DecorLayout>
+        {noHeader ? null : <SiteHeader />}
+        <div class:list={['page', { 'page--no-margin-btm': noPageMargin }]}>  
+          <slot />
+          {noEOF ? null : <EndOfFile />}
+        </div>
+      </DecorLayout>
+    )}
     {noFooter ? null : <SiteFooter renderFullFooter={false} />}
   </body>
 </html>
@@ -62,11 +76,14 @@ const {
     overflow-x: clip;
 
     .page {
-      // background-color: var(--primary-color);
       position: relative;
 
-      min-height: 100vh;
+      // min-height: 100v h;
       margin-bottom: var(--footer-height, 50vh);
+
+      &--no-margin-btm {
+        margin-bottom: 0 !important;
+      }
     }
   }
 </style>
