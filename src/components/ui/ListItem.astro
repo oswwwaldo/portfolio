@@ -41,7 +41,9 @@ const {
             </div>
             <div class="job__position">
                 <div class="job__position__title"> 
-                    {itemTitle} 
+                    <h3> 
+                        {itemTitle}
+                    </h3>
                 </div>
                 <div class="job__position__company"> 
                     {itemCaption} 
@@ -66,7 +68,9 @@ const {
         </div>
         <div class="project__info">
             <div class="project__info__title"> 
-                {itemTitle}
+                <h3> 
+                    {itemTitle}
+                </h3>
             </div>
             <div class="project__info__description"> 
                 {itemDescription}
@@ -89,6 +93,10 @@ const {
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
+    :root {
+        --level-aboreto-heading-offset: 0.25rem;
+    }
+
     .job {
         display: flex;
         flex-direction: row;
@@ -104,15 +112,17 @@ const {
         width: 100%;
         gap: 2vw;
 
+        display: grid;
+        align-items: end;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr 3fr 1fr;
+
         &__date {
             display: flex;
             flex-direction: row;
             align-items: flex-start;
             height: 100%;
-            margin-top: 5px; /*/ offset natural ABORETO height differences to align horizontally with position text /*/
-            width: fit-content;
-
-            min-width: 12%;
+            padding-top: var(--level-aboreto-heading-offset);
         }
 
         &__position {
@@ -120,33 +130,18 @@ const {
             align-items: flex-start;
             flex-direction: column;
             gap: 1rem;
-
             height: 100%;
-            // width: fit-content;
-            // width: 50%;
-            width: fit-content;
+            padding: 0 1.75rem;
 
-
-            &__title {
-                min-height: 40px;
-
-                font-family: var(--font-heading);
-                font-size: var(--font-size-lg);
-            }
+            background-color: var(--primary-color);
 
             &__company {
-                min-height: 20px;
-
                 font-family: var(--font-body);
                 font-size: var(--font-size-base);
             }
             &__description {
-                min-height: 35px;
-
                 font-family: var(--font-body);
                 font-size: var(--font-size-sm);
-                // width: max-content;
-                // width:   -content;
             }
         }
 
@@ -156,13 +151,42 @@ const {
             flex-wrap: wrap;
             align-items: flex-start;
             align-content: flex-start;
-            gap: 10px;
-
-            margin-top: 10px; /*/ offset natural ABORETO height differences to align horizontally with position text /*/
-
+            gap: 0.5rem;
             height: 100%;
+            padding-top: var(--level-aboreto-heading-offset);
+        }
+    }
 
-            max-width: 25%;
+    @media (max-width: 425px) {
+        .job {
+            padding: 20px 0;
+            gap: 1vw;
+
+            &__date {
+                font-size: var(--font-size-sm);
+                margin-bottom: 1rem;
+                color: var(--color-secondary-60);
+            }
+
+            &__position {
+                gap: 1rem;
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .job {
+            flex-direction: column;
+            max-height: none;
+
+            &__position {
+                width: 100%;
+            }
+
+            &__skills {
+                width: 100%;
+                max-width: fit-content;
+            }
         }
     }
 
@@ -224,22 +248,6 @@ const {
                 font-family: var(--font-body);
                 font-size: var(--font-size-xs);
                 letter-spacing: 4.08px;
-            }
-        }
-    }
-
-    @media (max-width: 1350px) {
-        .job {
-            flex-direction: column;
-            max-height: none;
-
-            &__position {
-                width: 100%;
-            }
-
-            &__skills {
-                width: 100%;
-                max-width: fit-content;
             }
         }
     }
