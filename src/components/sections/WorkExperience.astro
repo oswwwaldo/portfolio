@@ -53,7 +53,7 @@ import Tag from '../ui/Tag.astro';
         <StatsItem stat="12+" caption="Deployed projects" />
     </div>
     <div class="work-experience__tech">
-        <h4> TECH STACK </h4>
+        <h3> TECH STACK </h3>
         <Tag textContent="PHP"/>
         <Tag textContent="PHP"/>
         <Tag textContent="PHP"/>
@@ -128,10 +128,8 @@ import Tag from '../ui/Tag.astro';
             border-top: var(--border-thin-secondary);  
             border-bottom: var(--border-thin-secondary); 
 
-            h4 {
+            h3 {
                 width: 100%;
-                margin: 1rem 0;
-                font-size: var(--font-size-md);
             }
         }
 
@@ -143,9 +141,9 @@ import Tag from '../ui/Tag.astro';
             gap: 2rem;
             align-items: start;
 
-            @media (max-width: 770px) { 
+            @media (max-width: 1000px) { 
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem; /* Slightly smaller gap for mobile */
+                gap: 1.5rem; 
             }
 
         }
@@ -184,7 +182,7 @@ import Tag from '../ui/Tag.astro';
         }
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 425px) {
         .work-experience__footer {
             flex-direction: column;
             gap: 2rem;

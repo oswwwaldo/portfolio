@@ -1,12 +1,7 @@
 ---
-import Background from '../components/ui/Background.astro';
 ---
 
 <div class="grid">
-  <div class="grid__background">
-    <Background />
-  </div>
-
   <div class="grid__content">
     <slot />
   </div>
@@ -17,7 +12,7 @@ import Background from '../components/ui/Background.astro';
 <style lang="scss">
   .grid {
     position: relative;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: clip;
 
     display: grid;
@@ -30,7 +25,6 @@ import Background from '../components/ui/Background.astro';
       pointer-events: none;
     }
 
-    /*/ This is where the site's content actually live /*/
     &__content {
       grid-column: outer-left / outer-right;
       grid-row: 1 / -1;

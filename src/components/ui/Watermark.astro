@@ -1,0 +1,27 @@
+---
+---
+
+<div class="watermark">
+    <p class="watermark__text"> Oswaldo Fabrizio De Los Santos Ascencio </p>
+</div>
+
+<style lang="scss">
+    @use '../../../styles/variables.scss' as *;
+    
+    .watermark {
+        display: flex;
+        justify-content: center;
+        z-index: 999;
+
+        position: fixed;
+        top: 0; left: 0;
+
+        &__text {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            line-height: 19.5;
+            letter-spacing: 5px;
+            color: var(--secondary-color);
+        }
+    }
+</style>

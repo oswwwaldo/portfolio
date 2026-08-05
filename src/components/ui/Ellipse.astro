@@ -1,19 +1,27 @@
 ---
-const hardcodedValues: boolean = false;
+interface Props {
+    top?: number;
+    left?: number;
+}
+
+const { top = 0, left = 0 } = Astro.props;
 ---
 
-<div class="ellipse">
-
-</div>
+<div class="ellipse" style={`top: ${top}%; left: ${left}%;`}></div>
 
 <style lang="scss">
-    @use '../../styles/variables.scss' as *;
+    @use "../../styles/variables.scss" as *;
 
     .ellipse {
         background: transparent;
         border: var(--border-thin-secondary);
         border-radius: 100%;
 
-        width: 100vw; height: 100vw;
+        width: 100vw;
+        height: 100vw;
+        z-index: var(--decor-layer);
+        opacity: var(--decor-opacity);
+
+        position: absolute;
     }
 </style>

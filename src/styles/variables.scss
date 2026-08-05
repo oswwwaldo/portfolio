@@ -13,10 +13,13 @@
     --font-size-xl: clamp(1.95rem, 1.54rem + 2.05vw, 3.08rem);
     --font-size-2xl: clamp(2.5rem,1.955rem + 2.73vw,4rem);
     --font-size-3xl: clamp(3.5rem, 2.5rem + 4vw, 6.25rem);
-
     --color-gray: gray;
     --color-neutral-200: #d9d9d9;
 
+
+    --color-primary-40: rgb(from var(--primary-color) r g b / 0.4);
+
+    --color-secondary-05: rgb(from var(--secondary-color) r g b / 0.05);
     --color-secondary-20: rgb(from var(--secondary-color) r g b / 0.2);
     --color-secondary-40: rgb(from var(--secondary-color) r g b / 0.4);
     --color-secondary-60: rgb(from var(--secondary-color) r g b / 0.6);
@@ -24,11 +27,17 @@
 
 
     --color-overlay-black-05: rgba(0, 0, 0, 0.05);
+    --color-overlay-black-20: rgba(0, 0, 0, 0.2);
+    --color-overlay-black-40: rgba(0, 0, 0, 0.4);
     --color-overlay-black-60: rgba(0, 0, 0, 0.6);
     --color-overlay-black-80: rgba(0, 0, 0, 0.8);
+    --color-overlay-black-100: rgba(0, 0, 0, 1);
 
     --color-flag-red: #cd232c;
     --color-flag-blue: #204c67;
+
+    --color-flag-red: var(--color-gray);
+    --color-flag-blue: var(--color-gray);
 
     --border-thin-primary: 1px solid var(--primary-color);
     --border-thin-secondary: 1px solid var(--secondary-color);
@@ -37,17 +46,21 @@
     --tag-border: var(--border-thin-secondary-20);
     --tag-text: var(--color-secondary-40);
 
+    --footer-layer: -999;
+    --layer-index: 1;
+    --decor-layer: 2;
+    --content-layer: 3;
+    --decor-opacity: 5%;
+    
+
+
     --btn-height-sm: clamp(2.5rem, 3.5vw, 3rem);
     --btn-height-md: clamp(3.5rem, 5.625vw, 5.0625rem); 
     --btn-height-lg: clamp(4.5rem, 7vw, 6rem);
     
     --btn-padding-sm: clamp(1rem, 1.5vw, 1.25rem);
-    --btn-padding-md: clamp(1.5rem, 1.8vw, 1.75rem); 
+    --btn-padding-md: clamp(1.25rem, 1.8vw, 1.75rem); 
     --btn-padding-lg: clamp(2rem, 3vw, 2.5rem);
-
-    --btn-icon-size-sm: var(--font-size-xs);
-    --btn-icon-size-md: var(--font-size-sm);
-    --btn-icon-size-lg: var(--font-size-base);
 
     --btn-transition-speed: 0.2s ease-out;
     --btn-scale-active: 0.98;

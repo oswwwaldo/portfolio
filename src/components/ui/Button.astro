@@ -65,7 +65,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
   @use "../../styles/variables.scss" as *;
 
   .button {
-    /* Base Variables & Layout */
     background-color: var(--primary-color);
     border: var(--border-thin-secondary);
     color: var(--secondary-color);
@@ -79,7 +78,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
     block-size: var(--btn-height-md);
     padding: var(--btn-padding-md);
     width: fit-content;
-    min-width: 200px; 
     max-height: 72px;
 
     cursor: pointer;
@@ -112,7 +110,7 @@ const resolvedVariant = isPrimary ? "primary" : variant;
 
     &.invert {
         background-color: var(--secondary-color);
-        border: var(--border-thin-primary);
+        border: var(--border-thin-secondary);
         color: var(--primary-color);
     }
 
@@ -164,7 +162,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
         min-width: 100px;
 
         .button__text { font-size: var(--font-size-sm); }
-        .button__icon { font-size: var(--btn-icon-size-sm); }
     }
 
     &--lg {
@@ -173,7 +170,6 @@ const resolvedVariant = isPrimary ? "primary" : variant;
         min-width: 180px;
 
         .button__text { font-size: var(--font-size-md); }
-        .button__icon { font-size: var(--btn-icon-size-lg); }
     }
 
     &--pill {
@@ -223,18 +219,17 @@ const resolvedVariant = isPrimary ? "primary" : variant;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: var(--btn-icon-size-md);
         line-height: 0;
     }
   }
 
-  @media (max-width: 770px) {
+  @media (max-width: 768px) {
     .button {
       block-size: clamp(3rem, 6vw, 4rem);
-      padding: clamp(1.25rem, 3vw, 1.75rem);
+      padding: 0 clamp(0.25rem, 10.5vw, 1.75rem);
       gap: clamp(0.5rem, 1vw, 0.75rem);
       
-      .button__text { font-size: var(--font-size-sm); }
+      &__text { font-size: var(--font-size-sm); }
       
       &--fab {
           bottom: 1rem;

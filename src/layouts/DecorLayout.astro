@@ -1,0 +1,99 @@
+---
+import GridLines from "../components/ui/GridLines.astro";
+import DiagonalLines from "../components/ui/DiagonalLines.astro";
+import Ellipse from "../components/ui/Ellipse.astro";
+
+import SideRays from "../components/ui/SideRays.astro";
+const sideRays: boolean = false;
+
+const ellipseCount = 4;
+const diagonalCount = 2;
+
+const generateDecor = (type: "ellipse" | "diagonal", count: number) => {
+    return Array.from({ length: count }).map((_, index) => {
+        const segment = 100 / count;
+        const top = index * segment + Math.random() * (segment * 0.8);
+        const left = Math.random() * 85;
+        const base = Math.random() < 0.5 ? 135 : -45; // Generates a deg between 315 -> 45 && 135 -> 225
+        const rotation = Math.floor(Math.random() * 91) + base;
+        return { type, top, left, rotation };
+    });
+};
+
+const ellipses = generateDecor("ellipse", ellipseCount);
+const diagonals = generateDecor("diagonal", diagonalCount);
+const allDecorations = [...ellipses, ...diagonals];
+---
+
+{
+    sideRays && (
+        <SideRays
+            speed={2.5}
+            rayColor1="#EAB308"
+            rayColor2="#96c8ff"
+            intensity={2}
+            spread={2}
+            origin="top-right"
+            tilt={0}
+            saturation={1.5}
+            blend={0.75}
+            falloff={1.6}
+            opacity={1}
+        />
+    )
+}
+
+<div class="decor-layout">
+    <div class="decor-layout__decor" aria-hidden="true">
+        <GridLines isEntirePage={true} />
+
+        {
+            allDecorations.map((shape) => (
+                <>
+                    {shape.type === "diagonal" ? (
+                        <>
+                            <DiagonalLines
+                                top={shape.top}
+                                left={shape.left}
+                                rotate={shape.rotation}
+                            />
+                            {console.log("Diagonal line spawned")}
+                        </>
+                    ) : (
+                        <>
+                            <Ellipse top={shape.top} left={shape.left} />
+                            {console.log("Ellipse spawned")}
+                        </>
+                    )}
+                </>
+            ))
+        }
+    </div>
+
+    <div class="decor-layout__content">
+        <slot />
+    </div>
+</div>
+
+<style lang="scss">
+    @use "../styles/variables.scss" as *;
+
+    .decor-layout {
+        position: relative;
+        min-height: 100vh;
+
+        &__decor {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+
+            pointer-events: none;
+            z-index: var(--decor-layer);
+        }
+
+        &__content {
+            position: relative;
+            z-index: var(--content-layer);
+        }
+    }
+</style>

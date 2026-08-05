@@ -11,10 +11,7 @@ const { textContent, secondLine } = Astro.props;
     <h1>
         {textContent}
         {secondLine && (
-            <>
-                <br />
-                {secondLine}
-            </>
+            <span class="second-line">{' '}{secondLine}</span>
         )}
     </h1>
 </div>
@@ -23,10 +20,56 @@ const { textContent, secondLine } = Astro.props;
     @use '../../styles/variables.scss' as *;
 
     .section-header {
+        position: relative;
         margin-bottom: 1rem;
+
+        // &::before {
+        //     content: "";
+        //     position: absolute;
+        //     top: 50%; left: 50%;
+        //     transform: translate(-50%, -50%);
+        //     display: block;
+        //     width: 50px;
+        //     height: 50px;
+        //     background-color: black;
+        //     // border: 1px solid var(--color-secondary-20);
+        // }
+
+        // &::after {
+        //     content: "";
+        //     position: absolute;
+        //     top: 50%; left: -10%;
+        //     transform: translate(-50%, -50%);
+        //     display: block;
+        //     width: 50px;
+        //     height: 150px;
+        //     background-color: var(--secondary-color);
+        // }
+
+        &:hover {
+            &::before {
+                // background-color: red;
+            }
+        }
         
         h1 {
             font-size: var(--font-size-2xl);
+        }
+
+        .second-line {
+            display: block; 
+            font-family: inherit;
+            font-size: inherit;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-header h1 {
+            margin-right: 1rem;
+        }
+
+        .section-header .second-line {
+            display: inline; 
         }
     }
 </style>

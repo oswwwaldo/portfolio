@@ -1,19 +1,32 @@
 ---
-import SiteHeader from '../components/global/SiteHeader.astro';
-import SiteFooter from '../components/global/SiteFooter.astro';
+import SiteHeader from "../components/global/SiteHeader.astro";
+import SiteFooter from "../components/global/SiteFooter.astro";
+import EndOfFile from "../components/sections/EndOfFile.astro";
 
-import '../styles/reset.scss';
-import '../styles/global.scss';
-import '../styles/variables.scss';
+import DecorLayout from "../layouts/DecorLayout.astro";
 
+import "../styles/reset.scss";
+import "../styles/global.scss";
+import "../styles/variables.scss";
 
 interface Props {
   pageTitle: string;
   noHeader?: boolean;
   noFooter?: boolean;
+  noEOF?: boolean;
+  noBG?: boolean;
+  noPageMargin?: boolean;
 }
-const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
+const {
+  pageTitle,
+  noHeader = false,
+  noFooter = false,
+  noEOF = false,
+  noBG = false, 
+  noPageMargin = false,
+} = Astro.props;
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -26,22 +39,51 @@ const { pageTitle, noHeader = false, noFooter = false } = Astro.props;
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    { noHeader? null : <SiteHeader /> }
-    <slot />
-    { noFooter? null : <SiteFooter /> }
+    {noBG ? (
+      <>
+        {noHeader ? null : <SiteHeader />}
+        <div class:list={['page', { 'page--no-margin-btm': noPageMargin }]}>
+          <slot />
+          {noEOF ? null : <EndOfFile />}
+        </div>
+      </>
+    ) : (
+      <DecorLayout>
+        {noHeader ? null : <SiteHeader />}
+        <div class:list={['page', { 'page--no-margin-btm': noPageMargin }]}>  
+          <slot />
+          {noEOF ? null : <EndOfFile />}
+        </div>
+      </DecorLayout>
+    )}
+    {noFooter ? null : <SiteFooter renderFullFooter={false} />}
   </body>
 </html>
 
 <style lang="scss">
-    @use '../styles/variables.scss' as *;
+  @use "../styles/variables.scss" as *;
 
-    body {
-        background-color: var(--primary-color);
-        overflow-x: clip;
+  body {
+    background-color: var(--primary-color);
+    overflow-x: clip;
+
+    .page {
+      position: relative;
+
+      // min-height: 100v h;
+      margin-bottom: var(--footer-height, 50vh);
+
+      &--no-margin-btm {
+        margin-bottom: 0 !important;
+      }
     }
+  }
 </style>

@@ -12,7 +12,9 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         <a class="nav-links__link label" href="/"> Home </a>
         <a class="nav-links__link label" href="/projects"> Projects </a>
         <a class="nav-links__link label" href="/contact"> Contact </a>
-        <ThemeIcon size={20}></ThemeIcon>
+        <div class="nav-links__theme">
+            <ThemeIcon size={20}></ThemeIcon>
+        </div>
         <button class="nav-links__hamburger">
             <Icon name="mynaui:menu"></Icon>
         </button>
@@ -71,16 +73,24 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
 
     @media (max-width: 768px) {
         .nav-logo {
-            display: none;
+            
         }
 
         .nav-wrapper {
-            justify-content: flex-end;
+            background-color: var(--primary-color);
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
         }
 
         .nav-links {
             &__link {
                 display: none !important; 
+            }
+
+            &__theme {
+                display: none;
             }
 
             &__hamburger {
@@ -90,4 +100,22 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
             }
         }
     }
+
+    @media (max-width: 425px) {
+        .nav-wrapper {
+            flex-direction: row;
+            padding: 1rem;
+
+            & .nav-logo {
+                display: none;
+            }
+        }
+    }
 </style>
+<script>
+    const hamburger = document.querySelector('.nav-links__hamburger');
+
+    hamburger?.addEventListener('click', () => {
+        console.log('mobile menu click event fired');
+    })
+</script>

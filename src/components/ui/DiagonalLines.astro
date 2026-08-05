@@ -1,18 +1,25 @@
 ---
-const hardcodedValues: boolean = true;
+interface Props {
+    top?: number;
+    left?: number;
+    rotate?: number;
+}
+
+const { top = 0, left = 0, rotate = 0 } = Astro.props;
 ---
 
-<div class="lines">
+<div
+    class="lines"
+    style={`top: ${top}%; left: ${left}%; transform: rotate(${rotate}deg);`}
+>
     <div class="lines__line"></div>
     <div class="lines__line"></div>
     <div class="lines__line"></div>
 </div>
-    
+
 <style lang="scss">
-    @use '../../styles/variables.scss' as *;
-        
-    /* Hardcoded values */
-    /* Will need to randomize */
+    @use "../../styles/variables.scss" as *;
+
     .lines {
         display: flex;
         flex-direction: row;
@@ -21,16 +28,18 @@ const hardcodedValues: boolean = true;
         width: 20%;
 
         position: absolute;
-        top: 0; left: 70%;
+        top: 0;
+        left: 70%;
 
-        transform: translateX(-50%);
         pointer-events: none;
 
-
         width: 10%;
-        top: -35%; left: 60%;
-        rotate: 130deg;
-    
+        // top: -35%; left: 60%;
+        // rotate: 130deg;
+
+        z-index: var(--decor-layer);
+        opacity: var(--decor-opacity);
+
         &__line {
             background: var(--secondary-color);
             width: 1px;
@@ -41,5 +50,4 @@ const hardcodedValues: boolean = true;
             }
         }
     }
-    
 </style>

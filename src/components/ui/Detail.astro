@@ -7,9 +7,9 @@ type Props = {
 const {type, items} = Astro.props
 ---
 <div class="detail">
-    <h4 class="detail__header">
+    <h3 class="detail__header">
         {type}
-    </h4>
+    </h3>
     <ul class="detail__list">
         {
             items.map((item) => (
@@ -37,8 +37,6 @@ const {type, items} = Astro.props
         width: 50%;
 
         &__header {
-            font-family: var(--font-heading);
-            font-size: var(--font-size-md);
             color: var(--secondary-color);
         }
 
@@ -86,6 +84,12 @@ const {type, items} = Astro.props
     @media (max-width: 1024px) {
         .detail {
             width: 100%;
+        }
+    }
+    
+    @media (max-width: 425px) {
+        .detail {
+            padding: 48px 16px;
         }
     }
 

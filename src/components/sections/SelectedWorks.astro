@@ -1,16 +1,9 @@
 ---
 import CardShowcase from '../ui/CardShowcase.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
-type Props = {
-
-}
-
-const {} = Astro.props
-
 ---
 <section class="selected-works">
     <SectionHeader textContent="Selected" secondLine="Works"/>
-
     <div class="selected-works__cards">
         <CardShowcase />
         <CardShowcase />    
@@ -23,25 +16,32 @@ const {} = Astro.props
     .selected-works {
         display: flex;
         flex-direction: column;
-
         color: var(--secondary-color);  
 
         &__cards {
             display: flex;
             flex-direction: row;
-            // justify-content: space-between;
             gap: 5vw;
 
             width: 100%;
         }
     }
 
-    @media (max-width: 770px){
+    @media (max-width: 768px){
+        .selected-works {
+            margin-right: 3vw;
+        }
+    }
+
+    @media (max-width: 600px){
         .selected-works__cards {
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 10vh;
+        }
+    }
+
+    @media (max-width: 768px){
+        .selected-works__cards {
+            gap: 3rem;
         }
     }
 

@@ -2,23 +2,21 @@
 import ImagePlaceholder from '../../components/ui/ImagePlaceholder.astro';
 import thumbnail from '../../assets/media/thumbnail.png';
 import Tag from '../../components/ui/Tag.astro';
-type Props = {
-    
-}
-
-const {} = Astro.props
-
 ---
 <div class="card">
     <div class="card__image">
-        <ImagePlaceholder alt="placeholder-image" src={thumbnail}/>
+        <ImagePlaceholder 
+            src={thumbnail}
+            alt="placeholder-image" 
+        />
     </div>
     <div class="card__title">
-        <h2> New Tab Chess </h2>
+        <h3> New Tab Chess </h3>
     </div>
     <div class="card__description">
         <p> Abstract data visualization dashboard for modern enterprise analytics </p>
     </div>
+
     <div class="card__tags">
         <Tag textContent = 'A/B Testing'></Tag>
         <Tag textContent = 'User Research'></Tag>
@@ -37,38 +35,36 @@ const {} = Astro.props
         aspect-ratio: 4;
         margin: 0 auto; 
 
+        &:hover {
+            // background-color: var(--color-secondary-05);
+        }
+
         &__image {
+            // margin-bottom: 1rem;
             width: 100%;
-            height: auto;
-            
+                        
             :global(img), :global(svg) { 
                 width: 100%;
                 height: auto;
+
+                aspect-ratio: 7/5;
                 display: block;
                 object-fit: cover;
             }
-        }
-
-        &__title {
-            width: 100%;
-        }
-
-        &__description {
-            width: 100%;
         }
 
         &__tags {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 1rem;
-            width: 100%;
+            gap: 0.5rem;
         }
     }
 
-    @media (max-width: 770px) {
+    @media (max-width: 768px) {
         .card {
-            gap: 1.5rem; 
+            // gap: 2.5vh; 
+            gap: 1rem;
         }
     }
 </style>

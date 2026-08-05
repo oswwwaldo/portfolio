@@ -9,31 +9,52 @@ import Button from '../ui/Button.astro';
 <section class="hero">
     
     <LandingImage 
-    src={stoneNotInFocus} 
+        src={stoneNotInFocus} 
         alt="A monkey holding a phone"
         class="hero__image">
     </LandingImage>
     
-    <h2 class="hero__position"> Full Stack Engineer </h2>
-    
-    <h1 class="hero__title"> 
-        <span class="first-name"> Oswaldo </span>
-        <span class="middle-name"> Fabrizio </span>
-        <span class="last-name"> De Los Santos </span>
-        <span class="middle-name"> Ascencio </span>
-    </h1>
+    <div class="hero__text-wrapper">
+
+        <h2 class="hero__position"> Full Stack Engineer </h2>
+        
+        <h1 class="hero__title"> 
+            <span class="first-name">Oswaldo</span>
+            <span class="middle-name">Fabrizio</span>
+            <span class="last-name">De Los Santos</span>
+            <span class="middle-name">Ascencio</span>
+        </h1>
+    </div>
     
     <div class="hero__actions">
-        <div class="hero__buttons">
-            <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
-            <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
-        </div>
-
-        <div class="hero__socials">
-            <Icon class="hero__socials__btn" name="fa6-solid:envelope"><a href="mailto:ofdelossantosa"></a></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:instagram"><a href="instagram.com/byoswwwaldo"></a></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:github"></Icon>
-            <Icon class="hero__socials__btn" name="fa6-brands:linkedin"></Icon>
+        <div class="hero__actions-wrapper">
+            <div class="hero__buttons">
+                <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
+                <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
+            </div>
+            
+            <div class="hero__socials">
+                <Icon 
+                class="hero__socials__btn" 
+                name="fa6-solid:envelope">
+                    <a href="mailto:ofdelossantosa@gmail.com"></a>
+                </Icon>
+                <Icon 
+                class="hero__socials__btn" 
+                name="fa6-brands:instagram">
+                    <a href="https://www.instagram.com/byoswwwaldo/"></a>
+                </Icon>
+                <Icon 
+                class="hero__socials__btn" 
+                name="fa6-brands:github">
+                   <a href="https://github.com/oswwwaldo"></a>
+                </Icon>
+                <Icon 
+                class="hero__socials__btn" 
+                name="fa6-brands:linkedin">
+                    <a href="https://www.linkedin.com/in/oswwwaldo/"></a>
+                </Icon>
+            </div>
         </div>
     </div>
 </section>
@@ -54,9 +75,13 @@ import Button from '../ui/Button.astro';
         gap: clamp(0.5rem, 2rem, 3rem);
         padding: clamp(1.25rem, 3vw, 2rem);
 
+        flex-grow: 1;
         width: 100%;
         color: var(--secondary-color);
-        z-index: 1;
+
+        &__text-wrapper {
+            display: contents;
+        }
 
         &__position {
             font-size: var(--hero-position-size);
@@ -68,7 +93,6 @@ import Button from '../ui/Button.astro';
         &__title {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.15em 0.25em;
             width: auto;
             max-width: 100%;
             font-size: var(--hero-title-size);
@@ -85,15 +109,13 @@ import Button from '../ui/Button.astro';
                 font-size: inherit;
                 line-height: inherit;
                 pointer-events: all;
+                white-space: nowrap;
 
 
                 &.middle-name {
                     display: none;
                 }
 
-                &.last-name {
-                    white-space: nowrap;
-                }
             }
         }
 
@@ -103,20 +125,30 @@ import Button from '../ui/Button.astro';
             align-items: start;
             justify-content: space-between;
             gap: 1rem 1.5rem;
-            width: 100%;
-            max-width: 100%;
+            width: 97%;
+            max-width: 97%;
+        }
+
+        &__actions-wrapper {
+            display: contents; 
         }
 
         &__buttons {
             display: flex;
+            align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
-            align-items: center;
+            flex-grow: 1;
+
+            &__btn {
+                flex-grow: 1;
+                max-width: 250px;
+            }
         }
 
         &__socials {
             display: flex;
-            align-items: center;
+            align-items: end;
             flex-wrap: wrap;
             gap: 1rem;
 
@@ -125,38 +157,79 @@ import Button from '../ui/Button.astro';
                 width: var(--hero-social-icon-size);
 
                 &:hover {
-                    // color: var(--primary-color);
                     opacity: 60%;
                 }
             }
         }
     }
 
-    @media (max-width: 770px) {
+    @media (max-width: 768px) {
         .hero {
-            --hero-title-size: var(--font-size-xl);
-            --hero-position-size: var(--font-size-md);
+            --hero-title-size: clamp(2.5rem, 10vw, 6rem);
+            --hero-position-size: var(--font-size-sm);
             --hero-button-height: clamp(3rem, 7vw, 3.75rem);
             --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
-            align-items: center;
-            text-align: center;
+            padding: 0 5vw;
+            padding-bottom: clamp(3rem, 20dvh, 8rem);
 
-            &__title,
+            justify-content: flex-end;
+            gap: 1rem;
+
+            &__image {
+                top: 50% !important;
+            }
+
             &__position {
-                justify-content: center;
+                letter-spacing: 0.25rem;
             }
 
-            &__actions {
-                justify-content: center;
+            &__title {
+                width: 100%;
+                line-height: normal;
+
+                & span {
+                    white-space: normal;
+                }
             }
 
-            &__buttons {
-                justify-content: center;
-            }
+            &__actions-wrapper {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap-reverse;
+                justify-content: space-between;
+                gap: 1rem 1.5rem;
+                width: 97%;
 
-            &__socials {
-                justify-content: center;
+                & .hero__buttons {
+                    gap: 0rem;
+                    flex-wrap: nowrap;
+
+                    & .hero__buttons__btn {
+                        max-width: 200px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        .hero {
+            &__title {
+                margin-right: 2rem;
+            }
+        }
+
+        .hero__actions-wrapper {
+            flex-direction: column-reverse;
+            
+            & .hero__title {
+                margin-right: 2rem;
+            }
+            
+            & .hero__buttons {
+                justify-content: flex-start;
+                width: 100%;
             }
         }
     }
