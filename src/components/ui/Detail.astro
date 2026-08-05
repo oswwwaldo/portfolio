@@ -86,6 +86,12 @@ const {type, items} = Astro.props
             width: 100%;
         }
     }
+    
+    @media (max-width: 425px) {
+        .detail {
+            padding: 48px 16px;
+        }
+    }
 
     /* Not perfect, plays hoverOutScroll anim on page load which can look bad */
 
