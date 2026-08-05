@@ -59,6 +59,7 @@ import Button from '../ui/Button.astro';
         gap: clamp(0.5rem, 2rem, 3rem);
         padding: clamp(1.25rem, 3vw, 2rem);
 
+        flex-grow: 1;
         width: 100%;
         color: var(--secondary-color);
 
@@ -154,17 +155,21 @@ import Button from '../ui/Button.astro';
             --hero-social-icon-size: calc(var(--hero-button-height) / 2);
 
             padding: 0 5vw;
+            padding-bottom: clamp(3rem, 20dvh, 8rem);
 
-
-            top: 20vh;
+            justify-content: flex-end;
             gap: 1rem;
 
             &__image {
                 top: 50% !important;
             }
 
+            &__position {
+                letter-spacing: 0.25rem;
+            }
+
             &__title {
-                flex-basis: 100%;
+                width: 100%;
                 line-height: normal;
 
                 & span {
@@ -193,8 +198,18 @@ import Button from '../ui/Button.astro';
     }
 
     @media (max-width: 425px) {
+        .hero {
+            &__title {
+                margin-right: 2rem;
+            }
+        }
+
         .hero__actions-wrapper {
             flex-direction: column-reverse;
+            
+            & .hero__title {
+                margin-right: 2rem;
+            }
             
             & .hero__buttons {
                 justify-content: flex-start;
