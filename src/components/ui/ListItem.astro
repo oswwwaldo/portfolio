@@ -94,7 +94,7 @@ const {
     @use '../../styles/variables.scss' as *;
 
     :root {
-        --level-aboreto-heading-offset: 0.25rem;
+        --level-aboreto-heading-offset: 0.30rem;
     }
 
     .job:first-of-type {
@@ -159,9 +159,12 @@ const {
         }
     }
 
-    @media (max-width: 425px) {
+    @media (max-width: 768px) {
         .job {
+            display: flex;
+            flex-direction: column;
             padding: 20px 0;
+            padding: 20px 1.75rem;
             gap: 1vw;
 
             &__date {
@@ -171,13 +174,23 @@ const {
             }
 
             &__position {
+                padding: 0;
                 gap: 1rem;
+            }
+
+            &__description {
+                margin-bottom: 0.25rem;
+            }
+
+            &__date {
+                width: 100%;
             }
         }
     }
 
     @media (max-width: 1024px) {
         .job {
+            align-items: baseline;
             flex-direction: column;
             max-height: none;
 
@@ -186,6 +199,7 @@ const {
             }
 
             &__skills {
+                margin-top: 1rem;
                 width: 100%;
                 max-width: fit-content;
             }
@@ -198,12 +212,9 @@ const {
         width: 100%;
         padding: 40px 24px 96px 16px;
         border-bottom: var(--border-thin-secondary);
+        background-color: var(--primary-color);
 
-        @media (max-width: 768px) {
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            padding: 32px 16px 64px;
-        }
+        
 
         &__index {
             font-family: var(--font-heading);
@@ -251,6 +262,35 @@ const {
                 font-size: var(--font-size-xs);
                 letter-spacing: 4.08px;
             }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .project {
+            display: flex;
+            align-items: start;   
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            padding: 2rem 0.5rem;
+            // padding: 32px 16px 64px;
+
+            &__index { 
+                padding-top: var(--level-aboreto-heading-offset);
+            }
+
+            &__info {
+                gap: 1rem;
+            }
+
+            &__date {
+                padding-top: var(--level-aboreto-heading-offset);
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        .project {
+
         }
     }
 
