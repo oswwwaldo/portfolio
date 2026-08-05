@@ -122,7 +122,7 @@ const { renderFullFooter = true } = Astro.props
         left: 0; bottom: 0;
 
         width: 100%;
-        z-index: -999;
+        z-index: var(--footer-layer);
 
         &--full-size {
             padding-top: 20vh !important;
