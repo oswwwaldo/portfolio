@@ -81,13 +81,9 @@ const allDecorations = [...ellipses, ...diagonals];
     .decor-layout {
         position: relative;
         min-height: 100vh;
+        z-index: var(--layout-index);
+        background-color: var(--primary-color);
 
-        /*
-         * The decor layer is position:absolute and stretches to fill
-         * the entire height of .decor-layout (which grows with content).
-         * This way GridLines run from top to bottom of the full page,
-         * and DiagonalLines + Ellipse are positioned absolutely within.
-         */
         &__decor {
             position: absolute;
             inset: 0;

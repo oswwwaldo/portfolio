@@ -49,8 +49,8 @@ const {
         <slot />
         {noEOF ? null : <EndOfFile />}
       </div>
-      {noFooter ? null : <SiteFooter renderFullFooter={false} />}
     </DecorLayout>
+    {noFooter ? null : <SiteFooter renderFullFooter={false} />}
   </body>
 </html>
 
@@ -62,9 +62,8 @@ const {
     overflow-x: clip;
 
     .page {
-      background-color: var(--primary-color);
+      // background-color: var(--primary-color);
       position: relative;
-      z-index: 2;
 
       min-height: 100vh;
       margin-bottom: var(--footer-height, 50vh);

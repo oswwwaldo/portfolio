@@ -46,10 +46,13 @@
     --tag-border: var(--border-thin-secondary-20);
     --tag-text: var(--color-secondary-40);
 
+    --layer-index: 1;
     --decor-layer: 2;
+    --content-layer: 3;
+    
     --decor-opacity: 5%;
     
-    --content-layer: 1;
+
 
     --btn-height-sm: clamp(2.5rem, 3.5vw, 3rem);
     --btn-height-md: clamp(3.5rem, 5.625vw, 5.0625rem); 
