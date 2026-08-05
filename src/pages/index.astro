@@ -39,32 +39,33 @@ const languages = ["English", "Español", "Français"];
     <LandingHero />
   </GridLayout>
 
-
-  <SectionLayout>
-    <TransitionStatement /> 
-  </SectionLayout>
+  <div class="portfolio">
+    <SectionLayout>
+      <TransitionStatement /> 
+    </SectionLayout>
     
-  <SectionLayout>
-    <SelectedWorks />
-  </SectionLayout>
-
-
-  <SectionLayout>
-    <WorkExperience />
-  </SectionLayout>
-
-  <SectionLayout>
-    <ProjectsList />
-  </SectionLayout>
-
-  <SectionLayout>
-    <AboutMe />
-  </SectionLayout>
-
-  <SectionLayout>
-    <Contact />
-  </SectionLayout>  
-
+    <SectionLayout>
+      <SelectedWorks />
+    </SectionLayout>
+    
+    
+    <SectionLayout>
+      <WorkExperience />
+    </SectionLayout>
+    
+    <SectionLayout>
+      <ProjectsList />
+    </SectionLayout>
+    
+    <SectionLayout>
+      <AboutMe />
+    </SectionLayout>
+    
+    <SectionLayout>
+      <Contact />
+    </SectionLayout>  
+  </div>
+    
 
   <!-- 
   <SectionLayout>
@@ -73,3 +74,11 @@ const languages = ["English", "Español", "Français"];
    -->
   
 </BaseLayout>
+
+<style lang="scss">
+    .portfolio {
+        display: flex;
+        flex-direction: column;
+        gap: 10vh;
+    }
+</style>
