@@ -112,3 +112,10 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         }
     }
 </style>
+<script>
+    const hamburger = document.querySelector('.nav-links__hamburger');
+
+    hamburger?.addEventListener('click', () => {
+        console.log('mobile menu click event fired');
+    })
+</script>
