@@ -2,53 +2,23 @@
 import Image from 'astro/components/Image.astro';
 import Knight from '../../assets/Knight.png';
 import KnightASCII from '../../assets/Knight-ASCII.png';
+import MenuList from '../ui/MenuList.astro';
 import Watermark from '../ui/Watermark.astro';
-
-type Props = {
-    renderFullMenu?: boolean;
-}
-
-const { renderFullMenu = true } = Astro.props
-
 ---
 
-<div class:list={['menu', {'menu--full-size' : renderFullMenu}]} id="full-menu">
+<div class="menu menu--full-size" id="full-menu">
 
     <Watermark />
-    {renderFullMenu? 
-        ( 
-            <> 
-            <div class="menu__background">
-                <Image 
-                    class="menu__background__image"
-                    src={KnightASCII}
-                    alt="Infinity blade">
-                </Image>
-            </div>
-
-            <div class="menu__nav">
-                <ul class="menu__nav__list">
-                    <li class="menu__nav__list__item">
-                        <span class="menu__nav__list__item__index"> 01. </span> 
-                        <a class="menu__nav__list__item__link" href="/about"> About </a> 
-                    </li>
-                    <li class="menu__nav__list__item">
-                        <span class="menu__nav__list__item__index"> 01. </span> 
-                        <a class="menu__nav__list__item__link" href="/home"> Home </a> 
-                    </li>
-                    <li class="menu__nav__list__item">
-                        <span class="menu__nav__list__item__index"> 01. </span> 
-                        <a class="menu__nav__list__item__link" href="/projects"> Projects </a> 
-                    </li>
-                    <li class="menu__nav__list__item">
-                        <span class="menu__nav__list__item__index"> 01. </span> 
-                        <a class="menu__nav__list__item__link" href="/contact"> Contact </a> 
-                    </li>
-                </ul>
-            </div>
-            </>
-        ) : null
-    }
+    <div class="menu__background">
+        <Image 
+            class="menu__background__image"
+            src={KnightASCII}
+            alt="Infinity blade">
+        </Image>
+    </div>
+    <div class="menu__nav">
+        <MenuList items={['About', 'Home', 'Contact', 'Projects']}/>
+    </div>
 
     <div class="menu__links">
         <div class="menu__links__socials">
@@ -139,13 +109,16 @@ const { renderFullMenu = true } = Astro.props
 
             &__image {
                 position: absolute;
-                top: -22vh;
-                right: 0%;
-
+                top: -22vh; right: 0;
+                
                 height: 90vh;
                 width: auto;
+                
                 object-fit: contain;
                 z-index: -1;
+
+                // ! This doesn't work
+                // opacity: calc(100 * var(--opacity-factor) / 100);
             }
         }
 
@@ -155,67 +128,6 @@ const { renderFullMenu = true } = Astro.props
             width: 100%;
 
             margin-bottom: 10vh;
-
-            &__list {
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                padding: 0px 0px 0px 64px;
-                gap: 20px;
-
-                width: 1439px;
-                min-height: 350px;
-
-                &__item {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    padding: 14px 0px;
-                    gap: 24px;
-
-                    width: 1375px;
-                    height: 80.8px;
-
-                    width: 100%;
-                    border-bottom: var(--border-thin-secondary-20);
-
-                    &:hover {
-                        background: var(--color-secondary-40);
-                    }
-
-                    &__index {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-end;
-                        padding: 0px;
-
-                        min-width: 32px;
-                        min-height: 24px;
-
-                        font-family: var(--font-heading);
-                        font-size: var(--font-size-sm);
-
-                        color: var(--color-secondary-40);
-                    }
-
-                    &__link {
-                        font-family: var(--font-heading);
-                        font-size: var(--font-size-2xl);
-                        color: var(--secondary-color);
-                        text-decoration: none;
-
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-
-                        min-height: 50px;
-                        
-                    }
-                }
-            }
         }
 
         &__links {

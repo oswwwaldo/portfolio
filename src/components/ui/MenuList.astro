@@ -1,0 +1,89 @@
+---
+interface Props {
+    items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="menu__list">
+    {
+        items.map((item, index) => (
+            <li class="menu__list__item">
+                <span class="menu__list__item__index">
+                    {(index + 1).toString().padStart(2, '0')}.
+                </span> 
+                <a class="menu__list__item__link" href={`/${item.toLowerCase()}`}> 
+                    {item} 
+                </a> 
+            </li>
+        ))
+    }
+</ul>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+     .menu__list {  
+        width: 100%;
+
+        display: flex   ;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0px 0px 0px 5vw;
+        gap: 20px;
+
+        width: 1440px;
+        width: 100%;
+        min-height: 350px;
+
+        &__item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 14px 0px;
+            gap: 24px;
+
+            width: 1375px;
+            height: 80.8px;
+
+            width: 100%;
+            border-bottom: var(--border-thin-secondary-20);
+
+            &:hover {
+                background: var(--color-secondary-40);
+            }
+
+            &__index {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                padding: 0px;
+
+                min-width: 32px;
+                min-height: 24px;
+
+                font-family: var(--font-heading);
+                font-size: var(--font-size-sm);
+
+                color: var(--color-secondary-40);
+            }
+
+            &__link {
+                font-family: var(--font-heading);
+                font-size: var(--font-size-2xl);
+                color: var(--secondary-color);
+                text-decoration: none;
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                min-height: 50px;
+                
+            }
+        }
+    }
+
+</style>
