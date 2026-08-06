@@ -50,9 +50,9 @@
     --layer-index: 1;
     --decor-layer: 2;
     --content-layer: 3;
-    --decor-opacity: 5%;
-    
+    --menu-layer: 999;
 
+    --decor-opacity: 5%;
 
     --btn-height-sm: clamp(2.5rem, 3.5vw, 3rem);
     --btn-height-md: clamp(3.5rem, 5.625vw, 5.0625rem); 
