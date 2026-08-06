@@ -16,15 +16,22 @@ interface Props {
   noEOF?: boolean;
   noBG?: boolean;
   noPageMargin?: boolean;
+  fullScreen?: boolean;
 }
+
 const {
   pageTitle,
-  noHeader = false,
-  noFooter = false,
-  noEOF = false,
   noBG = false, 
-  noPageMargin = false,
+  noHeader = false,
+  fullScreen = false,
+  noFooter: propNoFooter = false,
+  noEOF: propNoEOF = false,
+  noPageMargin: propNoPageMargin = false,
 } = Astro.props;
+
+const noFooter = fullScreen || propNoFooter;
+const noEOF = fullScreen || propNoEOF;
+const noPageMargin = fullScreen || propNoPageMargin;
 ---
 
 <html lang="en">
