@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import TagCloud from '../components/sections/TagCloud.astro';
+
+const pageTitle = "♪ — oswaldo de los santos (@byoswwwaldo)";
+
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <SectionLayout firstLayout={true} justifyCentered={true}>
+        <div class="music">
+            <h1 class="music__header"> 
+                ♪ play a song, any song ♫ 
+            </h1>
+            <div class="music__select">
+                <TagCloud />
+            </div>
+            <div class="music__player">
+                <h3> Previous </h3>
+                <h3> Pause </h3>
+                <h3> Resume </h3>
+                <h3> Next </h3>
+            </div>
+        </div>
+    </SectionLayout>
+</BaseLayout>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    .music {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        width: 100%;
+        
+        color: var(--secondary-color);
+
+        &__header {
+            color: inherit;
+        }
+
+        &__player {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: inherit;
+            width: 100%;
+        }
+    }
+</style>
