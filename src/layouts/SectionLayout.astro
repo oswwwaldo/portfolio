@@ -2,13 +2,15 @@
 
 type Props = {
     noMargins?: boolean;
+    justifyCentered?: boolean;
+    firstLayout?: boolean;
     background?: boolean;
 }
 
-const { noMargins = false, background = false } = Astro.props
+const { noMargins = false, justifyCentered = false, firstLayout = false, background = false } = Astro.props
 
 ---
-<section class:list={['section', { 'no-margins': noMargins }]}>
+<section class:list={['section', { 'no-margins': noMargins, 'centered': justifyCentered, 'starter': firstLayout, }]}>
     <slot />
 </section>
 
@@ -25,9 +27,18 @@ const { noMargins = false, background = false } = Astro.props
             padding: 0;
         }
 
-        &.section.no-margins {
+        &.no-margins {
             margin: 0;
             padding: 0;
+        }
+
+        &.centered {
+            align-items: center;
+            justify-content: center;
+        }
+
+        &.starter {
+            height: 100dvh;
         }
     }
 
