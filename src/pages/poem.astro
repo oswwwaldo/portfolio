@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import Button from '../components/ui/Button.astro';
+import quotesData from '../data/quotes.json';
+
+const pageTitle = "✧ — oswaldo de los santos (@byoswwwaldo)";
+
+interface Quote {
+    quote: string;
+    author: string;
+    source: string;
+}
+
+const quotes: Quote[] = quotesData as Quote[];
+
+const initialSelection = Math.floor(Math.random() * quotes.length);
+const initialQuote = quotes[initialSelection];
+---
+
+<BaseLayout pageTitle={pageTitle} fullScreen={true}>
+    <SectionLayout firstLayout={true} justifyCentered={true}>
+
+        <div class="text-wrapper">
+
+            <span class="text">
+                <q class="text__quote" id="quote-text">{initialQuote.quote}</q>
+                <span class="text__author"id="quote-author"> - {initialQuote.author}</span>
+                <p><cite class="text__cite"id="quote-source">{initialQuote.source}</cite></p>
+            </span>
+            <Button id="next-btn" textContent='Next quote' variant="tertiary" size="md"/>
+        </div>
+
+    </SectionLayout>
+</BaseLayout>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    .text-wrapper {
+        display: flex;
+        align-items: end;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .text {
+        display: flex; 
+        flex-direction: column;
+        gap: 2rem;
+        padding: 20px;
+        color: var(--secondary-color);
+        font-family: var(--font-heading);
+        font-size: var(--font-size-base);
+        line-height: 3rem;
+        overflow-y: scroll;
+
+        height: 40vh;
+        * {
+            font-family: inherit;
+            font-size: inherit;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-md);
+        }
+    }
+
+</style>
+
+<script>
+    import quotesData from '../data/quotes.json';
+
+    interface Quote {
+        quote: string;
+        author: string;
+        source: string;
+    }
+
+    const quotes: Quote[] = quotesData as Quote[];
+
+    const quoteText = document.getElementById('quote-text') as HTMLQuoteElement;
+    const quoteAuthor = document.getElementById('quote-author') as HTMLSpanElement;
+    const quoteSource = document.getElementById('quote-source') as HTMLElement;
+    const nextBtn = document.getElementById('next-btn') as HTMLButtonElement;
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const random = Math.floor(Math.random() * quotes.length);
+            const newQuote = quotes[random];
+
+            if (quoteText && quoteAuthor && quoteSource) {
+                quoteText.textContent = newQuote.quote;
+                quoteAuthor.textContent =  "- " +  newQuote.author;
+                quoteSource.textContent = newQuote.source;
+            }
+        });
+    }
+</script>
