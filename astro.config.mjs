@@ -1,9 +1,14 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon()]
+  integrations: [icon()],
+  env: {
+    schema: {
+      YT_DATA_API_KEY: envField.string({ context: "server", access: "secret" }),
+    },
+  },
 });
