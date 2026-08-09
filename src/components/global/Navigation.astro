@@ -180,7 +180,9 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         
         const tilMarcyOrientation = Math.ceil((Math.abs(orientation - today)) / (1000 * 60 * 60 * 24)); 
         const tilMarcyFirstDay = Math.ceil(Math.abs(firstday - today) / (1000 * 60 * 60 * 24)); 
-        console.log(`${tilMarcyFirstDay} days left.`);
+        console.log(`${formattedDate}`)
+        console.log(`${tilMarcyOrientation} days left until orientation day at Marcy Lab.`);
+        console.log(`${tilMarcyFirstDay} days left until the fellowship at Marcy Lab begins.`);
         
         if (siteName) {
             siteName.textContent = `oswwwaldo — ${tilMarcyOrientation} days left`;
