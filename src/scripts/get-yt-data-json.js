@@ -1,4 +1,6 @@
-const DATA_API_KEY = import.meta.env.YT_DATA_API_KEY;
+
+// This is a prebuild script, which will launch before npm run build and because Vite does not handle this part of the build process then the variable must exist through Node.js's environment 
+const DATA_API_KEY = process.env.YT_DATA_API_KEY;
 const CHANNEL_ID = `UCAa9zq-rl0McMewzW9tra0w`;
 const playlistIDs = [`PLfPCDW7xyAww`, `PLUNtUmhxA3zm779NGq3Na99MX7B8L3X3K`, `PLUNtUmhxA3zlJJrCJmcYWHGB9g4lP0GW5`, `PLUNtUmhxA3zmaC2NgXLoEFsPJ5B9fTVHP`, `PLUNtUmhxA3zm_N4Kg53VY9TkHgtaeImsb`, `PLUNtUmhxA3znFD2M0yCqVw4wyozMco0Xo`];
 
@@ -14,7 +16,7 @@ console.log("Running get-yt-data-json.js — " + now.toLocaleTimeString());
 // https://developers.google.com/youtube/v3/docs/playlistItems/list
 // https://developers.google.com/youtube/v3/docs/playlistItems#resource
 
-async function buildYTData() {
+export async function buildYTData() {
 
     try {
 
@@ -68,5 +70,5 @@ async function buildYTData() {
 
 // https://www.youtube.com/watch?v=${videoId}
 // await buildYTData();
-console.log(await buildYTData());
+// console.log(await buildYTData());
 export const message = "Hello from get-yt-data.json.js";
