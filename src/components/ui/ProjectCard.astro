@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+    project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+---
+
+<div class="project-card">
+    <h3 class="project-card__title"> {project.data.title}</h3>
+    <h3 class="project-card__author"> {project.data.description}</h3>
+    <h3 class="project-card__tech"> {project.data.technologies}</h3>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .project-card {
+        display: flex;
+        width: 300px;
+        color: var(--primary-color);
+    }
+
+</style>
