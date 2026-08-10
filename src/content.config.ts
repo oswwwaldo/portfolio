@@ -24,10 +24,13 @@ const education = defineCollection({
 const experience = defineCollection({
     loader: file('src/data/experience.json'),
     schema: z.object({
-        title: z.string(),
+        id: z.string().optional(),
+        position: z.string(),
+        company: z.string(),
         caption: z.string(),
         description: z.string(),
         timeline: z.string(),
+        years: z.string(),
         skills: z.array(z.string()),
         format: z.string(),
     })
@@ -54,11 +57,11 @@ const poetry = defineCollection({
 const projects = defineCollection({
     loader: glob({ base: 'src/content/projects', pattern: '*.md'}),
     schema: z.object({
+        id: z.string(),
         title: z.string(),
         slug: z.string(),
-        tagline: z.string(),
+        caption: z.string(),
         description: z.string(),
-        longDescription: z.string(),
         status: z.string(),
         featured: z.boolean(),
         category: z.string(),
@@ -75,6 +78,8 @@ const projects = defineCollection({
                 image: z.string().optional()
             })
         ).nullable(),
+        year: z.string(),
+        semester: z.string(),
         startDate: z.string(),
         endDate: z.string().nullable(),
         keyFeatures: z.array(z.string()),

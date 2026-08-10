@@ -1,9 +1,12 @@
 [
   {
-    "title": "Director of Design",
-    "caption": "Nunchi Health",
+    "id": "nunchi-health",
+    "position": "Director of Design",
+    "company": "Nunchi Health",
+    "caption": "Secured $120k in grant funding and led web technical roadmap to boost conversions by 64.85%.",
     "description": "Secured $120,000 in annual recurring grant funding, establishing a six-figure budget from scratch to scale brand authority and fund digital growth initiatives. Launched e-commerce platform and custom landing pages using HTML, CSS, and JS modules, cutting page bounce rates in half and driving user engagement up by +43.2%. Directed data-driven A/B testing (including Split URL and A/A protocols) and UI/UX refinements, optimizing user flows and increasing key page conversions by +64.85%. Spearheaded a cross-functional team of four and led the technical web roadmap in weekly leadership meetings to align digital strategy with non-profit engagement targets.",
-    "timeline": "May 2025-Present",
+    "timeline": "May 2025 — Present",
+    "years": "2025 — 2027",
     "skills": [
       "HTML",
       "CSS",
@@ -14,10 +17,13 @@
     "format": "Hybrid"
   },
   {
-    "title": "Software Engineer Intern",
-    "caption": "Cognizant Technology Solutions",
-    "description": "Engineered frontend architecture for an internal enterprise upgrade solution using React, Django, and SQLite, translating Figma mockups into a responsive, version-aware analysis tool. Integrated Generative Al and dynamic file processing within an Agile team to parse JSON, XLS, and configuration files in real-time, automating context-specific documentation. Reduced client upgrade planning lifecycles from two months to a few days by automating the impact analysis process, enabling rapid, data-driven risk identification for stakeholders.",
-    "timeline": "Nov 2025 - Jan 2026",
+    "id": "cognizant",
+    "position": "Software Engineer Intern",
+    "company": "Cognizant Technology Solutions",
+    "caption": "Engineered React/Django upgrade analysis tool using GenAI, slashing planning cycles from months to days.",
+    "description": "Engineered frontend architecture for an internal enterprise upgrade solution using React, Django, and SQLite, translating Figma mockups into a responsive, version-aware analysis tool. Integrated Generative AI and dynamic file processing within an Agile team to parse JSON, XLS, and configuration files in real-time, automating context-specific documentation. Reduced client upgrade planning lifecycles from two months to a few days by automating the impact analysis process, enabling rapid, data-driven risk identification for stakeholders.",
+    "timeline": "Nov 2025 — Jan 2026",
+    "years": "2025 — 2026",
     "skills": [
       "React.js",
       "Django",
@@ -29,18 +35,13 @@
     "format": "In-person"
   },
   {
-    "title": "Gap year",
-    "caption": "BumbleBear Games, LLC",
-    "description": "Embarked on a self-development journey, building upon my love for language learning and writing a book I'm deeply passionate about and developing the groundwork for a web/film project regarding said material. Established good habits in the interim for college as I took intimate leadership of household duties and challenges.",
-    "timeline": "Sep 2022 - Aug 2023",
-    "skills": [],
-    "format": "Career break"
-  },
-  {
-    "title": "Level II Support Technician",
-    "caption": "BumbleBear Games, LLC",
+    "id": "bumblebear-games",
+    "position": "Level II Support Technician",
+    "company": "BumbleBear Games, LLC",
+    "caption": "Managed support backend database, authored internal hardware/software documentation, and automated workflows.",
     "description": "Handled the back-end database of my company's customer support data, coded in database wide rules that'd streamline ticket and workflow efficiency. Authored internal documentation and troubleshooting guides for future staff and customers based on unique company hardware and software specifications. Organized data in spreadsheets for easy access and reference for future logging.",
-    "timeline": "Jun 2022 - Sep 2022",
+    "timeline": "Jun 2022 — Sep 2022",
+    "years": "2022 — 2022",
     "skills": [
       "Database Management",
       "Documentation",
