@@ -152,13 +152,13 @@ const videos = defineCollection({
 export const collections = { 
     certifications, 
     education, 
+    experience, 
+    photos,
+    poetry, 
+    projects,
+    socials,
     stats, 
     technologies, 
-    poetry, 
-    photos,
+    thoughts, 
     videos,
-    socials,
-    experience, 
-    projects,
-    thoughts 
 }
