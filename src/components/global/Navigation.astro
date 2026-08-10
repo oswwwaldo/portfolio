@@ -175,11 +175,9 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         const formattedDate = today.toISOString().split('T')[0];
         const orientation = new Date('2026-08-20');
         const firstday = new Date('2026-09-22');
-        
-        const diffInMs = Math.abs(orientation - today);
-        
-        const tilMarcyOrientation = Math.ceil((Math.abs(orientation - today)) / (1000 * 60 * 60 * 24)); 
-        const tilMarcyFirstDay = Math.ceil(Math.abs(firstday - today) / (1000 * 60 * 60 * 24)); 
+        const diffInMs = Math.abs(Number(orientation) - Number(today));
+        const tilMarcyOrientation = Math.ceil((Math.abs(Number(orientation) - Number(today))) / (1000 * 60 * 60 * 24)); 
+        const tilMarcyFirstDay = Math.ceil(Math.abs(Number(firstday) - Number(today)) / (1000 * 60 * 60 * 24)); 
         console.log(`${formattedDate}`)
         console.log(`${tilMarcyOrientation} days left until orientation day at Marcy Lab.`);
         console.log(`${tilMarcyFirstDay} days left until the fellowship at Marcy Lab begins.`);
@@ -190,12 +188,22 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         }
     }
 
-    hamburger?.addEventListener('click', () => {
-        console.log('mobile menu click event fired');       
-        
+    function toggleMenu() {        
         menu?.classList.toggle('is-open');
         hamburger?.classList.toggle('is-active');
         navbar?.classList.toggle('is-hidden');
+    }
+
+    hamburger?.addEventListener('click', () => {
+        console.log('Mobile menu click event fired');  
+        toggleMenu();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            console.log('Escape key pressed!');
+            toggleMenu();
+        }
     });
     
     document.addEventListener('DOMContentLoaded', (event) => {
