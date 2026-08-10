@@ -3,8 +3,10 @@ import LandingImage from '../ui/LandingImage.astro';
 import stoneNotInFocus from '../../assets/media/stone-not-in-focus.jpg';
 import Icon from '../ui/AppIcon.astro';
 import Button from '../ui/Button.astro';
----
 
+import EscKey from '../ui/EscKey.astro';
+---
+<EscKey />
 
 <section class="hero">
     
@@ -29,7 +31,7 @@ import Button from '../ui/Button.astro';
     <div class="hero__actions">
         <div class="hero__actions-wrapper">
             <div class="hero__buttons">
-                <Button class="hero__buttons__btn" textContent="Contact" type="button" isPrimary={true}></Button>
+                <Button class="hero__buttons__btn" textContent="Contact" type="button" variant="primary"></Button>
                 <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
             </div>
             

@@ -1,0 +1,19 @@
+[
+    {
+        "id": "0",
+        "quote": "Being deeply loved by someone gives you strength, while loving someone deeply gives you courage.",
+        "author": "Lao Tzu"
+    },
+    {
+        "id": "1",
+        "quote": "In knowing the world we humanize it, and if, as we discover it, we are astonished at its dimensions and its complexity, we should be just as astonished that we have the brains to perceive it.",
+        "author": "Alan Watts",
+        "source": "The book on the taboo against knowing who you are"
+    },
+    {
+        "id": "2",
+        "quote": "A good act does not wash out the bad, nor a bad act the good. Each should have its own reward.",
+        "author": "Stannis Baratheon",
+        "source": "A Clash of Kings"
+    }
+]

@@ -1,76 +1,37 @@
 ---
-import SectionHeader from '../ui/SectionHeader.astro';
+import { getCollection } from 'astro:content';
 
-import ListItem from '../ui/ListItem.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import ListCareerItem from '../ui/ListCareerItem.astro';
 import Detail from '../ui/Detail.astro';
 import StatsItem from '../ui/StatsItem.astro';
 import Tag from '../ui/Tag.astro';
+
+const experience = await getCollection('experience');
+const certifications = await getCollection('certifications');
+const education = await getCollection('education');
+const stats = await getCollection('stats');
+const technologies = await getCollection('technologies');
+
 ---
 
 <div class="work-experience">
     <SectionHeader textContent="Work" secondLine="Experience"/>
     <div class="work-experience__history">
-        <ListItem 
-            itemType = "Job"
-            itemTitle = "Software Engineer"
-            itemCaption = "Marcy Lab School"
-            itemDescription = "Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit."
-            itemTimeline = "2017 — 2027"
-            itemSkills = {["React", "Express.js", "Next.js", "PostgreSQL", "Postman"]};
-        />  
-        <ListItem 
-            itemType = "Job"
-            itemTitle = "Frontend Techincal Lead"
-            itemCaption = "Nunchi Health"
-            itemDescription = "Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit."
-            itemTimeline = "2017 — 2027"
-            itemSkills = {["JavaScript", "AppsScript", "A/B Testing", "Astro.js"]};
-        />
-        <ListItem 
-            itemType = "Job"
-            itemTitle = "Software Engineer Intern"
-            itemCaption = "Cognizant"
-            itemDescription = "Spearheaded the technical web roadmap and front-end optimization for an award-winning mental health nonprofit."
-            itemTimeline = "2017 — 2027"
-            itemSkills = {["React", "JavaScript", "Django", "SQL", "SCSS", "HTML", "Python"]};
-        />
+        {experience.toReversed().map(job => <ListCareerItem experience={job} />)}
     </div>
     <div class="work-experience__info">
-        <Detail 
-            type="Certifications" 
-            items={["AWS Developer - Associate", "MongoDB Associate Developer"]};>
-        </Detail>
-
-        <Detail 
-            type="Education"
-            items={["City College of New York - Computer Science (B.S)", "Borough of Manhattan Community College - Computer (A.S)"]};>
-        </Detail>
+        <Detail type="Certification" items={certifications.map(cert => cert.data.title )} />
+        <Detail type="Education" items={education.map(school => {return `${school.data.title} - ${school.data.degree}`} )} />
     </div>
     <div class="work-experience__stats">
-        <StatsItem stat="6+" caption="Years of experience" />
-        <StatsItem stat="5+" caption="Hackathons won" />
-        <StatsItem stat="$120k+" caption="Revenue generated" />
-        <StatsItem stat="12+" caption="Deployed projects" />
+        { stats.map(stat =>
+            <StatsItem stat={stat.data.figure} caption={stat.data.caption}/> )}
     </div>
     <div class="work-experience__tech">
         <h3> TECH STACK </h3>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
-        <Tag textContent="PHP"/>
+        { technologies.map( tag => 
+            <Tag textContent={tag.data.title}/>)}
     </div>
     <div class="work-experience__footer">
         <div class="work-experience__footer__item">
@@ -83,7 +44,6 @@ import Tag from '../ui/Tag.astro';
             <div class="work-experience__footer__item__content"> github.com/oswwwaldo </div>
         </div>
     </div>
-
 </div>
 <style lang="scss">
     @use '../../styles/variables.scss' as *;

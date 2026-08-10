@@ -1,14 +1,28 @@
 ---
 
-type Props = {
+interface Props {
     noMargins?: boolean;
+    noPadding?: boolean;
+    noSpacing?: boolean;
+    justifyCentered?: boolean;
+    firstLayout?: boolean;
     background?: boolean;
 }
 
-const { noMargins = false, background = false } = Astro.props
+const { 
+    noMargins: propNoMargins = false, 
+    noPadding: propNoPadding = false, 
+    noSpacing = false,
+    justifyCentered = false, 
+    firstLayout = false, 
+    background = false 
+} = Astro.props;
+
+const noMargins = noSpacing || propNoMargins;
+const noPadding = noSpacing || propNoPadding;
 
 ---
-<section class:list={['section', { 'no-margins': noMargins }]}>
+<section class:list={['section', { 'no-margins': noMargins, 'no-padding': noPadding, 'centered': justifyCentered, 'starter': firstLayout, }]}>
     <slot />
 </section>
 
@@ -25,9 +39,22 @@ const { noMargins = false, background = false } = Astro.props
             padding: 0;
         }
 
-        &.section.no-margins {
+        &.no-margins {
             margin: 0;
             padding: 0;
+        }
+
+        &.no-padding {
+            padding: 0;
+        }
+
+        &.centered {
+            align-items: center;
+            justify-content: center;
+        }
+
+        &.starter {
+            height: 100dvh;
         }
     }
 

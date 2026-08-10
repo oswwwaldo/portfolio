@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+    project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+---
+
+<div class="project-card">
+    <h3 class="project-card__title"> {project.data.title}</h3>
+    <p class="project-card__author"> {project.data.description}</p>
+    <!-- <p class="project-card__tech"> {project.data.technologies}</p> -->
+     <a href={`/projects/${project.id}`}> Visit </a>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;  
+        color: var(--secondary-color);
+
+        font-size: var(--font-size-sm);
+    }
+
+</style>

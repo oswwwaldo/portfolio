@@ -9,29 +9,9 @@ import WorkExperience from '../components/sections/WorkExperience.astro';
 import ProjectsList from '../components/sections/ProjectsList.astro';
 import AboutMe from '../components/sections/AboutMe.astro';
 import Contact from '../components/sections/Contact.astro';
-import TagCloud from '../components/sections/TagCloud.astro';
 
-// import LogoLoop from '../components/ui/LogoLoop.astro';
-
-// const pageTitle = "oswwwaldo"
-const pageTitle = "oswaldo de los santos (@byoswwwaldo)";
-const today = new Date().toLocaleDateString('en-US');
-
-const pages = [
-  { title: "Core", slug: "/", completed: true },
-  { title: "Home", slug: "/home", completed: false },
-  { title: "About", slug: "/about", completed: false },
-  { title: "Projects", slug: "/projects", completed: false },
-  { title: "Contact", slug: "/contact-us", completed: false },
-  { title: "Resume", slug: "/resume", completed: false },
-  { title: "Now", slug: "/now", completed: false },
-  { title: "Gallery", slug: "/gallery", completed: false },
-  { title: "Video", slug: "/video", completed: false },
-  { title: "Thoughts", slug: "/blog", completed: false },
-];
-
-const languages = ["English", "Español", "Français"];
-
+const pageTitle = "oswaldo de los santos (@byoswwwaldo) — ✦";
+// ♪ ♫  𓆝 𓆟 𓆞 ✦
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -47,7 +27,6 @@ const languages = ["English", "Español", "Français"];
     <SectionLayout>
       <SelectedWorks />
     </SectionLayout>
-    
     
     <SectionLayout>
       <WorkExperience />
@@ -65,16 +44,7 @@ const languages = ["English", "Español", "Français"];
       <Contact />
     </SectionLayout>  
   </div>
-    
-
-  <!-- 
-  <SectionLayout>
-    <TagCloud />
-  </SectionLayout>
-   -->
-  
 </BaseLayout>
-
 
 <style lang="scss">
     .portfolio {

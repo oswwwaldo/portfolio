@@ -2,10 +2,9 @@
 interface Props {
     title: string;
     sum: number;
-    type?: string;
 }
 
-const { title, sum, type = null} = Astro.props;
+const { title, sum } = Astro.props;
 ---
 
 <div class="tag-header">
@@ -36,7 +35,5 @@ const { title, sum, type = null} = Astro.props;
         &__number {
             height: min-content;
         }
-
-
     }
 </style>

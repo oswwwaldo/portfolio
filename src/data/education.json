@@ -1,0 +1,14 @@
+[
+  {
+    "id": "bmcc-cs", 
+    "title": "Borough of Manhattan Community College",
+    "degree": "Computer Science (A.S)",
+    "timeline": "Expected Fall 2028"
+  },
+  {
+    "id": "marcy-swe",
+    "title": "Marcy Lab School",
+    "degree": "Software Engineering Fellowship",
+    "timeline": "Fall 2026 - 2027"
+  }
+]

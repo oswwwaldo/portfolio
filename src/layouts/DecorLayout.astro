@@ -57,12 +57,12 @@ const allDecorations = [...ellipses, ...diagonals];
                                 left={shape.left}
                                 rotate={shape.rotation}
                             />
-                            {console.log("Diagonal line spawned")}
+                            {/* {console.log("Diagonal line spawned")} */}
                         </>
                     ) : (
                         <>
                             <Ellipse top={shape.top} left={shape.left} />
-                            {console.log("Ellipse spawned")}
+                            {/* {console.log("Ellipse spawned")} */}
                         </>
                     )}
                 </>
@@ -79,6 +79,7 @@ const allDecorations = [...ellipses, ...diagonals];
     @use "../styles/variables.scss" as *;
 
     .decor-layout {
+        background-color: var(--primary-color);
         position: relative;
         min-height: 100vh;
 

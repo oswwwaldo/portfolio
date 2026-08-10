@@ -1,0 +1,30 @@
+[
+  {
+    "id": "google-agile",
+    "title": "Google Agile Essentials",
+    "vendor": "Coursera",
+    "certificate": "AWS-Placeholder-ID",
+    "link": "https://aws.amazon.com/certification"
+  },
+  {
+    "id": "gen-ai",
+    "title": "Generative A.I. Fundamentals",
+    "vendor": "New York Jobs CEO Council",
+    "certificate": "0x48ce65f5c6f5d6444c4708bf8d0f45aede30308ebbc83eb72c822e91d4e68dff",
+    "link": "https://www.credential.net/1daa799a-84d3-4582-8ef6-c7bc3057b83c#acc.D3VdEp8c"
+  },
+  {
+    "id": "aws-cloud-prac",
+    "title": "AWS Certified Cloud Practitioner",
+    "vendor": "Amazon Web Services",
+    "certificate": "AWS-Placeholder-ID",
+    "link": "https://aws.amazon.com/certification"
+  },
+  {
+    "id": "aws-dev-ass",
+    "title": "AWS Certified Associate Developer",
+    "vendor": "Amazon Web Services",
+    "certificate": "AWS-Placeholder-ID",
+    "link": "https://aws.amazon.com/certification"
+  }
+]

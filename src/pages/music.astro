@@ -1,0 +1,253 @@
+---
+// @ts-nocheck
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import TagCloud from '../components/sections/TagCloud.astro';
+import Button from '../components/ui/Button.astro';
+
+const pageTitle = "♪ — oswaldo de los santos (@byoswwwaldo)";
+
+const isProd = import.meta.env.PROD;
+const isDev = import.meta.env.DEV;
+
+const API_KEY = import.meta.env.YT_DATA_API_KEY;
+const FOO = import.meta.env.DB_PASSWORD;
+const CHANNEL_ID = 'UCAa9zq-rl0McMewzW9tra0w';
+
+import * as youtubeData from '../scripts/get-yt-data-json.js';
+
+console.log(youtubeData.CHANNEL_ID);
+
+const playlistData = youtubeData.playlistItems;
+const msg = youtubeData.message;
+const channel = youtubeData.CHANNEL_ID;
+
+// const data = await fetchServerData();
+const message = "Hello from the server!";
+---
+
+<script define:vars={{ message, channel, playlistData, msg }}>
+  console.log(message); 
+  console.log(channel);
+  console.log(playlistData);
+  console.log(msg);
+</script>
+
+<!-- <h1> {channel.title} </h1> -->
+<!-- <TagCloud /> -->
+
+
+
+<BaseLayout pageTitle={pageTitle}>
+    <SectionLayout firstLayout={true} justifyCentered={true} noPadding={true}>
+        <div class="music">
+            <h1 class="music__header"> Music Player </h1>
+            <div class="music__select">
+                <div class="music__select__item"> Ana </div>
+                <div id="ytplayer"> </div>
+            </div>
+            <div class="music__player">
+                <Button  
+                    icon = "mynaui:skip-back",
+                    variant = "tertiary",
+                    shape = "default",
+                    size = "md",
+                    class = "music__player__btn"></Button>
+                <Button 
+                    icon = "mynaui:pause",
+                    variant = "tertiary",
+                    shape = "default",
+                    size = "md",
+                    class = "music__player__btn"></Button>
+                <Button 
+                    icon = "mynaui:play",
+                    variant = "tertiary",
+                    shape = "default",
+                    size = "md",
+                    class = "music__player__btn"></Button>
+                    
+                <Button 
+                    icon = "mynaui:skip-forward",
+                    variant = "tertiary",
+                    shape = "default",
+                    size = "md",
+                    class = "music__player__btn"></Button>
+
+                    <!-- 
+                     mynaui:spotify 
+                     mynaui:repeat
+                     mynaui:shuffle 
+                     mynaui:sort
+                     mynaui:pin
+                     mynaui:play-square
+                     mynaui:pause-circle-->
+
+                     <!--- 
+
+                    /music
+                    Google Cloud Platform
+                    []  Compile playlists and data using DataAPI 
+                    [x] Load in youtube-player using iFrame API
+                    []  Load in data as JSON and compile tag clouds and other menu objects  
+                    []  Add interactive controls
+                    []  Load music-player around the website, should preserve state  
+
+                    -->
+            </div>
+        </div>
+    </SectionLayout>
+</BaseLayout>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    :global(#ytplayer) {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .music {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+        width: 100%;
+        
+        color: var(--secondary-color);
+
+        &__header {
+            color: inherit;
+        }
+
+        &__select {
+            display: flex;
+            justify-content: space-around;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+
+            padding: 0 2rem;
+            width: 100%;
+
+            background: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        &__player {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: inherit;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            justify-items: center;
+        }
+    }
+</style>
+
+<script>
+  const hello: string = "Hello world."
+  console.log(hello)
+</script>
+
+<!-- <script src="../scripts/my-script.ts"></script> -->
+<script>
+    // @ts-nocheck
+    import music from '../data/music.json';
+    const ytMenu = document.querySelector('.music__select');
+
+    // ! This should be refactored and baked into get-yt-data-json.js 
+
+    for (const playlist in music) {
+        console.log(playlist, music[playlist]);
+
+        const PLAYLIST_TAGS = {
+            'PLfPCDW7xyAww': 'Moon',
+            'PLUNtUmhxA3zm779NGq3Na99MX7B8L3X3K': 'Foda',
+            'PLUNtUmhxA3zlJJrCJmcYWHGB9g4lP0GW5': 'Edits',
+            'PLUNtUmhxA3zmaC2NgXLoEFsPJ5B9fTVHP': 'Cry',
+            'PLUNtUmhxA3zm_N4Kg53VY9TkHgtaeImsb': 'Oiseaux',
+            'PLUNtUmhxA3znFD2M0yCqVw4wyozMco0Xo': "L'amore",
+        };
+
+        const tag = PLAYLIST_TAGS[playlist];
+        if (tag === undefined) {
+            throw new Error("Not expected in predefined set: " + playlist);
+        }
+
+        if (ytMenu) {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('item');
+            itemDiv.textContent = tag;  
+            ytMenu.appendChild(itemDiv);
+        }
+    }
+
+
+    const ytPlayer = document.getElementById("ytplayer");
+
+    if (ytPlayer) {
+
+        ytPlayer.setAttribute('tabindex', '-1');
+        ytPlayer.setAttribute('aria-hidden', 'true');
+
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Load the YouTube iFrame Player API code asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
+        console.log(tag);
+        console.log(firstScriptTag);
+
+        declare global {
+            interface Window {
+                myCustomProperty: string;
+                myCustomMethod: (param: number) => void;
+                onYouTubeIframeAPIReady: () => void;
+                onPlayerReady: (event: any) => void;
+                onPlayerStateChange: (event: any) => void;
+                stopVideo: () => void;
+            }
+        }
+
+        var player: any;
+
+        window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+            console.log("onYouTubeiFrameAPIReady func called");
+            player = new YT.Player('ytplayer', {
+                height: '200',
+                width: '200',
+                videoId: 'M7lc1UVf-VE',
+                playerVars: {
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        window.onPlayerReady = function onPlayerReady(event: any) {
+            event.target.playVideo();
+        }
+
+        var done = false;
+        window.onPlayerStateChange = function onPlayerStateChange(event: any) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                // setTimeout(stopVideo, 6000);
+                done = true;
+            }
+        }
+        window.stopVideo = function stopVideo() {
+            player.stopVideo();
+        }
+    }
+</script>
