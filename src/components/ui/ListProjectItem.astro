@@ -1,0 +1,122 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Tag from '../ui/Tag.astro';
+
+interface Props {
+    project: CollectionEntry<'projects'>
+    index: number
+}
+
+const { project, index } = Astro.props
+---
+    <div class="project">
+        <div class="project__index">  
+            <span> { index.toString().padStart(2, '0')} </span>
+        </div>
+        <div class="project__info">
+            <div class="project__info__title"> 
+                <h3> {project.data.title} </h3>
+            </div>
+            <div class="project__info__description"> 
+                {project.data.caption}
+            </div>
+            <div class="project__info__skills">
+                { project.data.technologies.map((skill) => ( <Tag textContent={skill} /> ))}
+            </div>
+        </div>
+        <div class="project__date">
+            <p class="project__date__text"> {project.data.year} </p>
+        </div>
+    </div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .project {
+        display: grid;
+        grid-template-columns: 80px 1fr 80px;
+        width: 100%;
+        padding: 40px 24px 96px 16px;
+        border-bottom: var(--border-thin-secondary);
+        background-color: var(--primary-color);
+
+        &__index {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-xs);
+            letter-spacing: 4.4px;
+            padding-top: 16px; 
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            &__title {
+                font-family: var(--font-heading);
+                font-size: var(--font-size-lg);
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+            }
+
+            &__description {
+                font-family: var(--font-body);
+                font-size: var(--font-size-base);
+                max-width: 625px;
+            }
+
+            &__skills {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-top: 24px;
+            }
+        }
+
+        &__date {
+            display: flex;
+            justify-content: end;
+
+            @media (max-width: 768px) {
+                justify-content: start;
+            }
+
+            &__text {
+                font-family: var(--font-body);
+                font-size: var(--font-size-xs);
+                letter-spacing: 4.08px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .project {
+            display: flex;
+            align-items: start;   
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            padding: 2rem 0.5rem;
+            // padding: 32px 16px 64px;
+
+            &__index { 
+                padding-top: var(--level-aboreto-heading-offset);
+            }
+
+            &__info {
+                gap: 1rem;
+            }
+
+            &__date {
+                padding-top: var(--level-aboreto-heading-offset);
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        .project {
+
+        }
+    }
+
+</style>
+
