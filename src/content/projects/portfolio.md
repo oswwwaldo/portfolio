@@ -1,9 +1,9 @@
 ---
-title: "Developer Portfolio"
+id: "portfolio"
+title: "Portfolio"
 slug: "portfolio"
-tagline: "Interactive developer portfolio featuring modern UI and fluid motion."
-description: "Minimalist, multi-themed software engineering portfolio built with Astro, TypeScript, and GSAP."
-longDescription: "A technical showcase featuring interactive UI animations, typed Astro content collections, dynamic theme switching, and custom GSAP scroll sequences."
+caption: "Interactive developer portfolio featuring modern UI and fluid motion."
+description: "A technical showcase featuring interactive UI animations, typed Astro content collections, dynamic theme switching, and custom GSAP scroll sequences."
 status: "completed"
 featured: true
 category: "Web Development & UI/UX"
@@ -22,6 +22,7 @@ gallery:
   - "/assets/projects/portfolio/preview-2.webp"
   - "/assets/projects/portfolio/preview-3.webp"
 contributors: null
+year: "2026"
 semester: "Summer 2026"
 startDate: "May 2026"
 endDate: "August 2026"
@@ -32,7 +33,7 @@ keyFeatures:
   - "Multi-theme switcher with persistent local storage state"
 ---
 
-# Developer Portfolio
+## Developer Portfolio
 
 A minimalist, high-performance developer portfolio built to showcase full-stack projects, written thoughts, and video edits through a modern, responsive user interface.
 
@@ -46,7 +47,7 @@ Developer portfolios frequently fall into one of two extremes: generic, uninspir
 
 ## Approach
 
-To solve the tension between rich motion graphics and lightweight performance, the portfolio is engineered around **Astro.js** as its core static generator. 
+To solve the tension between rich motion graphics and lightweight performance, the portfolio is engineered around **Astro.js** as its core static generator.
 
 By leveraging Astro's zero-JavaScript-by-default architecture, all layout elements, articles, and content grids render as pure HTML/CSS at build time. Dynamic interactivity—such as GSAP scroll sequences, floating project thumbnails, and interactive theme toggles—is isolated to explicit client islands powered by **TypeScript** and modular **GSAP** timelines.
 

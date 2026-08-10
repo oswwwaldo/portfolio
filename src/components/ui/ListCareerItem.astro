@@ -1,0 +1,147 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Tag from '../ui/Tag.astro';
+
+interface Props {
+    experience: CollectionEntry<'experience'>
+}
+
+const { experience } = Astro.props
+---
+
+
+<div class="job">
+    <div class="job__date"> {experience.data.years} </div>
+    <div class="job__position">
+        <div class="job__position__title"> 
+            <h3> {experience.data.position} </h3>
+        </div>
+        <div class="job__position__company"> 
+            {experience.data.company} 
+        </div>
+        <div class="job__position__description"> 
+            {experience.data.caption}
+        </div>
+    </div>
+    <div class="job__skills">
+        { 
+            experience.data.skills.map((skill: string) => (
+                <Tag textContent={skill} />
+            ))
+        }
+    </div>
+</div>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .job {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        box-sizing: border-box;
+        padding: 40px 0;
+
+        border-bottom: var(--border-thin-secondary);
+        min-height: 100px;
+        height: auto;
+        max-height: 300px;
+        width: 100%;
+        gap: 2vw;
+
+        display: grid;
+        align-items: end;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr 3fr 1fr;
+        background-color: var(--primary-color);
+
+        &:first-of-type {
+            border-top: var(--border-thin-secondary);
+        }
+
+        &__date {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            height: 100%;
+            padding-top: var(--level-aboreto-heading-offset);
+        }
+
+        &__position {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            padding: 0 1.75rem;
+
+            &__company {
+                font-family: var(--font-body);
+                font-size: var(--font-size-base);
+            }
+            &__description {
+                font-family: var(--font-body);
+                font-size: var(--font-size-sm);
+            }
+        }
+
+        &__skills {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+            gap: 0.5rem;
+            height: 100%;
+            padding-top: var(--level-aboreto-heading-offset);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .job {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            padding: 20px 1.75rem;
+            gap: 1vw;
+
+            &__date {
+                font-size: var(--font-size-sm);
+                margin-bottom: 1rem;
+                color: var(--color-secondary-60);
+            }
+
+            &__position {
+                padding: 0;
+                gap: 1rem;
+            }
+
+            &__description {
+                margin-bottom: 0.25rem;
+            }
+
+            &__date {
+                width: 100%;
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .job {
+            align-items: baseline;
+            flex-direction: column;
+            max-height: none;
+
+            &__position {
+                width: 100%;
+            }
+
+            &__skills {
+                margin-top: 1rem;
+                width: 100%;
+                max-width: fit-content;
+            }
+        }
+    }
+</style>

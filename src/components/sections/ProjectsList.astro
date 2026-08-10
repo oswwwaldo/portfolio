@@ -1,14 +1,14 @@
 ---
-import ListItem from '../ui/ListItem.astro';
+import { getCollection } from 'astro:content';
+
 import PillHeader from '../ui/PillHeader.astro';
+import ListProjectItem from '../ui/ListProjectItem.astro'
+
+const projects = await getCollection('projects');
 ---
 
 <div class="projects">
-
-    <div class="projects__header">
-        <PillHeader />
-    </div>
-    
+    <PillHeader />
     <div class="projects__nav">
         <div class="projects__nav__options">
             <p class="projects__nav__options__header"> Sort by </p>
@@ -17,28 +17,12 @@ import PillHeader from '../ui/PillHeader.astro';
         <div class="projects__nav__views">
             <div class="projects__nav__views__btn"> List </div>
             <div class="projects__nav__views__btn"> Cards </div>
-            <div class="projects__nav__views__btn"> Panarmomic </div>
+            <!-- <div class="projects__nav__views__btn"> Panarmomic </div> -->
         </div>
     </div> 
-
-    <ListItem 
-        itemType = "Project"
-        itemIndex = {1};
-        itemTitle = "Portfolio"
-        itemDescription = "Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery"
-        itemTimeline = "2024"
-        itemSkills = {["JavaScript", "Astro.js", "GSAP", "SCSS", "HTML", "Supabase"]};
-    />
-
-    <ListItem 
-        itemType = "Project"
-        itemIndex = {2};
-        itemTitle = "New Tab Chess"
-        itemDescription = "Headless content management system built with Next.js, Prisma, and PostgreSQL, Full RBAC, rich text editor and asset pipeline with CDN delivery"
-        itemTimeline = "2025"
-        itemSkills = {["JavaScript", "Astro.js", "GSAP", "SCSS", "HTML", "Supabase"]};
-    />
-
+    {projects.map((project, index) => 
+        <ListProjectItem project={project} index={index + 1} />
+    )}
 </div>
 <style lang="scss">
     @use '../../styles/variables.scss' as *;

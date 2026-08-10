@@ -1,9 +1,9 @@
 ---
+id: "new-tab-chess"
 title: "New Tab Chess"
 slug: "new-tab-chess"
-tagline: "Transform every open tab into a quick bullet chess match."
-description: "A lightweight browser extension replacing the default new tab page with an immediate bullet chess board and rating tracker."
-longDescription: "Built to seamlessly integrate bullet chess practice into daily workflow. Features instant board initialization, tactical puzzle modes, and performance analytics."
+caption: "Transform every open tab into a quick bullet chess match."
+description: "Built to seamlessly integrate bullet chess practice into daily workflow. Features instant board initialization, tactical puzzle modes, and performance analytics."
 status: "in-development"
 featured: false
 category: "Chrome Extensions"
@@ -24,6 +24,7 @@ gallery:
   - "/assets/projects/new-tab-chess/preview-3.webp"
   - "/assets/projects/new-tab-chess/preview-4.webp"
 contributors: null
+year: "2026"
 semester: "Fall 2026"
 startDate: "September 2026"
 endDate: "November 2026"
@@ -34,7 +35,7 @@ keyFeatures:
   - "Minimalist dark UI optimized for rapid board vision"
 ---
 
-# New Tab Chess
+## New Tab Chess
 
 A lightweight, distraction-free browser extension designed to replace the default Chrome new tab page with an interactive bullet chess board, daily puzzle challenges, and rapid rating baseline tracking.
 
@@ -46,7 +47,7 @@ Context-switching during study or work sessions often leads to aimless web brows
 
 ## Approach
 
-To eliminate friction and channel micro-breaks into deliberate cognitive practice, **New Tab Chess** replaces the native browser override page with a zero-latency chess interface. 
+To eliminate friction and channel micro-breaks into deliberate cognitive practice, **New Tab Chess** replaces the native browser override page with a zero-latency chess interface.
 
 The extension initializes directly within the browser thread upon opening a new tab. By integrating light board state management with local storage persistence, users can immediately drop into a fast 1-minute or 3-minute engine match, complete a daily tactical puzzle, or review their recent performance baseline without leaving their active workflow.
 
