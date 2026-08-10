@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+    const thoughts = await getCollection('thoughts')
+
+    return thoughts.map((thought) => {
+        return {
+            params: { id: thought.id },
+            props: { thought }
+        }
+    })
+}
+
+const { thought } = Astro.props
+const { Content } = await render(thought)
+const pageTitle = `${thought.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+
+---
+
+
+<BaseLayout pageTitle={pageTitle}>
+    <SectionLayout firstLayout={true} justifyCentered={true}>
+        <div class="thought-article">
+            <Content />
+        </div>
+    </SectionLayout>
+</BaseLayout>
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .thought-article {
+        color: var(--secondary-color);
+    }
+
+</style>

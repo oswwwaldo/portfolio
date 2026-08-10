@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+import { getCollection } from "astro:content";
+import { render } from "astro:content";
+
+// export const getStaticPaths = (() => {
+    
+//     return [];
+// }) satisfies GetStaticPaths;
+
+export async function getStaticPaths() {
+    const projects = await getCollection('projects')
+
+    return projects.map((project) => {
+        return {
+            params: { id: project.id },
+            props: { project }
+        }
+    })
+}
+
+const { project } = Astro.props
+const { Content } = await render(project)
+const pageTitle = `${project.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+
+---
+
+
+<BaseLayout pageTitle={pageTitle}>
+    <SectionLayout firstLayout={true} justifyCentered={true}>
+        <div class="project-article">
+            <!-- <h1> {project.data.title} </h1> -->
+            <Content />
+            <!-- <p> </p> -->
+        </div>
+    </SectionLayout>
+</BaseLayout>
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .project-article {
+        color: var(--secondary-color);
+    }
+
+</style>
