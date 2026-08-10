@@ -1,0 +1,57 @@
+[
+  {
+    "platform": "GitHub",
+    "handle": "@oswwwaldo",
+    "link": "https://github.com/oswwwaldo",
+    "category": "professional",
+    "ariaLabel": "Visit my GitHub profile",
+    "featured": true,
+    "displayOrder": 1,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  {
+    "platform": "LinkedIn",
+    "handle": "oswwwaldo",
+    "link": "https://www.linkedin.com/in/oswwwaldo",
+    "category": "professional",
+    "ariaLabel": "Connect with me on LinkedIn",
+    "featured": true,
+    "displayOrder": 2,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  {
+    "platform": "Email",
+    "handle": "ofdelossantosa@gmail.com",
+    "link": "mailto:ofdelossantosa@gmail.com",
+    "category": "professional",
+    "ariaLabel": "Contact me via email",
+    "featured": true,
+    "displayOrder": 3,
+    "target": "_self",
+    "rel": ""
+  },
+  {
+    "platform": "Instagram",
+    "handle": "@byoswwwaldo",
+    "link": "https://instagram.com/byoswwwaldo",
+    "category": "social",
+    "ariaLabel": "Follow me on Instagram",
+    "featured": false,
+    "displayOrder": 4,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  {
+    "platform": "YouTube",
+    "handle": "@oswwwaldo",
+    "link": "https://youtube.com/@oswwwaldo",
+    "category": "media",
+    "ariaLabel": "Like, comment, subscribe and hit that bell notification!",
+    "featured": false,
+    "displayOrder": 5,
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  }
+]

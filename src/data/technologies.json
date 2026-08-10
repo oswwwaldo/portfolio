@@ -1,0 +1,21 @@
+[
+  { "title": "TypeScript", "type": "Language" },
+  { "title": "Python", "type": "Language" },
+  { "title": "HTML", "type": "Language" },
+  { "title": "CSS", "type": "Language" },   
+  { "title": "PHP", "type": "Language" },
+  { "title": "SQL", "type": "Language" },
+  { "title": "Java", "type": "Language" },
+  { "title": "C++", "type": "Language" },
+  { "title": "React.js", "type": "Framework" },
+  { "title": "Astro.js", "type": "Framework" },
+  { "title": "Django", "type": "Framework" },
+  { "title": "Node.js", "type": "Framework" },
+  { "title": "PostgreSQL", "type": "Database" },
+  { "title": "SQLite", "type": "Database" },
+  { "title": "Git", "type": "Tool" },
+  { "title": "Github", "type": "Tool" },
+  { "title": "Figma", "type": "Design" },
+  { "title": "Adobe Premiere Pro", "type": "Design" },
+  { "title": "Adobe After Effects", "type": "Design" }
+]

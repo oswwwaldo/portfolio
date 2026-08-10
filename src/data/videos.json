@@ -1,0 +1,87 @@
+[
+  {
+    "music": [
+      {
+        "title": "Cannonball",
+        "author": "Lithe; (ft. Don Toliver)"
+      }
+    ],
+    "footage": [
+      {
+        "title": "Event Horizon",
+        "year": "1997"
+      }
+    ],
+    "link": "https://www.youtube.com/watch?v=pqtMwCGz1Kk",
+    "thumbnail": "/assets/video/design-process.jpg",
+    "explicit": true
+  },
+  {
+    "music": [
+      {
+        "title": "i want things to be beautiful",
+        "author": "Devi McCallion"
+      }
+    ],
+    "footage": [
+      {
+        "title": "Broken Souls",
+        "year": "2015"
+      }
+    ],
+    "link": "https://www.youtube.com/watch?v=F_fZMTyJso8",
+    "thumbnail": "/assets/video/design-process.jpg",
+    "explicit": false
+  },
+  {
+    "music": [
+      {
+        "title": "U,U,D,D,L,R,L,R,A,B,Select,Start",
+        "author": "deftones"
+      }
+    ],
+    "footage": [
+      {
+        "title": "Byzantium",
+        "year": "2013"
+      }
+    ],
+    "link": "https://www.youtube.com/watch?v=uZI2-VFdpaI",
+    "thumbnail": "/assets/video/design-process.jpg",
+    "explicit": true
+  },
+  {
+    "music": [
+      {
+        "title": "Cry",
+        "author": "Cigarettes After Sex"
+      }
+    ],
+    "footage": [
+      {
+        "title": "Holy Mountain",
+        "year": "1973"
+      }
+    ],
+    "link": "https://www.youtube.com/watch?v=D_8JYoeUkZQ",
+    "thumbnail": "/assets/video/design-process.jpg",
+    "explicit": true
+  },
+  {
+    "music": [
+      {
+        "title": "Pixelated Kisses",
+        "author": "Joji"
+      }
+    ],
+    "footage": [
+      {
+        "title": "Ghost in the Shell",
+        "year": "1995"
+      }
+    ],
+    "link": "https://www.youtube.com/watch?v=8r-gEKemRbA",
+    "thumbnail": "/assets/video/design-process.jpg",
+    "explicit": true
+  }
+]
