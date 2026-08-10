@@ -1,20 +1,24 @@
 [
   {
+    "id": 1,
     "figure": "6+",
     "caption": "Years of Experience",
     "tooltip": "Continuous hands-on experience in full-stack development, software engineering, and web technology."
   },
   {
+    "id": 2,
     "figure": "5+",
     "caption": "Hackathons Won",
     "tooltip": "Collegiate and open developer hackathons won with competitive tech pitches and working software prototypes."
   },
   {
+    "id": 3,
     "figure": "$120k+",
-    "caption": "Revenue & Funding Generated",
+    "caption": "Capital Generated",
     "tooltip": "Annual recurring grant funding secured to establish brand authority and scale non-profit digital growth initiatives at Nunchi Health"
   },
   {
+    "id": 4,
     "figure": "12+",
     "caption": "Deployed Projects",
     "tooltip": "Production-ready web applications, client solutions, and tools actively hosted and maintained."
