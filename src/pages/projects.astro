@@ -10,10 +10,13 @@ const projects = await getCollection('projects')
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <SectionLayout firstLayout={true}>
-
+    <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="projects">
             <h1> Projects </h1>
+            <!-- <div>
+                <h2> {projects[0]}</h2>
+                <h3> I'm here</h3>
+            </div> -->
             {projects.map(project => 
                 <ProjectCard project={project} />)}
 
@@ -21,7 +24,6 @@ const projects = await getCollection('projects')
                 <p> No projects to show. </p>
             )}
         </div>
-
     </SectionLayout>
 </BaseLayout>
 <style lang="scss">
@@ -29,10 +31,10 @@ const projects = await getCollection('projects')
 
     .projects {
         display: flex;
-        // align-items: center;
         flex-direction: column;
         justify-content: center;
-        height: 100dvh;
+
+        margin-top: 25vh;
 
         background: var(--primary-color);
         color: var(--secondary-color);
