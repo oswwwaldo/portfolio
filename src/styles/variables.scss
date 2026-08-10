@@ -24,6 +24,7 @@
     --color-secondary-40: rgb(from var(--secondary-color) r g b / 0.4);
     --color-secondary-60: rgb(from var(--secondary-color) r g b / 0.6);
     --color-secondary-80: rgb(from var(--secondary-color) r g b / 0.8);
+    --color-secondary-100: rgb(from var(--secondary-color) r g b / 1);
 
 
     --color-overlay-black-05: rgba(0, 0, 0, 0.05);
@@ -42,9 +43,13 @@
     --border-thin-primary: 1px solid var(--primary-color);
     --border-thin-secondary: 1px solid var(--secondary-color);
     --border-thin-secondary-20: 1px solid var(--color-secondary-20);
+    --border-thin-secondary-40: 1px solid var(--color-secondary-40);
+    --border-thin-secondary-60: 1px solid var(--color-secondary-60);
+    --border-thin-secondary-80: 1px solid var(--color-secondary-80);
+    --border-thin-secondary-100: 1px solid var(--color-secondary-100);
 
-    --tag-border: var(--border-thin-secondary-20);
-    --tag-text: var(--color-secondary-40);
+    --tag-border: var(--border-thin-secondary-60);
+    --tag-text: var(--color-secondary-100);
 
     --footer-layer: -999;
     --layer-index: 1;
@@ -74,6 +79,8 @@
     --color-danger-text: #ffffff;
     --color-danger-border: #991b1b;
     --color-tertiary-hover-bg: rgba(150, 150, 150, 0.1);
+
+    --level-aboreto-heading-offset: 0.30rem;
 }
 
 // platinum: F2F3F4
