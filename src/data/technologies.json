@@ -1,21 +1,87 @@
 [
-  { "title": "TypeScript", "type": "Language" },
-  { "title": "Python", "type": "Language" },
-  { "title": "HTML", "type": "Language" },
-  { "title": "CSS", "type": "Language" },   
-  { "title": "PHP", "type": "Language" },
-  { "title": "SQL", "type": "Language" },
-  { "title": "Java", "type": "Language" },
-  { "title": "C++", "type": "Language" },
-  { "title": "React.js", "type": "Framework" },
-  { "title": "Astro.js", "type": "Framework" },
-  { "title": "Django", "type": "Framework" },
-  { "title": "Node.js", "type": "Framework" },
-  { "title": "PostgreSQL", "type": "Database" },
-  { "title": "SQLite", "type": "Database" },
-  { "title": "Git", "type": "Tool" },
-  { "title": "Github", "type": "Tool" },
-  { "title": "Figma", "type": "Design" },
-  { "title": "Adobe Premiere Pro", "type": "Design" },
-  { "title": "Adobe After Effects", "type": "Design" }
+  {
+    "id": "typescript",
+    "title": "TypeScript",
+    "type": "Language"
+  },
+  {
+    "id": "python",
+    "title": "Python",
+    "type": "Language"
+  },
+  {
+    "id": "html",
+    "title": "HTML",
+    "type": "Language"
+  },
+  {
+    "id": "css",
+    "title": "CSS",
+    "type": "Language"
+  },
+  {
+    "id": "php",
+    "title": "PHP",
+    "type": "Language"
+  },
+  {
+    "id": "sql",
+    "title": "SQL",
+    "type": "Language"
+  },
+  {
+    "id": "java",
+    "title": "Java",
+    "type": "Language"
+  },
+  {
+    "id": "cpp",
+    "title": "C++",
+    "type": "Language"
+  },
+  {
+    "id": "react",
+    "title": "React.js",
+    "type": "Framework"
+  },
+  {
+    "id": "astro",
+    "title": "Astro.js",
+    "type": "Framework"
+  },
+  {
+    "id": "django",
+    "title": "Django",
+    "type": "Framework"
+  },
+  {
+    "id": "node",
+    "title": "Node.js",
+    "type": "Framework"
+  },
+  {
+    "id": "postgresql",
+    "title": "PostgreSQL",
+    "type": "Database"
+  },
+  {
+    "id": "sqlite",
+    "title": "SQLite",
+    "type": "Database"
+  },
+  {
+    "id": "git",
+    "title": "Git",
+    "type": "Tool"
+  },
+  {
+    "id": "github",
+    "title": "Github",
+    "type": "Tool"
+  },
+  {
+    "id": "figma",
+    "title": "Figma",
+    "type": "Design"
+  }
 ]
