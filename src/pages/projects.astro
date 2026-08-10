@@ -13,10 +13,6 @@ const projects = await getCollection('projects')
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="projects">
             <h1> Projects </h1>
-            <!-- <div>
-                <h2> {projects[0]}</h2>
-                <h3> I'm here</h3>
-            </div> -->
             {projects.map(project => 
                 <ProjectCard project={project} />)}
 
