@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import EscKeyImg from '../../assets/esc.png';
+---
+
+<button class="escape_key" type="button">
+    <Image 
+        src={EscKeyImg} 
+        class="escape_key__img"
+        alt="A descriptive alt text for accessibility." />
+</button>
+
+<style lang="scss">
+    @use '../../styles/variables.scss' as *;
+
+    .escape_key {
+        position: absolute;
+        top: 30%; left: 80%;
+
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        
+        transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), filter 0.1s ease;
+
+        &:active {
+            transform: scale(0.92) translateY(4px);
+            filter: brightness(0.85);
+        }
+
+        &__img {   
+            width: 100px;
+            height: 100px;
+            aspect-ratio: 1/1;
+            display: block; 
+        }
+    }
+</style>
