@@ -2,27 +2,6 @@ import { file, glob } from "astro/loaders"
 import { defineCollection } from "astro:content"
 import { z } from "astro/zod"
 
-const experience = defineCollection({
-    loader: file('src/data/experience.json'),
-    schema: z.object({
-        title: z.string(),
-        caption: z.string(),
-        description: z.string(),
-        timeline: z.string(),
-        skills: z.array(z.string()),
-        format: z.string(),
-    })
-})
-
-const education = defineCollection({
-    loader: file('src/data/education.json'),
-    schema: z.object({
-        title: z.string(),
-        degree: z.string(),
-        timeline: z.string(),
-    })
-})
-
 const certifications = defineCollection({
     loader: file('src/data/certifications.json'),
     schema: z.object({
@@ -33,36 +12,44 @@ const certifications = defineCollection({
     })
 })
 
-const technologies = defineCollection({
-    loader: file('src/data/technologies.json'),
+const education = defineCollection({
+    loader: file('src/data/education.json'),
     schema: z.object({
         title: z.string(),
-        type: z.string(),
+        degree: z.string(),
+        timeline: z.string(),
     })
-})
+});
 
-const stats = defineCollection({
-    loader: file('src/data/stats.json'),
+const experience = defineCollection({
+    loader: file('src/data/experience.json'),
     schema: z.object({
-        figure: z.string(),
+        title: z.string(),
         caption: z.string(),
-        tooltip: z.string(),
+        description: z.string(),
+        timeline: z.string(),
+        skills: z.array(z.string()),
+        format: z.string(),
     })
-})
+});
 
-const thoughts = defineCollection({
-    loader: glob({ base: 'src/content/thoughts', pattern: '*.md'}),
+const photos = defineCollection({
+    loader: file('src/data/photos.json'),
+    schema: z.object({
+        caption: z.string(),
+        source: z.url(),
+    })
+});
+
+const poetry = defineCollection({
+    loader: file('src/data/poetry.json'),
     schema: z.object({
         title: z.string(),
-        description: z.string(),
-        pubDate: z.coerce.date(),
-        updatedDate: z.coerce.date().nullable().optional(),
-        thumbnail: z.string(),
-        tags: z.array(z.string()),
-        featured: z.boolean().default(false),
-        draft: z.boolean().default(false),
-    }),
-})
+        author: z.string(),
+        poem: z.string(),
+        link: z.url().nullish(),
+    })
+});
 
 const projects = defineCollection({
     loader: glob({ base: 'src/content/projects', pattern: '*.md'}),
@@ -92,17 +79,7 @@ const projects = defineCollection({
         endDate: z.string().nullable(),
         keyFeatures: z.array(z.string()),
     })
-})
-
-const poetry = defineCollection({
-    loader: file('src/data/poetry.json'),
-    schema: z.object({
-        title: z.string(),
-        author: z.string(),
-        poem: z.string(),
-        link: z.url().nullish(),
-    })
-})
+});
 
 const socials = defineCollection({
     loader: file('src/data/socials.json'),
@@ -117,15 +94,39 @@ const socials = defineCollection({
         target: z.string(),
         rel: z.string(),
     })
-})
+});
 
-const photos = defineCollection({
-    loader: file('src/data/photos.json'),
+const stats = defineCollection({
+    loader: file('src/data/stats.json'),
     schema: z.object({
+        figure: z.string(),
         caption: z.string(),
-        source: z.url(),
+        tooltip: z.string(),
     })
-})
+});
+
+const technologies = defineCollection({
+    loader: file('src/data/technologies.json'),
+    schema: z.object({
+        title: z.string(),
+        type: z.string(),
+    })
+});
+
+
+const thoughts = defineCollection({
+    loader: glob({ base: 'src/content/thoughts', pattern: '*.md'}),
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        pubDate: z.coerce.date(),
+        updatedDate: z.coerce.date().nullable().optional(),
+        thumbnail: z.string(),
+        tags: z.array(z.string()),
+        featured: z.boolean().default(false),
+        draft: z.boolean().default(false),
+    }),
+});
 
 const videos = defineCollection({
     loader: file('src/data/videos.json'),
