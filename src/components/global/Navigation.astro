@@ -16,9 +16,15 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
         <div class="nav-links__theme">
             <ThemeIcon size={20}></ThemeIcon>
         </div>
-        <button class="nav-links__hamburger" id="hamburger-icon">
-            <div class="hamburger__line"></div>
-            <div class="hamburger__line"></div>
+        <button 
+            class="nav-links__hamburger" 
+            id="hamburger-icon"
++           type="button"
++           aria-label="Open navigation menu"
++           aria-controls="full-menu"
++           aria-expanded="false">
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
         </button>
     </nav>
 </div>
@@ -189,9 +195,15 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
     }
 
     function toggleMenu() {        
-        menu?.classList.toggle('is-open');
+        const isOpen = menu?.classList.toggle('is-open') ?? false;
         hamburger?.classList.toggle('is-active');
         navbar?.classList.toggle('is-hidden');
+
+        hamburger?.setAttribute('aria-expanded', String(isOpen));
+        hamburger?.setAttribute(
+            'aria-label',
+            isOpen ? 'Close navigation menu' : 'Open navigation menu',
+        );
     }
 
     hamburger?.addEventListener('click', () => {
