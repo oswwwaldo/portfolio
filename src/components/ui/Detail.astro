@@ -60,21 +60,9 @@ const {type, items} = Astro.props
                 overflow: hidden;        
                 text-overflow: ellipsis;
 
-
-                span {
-                    display: inline-block;
-                    padding-right: 0.5rem;
-                    animation: hoverOutScroll 1.5s ease-in forwards;
-                }
-
                 &:hover {
                     background-color: var(--secondary-color);
                     color: var(--primary-color);
-                    text-overflow: clip;
-
-                    &.--is-scrollable span {
-                        animation: hoverInScroll 1.5s ease-in-out forwards;
-                    }
                 }
             }
         }
@@ -92,49 +80,4 @@ const {type, items} = Astro.props
             padding: 48px 16px;
         }
     }
-
-    /* Not perfect, plays hoverOutScroll anim on page load which can look bad */
-
-    /* 
-       We calculate the exact difference between the container's width (100cqi) 
-       minus the horizontal padding (1.5rem), and the span's total width (100%).
-       min(0px, ...) ensures that if the text is shorter than the container, 
-       it resolves to 0px and doesn't scroll at all!
-    */
-
-    @keyframes hoverInScroll {
-        0%, 15% {
-            transform: translateX(0);
-        }
-        85%, 100% {
-            transform: translateX(min(0px, calc(100cqi - 1.7rem - 100%)));
-        }
-    }
-
-    @keyframes hoverOutScroll {
-        0%, 15% {
-            transform: translateX((min(0px, calc(100cqi - 1.7rem - 100%))));
-        }
-        85%, 100% {
-            transform: translateX(0);
-        }
-    }   
 </style>
-<script>
-    const checkOverflow = () => {
-        const detailListItems = document.querySelectorAll('.detail__list__item');
-
-        detailListItems.forEach((item) => {
-            if (item.scrollWidth > item.clientWidth) {
-                item.classList.add('--is-scrollable');
-            } else {
-                item.classList.remove('--is-scrollable');
-            }
-        });
-    };
-
-    checkOverflow();
-
-    window.addEventListener('resize', checkOverflow);
-
-</script>
