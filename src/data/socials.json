@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": "0",
     "platform": "GitHub",
     "handle": "@oswwwaldo",
     "link": "https://github.com/oswwwaldo",
@@ -12,7 +12,7 @@
     "rel": "noopener noreferrer"
   },
   {
-    "id": 1,
+    "id": "1",
     "platform": "LinkedIn",
     "handle": "oswwwaldo",
     "link": "https://www.linkedin.com/in/oswwwaldo",
@@ -24,7 +24,7 @@
     "rel": "noopener noreferrer"
   },
   {
-    "id": 2,
+    "id": "2",
     "platform": "Email",
     "handle": "ofdelossantosa@gmail.com",
     "link": "mailto:ofdelossantosa@gmail.com",
@@ -36,7 +36,7 @@
     "rel": ""
   },
   {
-    "id": 3,
+    "id": "3",
     "platform": "Instagram",
     "handle": "@byoswwwaldo",
     "link": "https://instagram.com/byoswwwaldo",
@@ -48,7 +48,7 @@
     "rel": "noopener noreferrer"
   },
   {
-    "id": 4,
+    "id": "4",
     "platform": "YouTube",
     "handle": "@oswwwaldo",
     "link": "https://youtube.com/@oswwwaldo",
