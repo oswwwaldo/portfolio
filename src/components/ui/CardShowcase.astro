@@ -1,30 +1,31 @@
 ---
-import ImagePlaceholder from '../../components/ui/ImagePlaceholder.astro';
-import thumbnail from '../../assets/media/thumbnail.png';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
 import Tag from '../../components/ui/Tag.astro';
+
+interface Props {
+    project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
 ---
 <div class="card">
     <div class="card__image">
-        <ImagePlaceholder 
-            src={thumbnail}
-            alt="placeholder-image" 
-        />
+        <Image src={project.data.thumbnail.cover} alt={project.data.thumbnail.coverAlt} />
     </div>
     <div class="card__title">
-        <h3> New Tab Chess </h3>
+        <h3> {project.data.title} </h3>
     </div>
     <div class="card__description">
-        <p> Abstract data visualization dashboard for modern enterprise analytics </p>
+        <p> {project.data.caption} </p>
     </div>
-
     <div class="card__tags">
-        <Tag textContent = 'A/B Testing'></Tag>
-        <Tag textContent = 'User Research'></Tag>
-        <Tag textContent = 'Prototyping'></Tag>
-        <Tag textContent = 'Wireframing'></Tag>
+        {project.data.technologies.map((technology: string)=> {
+            return <Tag textContent={technology} />
+        })}
     </div>
 </div>
-
 <style lang="scss">
     .card {
         display: flex;
@@ -41,6 +42,7 @@ import Tag from '../../components/ui/Tag.astro';
 
         &__image {
             // margin-bottom: 1rem;
+            filter: brightness(0.08);
             width: 100%;
                         
             :global(img), :global(svg) { 

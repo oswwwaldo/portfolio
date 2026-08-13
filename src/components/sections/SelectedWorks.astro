@@ -1,12 +1,25 @@
 ---
+import { getCollection } from 'astro:content';
 import CardShowcase from '../ui/CardShowcase.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
+
+const projects = await getCollection('projects')
+const MAX_FEATURED = 2;
+
+const featuredProjects = projects
+    .filter(project => project.data.featured)
+    .slice(0, MAX_FEATURED);
+
+console.log('Selected works project number: ' + featuredProjects.length);
 ---
 <section class="selected-works">
-    <SectionHeader textContent="Selected" secondLine="Works"/>
+    <SectionHeader textContent="Selected works"/>
     <div class="selected-works__cards">
-        <CardShowcase />
-        <CardShowcase />    
+        {featuredProjects.map(project=> {
+            if (project.data.featured) {
+                return <CardShowcase project={project} />
+            }
+        })}
     </div>
 </section>
 
