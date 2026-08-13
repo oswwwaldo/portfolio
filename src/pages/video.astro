@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+
+const pageTitle = "now — oswaldo de los santos (@byoswwwaldo)";
+
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <SectionLayout firstLayout={true} justifyCentered={true}>
+    <h1> Video </h1>
+  </SectionLayout>
+</BaseLayout>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+    h1 {
+      color: var(--secondary-color);
+    }
+</style>
