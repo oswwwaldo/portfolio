@@ -1,61 +1,66 @@
 ---
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import GridLayout from '../layouts/GridLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 
 const pageTitle = "thoughts — oswaldo de los santos (@byoswwwaldo)";
-const thoughts = await getCollection('thoughts')
-
-import throne from '../assets/throne.jpg';
+const thoughts = await getCollection('thoughts');
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <SectionLayout firstLayout={true} justifyCentered={true}>
-    <div class="section">
-        <div class="section__landing">
-            <Image class="section__landing__image" src={throne} alt="wal-ta"/>
-            <h1 class="section__landing__header"> Thoughts </h1>
+  <SectionLayout firstLayout={true} topPadding={true}>
+        <div class="thoughts section">
+            <SectionHeader textContent="Thoughts" />
+            <ul class="thoughts__list">
+                {thoughts.map(thought => 
+                    <li class="thoughts__list__item"> 
+                        <a href={`/thoughts/${thought.id}`}> 
+                            <h2> {thought.data.title} </h2>
+                        </a>
+                    </li>
+                )}
+                    
+                {thoughts.length < 1 && (
+                    <p> No blog posts to show. </p>
+                )}
+            </ul>
         </div>
-    </div>
   </SectionLayout>
 </BaseLayout>
 
 <style lang="scss">
     @use '../styles/variables.scss' as *;
     
-    h1 {
-      color: var(--secondary-color);
-    }
     .section {
         display: flex;
         flex-flow: column nowrap;
-        justify-content: center; 
-        color: var(--secondary-color, #ffffff);
+        justify-content: center;
+
+        color: var(--secondary-color);
+
         position: relative;
         height: 100dvh;
+    }
 
-        &__landing {
-            display: flex;
-            flex-flow: column nowrap;
+    .thoughts {
+        &__list {
+            margin: 1rem;
+            &__item {
+                padding: 1rem;
+                color: var(--secondary-color);
 
-            &__header {
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-                width: max-content;
+                &:hover {
+                    background: var(--secondary-color);
+                    color: var(--primary-color);
+                }
 
-                font-size: var(--font-size-3xl);
-                text-align: center;
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
             }
-
-            &__image {
-                height: 50vh;
-                width: 100%;
-                filter: brightness(0.1);
-            }
-
         }
     }
 </style>
