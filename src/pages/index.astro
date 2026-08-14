@@ -1,56 +1,51 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import GridLayout from '../layouts/GridLayout.astro';
-import SectionLayout from '../layouts/SectionLayout.astro';
-import LandingHero from '../components/sections/LandingHero.astro';
-import TransitionStatement from '../components/sections/TransitionStatement.astro';
-import SelectedWorks from '../components/sections/SelectedWorks.astro';
-import WorkExperience from '../components/sections/WorkExperience.astro';
-import ProjectsList from '../components/sections/ProjectsList.astro';
-import AboutMe from '../components/sections/AboutMe.astro';
-import Contact from '../components/sections/Contact.astro';
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GridLayout from "../layouts/GridLayout.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+import LandingHero from "../components/sections/LandingHero.astro";
+import TransitionStatement from "../components/sections/TransitionStatement.astro";
+import SelectedWorks from "../components/sections/SelectedWorks.astro";
+import WorkExperience from "../components/sections/WorkExperience.astro";
+import ProjectsList from "../components/sections/ProjectsList.astro";
+import AboutMe from "../components/sections/AboutMe.astro";
+import Contact from "../components/sections/Contact.astro";
+        
 const pageTitle = "oswaldo de los santos (@byoswwwaldo) — ✦";
 // ♪ ♫  𓆝 𓆟 𓆞 ✦
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <GridLayout>
-    <LandingHero />
-  </GridLayout>
+    <div class="portfolio">
+        <GridLayout>
+            <LandingHero/>
+        </GridLayout>
 
-  <div class="portfolio">
-    <SectionLayout>
-      <TransitionStatement /> 
-    </SectionLayout>
-    
-    <SectionLayout>
-      <SelectedWorks />
-    </SectionLayout>
-    
-    <SectionLayout>
-      <WorkExperience />
-    </SectionLayout>
-    
-    <SectionLayout>
-      <ProjectsList />
-    </SectionLayout>
-    
-    <SectionLayout>
-      <AboutMe />
-    </SectionLayout>
-    
-    <SectionLayout>
-      <Contact />
-    </SectionLayout>  
-  </div>
+        <SectionLayout>
+            <TransitionStatement/>
+        </SectionLayout>
+
+        <SectionLayout>
+            <SelectedWorks/>
+        </SectionLayout>
+
+        <SectionLayout>
+            <WorkExperience/>
+        </SectionLayout>
+
+        <SectionLayout>
+            <ProjectsList/>
+        </SectionLayout>
+
+        <SectionLayout>
+            <Contact/>
+        </SectionLayout>
+    </div>
 </BaseLayout>
 
 <style lang="scss">
-    .portfolio {
-        display: flex;
-        flex-direction: column;
-        gap: 5vh;
-    }
-</style> 
-
+  .portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+  }
+</style>
