@@ -3,6 +3,7 @@
 interface Props {
     noMargins?: boolean;
     noPadding?: boolean;
+    topPadding?: boolean;
     noSpacing?: boolean;
     justifyCentered?: boolean;
     firstLayout?: boolean;
@@ -12,6 +13,7 @@ interface Props {
 const { 
     noMargins: propNoMargins = false, 
     noPadding: propNoPadding = false, 
+    topPadding = false,
     noSpacing = false,
     justifyCentered = false, 
     firstLayout = false, 
@@ -22,7 +24,7 @@ const noMargins = noSpacing || propNoMargins;
 const noPadding = noSpacing || propNoPadding;
 
 ---
-<section class:list={['section', { 'no-margins': noMargins, 'no-padding': noPadding, 'centered': justifyCentered, 'starter': firstLayout, }]}>
+<section class:list={['section', { 'no-margins': noMargins, 'no-padding': noPadding, 'top-padding': topPadding, 'centered': justifyCentered, 'starter': firstLayout, }]}>
     <slot />
 </section>
 
@@ -46,6 +48,10 @@ const noPadding = noSpacing || propNoPadding;
 
         &.no-padding {
             padding: 0;
+        }
+
+        &.top-padding {
+            padding-top: 10vh;
         }
 
         &.centered {
