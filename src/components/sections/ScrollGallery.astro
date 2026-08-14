@@ -1,27 +1,107 @@
 ---
+import { Image } from "astro:assets";
+import throne from '../../assets/throne.jpg';
+import fih from '../../assets/fih.jpg';
 ---
 
 <div class="scroll-gallery">
-    <div class="scroll-gallery__intro">
+    <div class="scroll-gallery__caption">
         <p> To miss someone fondly, is to admit the impact they've had on your life—and for the great, or good, that has ended. </p>
     </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={fih} alt={"i am just a fih"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> Money ain't real (tell em) </p>
+    </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={throne} alt={"throne"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> Where's that diamond tester? </p>
+    </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={fih} alt={"i am just a fih"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> Twenty-one, twenty-one, twenty-one, </p>
+    </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={throne} alt={"throne"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> Thirty on thirty, thirty on thirty, thirty on thirty </p>
+    </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={fih} alt={"i am just a fih"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> Hey Piccolo </p>
+    </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={throne} alt={"throne"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> What? </p>
+    </div>
+    
+    <div class="scroll-gallery__preview">
+        <Image class="scroll-gallery__preview__image" src={fih} alt={"i am just a fih"}/>
+    </div>
+
+    <div class="scroll-gallery__caption">
+        <p> Did you know the IRS is significiantly underfunded to serve taxpayers and collect tax? </p>
+    </div>
 </div>
+
+
+
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
-
-
 
     .scroll-gallery {
         display: flex;
         align-items: center;
+        flex-flow: column nowrap;
         justify-content: center;
         width: 100%;
-        height: 100%
-        ;
+        height: 100%;   
+        color: var(--secondary-color);
+
+        gap: 5vh;
+
         &__intro {
             display: flex;
             justify-content: center;
             color: var(--secondary-color);
+        }
+
+        &__caption {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // height: 50vh;
+            padding: 50vh 0;
+            width: 100%;
+            background: red;
+            
+            p { 
+                font-size: var(--font-size-lg);
+            }
+
+
         }
     }
 
