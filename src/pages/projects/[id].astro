@@ -1,14 +1,8 @@
 ---
-import type { GetStaticPaths } from "astro";
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SectionLayout from "../../layouts/SectionLayout.astro";
-import { getCollection } from "astro:content";
-import { render } from "astro:content";
-
-// export const getStaticPaths = (() => {
-    
-//     return [];
-// }) satisfies GetStaticPaths;
 
 export async function getStaticPaths() {
     const projects = await getCollection('projects')
@@ -24,16 +18,12 @@ export async function getStaticPaths() {
 const { project } = Astro.props
 const { Content } = await render(project)
 const pageTitle = `${project.data.title} — oswaldo de los santos (@byoswwwaldo)`;
-
 ---
-
 
 <BaseLayout pageTitle={pageTitle}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="project-article">
-            <!-- <h1> {project.data.title} </h1> -->
             <Content />
-            <!-- <p> </p> -->
         </div>
     </SectionLayout>
 </BaseLayout>
