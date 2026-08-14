@@ -87,6 +87,7 @@
 :root, html {
     --primary-color: #F2F3F4;
     --secondary-color: #3a3939;
+    --secondary-color: #121212;
     --grid-margin: calc(100% / 6);
 
     --decor-opacity: 10%;
@@ -99,7 +100,8 @@
 // responsive for grid margin: padding-inline: clamp(1rem, 3vw, 1.5rem)
 
 :root.dark, html.dark {
-    --primary-color: #0E0E0E;   
+    --primary-color: #0E0E0E;  
+    --primary-color: #121212;
     --secondary-color: #E6E6E6;
 
     --highlight-color: #2B2B2B;
