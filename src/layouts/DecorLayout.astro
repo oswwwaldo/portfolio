@@ -6,14 +6,14 @@ import Ellipse from "../components/ui/Ellipse.astro";
 import SideRays from "../components/ui/SideRays.astro";
 const sideRays: boolean = false;
 
-const ellipseCount = 4;
-const diagonalCount = 2;
+const ellipseCount = 6;
+const diagonalCount = 3;
 
 const generateDecor = (type: "ellipse" | "diagonal", count: number) => {
     return Array.from({ length: count }).map((_, index) => {
         const segment = 100 / count;
         const top = index * segment + Math.random() * (segment * 0.8);
-        const left = Math.random() * 85;
+        const left = Math.random() * 85 - 30;
         const base = Math.random() < 0.5 ? 135 : -45; // Generates a deg between 315 -> 45 && 135 -> 225
         const rotation = Math.floor(Math.random() * 91) + base;
         return { type, top, left, rotation };
@@ -89,6 +89,7 @@ const allDecorations = [...ellipses, ...diagonals];
             overflow: hidden;
 
             pointer-events: none;
+            user-select: none;
             z-index: var(--decor-layer);
         }
 
