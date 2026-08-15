@@ -57,11 +57,15 @@
     --tag-text: var(--color-secondary-80);
 
     --footer-layer: -999;
+    --bg-decor-layer: 0;
+    --bg-web-gl-layer: 0;
     --layer-index: 1;
     --decor-layer: 2;
     --content-layer: 3;
-    --nav-layer: 1000;
     --menu-layer: 999;
+    --nav-layer: 1000;
+    --watermark-layer: 1001;
+    --max-layer: 9999;
 
     --decor-opacity: 5%;
 
