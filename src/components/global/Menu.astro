@@ -1,18 +1,43 @@
 ---
+import { getCollection } from 'astro:content';
 import Image from 'astro/components/Image.astro';
-import Knight from '../../assets/Knight.png';
-import KnightASCII from '../../assets/Knight-ASCII.png';
+
+import Knight from '../../assets/Knight_06.png';
+import KnightASCII1x from '../../assets/Knight_06-ASCII-SCALE-1x.png';
+import KnightASCII2x from '../../assets/Knight_06-ASCII-SCALE-2x.png';
+import KnightASCII3x from '../../assets/Knight_06-ASCII-SCALE-3x.png';
+import KnightASCII4x from '../../assets/Knight_06-ASCII-SCALE-4x.png';
+import KnightASCII5x from '../../assets/Knight_06-ASCII-SCALE-5x.png';
+import KnightASCII6x from '../../assets/Knight_06-ASCII-SCALE-6x.png';
+import KnightASCII7x from '../../assets/Knight_06-ASCII-SCALE-7x.png';
+import KnightASCII8x from '../../assets/Knight_06-ASCII-SCALE-8x.png';
+
+import AppSVG from '../ui/AppSVG.astro';
 import MenuList from '../ui/MenuList.astro';
 import Watermark from '../ui/Watermark.astro';
----
+
+const socials = await getCollection('socials');
+const professionalSocials = socials.filter(social => social.data.featured);
+
+console.log('Socials in <Menu/>: ' + professionalSocials.length);
+
+const projects = await getCollection('projects');
+const MAX_FEATURED = 4;
+
+const featuredProjects = projects
+    .filter(project => project.data.featured)
+    .slice(0, MAX_FEATURED);
+
+console.log('Projects in <Menu/>: ' + featuredProjects.length);
+--- 
 
 <div class="menu menu--full-size" id="full-menu">
-
-    <Watermark />
+    <!-- <Watermark /> -->
     <div class="menu__background">
         <Image 
             class="menu__background__image"
-            src={KnightASCII}
+            id="menu-image"
+            src={KnightASCII3x}
             alt="Infinity Blade">
         </Image>
     </div>
@@ -22,86 +47,80 @@ import Watermark from '../ui/Watermark.astro';
 
     <div class="menu__links">
         <div class="menu__links__socials">
-            <a class="menu__links__socials__link" href="https://www.instagram.com/byoswwwaldo/"> Instagram </a>
-            <a class="menu__links__socials__link" href="https://github.com/oswwwaldo"> Github </a>
-            <a class="menu__links__socials__link" href="https://www.linkedin.com/in/oswwwaldo/"> LinkedIn </a>
-            <a class="menu__links__socials__link" href="https://www.youtube.com/@oswwwaldo"> YouTube </a>
+            {professionalSocials.map(social => {
+                return <a class="menu__links__socials__link" href=`{social.data.link}`>{social.data.platform}</a>
+            })}
         </div>
 
         <div class="menu__links__content">
             <div class="menu__links__content__nav">
                 <div class="info-group">
-                    <h4 class="info-group__header">Projects (04)</h4>
-                    <a class="info-group__link" href="/projects/spotify-lyrics-display">Spotify Lyrics Display</a>
-                    <a class="info-group__link" href="/projects/portfolio">Portfolio</a>
-                    <a class="info-group__link" href="/projects/new-tab-chess">New Tab Chess Puzzle</a>
-                    <a class="info-group__link" href="/projects/robco-industries-terminal">RobCo Industries Terminal</a>
+                    <h4 class="info-group__header">Projects ({featuredProjects.length})</h4>
+                    {featuredProjects.map(project=> {
+                        if (project.data.featured) {
+                            return <a class="info-group__link" href=`/projects/${project.data.id}`>{project.data.title}</a>
+                        }
+                    })}
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Explore</h4>
-                    <a class="info-group__link" href="/projects/start-a-quest">Start a quest</a>
-                    <a class="info-group__link" href="/projects/sign">Sign the guestbook</a>
-                    <a class="info-group__link" href="/projects/now">What am I doing?</a>
+                    <a class="info-group__link" href="/start-a-quest">Start a quest</a>
+                    <a class="info-group__link" href="/sign">Sign the guestbook</a>
+                    <a class="info-group__link" href="/now">What am I doing?</a>
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Other pages</h4>
-                    <a class="info-group__link" href="/now">Now</a>
+                    <a class="info-group__link" href="/changelog">Changelog</a>
+                    <a class="info-group__link" href="/music">Music</a>
+                    <a class="info-group__link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                     <a class="info-group__link" href="/thoughts">Thoughts</a>
-                    <a class="info-group__link" href="/video">Video</a>
-                    <a class="info-group__link" href="/drop">Drop</a>
                 </div>
             </div>
             <div class="menu__links__content__info">
                 <div class="menu__links__content__info__flags">
-                    <div class="us-flag">
-                        <svg width="30" height="15" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.04 6.72H30V8.28H13.04V6.72Z" fill="var(--color-flag-red)"/>
-                            <path d="M0 10.08H30V11.64H0V10.08Z" fill="var(--color-flag-red)"/>
-                            <path d="M0 13.44H30V15H0V13.44Z" fill="var(--color-flag-red)"/>
-                            <path d="M13.04 3.36H30V4.92H13.04V3.36Z" fill="var(--color-flag-red)"/>
-                            <path d="M13.04 0H30V1.56H13.04V0Z" fill="var(--color-flag-red)"/>
-                            <path d="M0 0H11.04V8.28H0V0Z" fill="var(--color-flag-blue)"/>
-                        </svg>
-                    </div>
+                    <AppSVG icon="us-flag" width={30} height={15}/>
+                    <AppSVG icon="house-hightower" width={60} height={60} />
                 </div>
                 <div class="menu__links__content__info__text">
                     <a href="/sitemap"> Sitemap </a>
                     <p> Designed, developed and deployed by </p>
                     <p> Oswaldo Fabrizio De Lo Santos Ascencio </p>
+
+                    <br> <br>
+                    <a href="/credits"> Credits </a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
     .menu {
-        display: none;
+        display: flex;
         flex-direction: column;
         justify-content: space-around;
-
         background-color: var(--primary-color);
         color: var(--secondary-color);
 
-        
         overflow-y: hidden !important;
         
         position: fixed;
-        left: 0; top: 0;
+        top: 0; left: 0;
         inset: 0;
         width: 100vw;
         height: 100vh;
         
         overflow: hidden; 
         overscroll-behavior: none; 
-        z-index: var(--menu-layer);
+        z-index: var(--menu-layer); 
 
-        &--full-size {
-            padding-top: 20vh !important;
-        }
+        padding-top: 20vh !important;
+
+        transition: clip-path 300ms ease-in;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
 
 
         &__background {
@@ -114,11 +133,17 @@ import Watermark from '../ui/Watermark.astro';
                 height: 90vh;
                 width: auto;
                 
-                object-fit: contain;
-                z-index: -1;
+                top: -12vh; height: 75vh;
 
-                // ! This doesn't work
-                // opacity: calc(100 * var(--opacity-factor) / 100);
+                top: -17.5vh; height: 80vh;
+                object-fit: contain;
+                z-index: 1;
+                user-select: none;
+                pointer-events: none;
+
+                &:hover {
+                    // background-color: var(--color-secondary-05);
+                }
             }
         }
 
@@ -132,6 +157,7 @@ import Watermark from '../ui/Watermark.astro';
 
         &__links {
             margin-bottom: 1rem;
+            
             &__socials {
                 display: flex;
                 flex-direction: row;
@@ -212,11 +238,12 @@ import Watermark from '../ui/Watermark.astro';
 
                     &__flags {
                         display: flex;
+                        align-items: center;
                         flex-direction: column;
+                        justify-content: center;
+                        gap: 1rem;
 
-                        &__us-flag {
-                            fill: var(--color-gray);
-                        }
+                        fill: var(--color-gray) !important;
                     }
 
                     &__text {
@@ -256,6 +283,33 @@ import Watermark from '../ui/Watermark.astro';
 </style>
 
 <script>
+
+    const menuImage = document.getElementById('menu-image');
+    let isCursorInside = false;
+
+    
+    if (menuImage) {
+        const menuImageQuadrant = menuImage?.offsetWidth / 8;
+        menuImage.addEventListener('mouseenter', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+
+            if (event.clientX > menuImageQuadrant) {
+
+            }
+
+            isCursorInside = true;
+            console.log("Cursor entered element");
+
+            
+        });
+        
+        menuImage.addEventListener('mouseleave', () => {
+            isCursorInside = false;
+            console.log("Cursor left element");
+        });
+    }
+
     function updateMenuHeight() {
         const menu = document.getElementById('reveal-menu');
         if (menu) {
