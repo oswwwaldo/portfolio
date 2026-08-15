@@ -41,10 +41,18 @@
   .bg-scroll-indicator {
     grid-column: 6;
     grid-row: 1 / -1;
-    z-index: 0;
+    z-index: var(--bg-decor-layer);
     pointer-events: none;
-    background-color: var(--primary-color);
+    background-color: var(--color-secondary-05);
     opacity: 20%;
+
+    position: sticky;
+    top: 0;
+    right: 100%;
+    left: 100%;
+
+    user-select: none;
+    pointer-events: none;
   }
 
   @media (max-width: 770px) {
