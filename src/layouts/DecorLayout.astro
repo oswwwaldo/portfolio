@@ -3,8 +3,10 @@ import GridLines from "../components/ui/GridLines.astro";
 import DiagonalLines from "../components/ui/DiagonalLines.astro";
 import Ellipse from "../components/ui/Ellipse.astro";
 
+import PixelSnow from "../components/ui/PixelSnow.astro";
 import SideRays from "../components/ui/SideRays.astro";
 const sideRays: boolean = false;
+const pixelSnow: boolean = true;
 
 const ellipseCount = 6;
 const diagonalCount = 3;
@@ -39,6 +41,21 @@ const allDecorations = [...ellipses, ...diagonals];
             blend={0.75}
             falloff={1.6}
             opacity={1}
+        />
+    )
+}
+
+{
+    pixelSnow && (
+        <PixelSnow 
+            color="#ffffff" 
+            flakeSize={0.01} 
+            farPlane={8}
+            depthFade={2}
+            density={0.3} 
+            speed={1.3}
+            variant="snowflake"
+            style="position: absolute; inset: 0; z-index: -1;"
         />
     )
 }
