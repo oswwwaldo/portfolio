@@ -1,14 +1,13 @@
 ---
 type Props = {
     textContent: string;
-    target?: string;
 }
 
-const { textContent, target } = Astro.props
+const { textContent } = Astro.props
 
 ---
 <div class="tag">
-    <a class="label" href={target}> {textContent} </a>
+    <a class="label" href={`/projects/tags/${textContent}`}> {textContent} </a>
 </div>
 
 <style lang="scss">
@@ -30,7 +29,6 @@ const { textContent, target } = Astro.props
 
         &:hover {
             background: var(--color-secondary-20);
-            // background: red;
         }
         
         a {
@@ -40,13 +38,4 @@ const { textContent, target } = Astro.props
             letter-spacing: 0.10vw;
         }
     }
-
 </style>
-
-<script>
-    let tag = document.querySelector('.tag');
-
-    tag?.addEventListener('click', () => {
-        
-    });
-</script>
