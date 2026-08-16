@@ -16,6 +16,7 @@ const { items } = Astro.props;
                 <a class="menu__list__item__link" href={`/${item.toLowerCase()}`}> 
                     {item} 
                 </a> 
+                <span class="menu__list__item__icon"> /> </span>
             </li>
         ))
     }
@@ -27,7 +28,7 @@ const { items } = Astro.props;
      .menu__list {  
         width: 100%;
 
-        display: flex   ;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
@@ -81,7 +82,22 @@ const { items } = Astro.props;
                 align-items: flex-start;
 
                 min-height: 50px;
-                
+            }
+
+            &__icon {
+                font-family: var(--font-heading);
+                font-size: var(--font-size-xl);
+                align-self: center;
+                visibility: hidden;
+                transition: translate 0.3s ease;
+                user-select: none;
+            }
+
+            &:hover {
+                & .menu__list__item__icon {
+                    visibility: visible;
+                    translate: 15px -10px;
+                }
             }
         }
     }
