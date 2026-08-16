@@ -12,6 +12,11 @@ import KnightASCII6x from '../../assets/Knight_06-ASCII-SCALE-6x.png';
 import KnightASCII7x from '../../assets/Knight_06-ASCII-SCALE-7x.png';
 import KnightASCII8x from '../../assets/Knight_06-ASCII-SCALE-8x.png';
 
+import fih from '../../assets/fih.jpg'
+import throne from '../../assets/throne.jpg';
+import catnerd from '../../assets/cat-nerd.png';
+import uwu from '../../assets/uwu.jpg'
+
 import AppSVG from '../ui/AppSVG.astro';
 import MenuList from '../ui/MenuList.astro';
 import Watermark from '../ui/Watermark.astro';
@@ -29,6 +34,13 @@ const featuredProjects = projects
     .slice(0, MAX_FEATURED);
 
 console.log('Projects in <Menu/>: ' + featuredProjects.length);
+
+const menuListItems = [
+  { label: 'About', image: fih, alt: "Yo what up my g" },
+  { label: 'Home', image: throne, alt: "Yo what up my o" },
+  { label: 'Contact', image: catnerd, alt: "Yo what up my oo" },
+  { label: 'Projects', image: uwu, alt: "Yo what up my ooo" },
+];
 --- 
 
 <div class="menu menu--full-size" id="full-menu">
@@ -42,7 +54,7 @@ console.log('Projects in <Menu/>: ' + featuredProjects.length);
         </Image>
     </div>
     <div class="menu__nav">
-        <MenuList items={['About', 'Home', 'Contact', 'Projects']}/>
+        <MenuList items={menuListItems}/>
     </div>
 
     <div class="menu__links">

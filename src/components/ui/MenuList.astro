@@ -1,6 +1,14 @@
 ---
+import type { ImageMetadata } from 'astro';
+
+export interface MenuItem {
+    label: string;
+    image: ImageMetadata;
+    alt: string;
+}
+
 interface Props {
-    items: string[];
+    items: MenuItem[];
 }
 
 const { items } = Astro.props;
@@ -8,15 +16,25 @@ const { items } = Astro.props;
 
 <ul class="menu__list">
     {
-        items.map((item, index) => (
+        items.map(({ label, image, alt }, index: number) => (
             <li class="menu__list__item">
                 <span class="menu__list__item__index">
                     {(index + 1).toString().padStart(2, '0')}.
                 </span> 
-                <a class="menu__list__item__link" href={`/${item.toLowerCase()}`}> 
-                    {item} 
+                <a class="menu__list__item__link" href={`/${label.toLowerCase()}`}> 
+                    {label} 
                 </a> 
                 <span class="menu__list__item__icon"> /> </span>
+                <div class="menu__list__item__image"> </div>
+
+                <div class="hover-reveal">
+                    <div class="hover-reveal__inner">
+                        <div class="hover-reveal__img" data-image={image.src} aria-label={alt}>
+
+                        </div>
+                    </div>
+                    {/* ::after */}
+                </div>
             </li>
         ))
     }
@@ -25,7 +43,57 @@ const { items } = Astro.props;
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
-     .menu__list {  
+    .hover-reveal {
+        position: fixed;
+        top: 0; left: 0;
+        opacity: 0;
+        pointer-events: none;
+
+        width: 100px;
+        height: 100px;
+
+        &.is-visible {
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        &__inner {
+            overflow: hidden;
+            transform: translate(-0%, 0%) matrix(1, 0, 0, 1, 0, 0);
+
+            width: 100%;
+            height: 100%;
+            position: relative;
+            visibility: hidden;
+
+            &.is-visible {
+                transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);
+                visibility: visible !important;
+            }
+        }
+
+        &__img {
+            background-image: url(https://tympanus.net/Development/ImageRevealHover/img/2.jpg);
+            background-size: cover;
+            background-position: 50% 50%;
+            transform: translate(-100%, 0%) matrix(1, 0, 0, 1, 0, 0);
+
+            width: 100%;
+            height: 100%;
+            position: relative;
+            visibility: hidden;
+
+            
+            &.is-visible {
+                transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);
+                visibility: visible !important;
+            }
+        }
+
+
+    }
+
+    .menu__list {  
         width: 100%;
 
         display: flex;
@@ -89,6 +157,7 @@ const { items } = Astro.props;
                 font-size: var(--font-size-xl);
                 align-self: center;
                 visibility: hidden;
+                translate: -10px -10px;
                 transition: translate 0.3s ease;
                 user-select: none;
             }
@@ -96,10 +165,34 @@ const { items } = Astro.props;
             &:hover {
                 & .menu__list__item__icon {
                     visibility: visible;
-                    translate: 15px -10px;
+                    translate: 10px -10px;
                 }
             }
         }
     }
-
 </style>
+
+<script>
+    window.addEventListener('mousemove', (e) => {       
+        const menuItems = document.querySelectorAll('.menu__list__item');
+        
+        menuItems.forEach((menuItem) => {
+            if (menuItem?.matches(':hover')) {
+                console.log('The cursor is hovering over the element.');
+                const hoverReveal = menuItem.querySelector('.hover-reveal') as HTMLDivElement;
+                const hoverRevealInner = hoverReveal.querySelector('.hover-reveal__inner') as HTMLDivElement;
+                const hoverRevealImg = hoverRevealInner?.querySelector('.hover-reveal__img') as HTMLDivElement;
+
+                hoverReveal.style.top = `${e.clientY}px`;
+                hoverReveal.style.left = `${e.clientX}px`;
+
+                [hoverReveal, hoverRevealInner, hoverRevealImg].forEach((item)=>{
+                    item?.classList.toggle('is-visible');
+                })
+
+            } else {
+                console.log('The cursor is NOT hovering over the element.');
+            }
+        });
+    });
+</script>
