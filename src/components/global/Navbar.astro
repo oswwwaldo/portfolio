@@ -5,7 +5,7 @@ import Watermark from '../ui/Watermark.astro';
 import Hamburger from './Hamburger.astro';
 ---
 
-<div class="wrapper" id="nav-wrapper">
+<div class="wrapper is-sticky" id="nav-wrapper">
     <div class="nav-wrapper" id="navbar">
         <div class="nav-logo">
             <a class="nav-logo__title label" id="site-name" href="/"> oswwwaldo </a>
@@ -186,7 +186,7 @@ import Hamburger from './Hamburger.astro';
 
     .nav-wrapper.is-hidden {
         border: 1px solid var(--color-secondary-05);
-        position: sticky;
+        position: absolute;
 
         .nav-logo {
             visibility: hidden; 
