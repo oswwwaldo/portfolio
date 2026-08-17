@@ -196,8 +196,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 height: 80vh; width: 40vw;
                 top: -20vh; right: 1vw;
 
-                // background-color: var(--color-secondary-20);
-                background-image: url(https://picsum.photos/200);
+                background-image: url(https://picsum.photos/2000);
                 background-size: cover;
                 background-position: bottom center;
 
@@ -359,6 +358,13 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         console.log(bgFrames);
         console.log(typeof(bgFrames));
         console.log("Exported frames recovered: " + bgFrames.length);
+
+        bgFrames.forEach((frame: string, index: number) => {
+            console.log("Iteraing over... " + frame);
+            const download = new Image() as HTMLImageElement;
+            download.src = frame;
+            console.log("Downloaded: " + download.src);
+        });
 
         menuImage.addEventListener('mousemove', (event) => {
             console.log("event listener mousemove event fired");
