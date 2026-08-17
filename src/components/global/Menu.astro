@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Image from 'astro/components/Image.astro';
 
@@ -23,6 +24,11 @@ import Watermark from '../ui/Watermark.astro';
 
 const KnightBGFrames = [ Knight.src, KnightASCII1x.src, KnightASCII2x.src, KnightASCII3x.src, KnightASCII4x.src, KnightASCII5x.src, KnightASCII6x.src, KnightASCII7x.src, KnightASCII8x.src ]
 const exportedKnightBGFrames = JSON.stringify(KnightBGFrames);
+
+
+// const rawImageMetadata = entry.data.src; // This holds your ImageMetadata object
+
+const optimizedBGFrame = await getImage({ src: Knight });
 
 const socials = await getCollection('socials');
 const professionalSocials = socials.filter(social => social.data.featured);
@@ -58,12 +64,14 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
 <div class="menu menu--full-size" id={variantType}>
     <div class="menu__background" data-bg-frames={exportedKnightBGFrames} id="menu-bg">
+        <div class="menu__background__image" id="menu-image" style={`background-image: url('${optimizedBGFrame.src}')`}></div>
+        <!-- 
         <Image 
             class="menu__background__image"
             id="menu-image"
             src={KnightASCII3x}
             alt="Infinity Blade">
-        </Image>
+        </Image> -->
     </div>
     <div class="menu__nav">
         <MenuList items={menuListItems}/>
@@ -184,21 +192,21 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
             &__image {
                 position: absolute;
-                top: -22vh; right: 0;
-                
-                height: 90vh;
-                width: auto;
-                
-                top: -12vh; height: 75vh;
 
-                top: -17.5vh; height: 80vh;
-                object-fit: contain;
+                height: 80vh; width: 40vw;
+                top: -20vh; right: 1vw;
+
+                // background-color: var(--color-secondary-20);
+                background-image: url(https://picsum.photos/200);
+                background-size: cover;
+                background-position: bottom center;
+
                 z-index: 1;
                 user-select: none;
                 // pointer-events: none;
 
                 &:hover {
-                    background-color: var(--color-secondary-01);
+                    // background-color: var(--color-secondary-01);
                 }
             }
         }
@@ -342,39 +350,36 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
     const menuBG = document.getElementById('menu-bg') as HTMLDivElement;
     const menuBGFrames = menuBG?.dataset.bgFrames;
     const menuImage = document.getElementById('menu-image');
-    const menuRect = menuImage?.getBoundingClientRect();
-
-    if (menuBG && menuBGFrames) {
-        const bgFrames = JSON.parse(menuBGFrames);
-        console.log("Exported frames recovered: " + bgFrames.length);
-    }
-
     let isCursorInside = false;
-    // const menuImageQuadrant = menuImage?.offsetWidth / 8;
+    console.log(menuBGFrames);
 
-    if (menuImage && menuRect) {
-        menuImage.addEventListener('mouseenter', (event) => {
-            const x = event.clientX;
-            const y = event.clientY;
+    if (menuBG && menuBGFrames && menuImage) {
+        console.log("if menuBG && menuBGFrames && menuImage fired");
+        const bgFrames = JSON.parse(menuBGFrames);
+        console.log(bgFrames);
+        console.log(typeof(bgFrames));
+        console.log("Exported frames recovered: " + bgFrames.length);
 
+        menuImage.addEventListener('mousemove', (event) => {
+            console.log("event listener mousemove event fired");
+
+            const menuRect = menuImage?.getBoundingClientRect();
             const divStartsAtX = menuRect.left;
             const divEndsAtX = menuRect.right;
 
             // If cursor touches element
             if (event.clientX > divStartsAtX && event.clientX < divEndsAtX) {
-                alert(event.clientX);
-                
+                console.log("cursor touching element + > divStartsAtX && < divEndsAtX");
 
+                const divWidth = menuRect.width;
+                const cursorProgress = event.clientX - divStartsAtX;
+                const divQuadrant = divWidth / bgFrames.length;
+                const currentQuadrant = Math.floor((cursorProgress / divWidth) * bgFrames.length); // returns 0 to 8
 
+                console.log("The cursor is in " + currentQuadrant);
+                menuImage.style.backgroundImage = `url('${bgFrames[currentQuadrant]}')`;
             }
-
             isCursorInside = true;
-            console.log("Cursor entered element");
-        });
-        
-        menuImage.addEventListener('mouseleave', () => {
-            isCursorInside = false;
-            console.log("Cursor left element");
         });
     }
 
@@ -399,13 +404,13 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         hoverReveal.style.left = `${25 + event.clientX}px`;
     });
 
-    menuNav?.querySelectorAll('* > [data-image]').forEach(menuListItem => {
-        console.log("Hello" + menuListItem.getAttribute('title'));
-        console.log(menuListItem.dataset.image); 
+    menuNav?.querySelectorAll('* > [data-image]').forEach(menuListItem => { 
+        // console.log("Hello" + menuListItem.getAttribute('title'));
+        // console.log(menuListItem.dataset.image); 
 
         menuListItem.addEventListener('mouseenter', () => {
-            console.log("You're hovering over " + menuListItem.textContent);
-            console.log(menuListItem.dataset.image);
+            // console.log("You're hovering over " + menuListItem.textContent);
+            // console.log(menuListItem.dataset.image);
             if (hoverReveal) { hoverReveal.style.backgroundImage = 'url(`${menuListItem.dataset.image}`)'; }
 
             if (hoverReveal) {
