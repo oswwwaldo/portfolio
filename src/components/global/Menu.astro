@@ -21,6 +21,9 @@ import AppSVG from '../ui/AppSVG.astro';
 import MenuList from '../ui/MenuList.astro';
 import Watermark from '../ui/Watermark.astro';
 
+const KnightBGFrames = [ Knight.src, KnightASCII1x.src, KnightASCII2x.src, KnightASCII3x.src, KnightASCII4x.src, KnightASCII5x.src, KnightASCII6x.src, KnightASCII7x.src, KnightASCII8x.src ]
+const exportedKnightBGFrames = JSON.stringify(KnightBGFrames);
+
 const socials = await getCollection('socials');
 const professionalSocials = socials.filter(social => social.data.featured);
 
@@ -51,11 +54,10 @@ type Props = {
 
 const { variant } = Astro.props
 const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
-
 ---
 
 <div class="menu menu--full-size" id={variantType}>
-    <div class="menu__background">
+    <div class="menu__background" data-bg-frames={exportedKnightBGFrames} id="menu-bg">
         <Image 
             class="menu__background__image"
             id="menu-image"
@@ -116,32 +118,30 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         </div>
     </div>
 </div>
-<style lang="scss">
-    
-.hover-reveal {
-    position: fixed;
-    top: 0; left: 0;
-    opacity: 0;
-    pointer-events: none;
 
-    width: 100px;
-    height: 100px;
-
-    background: white;
-
-    background-image: none;
-    background-size: cover;
-    background-position: center;
-
-    &.is-visible {
-        z-index: 1000;
-        opacity: 1;
-    }
-}
-
-</style>
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
+
+    .hover-reveal {
+        position: fixed;
+        top: 0; left: 0;
+        opacity: 0;
+        pointer-events: none;
+
+        width: 100px;
+        height: 100px;
+
+        background: white;
+
+        background-image: none;
+        background-size: cover;
+        background-position: center;
+
+        &.is-visible {
+            z-index: 1000;
+            opacity: 1;
+        }
+    }
 
     .menu {
         display: flex;
@@ -195,10 +195,10 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 object-fit: contain;
                 z-index: 1;
                 user-select: none;
-                pointer-events: none;
+                // pointer-events: none;
 
                 &:hover {
-                    // background-color: var(--color-secondary-05);
+                    background-color: var(--color-secondary-01);
                 }
             }
         }
@@ -339,25 +339,37 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 </style>
 
 <script>
-
+    const menuBG = document.getElementById('menu-bg') as HTMLDivElement;
+    const menuBGFrames = menuBG?.dataset.bgFrames;
     const menuImage = document.getElementById('menu-image');
-    let isCursorInside = false;
+    const menuRect = menuImage?.getBoundingClientRect();
 
-    
-    if (menuImage) {
-        const menuImageQuadrant = menuImage?.offsetWidth / 8;
+    if (menuBG && menuBGFrames) {
+        const bgFrames = JSON.parse(menuBGFrames);
+        console.log("Exported frames recovered: " + bgFrames.length);
+    }
+
+    let isCursorInside = false;
+    // const menuImageQuadrant = menuImage?.offsetWidth / 8;
+
+    if (menuImage && menuRect) {
         menuImage.addEventListener('mouseenter', (event) => {
             const x = event.clientX;
             const y = event.clientY;
 
-            if (event.clientX > menuImageQuadrant) {
+            const divStartsAtX = menuRect.left;
+            const divEndsAtX = menuRect.right;
+
+            // If cursor touches element
+            if (event.clientX > divStartsAtX && event.clientX < divEndsAtX) {
+                alert(event.clientX);
+                
+
 
             }
 
             isCursorInside = true;
             console.log("Cursor entered element");
-
-            
         });
         
         menuImage.addEventListener('mouseleave', () => {
