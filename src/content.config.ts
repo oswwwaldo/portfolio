@@ -56,7 +56,7 @@ const poetry = defineCollection({
 
 const projects = defineCollection({
     loader: glob({ base: 'src/content/projects', pattern: '*.md'}),
-    schema: z.object({
+    schema: ({ image }) => z.object({
         id: z.string(),
         title: z.string(),
         slug: z.string(),
@@ -69,13 +69,17 @@ const projects = defineCollection({
         technologies: z.array(z.string()),
         githubUrl: z.string().nullable(),
         liveUrl: z.string().nullable(),
-        thumbnail: z.string(),
-        gallery: z.array(z.string()),
+        thumbnail: z.object({
+            title: z.string(),
+            cover: image(),
+            coverAlt: z.string(),
+        }),
+        gallery: z.array(z.string()), 
         contributors: z.array(
             z.object({
                 name: z.string(),
                 role: z.string(),
-                image: z.string().optional()
+                image: z.string().optional() 
             })
         ).nullable(),
         year: z.string(),

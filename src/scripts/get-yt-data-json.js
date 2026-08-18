@@ -28,7 +28,7 @@ export async function buildYTData() {
         
         const playlistsResults = await Promise.allSettled(fetchPromises);
         console.log("Grabbed: " + playlistsResults.length + " playlists");
-        console.log(await playlistsResults[0].value);
+        console.log(playlistsResults[0].value);
 
         playlistsResults.forEach((result) => {
             if (result.status === 'rejected') {

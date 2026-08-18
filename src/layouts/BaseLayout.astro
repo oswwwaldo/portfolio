@@ -1,6 +1,6 @@
 ---
 import SiteHeader from "../components/global/SiteHeader.astro";
-import SiteFooter from "../components/global/SiteFooter.astro";
+import SiteFooter from "../components/global/SiteFooter.astro"; 
 import EndOfFile from "../components/sections/EndOfFile.astro";
 
 import DecorLayout from "../layouts/DecorLayout.astro";
@@ -72,7 +72,7 @@ const noPageMargin = fullScreen || propNoPageMargin;
         </div>
       </DecorLayout>
     )}
-    {noFooter ? null : <SiteFooter renderFullFooter={false} />}
+    {noFooter ? null : <SiteFooter renderFullFooter={true} />}
   </body>
 </html>
 
@@ -87,7 +87,7 @@ const noPageMargin = fullScreen || propNoPageMargin;
       position: relative;
 
       // min-height: 100v h;
-      margin-bottom: var(--footer-height, 50vh);
+      // margin-bottom: var(--footer-height, 50vh);
 
       &--no-margin-btm {
         margin-bottom: 0 !important;

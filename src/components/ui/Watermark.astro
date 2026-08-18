@@ -1,8 +1,9 @@
 ---
+const { class: className, ...rest } = Astro.props;
 ---
 
-<div class="watermark">
-    <p class="watermark__text"> Oswaldo Fabrizio De Los Santos Ascencio </p>
+<div class:list={['watermark', className]} {...rest}>
+    <p class="watermark__text" title="hello there"> Oswaldo Fabrizio De Los Santos Ascencio </p>
 </div>
 
 <style lang="scss">
@@ -13,19 +14,42 @@
         justify-content: center;
         z-index: 999;
         pointer-events: none;
+        position: absolute;
+        top: 30%;
 
-        position: fixed;
-        top: 3.5%; left: 50%;
-        transform: translate(-50%, -50%);
+        z-index: var(--watermark-layer);
         width: 100%;
 
         &__text {
             font-family: var(--font-heading);
             font-size: var(--font-size-sm);
-            // line-height: 19.5;
             letter-spacing: 5px;
             color: var(--secondary-color);
             text-align: center;
+
+            position: relative;
+            pointer-events: all;
+
+            &::after {
+                content: '';
+                display: none;
+                position: absolute;
+                top: 120%;
+                left: 50%;
+            }
+
+            &:hover {
+                &::after {
+                    content: ".";
+                    color: white;
+                    display: flex;
+
+                }
+            }
         }
     }
 </style>
+<script>
+    const watermark = document.querySelector('watermark') as HTMLDivElement;
+
+</script>

@@ -16,7 +16,10 @@ technologies:
   - "SCSS"
 githubUrl: "https://github.com/oswwwaldo/portfolio"
 liveUrl: "https://portfolio.dev"
-thumbnail: "/assets/projects/portfolio/thumbnail.webp"
+thumbnail:
+  title: "New Tab Chess Preview"
+  cover: "../../assets/projects/new-tab-chess/thumbnail.webp"
+  coverAlt: "New tab ches boy!"
 gallery:
   - "/assets/projects/portfolio/preview-1.webp"
   - "/assets/projects/portfolio/preview-2.webp"

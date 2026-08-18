@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+
+const pageTitle = "thoughts — oswaldo de los santos (@byoswwwaldo)";
+const thoughts = await getCollection('thoughts');
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <SectionLayout firstLayout={true} topPadding={true}>
+        <div class="thoughts section">
+            <SectionHeader textContent="Thoughts" />
+            <ul class="thoughts__list">
+                {thoughts.map(thought => 
+                    <li class="thoughts__list__item"> 
+                        <a href={`/thoughts/${thought.id}`}> 
+                            <h2> {thought.data.title} </h2>
+                        </a>
+                    </li>
+                )}
+                    
+                {thoughts.length < 1 && (
+                    <p> No blog posts to show. </p>
+                )}
+            </ul>
+        </div>
+  </SectionLayout>
+</BaseLayout>
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+    
+    .section {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+
+        color: var(--secondary-color);
+
+        position: relative;
+        height: 100dvh;
+    }
+
+    .thoughts {
+        &__list {
+            margin: 1rem;
+            &__item {
+                padding: 1rem;
+                color: var(--secondary-color);
+
+                &:hover {
+                    background: var(--secondary-color);
+                    color: var(--primary-color);
+                }
+
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+</style>

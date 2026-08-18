@@ -3,17 +3,19 @@ import GridLines from "../components/ui/GridLines.astro";
 import DiagonalLines from "../components/ui/DiagonalLines.astro";
 import Ellipse from "../components/ui/Ellipse.astro";
 
+import PixelSnow from "../components/ui/PixelSnow.astro";
 import SideRays from "../components/ui/SideRays.astro";
 const sideRays: boolean = false;
+const pixelSnow: boolean = true;
 
-const ellipseCount = 4;
-const diagonalCount = 2;
+const ellipseCount = 6;
+const diagonalCount = 3;
 
 const generateDecor = (type: "ellipse" | "diagonal", count: number) => {
     return Array.from({ length: count }).map((_, index) => {
         const segment = 100 / count;
         const top = index * segment + Math.random() * (segment * 0.8);
-        const left = Math.random() * 85;
+        const left = Math.random() * 85 - 30;
         const base = Math.random() < 0.5 ? 135 : -45; // Generates a deg between 315 -> 45 && 135 -> 225
         const rotation = Math.floor(Math.random() * 91) + base;
         return { type, top, left, rotation };
@@ -39,6 +41,21 @@ const allDecorations = [...ellipses, ...diagonals];
             blend={0.75}
             falloff={1.6}
             opacity={1}
+        />
+    )
+}
+
+{
+    pixelSnow && (
+        <PixelSnow 
+            color="#ffffff" 
+            flakeSize={0.01} 
+            farPlane={8}
+            depthFade={2}
+            density={0.3} 
+            speed={1.3}
+            variant="snowflake"
+            style="position: absolute; inset: 0; z-index: -1;"
         />
     )
 }
@@ -89,6 +106,7 @@ const allDecorations = [...ellipses, ...diagonals];
             overflow: hidden;
 
             pointer-events: none;
+            user-select: none;
             z-index: var(--decor-layer);
         }
 

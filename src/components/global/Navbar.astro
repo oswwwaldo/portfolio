@@ -1,38 +1,58 @@
 ---
-import Icon from '../ui/AppIcon.astro';
 import Menu from '../global/Menu.astro';
 import ThemeIcon from '../ui/ThemeIcon.astro';
+import Watermark from '../ui/Watermark.astro';
+import Hamburger from './Hamburger.astro';
 ---
 
-<div class="nav-wrapper" id="navbar">
-    <div class="nav-logo">
-        <a class="nav-logo__title label" id="site-name" href="/"> oswwwaldo </a>
-    </div>
-    <nav class="nav-links">
-        <a class="nav-links__link label" href="/about"> About </a>
-        <a class="nav-links__link label" href="/"> Home </a>
-        <a class="nav-links__link label" href="/projects"> Projects </a>
-        <a class="nav-links__link label" href="/contact"> Contact </a>
-        <div class="nav-links__theme">
-            <ThemeIcon size={20}></ThemeIcon>
+<div class="wrapper is-sticky" id="nav-wrapper">
+    <div class="nav-wrapper" id="navbar">
+        <div class="nav-logo">
+            <a class="nav-logo__title label" id="site-name" href="/"> oswwwaldo </a>
         </div>
-        <button 
-            class="nav-links__hamburger" 
-            id="hamburger-icon"
-+           type="button"
-+           aria-label="Open navigation menu"
-+           aria-controls="full-menu"
-+           aria-expanded="false">
-                <div class="hamburger__line"></div>
-                <div class="hamburger__line"></div>
-        </button>
-    </nav>
+        <Watermark class="nav-watermark" />
+        <nav class="nav-links">
+            <a class="nav-links__link label" href="/about"> About </a>
+            <a class="nav-links__link label" href="/"> Home </a>
+            <a class="nav-links__link label" href="/projects"> Projects </a>
+            <a class="nav-links__link label" href="/contact"> Contact </a>
+            <div class="nav-links__theme">
+                <ThemeIcon size={20}></ThemeIcon>
+            </div>
+            <Hamburger />
+        </nav>
+    </div>
 </div>
 
-<Menu />
+<Menu variant="nav"/>
 
 <style lang="scss">
-    @use '../../styles/variables.scss' as *;
+@use '../../styles/variables.scss' as *;
+
+    .wrapper {
+
+        &.is-sticky {
+            position: sticky;
+            top: 0;
+            height: 0;
+            overflow: visible;
+            z-index: var(--nav-layer);
+
+            & .nav-wrapper {
+                position: sticky !important;
+                background: var(--primary-color);
+                border: 1px solid var(--color-secondary-05);
+
+                &:hover {  
+                    border: 1px solid var(--color-secondary-20);
+                }
+            }
+        }
+    }
+
+    .nav-logo__watermark {
+        display: none;
+    }
 
     a {
         color: var(--secondary-color);
@@ -47,27 +67,34 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
 
     .nav-wrapper {
         position: absolute;
-        top: 0; 
-        left: 0;
+        top: 0; left: 0;
+        z-index: var(--nav-layer);
+
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100%;
-        z-index: var(--nav-layer);
         padding: 1rem 2rem;
-        box-sizing: border-box; 
+        width: 100%;
+        box-sizing: border-box;     
+        border: 1px solid transparent;
 
-
+        &:hover {
+            border: 1px solid var(--color-secondary-05);
+        }
         
         &--alt {
             padding: 1rem 2rem 3.5rem;
             border-bottom: 1px solid var(--secondary-color);
             min-height: 90px;
-            
         }
+
         &--no-pad {
             padding: 0 2rem;
         }
+    }
+
+    .nav-watermark {
+        display: none;
     }
 
     .nav-links {
@@ -79,32 +106,14 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
             display: flex;
             align-items: center;
         }
-
-        &__hamburger {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 0.5rem;   
-
-            .hamburger__line {
-                background: var(--secondary-color);
-                width: 1.85rem;
-                height: 1.10px;
-            }
-        }
     }
 
     @media (max-width: 768px) {
-        .nav-logo {
-            
-        }
 
+        .wrapper {
+            position: absolute;
+            top: 10%;
+        }
         .nav-wrapper {
             background-color: var(--primary-color);
             justify-content: space-between;
@@ -142,21 +151,49 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
     }
 
     :global(.is-open) {
-        display: flex !important;
+        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0) !important;
+        
+        @media (prefers-reduced-motion: reduce) {
+            display: flex !important;
+        }
+        
+        @media (prefers-reduced-motion: no-preference) {
+            .menu {
+                clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0) !important;
+            }
+        }
     }
 
-    :global(.is-active) {
-        z-index: 1000;
+    :global(.is-closed) {
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0) !important;
+
+        @media (prefers-reduced-motion: reduce) {
+            display: none !important;
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .menu {
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0) !important;
+            }
+        }
+    }
+
+    .wrapper.is-hidden {
+        position: sticky;
+        top: 0;
+        z-index: var(--max-layer);
     }
 
     .nav-wrapper.is-hidden {
         border: 1px solid var(--color-secondary-05);
-        position: sticky;
-        // top: 50%; left: 50%  ;
-        // transform: translate(-50%, -50%);
+        position: absolute;
 
         .nav-logo {
             visibility: hidden; 
+        }
+
+        .nav-watermark {
+            display: flex;
         }
 
         .nav-links {
@@ -165,18 +202,15 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
             }
         }        
     }
-
 </style>
 <script>
-
+    const navWrapper = document.getElementById('nav-wrapper');
     const navbar = document.getElementById('navbar');
     const hamburger = document.getElementById('hamburger-icon');
     const menu = document.getElementById('full-menu');
-
     const siteName = document.getElementById('site-name');
-    
-    function trackTime() {
 
+    function trackTime() {
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
         const orientation = new Date('2026-08-20');
@@ -195,9 +229,10 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
     }
 
     function toggleMenu() {        
-        const isOpen = menu?.classList.toggle('is-open') ?? false;
+        const isOpen = menu?.classList.toggle('is-open') ?? menu?.classList.toggle('is-closed');
         hamburger?.classList.toggle('is-active');
         navbar?.classList.toggle('is-hidden');
+        navWrapper?.classList.toggle('is-hidden');
 
         hamburger?.setAttribute('aria-expanded', String(isOpen));
         hamburger?.setAttribute(
@@ -217,7 +252,7 @@ import ThemeIcon from '../ui/ThemeIcon.astro';
             toggleMenu();
         }
     });
-    
+
     document.addEventListener('DOMContentLoaded', (event) => {
         console.log('The DOM is fully loaded and parsed.');
         trackTime();

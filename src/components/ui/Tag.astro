@@ -1,14 +1,13 @@
 ---
 type Props = {
     textContent: string;
-    target?: string;
 }
 
-const { textContent, target } = Astro.props
+const { textContent } = Astro.props
 
 ---
 <div class="tag">
-    <a class="label" href={target}> {textContent} </a>
+    <a class="label" href={`/projects/tags/${textContent}`}> {textContent} </a>
 </div>
 
 <style lang="scss">
@@ -20,18 +19,24 @@ const { textContent, target } = Astro.props
         flex-direction: row;
         justify-content: center;
         padding: clamp(0.1rem, 0.5rem + 1vw, 0.2rem) clamp(0.2rem, 0.5rem + 1vw, 0.8rem);
-
-        
-        // aspect-ratio: 5/1;  
         border: var(--tag-border);
         background: var(--primary-color);
+
+        position: relative;
+        z-index: var(--content-layer);
+
+        cursor: pointer;
+
+        &:hover {
+            background: var(--color-secondary-20);
+        }
         
         a {
             font-family: var(--font-heading);
             font-size: var(--font-size-xs);
             color: var(--tag-text);
             letter-spacing: 0.10vw;
+            text-decoration: none;
         }
     }
-
 </style>

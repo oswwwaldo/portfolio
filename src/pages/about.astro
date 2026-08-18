@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import LandingHero from '../components/sections/LandingHero.astro';
+import AboutMe from '../components/sections/AboutMe.astro';
+import Contact from '../components/sections/Contact.astro';
+
+const pageTitle = "about — oswaldo de los santos (@byoswwwaldo)";
+import fih from '../assets/fih.jpg';
+import uwu from '../assets/uwu.jpg';
+
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="about-me">
+        <SectionLayout firstLayout={true} justifyCentered={true}>
+            <div class="section">
+                <div class="section__landing">
+                    <Image class="section__landing__image" src={uwu} alt="wal-ta"/>
+                    <h1 class="section__landing__header">Oswaldo<br>De Los Santos</h1>
+                </div>
+            </div>
+        </SectionLayout>
+
+        <GridLayout>
+            <div class="section">
+                <div class="section__floating-img">
+                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__floating-img">
+                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__floating-img">
+                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__content">
+                    <!-- <SectionHeader textContent="Some background for the curious" /> -->
+                    <h2> Some background for the curious </h2>
+                    <h3> My name is Oswaldo </h3>
+                    <p> Lorem ipsum dolor sit amet consectetur. Quis ac sed hac eu. Sit convallis tortor proin etiam 
+                        ultrices condimentum proin lacus. Ultricies nunc quis nisl ipsum. Amet porttitor pulvinar lacus
+                        pellentesque habitant dui consectetur dolor purus. 
+                        
+                        Etiam ornare neque nascetur hendrerit aliquam. Eu odio sit et tellus egestas gravida lorem sit.
+                    </p>
+                </div>
+            </div>
+        </GridLayout>
+
+        <SectionLayout>
+            <AboutMe />
+        </SectionLayout>
+
+        <SectionLayout firstLayout={true}>
+            <div class="section">
+                <div class="section__floating-img">
+                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__floating-img">
+                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__floating-img">
+                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__content">
+                    <!-- <SectionHeader textContent="Some background for the curious" /> -->
+                    <h2> Some background for the curious </h2>
+                    <h3> My name is Oswaldo </h3>
+                    <p> Lorem ipsum dolor sit amet consectetur. Quis ac sed hac eu. Sit convallis tortor proin etiam 
+                        ultrices condimentum proin lacus. Ultricies nunc quis nisl ipsum. Amet porttitor pulvinar lacus
+                        pellentesque habitant dui consectetur dolor purus. 
+                        
+                        Etiam ornare neque nascetur hendrerit aliquam. Eu odio sit et tellus egestas gravida lorem sit.
+                    </p>
+                </div>
+            </div>
+        </SectionLayout>
+        
+        <SectionLayout>
+            <Contact />
+        </SectionLayout>  
+
+    </div>
+</BaseLayout>
+
+
+<style lang="scss">
+    .about-me {
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
+    }
+
+    .section {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center; 
+        color: var(--secondary-color, #ffffff);
+        position: relative;
+        height: 100dvh;
+
+        &__wrapper {
+        }
+
+        &__landing {
+            display: flex;
+            flex-flow: column nowrap;
+
+            &__header {
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                width: max-content;
+
+                font-size: var(--font-size-3xl);
+                text-align: center;
+            }
+
+            &__image {
+                height: 50vh;
+                width: 100%;
+                filter: brightness(0.2);
+            }
+
+        }
+
+        &__content {
+            display: flex;
+            align-self: flex-start;
+            flex-flow: column nowrap;
+            gap: 1.5rem;
+            width: 50%;
+            z-index: 2; 
+            padding-left: 5%; 
+        }
+
+        &__floating-img {
+            position: absolute;
+            z-index: 1;
+            background: #d3d3d3;
+
+            &__image {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                aspect-ratio: 16 / 10;
+            }
+
+            &:nth-of-type(1) {
+                top: 5%;
+                left: 65%;
+                width: 22%;
+            }
+
+            &:nth-of-type(2) {
+                top: 25%;
+                left: 38%;
+                width: 26%;
+            }
+
+            &:nth-of-type(3) {
+                top: 55%;
+                left: 78%;
+                width: 35%;
+            }
+        }
+    }
+</style>

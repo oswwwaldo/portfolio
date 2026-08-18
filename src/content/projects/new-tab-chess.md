@@ -5,7 +5,7 @@ slug: "new-tab-chess"
 caption: "Transform every open tab into a quick bullet chess match."
 description: "Built to seamlessly integrate bullet chess practice into daily workflow. Features instant board initialization, tactical puzzle modes, and performance analytics."
 status: "in-development"
-featured: false
+featured: true
 category: "Chrome Extensions"
 role: "Frontend Developer"
 technologies:
@@ -17,7 +17,10 @@ technologies:
   - "Chrome Extension API"
 githubUrl: "https://github.com/oswwwaldo/new-tab-chess"
 liveUrl: null
-thumbnail: "/assets/projects/new-tab-chess/thumbnail.webp"
+thumbnail:
+  title: "New Tab Chess Preview"
+  cover: "../../assets/projects/new-tab-chess/thumbnail.webp"
+  coverAlt: "New tab chess boy!"
 gallery:
   - "/assets/projects/new-tab-chess/preview-1.webp"
   - "/assets/projects/new-tab-chess/preview-2.webp"

@@ -6,7 +6,7 @@ import ProjectCard from '../components/ui/ProjectCard.astro';
 
 const pageTitle = "projects — oswaldo de los santos (@byoswwwaldo)";
 
-const projects = await getCollection('projects')
+const projects = await getCollection('projects');
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -15,13 +15,15 @@ const projects = await getCollection('projects')
             <h1> Projects </h1>
             {projects.map(project => 
                 <ProjectCard project={project} />)}
-
+                
             {projects.length < 1 && (
                 <p> No projects to show. </p>
             )}
         </div>
     </SectionLayout>
 </BaseLayout>
+
+
 <style lang="scss">
     @use '../styles/variables.scss' as *;
 
@@ -35,5 +37,4 @@ const projects = await getCollection('projects')
         background: var(--primary-color);
         color: var(--secondary-color);
     }
-
 </style>

@@ -16,7 +16,7 @@ const technologies = await getCollection('technologies');
 ---
 
 <div class="work-experience">
-    <SectionHeader textContent="Work" secondLine="Experience"/>
+    <SectionHeader textContent="Work experience"/>
     <div class="work-experience__history">
         {experience.toReversed().map(job => <ListCareerItem experience={job} />)}
     </div>

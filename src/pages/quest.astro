@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GridLayout from '../layouts/GridLayout.astro';
+import SectionLayout from '../layouts/SectionLayout.astro';
+
+const pageTitle = "now — oswaldo de los santos (@byoswwwaldo)";
+
+import throne from '../assets/ascii-art.png';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <SectionLayout firstLayout={true} justifyCentered={true}>
+    <h1> Quest </h1>
+
+    <div class="actor">
+        <Image class="actor__image" src={throne} alt='The actor' />
+    </div>
+    <div class="dialogue">
+        <div class="dialogue__box">
+            <span class="dialogue__option"></span>
+
+        </div>
+    </div>
+  </SectionLayout>
+</BaseLayout>
+
+
+<style lang="scss">
+    @use '../styles/variables.scss' as *;
+
+    .actor {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        &__image {
+            aspect-ratio: 1/1;
+            width: 50%;
+            height: 50%;
+        }
+    }
+
+    h1 {
+      color: var(--secondary-color);
+    }
+</style>
+<script>
+    
+</script>

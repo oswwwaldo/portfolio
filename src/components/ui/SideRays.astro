@@ -290,7 +290,9 @@ const {
   customElements.define('side-rays', SideRaysElement);
 </script>
 
-<style>
+<style lang="scss">
+  @use "../../styles/variables.scss" as *;
+
   /* Ensure the custom element behaves like a block container */
   side-rays {
     display: block;
@@ -299,9 +301,11 @@ const {
     height: 100%;
 
     top: 0; left: 0;
-    z-index: 999;
+    z-index: var(--bg-web-gl-layer);
 
     opacity: 100% !important;
+    user-select: none;
+    pointer-events: none;
   }
 
   .side-rays-container { display: none; }

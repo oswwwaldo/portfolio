@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import SectionLayout from "../../../layouts/SectionLayout.astro";
+import SectionHeader from "../../../components/ui/SectionHeader.astro";
+import ListProjectItem from "../../../components/ui/ListProjectItem.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection('projects');
+    console.log("Found projects:", projects.length);
+
+    const tags = [...new Set(projects.map((project) => project.data.technologies).flat())]
+    console.log("Generated tags:", tags);
+
+    return tags.map((tag) => {
+        const filteredProjects = projects.filter((project) => 
+            project.data.technologies.includes(tag)
+        );
+        return {
+            params: { tag },
+            props: { projects: filteredProjects },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { projects } = Astro.props;
+
+const pageTitle = `${tag} — oswaldo de los santos (@byoswwwaldo)`;
+---
+<BaseLayout pageTitle={pageTitle}>
+    <SectionLayout firstLayout={true} justifyCentered={true}>
+        <section class="filtered-projects">
+            <SectionHeader textContent=`Projects tagged with #${tag}`/>
+            <ul>
+                {projects.map((project, index) => (
+                    <ListProjectItem project={project} index={index + 1} />
+                    // <li><a href={`/projects/${project.id}`}>{project.data.title}</a></li>
+                ))}
+            </ul>
+        </section>
+    </SectionLayout>
+</BaseLayout>
+
+<style lang="scss">
+    @use '../../../styles/variables.scss' as *;
+
+    .filtered-projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10vh 0; 
+        color: var(--secondary-color);
+    }
+
+</style>

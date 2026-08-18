@@ -1,124 +1,215 @@
 ---
-import Image from 'astro/components/Image.astro';
-import Knight from '../../assets/Knight.png';
-import KnightASCII from '../../assets/Knight-ASCII.png';
+import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/Knight_06-ASCII-SCALE-[0-9]x.png', { eager: true });
+const imagePaths = Object.keys(images);
+const imageLoaders = Object.values(images);
+
+const optimizedImageUrls = await Promise.all(
+Object.values(images).map(async (mod: any) => {
+    const optimized = await getImage({
+    src: mod.default,
+    format: 'webp',  
+    width: 600,      
+    });
+    return optimized.src; 
+})
+);
+
+import Knight from '../../assets/Knight_06.png';
+
+import fih from '../../assets/fih.jpg'
+import throne from '../../assets/throne.jpg';
+import catnerd from '../../assets/cat-nerd.png';
+import uwu from '../../assets/uwu.jpg'
+
+import AppSVG from '../ui/AppSVG.astro';
 import MenuList from '../ui/MenuList.astro';
 import Watermark from '../ui/Watermark.astro';
+
+const KnightBGFrames: string[] = optimizedImageUrls;
+const exportedKnightBGFrames = JSON.stringify(KnightBGFrames);
+
+const optimizedBGFrame = await getImage({ src: Knight });
+
+const socials = await getCollection('socials');
+const professionalSocials = socials.filter(social => social.data.featured);
+
+const projects = await getCollection('projects');
+const MAX_FEATURED = 4;
+
+const featuredProjects = projects
+    .filter(project => project.data.featured)
+    .slice(0, MAX_FEATURED);
+
+const menuListItems = [
+{ label: 'About', image: fih, alt: "Learn more about me" },
+{ label: 'Home', image: throne, alt: "Visit my portfolio" },
+{ label: 'Contact', image: catnerd, alt: "Let's get in touch" },
+{ label: 'Projects', image: uwu, alt: "Check out my work" },
+];
+
+type MenuType = "nav" | "footer";
+
+type Props = {
+    variant: MenuType;
+}
+
+const { variant } = Astro.props
+const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 ---
 
-<div class="menu menu--full-size" id="full-menu">
-
-    <Watermark />
-    <div class="menu__background">
-        <Image 
-            class="menu__background__image"
-            src={KnightASCII}
-            alt="Infinity Blade">
-        </Image>
+<div class="menu menu--full-size" id={variantType}>
+    <div class="menu__background" data-bg-frames={exportedKnightBGFrames} id="menu-bg">
+        <div class="menu__background__image" id="menu-image" style={`background-image: url('${optimizedBGFrame.src}')`}></div>
     </div>
     <div class="menu__nav">
-        <MenuList items={['About', 'Home', 'Contact', 'Projects']}/>
+        <MenuList items={menuListItems}/>
+        <div class="hover-reveal" id="hover-reveal"></div>
     </div>
 
     <div class="menu__links">
         <div class="menu__links__socials">
-            <a class="menu__links__socials__link" href="https://www.instagram.com/byoswwwaldo/"> Instagram </a>
-            <a class="menu__links__socials__link" href="https://github.com/oswwwaldo"> Github </a>
-            <a class="menu__links__socials__link" href="https://www.linkedin.com/in/oswwwaldo/"> LinkedIn </a>
-            <a class="menu__links__socials__link" href="https://www.youtube.com/@oswwwaldo"> YouTube </a>
+            {professionalSocials.map(social => {
+                return <a class="menu__links__socials__link" href=`{social.data.link}`>{social.data.platform}</a>
+            })}
         </div>
 
         <div class="menu__links__content">
             <div class="menu__links__content__nav">
                 <div class="info-group">
-                    <h4 class="info-group__header">Projects (04)</h4>
-                    <a class="info-group__link" href="/projects/spotify-lyrics-display">Spotify Lyrics Display</a>
-                    <a class="info-group__link" href="/projects/portfolio">Portfolio</a>
-                    <a class="info-group__link" href="/projects/new-tab-chess">New Tab Chess Puzzle</a>
-                    <a class="info-group__link" href="/projects/robco-industries-terminal">RobCo Industries Terminal</a>
+                    <h4 class="info-group__header">Projects ({featuredProjects.length})</h4>
+                    {featuredProjects.map(project=> {
+                        if (project.data.featured) {
+                            return <a class="info-group__link" href=`/projects/${project.data.id}`>{project.data.title}</a>
+                        }
+                    })}
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Explore</h4>
-                    <a class="info-group__link" href="/projects/start-a-quest">Start a quest</a>
-                    <a class="info-group__link" href="/projects/sign">Sign the guestbook</a>
-                    <a class="info-group__link" href="/projects/now">What am I doing?</a>
+                    <a class="info-group__link" href="/start-a-quest">Start a quest</a>
+                    <a class="info-group__link" href="/sign">Sign the guestbook</a>
+                    <a class="info-group__link" href="/now">What am I doing?</a>
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Other pages</h4>
-                    <a class="info-group__link" href="/now">Now</a>
+                    <a class="info-group__link" href="/changelog">Changelog</a>
+                    <a class="info-group__link" href="/music">Music</a>
+                    <a class="info-group__link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                     <a class="info-group__link" href="/thoughts">Thoughts</a>
-                    <a class="info-group__link" href="/video">Video</a>
-                    <a class="info-group__link" href="/drop">Drop</a>
                 </div>
             </div>
             <div class="menu__links__content__info">
                 <div class="menu__links__content__info__flags">
-                    <div class="us-flag">
-                        <svg width="30" height="15" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.04 6.72H30V8.28H13.04V6.72Z" fill="var(--color-flag-red)"/>
-                            <path d="M0 10.08H30V11.64H0V10.08Z" fill="var(--color-flag-red)"/>
-                            <path d="M0 13.44H30V15H0V13.44Z" fill="var(--color-flag-red)"/>
-                            <path d="M13.04 3.36H30V4.92H13.04V3.36Z" fill="var(--color-flag-red)"/>
-                            <path d="M13.04 0H30V1.56H13.04V0Z" fill="var(--color-flag-red)"/>
-                            <path d="M0 0H11.04V8.28H0V0Z" fill="var(--color-flag-blue)"/>
-                        </svg>
-                    </div>
+                    <AppSVG icon="us-flag" width={30} height={15}/>
+                    <AppSVG icon="house-hightower" width={60} height={60} />
                 </div>
                 <div class="menu__links__content__info__text">
                     <a href="/sitemap"> Sitemap </a>
                     <p> Designed, developed and deployed by </p>
                     <p> Oswaldo Fabrizio De Lo Santos Ascencio </p>
+
+                    <br> <br>
+                    <a href="/credits"> Credits </a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
+    .hover-reveal {
+        position: fixed;
+        top: 0; left: 0;
+        opacity: 0;
+        pointer-events: none;
+
+        width: 100px;
+        height: 100px;
+
+        background: white;
+
+        background-image: none;
+        background-size: cover;
+        background-position: center;
+
+        &.is-visible {
+            z-index: 1000;
+            opacity: 1;
+        }
+    }
+
     .menu {
-        display: none;
+        display: flex;
         flex-direction: column;
         justify-content: space-around;
-
         background-color: var(--primary-color);
         color: var(--secondary-color);
 
-        
         overflow-y: hidden !important;
         
-        position: fixed;
-        left: 0; top: 0;
-        inset: 0;
         width: 100vw;
         height: 100vh;
         
-        overflow: hidden; 
-        overscroll-behavior: none; 
-        z-index: var(--menu-layer);
-
-        &--full-size {
-            padding-top: 20vh !important;
+        
+        padding-top: 20vh !important;
+        
+        
+        &#full-menu {
+            position: fixed;
+            top: 0; left: 0;
+            inset: 0;
+            
+            overflow: hidden; 
+            overscroll-behavior: none; 
+            z-index: var(--menu-layer); 
+            transition: clip-path 300ms ease-in;
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         }
 
+        &#reveal-footer {
+            background-color: var(--color-primary-20);
+            background-color: var(--color-secondary-03);
+            margin-top: 50px;
+            position: static;
+            z-index: var(--footer-layer);
+        }
 
         &__background {
             position: relative;
 
             &__image {
                 position: absolute;
-                top: -22vh; right: 0;
-                
-                height: 90vh;
-                width: auto;
-                
-                object-fit: contain;
-                z-index: -1;
 
-                // ! This doesn't work
-                // opacity: calc(100 * var(--opacity-factor) / 100);
+                height: 80vh; width: 40vw;
+                top: -15vh; right: 0vw;
+
+                background-image: url(https://picsum.photos/2000);
+                background-size: cover;
+                background-position: bottom right;
+                background-repeat: no-repeat;
+
+
+                z-index: 1;
+                user-select: none;
+                // pointer-events: none;
+
+                &.full-width {
+                    width: 100vw;
+                    top: -13vh; 
+                    background-position: right;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+
+                &:hover {
+                    // background-color: var(--color-secondary-01);
+                }
             }
         }
 
@@ -132,6 +223,7 @@ import Watermark from '../ui/Watermark.astro';
 
         &__links {
             margin-bottom: 1rem;
+            
             &__socials {
                 display: flex;
                 flex-direction: row;
@@ -212,11 +304,12 @@ import Watermark from '../ui/Watermark.astro';
 
                     &__flags {
                         display: flex;
+                        align-items: center;
                         flex-direction: column;
+                        justify-content: center;
+                        gap: 1rem;
 
-                        &__us-flag {
-                            fill: var(--color-gray);
-                        }
+                        fill: var(--color-gray) !important;
                     }
 
                     &__text {
@@ -256,6 +349,79 @@ import Watermark from '../ui/Watermark.astro';
 </style>
 
 <script>
+    const menuBG = document.getElementById('menu-bg') as HTMLDivElement;
+    const menuBGFrames = menuBG?.dataset.bgFrames;
+    const menuImage = document.getElementById('menu-image');
+    let isCursorInside = false;
+
+    if (menuBG && menuBGFrames && menuImage) {
+        const bgFrames = JSON.parse(menuBGFrames);
+        const preloadedImages: HTMLImageElement[] = [];
+
+        bgFrames.forEach((frame: string, index: number) => {
+            const img = new Image() as HTMLImageElement;
+            img.src = frame;
+            preloadedImages.push(img)
+        });
+
+        let currentFrameIndex = 0;
+        let resetInterval: number | ReturnType<typeof setInterval>; 
+        let menuRect = menuImage.getBoundingClientRect();
+
+        window.addEventListener('resize', (event) => {
+            menuRect = menuImage?.getBoundingClientRect();
+        })
+
+
+        function resetFrame(quadrant: number) {
+            setInterval(()=> {
+                if (quadrant > 1 && menuImage) {
+                    menuImage.style.backgroundImage = `url('${preloadedImages[quadrant - 1].src}')`;
+                    console.log("Value of quadrant: " + quadrant);
+                }
+            }, 1000);
+        }
+
+        menuImage.addEventListener('mousemove', (event) => {
+            if (resetInterval) {
+                clearInterval(resetInterval);
+            }
+
+            const divStartsAtX = menuRect.left;
+            const divEndsAtX = menuRect.right;
+            const divWidth = menuRect.width;
+            const cursorProgress = Math.max(0, Math.min(event.clientX - divStartsAtX, divEndsAtX));
+            currentFrameIndex = Math.floor((cursorProgress / divWidth) * bgFrames.length);
+
+            if (currentFrameIndex >= bgFrames.length) {
+                currentFrameIndex = bgFrames.length - 1;
+            }
+
+            menuImage.style.backgroundImage = `url('${preloadedImages[currentFrameIndex].src}')`;
+            isCursorInside = true;
+        });
+
+        menuImage.addEventListener('mouseleave', () => {
+            isCursorInside = false;
+
+            if (resetInterval) {
+                clearInterval(resetInterval);
+            }
+
+            // setTimeout(() => {
+                resetInterval = setInterval(() => {
+
+                    if (currentFrameIndex > 0) {
+                        currentFrameIndex--;
+                        menuImage.style.backgroundImage = `url('${preloadedImages[currentFrameIndex].src}')`;
+                    } else {
+                        clearInterval(resetInterval);
+                    }
+                }, 100);
+            // }, 1000);
+        })
+    }
+
     function updateMenuHeight() {
         const menu = document.getElementById('reveal-menu');
         if (menu) {
@@ -267,4 +433,36 @@ import Watermark from '../ui/Watermark.astro';
     }
 
     updateMenuHeight();
+
+    const hoverReveal = document.getElementById('hover-reveal') as HTMLDivElement;
+    const menuNav = document.querySelector('.menu__nav');
+    console.log("Checking...");  
+    
+    document.addEventListener('mousemove', (event) => {
+        hoverReveal.style.top = `${25 + event.clientY}px`;
+        hoverReveal.style.left = `${25 + event.clientX}px`;
+    });
+
+    menuNav?.querySelectorAll('* > [data-image]').forEach(menuListItem => { 
+        // console.log("Hello" + menuListItem.getAttribute('title'));
+        // console.log(menuListItem.dataset.image); 
+
+        menuListItem.addEventListener('mouseenter', () => {
+            // console.log("You're hovering over " + menuListItem.textContent);
+            // console.log(menuListItem.dataset.image);
+            if (hoverReveal) { hoverReveal.style.backgroundImage = 'url(`${menuListItem.dataset.image}`)'; }
+
+            if (hoverReveal) {
+                hoverReveal.style.backgroundImage = `url("${menuListItem.dataset.image}")`;
+                hoverReveal.classList.add('is-visible');
+            }
+        });
+
+        menuListItem.addEventListener('mouseleave', () => {
+            if (hoverReveal) {
+                hoverReveal.classList.remove('is-visible');
+            }
+        });
+    });
+
 </script>

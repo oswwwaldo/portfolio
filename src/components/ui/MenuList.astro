@@ -1,6 +1,14 @@
 ---
+import type { ImageMetadata } from 'astro';
+
+export interface MenuItem {
+    label: string;
+    image: ImageMetadata;
+    alt: string;
+}
+
 interface Props {
-    items: string[];
+    items: MenuItem[];
 }
 
 const { items } = Astro.props;
@@ -8,14 +16,15 @@ const { items } = Astro.props;
 
 <ul class="menu__list">
     {
-        items.map((item, index) => (
-            <li class="menu__list__item">
+        items.map(({ label, image, alt }, index: number) => (
+            <li class="menu__list__item" data-image={image.src} title={alt}>
                 <span class="menu__list__item__index">
                     {(index + 1).toString().padStart(2, '0')}.
                 </span> 
-                <a class="menu__list__item__link" href={`/${item.toLowerCase()}`}> 
-                    {item} 
+                <a class="menu__list__item__link" href={`/${label.toLowerCase()}`}> 
+                    {label} 
                 </a> 
+                <span class="menu__list__item__icon"> /> </span>
             </li>
         ))
     }
@@ -24,10 +33,10 @@ const { items } = Astro.props;
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
-     .menu__list {  
+    .menu__list {  
         width: 100%;
 
-        display: flex   ;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
@@ -81,9 +90,24 @@ const { items } = Astro.props;
                 align-items: flex-start;
 
                 min-height: 50px;
-                
+            }
+
+            &__icon {
+                font-family: var(--font-heading);
+                font-size: var(--font-size-xl);
+                align-self: center;
+                visibility: hidden;
+                translate: -10px -10px;
+                transition: translate 0.3s ease;
+                user-select: none;
+            }
+
+            &:hover {
+                & .menu__list__item__icon {
+                    visibility: visible;
+                    translate: 10px -10px;
+                }
             }
         }
     }
-
 </style>

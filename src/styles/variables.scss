@@ -17,8 +17,14 @@
     --color-neutral-200: #d9d9d9;
 
 
+    --color-primary-05: rgb(from var(--primary-color) r g b / 0.05);
+    --color-primary-20: rgb(from var(--primary-color) r g b / 0.2);
     --color-primary-40: rgb(from var(--primary-color) r g b / 0.4);
+    --color-primary-60: rgb(from var(--primary-color) r g b / 0.6);
+    --color-primary-80: rgb(from var(--primary-color) r g b / 0.8);
+    --color-primary-100: rgb(from var(--primary-color) r g b / 1);
 
+    --color-secondary-03: rgb(from var(--secondary-color) r g b / 0.03);
     --color-secondary-05: rgb(from var(--secondary-color) r g b / 0.05);
     --color-secondary-20: rgb(from var(--secondary-color) r g b / 0.2);
     --color-secondary-40: rgb(from var(--secondary-color) r g b / 0.4);
@@ -52,11 +58,15 @@
     --tag-text: var(--color-secondary-80);
 
     --footer-layer: -999;
+    --bg-decor-layer: 0;
+    --bg-web-gl-layer: 0;
     --layer-index: 1;
     --decor-layer: 2;
     --content-layer: 3;
-    --nav-layer: 1000;
     --menu-layer: 999;
+    --nav-layer: 1000;
+    --watermark-layer: 1001;
+    --max-layer: 9999;
 
     --decor-opacity: 5%;
 
@@ -87,6 +97,7 @@
 :root, html {
     --primary-color: #F2F3F4;
     --secondary-color: #3a3939;
+    --secondary-color: #121212;
     --grid-margin: calc(100% / 6);
 
     --decor-opacity: 10%;
@@ -99,7 +110,8 @@
 // responsive for grid margin: padding-inline: clamp(1rem, 3vw, 1.5rem)
 
 :root.dark, html.dark {
-    --primary-color: #0E0E0E;   
+    --primary-color: #0E0E0E;  
+    --primary-color: #121212;
     --secondary-color: #E6E6E6;
 
     --highlight-color: #2B2B2B;

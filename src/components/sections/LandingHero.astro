@@ -9,17 +9,13 @@ import EscKey from '../ui/EscKey.astro';
 <EscKey />
 
 <section class="hero">
-    
     <LandingImage 
         src={stoneNotInFocus} 
         alt="A monkey holding a phone"
         class="hero__image">
     </LandingImage>
-    
     <div class="hero__text-wrapper">
-
         <h2 class="hero__position"> Full Stack Engineer </h2>
-        
         <h1 class="hero__title"> 
             <span class="first-name">Oswaldo</span>
             <span class="middle-name">Fabrizio</span>
@@ -27,14 +23,12 @@ import EscKey from '../ui/EscKey.astro';
             <span class="middle-name">Ascencio</span>
         </h1>
     </div>
-    
     <div class="hero__actions">
         <div class="hero__actions-wrapper">
             <div class="hero__buttons">
                 <Button class="hero__buttons__btn" textContent="Contact" type="button" variant="primary"></Button>
                 <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
-            </div>
-            
+            </div>  
             <div class="hero__socials">
                 <Icon 
                 class="hero__socials__btn" 
@@ -80,6 +74,9 @@ import EscKey from '../ui/EscKey.astro';
         flex-grow: 1;
         width: 100%;
         color: var(--secondary-color);
+        
+        pointer-events: none;
+        user-select: none;
 
         &__text-wrapper {
             display: contents;
@@ -89,7 +86,6 @@ import EscKey from '../ui/EscKey.astro';
             font-size: var(--hero-position-size);
             width: fit-content;
             max-width: 100%;
-            pointer-events: none;
         }
         
         &__title {
@@ -100,8 +96,6 @@ import EscKey from '../ui/EscKey.astro';
             font-size: var(--hero-title-size);
             transition: text-shadow 300ms ease-out;
 
-            pointer-events: none;
-
             :global(.dark) &:hover { 
                 text-shadow: none; 
             } 
@@ -110,10 +104,8 @@ import EscKey from '../ui/EscKey.astro';
                 font-family: inherit;
                 font-size: inherit;
                 line-height: inherit;
-                pointer-events: all;
                 white-space: nowrap;
-
-
+                user-select: all;
                 &.middle-name {
                     display: none;
                 }
