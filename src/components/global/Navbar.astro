@@ -246,13 +246,6 @@ import Hamburger from './Hamburger.astro';
         toggleMenu();
     });
 
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            console.log('Escape key pressed!');
-            toggleMenu();
-        }
-    });
-
     document.addEventListener('DOMContentLoaded', (event) => {
         console.log('The DOM is fully loaded and parsed.');
         trackTime();
