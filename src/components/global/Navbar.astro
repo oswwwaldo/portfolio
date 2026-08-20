@@ -50,10 +50,6 @@ import Hamburger from './Hamburger.astro';
         }
     }
 
-    .nav-logo__watermark {
-        display: none;
-    }
-
     a {
         color: var(--secondary-color);
         font-family: var(--font-heading);
@@ -95,6 +91,9 @@ import Hamburger from './Hamburger.astro';
 
     .nav-watermark {
         display: none;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .nav-links {
@@ -223,7 +222,6 @@ import Hamburger from './Hamburger.astro';
         console.log(`${tilMarcyFirstDay} days left until the fellowship at Marcy Lab begins.`);
         
         if (siteName) {
-            siteName.textContent = `oswwwaldo — ${tilMarcyOrientation} days left`;
             siteName.title = `And there are ${tilMarcyFirstDay} until Marcy.`;
         }
     }
