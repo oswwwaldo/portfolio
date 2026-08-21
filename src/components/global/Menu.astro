@@ -109,6 +109,11 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
             </div>
         </div>
     </div>
+    <!--
+        <div class="menu__title">
+            <h1> Oswaldo De Los Santos Fabrizio Ascencio </h1>
+        </div>
+    -->
 </div>
 
 <style lang="scss">
@@ -162,6 +167,10 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
             z-index: var(--menu-layer); 
             transition: clip-path 300ms ease-in;
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+
+            .menu__title {
+                display: none;
+            }
         }
 
         &#reveal-footer {
@@ -170,8 +179,8 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
             margin-top: 50px;
             position: static;
             z-index: var(--footer-layer);
+            height: 100vh;
 
-            padding: 0 10vw;
 
             & #menu-bg {
                 display: none;
@@ -344,6 +353,26 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
                     }
                 }
+            }
+        }
+
+        &__title {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            overflow-x: hidden;
+
+            h1 {
+                display: flex;
+                flex-wrap: nowrap;
+                font-size: 14vw;
+                color: var(--secondary-color);
+                position: relative;
+                left: 120%;
+
+
+                width: max-content;
+                text-wrap: nowrap;
             }
         }
     }
