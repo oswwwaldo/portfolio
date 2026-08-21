@@ -110,7 +110,7 @@ import Hamburger from './Hamburger.astro';
     @media (max-width: 768px) {
 
         .wrapper {
-            position: absolute;
+            // position: absolute;
             top: 10%;
         }
         .nav-wrapper {
@@ -119,15 +119,23 @@ import Hamburger from './Hamburger.astro';
 
             position: sticky;
             top: 0;
+
+            overflow-y: hidden;
+            overscroll-behavior: none;
+        }
+
+        .nav-watermark {
+            display: none !important;
         }
 
         .nav-links {
+            justify-self: end;
             &__link {
                 display: none !important; 
             }
 
             &__theme {
-                display: none;
+                // display: none;
             }
 
             &__hamburger {
@@ -141,6 +149,7 @@ import Hamburger from './Hamburger.astro';
     @media (max-width: 425px) {
         .nav-wrapper {
             flex-direction: row;
+            justify-content: flex-end;
             padding: 1rem;
 
             & .nav-logo {

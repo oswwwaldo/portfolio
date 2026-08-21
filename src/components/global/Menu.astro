@@ -103,8 +103,8 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 </div>
                 <div class="menu__links__content__info__text">
                     <a href="/sitemap"> Settings </a>
-                    <p> Designed, developed and deployed by </p>
-                    <p> Oswaldo Fabrizio De Lo Santos Ascencio </p>
+                    <p title="This website was developed without AI"> Designed, developed and deployed by </p>
+                    <p title="This website was developed without AI"> Oswaldo Fabrizio De Lo Santos Ascencio </p>
                 </div>
             </div>
         </div>
@@ -148,6 +148,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         height: 100vh;
         
         
+        // padding-top: 10vw;
         padding-top: 20vh;
         
         
@@ -183,8 +184,18 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
             &__image {
                 position: absolute;
 
-                height: 80vh; width: 40vw;
-                top: -15vh; right: 0vw;
+                // height: 80vh; width: 30vw;
+                top: -5vw; 
+                top: -60px;
+
+                top: -14vh; right: -3vw;
+                height: 80vh;
+
+                height: 70vh;
+                top: -5vh;
+                // top: 20%;
+                top: -5rem;
+                // width: 20vw;
 
                 
                 background-image: url(https://picsum.photos/2000);
@@ -192,6 +203,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 background-position: bottom right;
                 background-repeat: no-repeat;
                 
+                transition: 1s ease-in-out right;
                 
                 z-index: 1;
                 user-select: none;
@@ -217,9 +229,9 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         &__nav {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            width: 95%;
 
-            margin-bottom: 10vh;
+            margin-bottom: 5vh;
         }
 
         &__links {
@@ -230,7 +242,8 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-around;
-                width: 33%;
+                // width: 40%;
+                width: 60%;
                 margin-bottom: 1rem;
 
                 &__link {
@@ -262,7 +275,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                     padding: 0 2rem;
                     gap: 10vw;
 
-                    min-height: 136px;
+                    min-height: 140px;
 
                     flex-grow: 1;
                     z-index: 0;
@@ -335,22 +348,89 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         }
     }
 
+    @media (max-width: 320px) {
+        
+    }
+
     @media (max-width: 425px) {
         
     }
 
     @media (max-width: 768px) {
 
-        .menu {
-            padding-top: 10vh;
+        .info-group:first-of-type {
+            order: 3;
         }
+
+        .menu__links__content__nav {
+            flex-wrap: wrap;
+            flex-wrap: balance;
+        }
+
+        .menu__links__content {
+            flex-wrap: wrap;
+            flex-wrap: balance;
+        }
+
+        .menu__links__content__info {
+            flex-direction: column-reverse;
+            gap: 0;
+        }
+
+        .menu__links__content__info__text {
+            margin: 2rem;
+            & * > {
+                text-align: center !important;
+            }
+
+            a, p {
+                text-align: center !important;
+            }
+        }
+        
+        .menu__links__content__info__flags {
+            // display: none;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+             
+        .menu {
+            padding-top: 20vh;
+
+            &#full-menu {
+                inset: unset;
+                z-index: 5;              
+                padding-top: none;  
+                height: 100dvh !important;
+                overflow-y: scroll !important; 
+                overscroll-behavior: initial; 
+            }
+        }
+
+        .menu__list {
+            width: 95%;
+        }
+
+        .menu__nav {
+            width: 95%;
+        }
+
         .menu__background__image {
             display: none;
         }
-    }
 
-    @media (max-width: 1024px) {
+        .menu__links__socials {
+            width: 100%;
+        }
         
+    }
+    
+    @media (max-width: 1024px) {
+        .menu__background__image {
+            right: -10vw;
+        }
     }
 
 </style>
