@@ -6,7 +6,7 @@ type Props = {
 const {} = Astro.props
 
 ---
-<div class="transition">
+<div class="transition" id="transition">
     <div class="statement">
         <h2> 
             <span>Full-stack engineer fluent in </span> 
@@ -81,12 +81,14 @@ const {} = Astro.props
 
                     &:first-child {
                         height: clamp(100px, 10rem, 180px);
+                        position: absolute;
+                        top: 0px; left: -15%;
                     }
 
                     &:last-child {
                         height: clamp(75px, 5vw, 150px); 
                         position: absolute;
-                        top: -30%; right: -20%;
+                        top: -50px; right: -15%;
                     }
                 }
             }

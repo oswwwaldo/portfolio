@@ -9,29 +9,29 @@ interface Props {
 
 const { project, index } = Astro.props
 ---
-    <div class="project">
-        <div class="project__index">  
-            <span> { index.toString().padStart(2, '0')} </span>
+<div class="project">
+    <div class="project__index">  
+        <span> { index.toString().padStart(2, '0')} </span>
+    </div>
+    <div class="project__info">
+        <div class="project__info__title"> 
+            <h3> 
+                <a href={`/projects/${project.id}`}>
+                    {project.data.title} 
+                </a>
+            </h3>
         </div>
-        <div class="project__info">
-            <div class="project__info__title"> 
-                <h3> 
-                    <a href={`/projects/${project.id}`}>
-                        {project.data.title} 
-                    </a>
-                </h3>
-            </div>
-            <div class="project__info__description"> 
-                {project.data.caption}
-            </div>
-            <div class="project__info__skills">
-                { project.data.technologies.map((skill) => ( <Tag textContent={skill} /> ))}
-            </div>
+        <div class="project__info__description"> 
+            {project.data.caption}
         </div>
-        <div class="project__date">
-            <p class="project__date__text"> {project.data.year} </p>
+        <div class="project__info__skills">
+            { project.data.technologies.map((skill) => ( <Tag textContent={skill} /> ))}
         </div>
     </div>
+    <div class="project__date">
+        <p class="project__date__text"> {project.data.year} </p>
+    </div>
+</div>
 
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
@@ -41,7 +41,7 @@ const { project, index } = Astro.props
         grid-template-columns: 80px 1fr 80px;
         width: 100%;
         padding: 40px 24px 96px 16px;
-        border-bottom: var(--border-thin-secondary);
+        border-top: var(--border-thin-secondary);
         background-color: var(--primary-color);
         position: relative;
 
