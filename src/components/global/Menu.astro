@@ -189,11 +189,13 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 height: 80vh; width: 40vw;
                 top: -15vh; right: 0vw;
 
-                background-image: url(https://picsum.photos/2000);
+                background-color: var(--color-primary-05);
                 background-size: cover;
                 background-position: bottom right;
                 background-repeat: no-repeat;
 
+                transform: translateZ(0);
+                will-change: background-image;
 
                 z-index: 1;
                 user-select: none;
