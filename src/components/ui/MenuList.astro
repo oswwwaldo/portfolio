@@ -34,8 +34,6 @@ const { items } = Astro.props;
     @use '../../styles/variables.scss' as *;
 
     .menu__list {  
-        width: 100%;
-
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -109,5 +107,12 @@ const { items } = Astro.props;
                 }
             }
         }
+    }
+
+    @media (max-width: 768px) {
+        .menu__list__item__link {
+            font-size: var(--font-size-xl);
+        }
+
     }
 </style>

@@ -206,11 +206,12 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 top: -5rem;
                 // width: 20vw;
 
-                
-                background-image: url(https://picsum.photos/2000);
+                background-color: var(--color-primary-01);
                 background-size: cover;
                 background-position: bottom right;
                 background-repeat: no-repeat;
+                transform: translateZ(0);
+                will-change: background-image;
                 
                 transition: 1s ease-in-out right;
                 

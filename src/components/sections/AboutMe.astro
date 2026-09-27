@@ -3,15 +3,14 @@ import { Image } from "astro:assets";
 import SectionHeader from "../ui/SectionHeader.astro"
 import portrait from '../../assets/media/whele.jpg';
 ---
-
 <div class="about">
-    <!-- <SectionHeader textContent="About me" /> -->
     <d  iv class="about__wrapper">
         <div class="about__portrait">
             <Image class="about__portrait__img" src={portrait} alt="A portrait of me" />
         </div>
         <div class="about__content">
-            <SectionHeader textContent="About me" isFullWidth={true}/>
+            <h1 id="about-title"> hi, my name is <span class="ink"> oswaldo\> </span> </h1>
+            <!-- <SectionHeader textContent="Hello my name is" isFullWidth={true}/> -->
             <p> I'm a full-stack software engineer based in New York City with a passion for building products that
                 sit at the intersection of engineering precision and thoughtful design. I specialize in creating 
                 scalable web applications — from low-level system architecture to polished, pixel-perfect interfaces.
@@ -25,8 +24,13 @@ import portrait from '../../assets/media/whele.jpg';
         </div>
 
         <div class="about__footer__item">
-            <div class="about__footer__item__header"> LinkedIn </div>
-            <div class="about__footer__item__content"> linkedin.com/oswwwaldo </div>
+            <div class="about__footer__item__header"> Based In </div>
+            <div class="about__footer__item__content"> New York City </div>
+        </div>
+
+        <div class="about__footer__item">
+            <div class="about__footer__item__header"> Sworn fealty to </div>
+            <div class="about__footer__item__content"> King Aegon Targaryen </div>
         </div>
 
         <div class="about__footer__item">
@@ -36,9 +40,19 @@ import portrait from '../../assets/media/whele.jpg';
 </div>
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
+
+    #about-title {
+        font-size: var(--font-size-2xl);
+        font-family: var(--font-body);
+    }   
+
+    .ink {
+        font-family: var(--font-special);
+    }
+
+
     
     .about {
-        // background: rgb(37, 37, 37);
         display: flex;
         flex-direction: column;
         color: var(--secondary-color);
@@ -47,7 +61,7 @@ import portrait from '../../assets/media/whele.jpg';
         &__wrapper {
             display: flex;
             align-items: end;
-            flex-direction: row;
+            flex-flow: row-reverse;
             gap: 4rem;
             width: 100%;
             height: 100%;
@@ -78,7 +92,7 @@ import portrait from '../../assets/media/whele.jpg';
 
         &__footer {
             display: flex;
-            display: none !important;
+            // display: none;
             flex-flow: row wrap;
             justify-content: flex-start;
             gap: 5rem;

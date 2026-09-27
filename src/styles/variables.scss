@@ -3,6 +3,7 @@
 :root {
     --font-heading: "Aboreto", cursive;
     --font-body: "Times New Roman", Times, serif;
+    --font-special: "Ink Free", "Times New Roman", Times, serif;
 
     --font-size-xxs: clamp(0.512rem, 0.49rem + 0.12vw, 0.576rem);
     --font-size-xs: clamp(0.64rem, 0.61rem + 0.15vw, 0.72rem);
@@ -16,7 +17,7 @@
     --color-gray: gray;
     --color-neutral-200: #d9d9d9;
 
-
+    --color-primary-01: rgb(from var(--primary-color) r g b / 0.01);
     --color-primary-05: rgb(from var(--primary-color) r g b / 0.05);
     --color-primary-20: rgb(from var(--primary-color) r g b / 0.2);
     --color-primary-40: rgb(from var(--primary-color) r g b / 0.4);
@@ -24,6 +25,7 @@
     --color-primary-80: rgb(from var(--primary-color) r g b / 0.8);
     --color-primary-100: rgb(from var(--primary-color) r g b / 1);
 
+    --color-secondary-01: rgb(from var(--secondary-color) r g b / 0.01);
     --color-secondary-03: rgb(from var(--secondary-color) r g b / 0.03);
     --color-secondary-05: rgb(from var(--secondary-color) r g b / 0.05);
     --color-secondary-20: rgb(from var(--secondary-color) r g b / 0.2);
