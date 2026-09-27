@@ -12,3 +12,26 @@ Interested in a breakdown of the design, techincal and learning process involved
 -->
 
 *Designed, developed and deployed by [Oswaldo Fabrizio De Los Santos Ascencio](https://www.linkedin.com/in/oswwwaldo/)*
+
+# Other websites I'd like to shoutout!
+[Brittany Chiang](https://brittanychiang.com/)
+[Phil West](https://webfolio-prismic.vercel.app/)
+[Studio Bamo.j](https://www.bamoj.com/)
+[Dgrees.studio](https://dgrees.studio/)
+[Degree.studio/culture](https://dgrees.studio/culture/)
+[FaunaRobotics](https://faunarobotics.com/)
+[Tresmarescapital](https://www.tresmarescapital.com/en/) - scroll to teams section/footer only
+[Spain Collection](https://spaincollection.com/)
+[Marianne Feng](https://www.mariannefeng.com/)
+[Andrea Da Silva](https://adasilv2.framer.website/)
+[Ozor Chisom Michael](https://chisom-ozor.web.app/)
+[Jia Chen](https://www.jia.build/)
+[Ali Zafar Iqbal](https://alizafariqbal.com/) - implements scrolljacking rather welll for scroll stacks
+
+
+I thought about adding scroll stacks like [this component](https://reactbits.dev/components/scroll-stack) and going heavier on scroll animations but I wanted to make sure the website was accessible and friendly for users.
+
+
+
+
+[gh-ascii](https://gh.crafter.run/)
