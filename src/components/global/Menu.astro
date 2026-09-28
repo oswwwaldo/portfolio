@@ -128,6 +128,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         top: 0; left: 0;
         opacity: 0;
         pointer-events: none;
+        will-change: transform, opacity;
 
         width: 100px;
         height: 100px;
@@ -434,31 +435,93 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
     updateMenuHeight();
 
-    const hoverReveals = document.querySelectorAll('.hover-reveal');
     const menuNavs = document.querySelectorAll('.menu__nav');
-    
-    document.addEventListener('mousemove', (event) => {
-        hoverReveals.forEach(hoverReveal => {
-            hoverReveal.style.top = `${25 + event.clientY}px`;
-            hoverReveal.style.left = `${25 + event.clientX}px`;
-        });
-    });
 
     menuNavs.forEach(menuNav => {
         const hoverReveal = menuNav.querySelector('.hover-reveal');
+        const menuItems = menuNav.querySelectorAll('[data-image]');
 
-        menuNav.querySelectorAll('[data-image]').forEach(menuListItem => { 
+        if (!(hoverReveal instanceof HTMLDivElement)) {
+            return;
+        }
+
+        const offset = 25;
+        const ease = 0.15;
+        const idleThreshold = 0.15;
+        let targetX = 0;
+        let targetY = 0;
+        let renderedX = 0;
+        let renderedY = 0;
+        let hasPosition = false;
+        let animationFrameId: number | null = null;
+        let isPreviewActive = false;
+
+        const applyPosition = () => {
+            hoverReveal.style.transform = `translate3d(${renderedX + offset}px, ${renderedY + offset}px, 0)`;
+        };
+
+        const animate = () => {
+            renderedX += (targetX - renderedX) * ease;
+            renderedY += (targetY - renderedY) * ease;
+            applyPosition();
+
+            const isSettled =
+                Math.abs(targetX - renderedX) < idleThreshold &&
+                Math.abs(targetY - renderedY) < idleThreshold;
+
+            if (isPreviewActive || !isSettled) {
+                animationFrameId = window.requestAnimationFrame(animate);
+            } else {
+                animationFrameId = null;
+            }
+        };
+
+        const startAnimation = () => {
+            if (!hasPosition || animationFrameId !== null) {
+                return;
+            }
+
+            animationFrameId = window.requestAnimationFrame(animate);
+        };
+
+        const stopAnimation = () => {
+            if (animationFrameId !== null) {
+                window.cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        };
+
+        menuNav.addEventListener('mousemove', (event) => {
+            targetX = event.clientX;
+            targetY = event.clientY;
+
+            if (!hasPosition) {
+                renderedX = targetX;
+                renderedY = targetY;
+                hasPosition = true;
+                applyPosition();
+            }
+
+            startAnimation();
+        });
+
+        menuNav.addEventListener('mouseleave', () => {
+            isPreviewActive = false;
+            hoverReveal.classList.remove('is-visible');
+            stopAnimation();
+        });
+
+        menuItems.forEach(menuListItem => {
             menuListItem.addEventListener('mouseenter', () => {
-                if (hoverReveal instanceof HTMLDivElement) {
-                    hoverReveal.style.backgroundImage = `url("${menuListItem.getAttribute('data-image')}")`;
-                    hoverReveal.classList.add('is-visible');
-                }
+                hoverReveal.style.backgroundImage = `url("${menuListItem.getAttribute('data-image')}")`;
+                hoverReveal.classList.add('is-visible');
+                isPreviewActive = true;
+                startAnimation();
             });
 
             menuListItem.addEventListener('mouseleave', () => {
-                if (hoverReveal instanceof HTMLDivElement) {
-                    hoverReveal.classList.remove('is-visible');
-                }
+                hoverReveal.classList.remove('is-visible');
+                isPreviewActive = false;
             });
         });
     });
