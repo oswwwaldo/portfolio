@@ -68,7 +68,9 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
     </div>
     <div class="menu__nav">
         <MenuList items={menuListItems}/>
-        <div class="hover-reveal"></div>
+        <div class="hover-reveal">
+            <div class="hover-reveal__inner"></div>
+        </div>
     </div>
 
     <div class="menu__links">
@@ -128,20 +130,38 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         top: 0; left: 0;
         opacity: 0;
         pointer-events: none;
-        will-change: transform, opacity;
+        overflow: hidden;
+        will-change: transform, opacity, clip-path;
 
         width: 100px;
         height: 100px;
 
-        background: white;
+        clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+        transition:
+            opacity 200ms linear,
+            clip-path 420ms cubic-bezier(0.22, 1, 0.36, 1);
 
-        background-image: none;
-        background-size: cover;
-        background-position: center;
+        &__inner {
+            width: 100%;
+            height: 100%;
+            background: white;
+            background-image: none;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.15) translate3d(0, 4%, 0);
+            transform-origin: center;
+            will-change: transform;
+            transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
         &.is-visible {
             z-index: 1000;
             opacity: 1;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+            .hover-reveal__inner {
+                transform: scale(1) translate3d(0, 0, 0);
+            }
         }
     }
 
@@ -445,6 +465,12 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
             return;
         }
 
+        const hoverRevealInner = hoverReveal.querySelector('.hover-reveal__inner');
+
+        if (!(hoverRevealInner instanceof HTMLDivElement)) {
+            return;
+        }
+
         const offset = 25;
         const ease = 0.15;
         const idleThreshold = 0.15;
@@ -513,7 +539,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
         menuItems.forEach(menuListItem => {
             menuListItem.addEventListener('mouseenter', () => {
-                hoverReveal.style.backgroundImage = `url("${menuListItem.getAttribute('data-image')}")`;
+                hoverRevealInner.style.backgroundImage = `url("${menuListItem.getAttribute('data-image')}")`;
                 hoverReveal.classList.add('is-visible');
                 isPreviewActive = true;
                 startAnimation();
