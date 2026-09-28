@@ -4,11 +4,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 
-const pageTitle = "thoughts — oswaldo de los santos (@byoswwwaldo)";
+const title = "thoughts — oswaldo de los santos (@byoswwwaldo)";
+const description = "Read thoughts and engineering notes from Oswaldo de los Santos on design, development, and creative coding.";
 const thoughts = await getCollection('thoughts');
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
   <SectionLayout firstLayout={true} topPadding={true}>
         <div class="thoughts section">
             <SectionHeader textContent="Thoughts" />

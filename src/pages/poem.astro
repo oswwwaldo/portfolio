@@ -4,7 +4,8 @@ import SectionLayout from '../layouts/SectionLayout.astro';
 import Button from '../components/ui/Button.astro';
 import quotesData from '../data/quotes.json';
 
-const pageTitle = "✧ — oswaldo de los santos (@byoswwwaldo)";
+const title = "✧ — oswaldo de los santos (@byoswwwaldo)";
+const description = "A rotating quote and poetry-inspired space with reflective writing prompts.";
 
 interface Quote {
     quote: string;
@@ -18,7 +19,7 @@ const initialSelection = Math.floor(Math.random() * quotes.length);
 const initialQuote = quotes[initialSelection];
 ---
 
-<BaseLayout pageTitle={pageTitle} fullScreen={true}>
+<BaseLayout title={title} description={description} fullScreen={true}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
 
         <div class="text-wrapper">

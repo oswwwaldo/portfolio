@@ -4,10 +4,11 @@ import SectionLayout from '../layouts/SectionLayout.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import ScrollGallery from '../components/sections/ScrollGallery.astro';
 
-const pageTitle = "credits — oswaldo de los santos (@byoswwwaldo)";
+const title = "credits — oswaldo de los santos (@byoswwwaldo)";
+const description = "Credits and attributions for tools, assets, and inspirations used throughout this portfolio.";
 
 ---
-<BaseLayout pageTitle={pageTitle} fullScreen={true}>
+<BaseLayout title={title} description={description} fullScreen={true}>
   <SectionLayout firstLayout={true} justifyCentered={true}>
     <section class="credits">
         <SectionHeader textContent="Credits & Attributions" />

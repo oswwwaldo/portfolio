@@ -4,12 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 import ProjectCard from '../components/ui/ProjectCard.astro';
 
-const pageTitle = "projects — oswaldo de los santos (@byoswwwaldo)";
+const title = "projects — oswaldo de los santos (@byoswwwaldo)";
+const description = "Browse web development projects by Oswaldo de los Santos, including case studies and technical highlights.";
 
 const projects = await getCollection('projects');
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="projects">
             <h1> Projects </h1>

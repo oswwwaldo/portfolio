@@ -17,10 +17,11 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props
 const { Content } = await render(project)
-const pageTitle = `${project.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+const title = `${project.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+const description = project.data.description;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="project-article">
             <Content />
