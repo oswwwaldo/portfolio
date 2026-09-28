@@ -12,8 +12,8 @@ const enableCountUp = true;
 ---
 
 <div class="stats__item">
-    <h4 class="stats__item__num stats__item__nuum" title={tooltip}>
-        {enableCountUp ? <CountUp value={stat} /> : stat}
+    <h4 class="stats__item__num stats__item__num" title={tooltip}>
+        {enableCountUp ? <CountUp value={stat} from={0} duration={7}/> : stat}
     </h4>
     <p class="stats__item__description"> {caption} </p>
 </div>
@@ -43,6 +43,4 @@ const enableCountUp = true;
             width: min-content;
         }
     }
-
-
 </style>
