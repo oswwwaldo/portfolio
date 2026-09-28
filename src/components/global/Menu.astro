@@ -68,7 +68,7 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
     </div>
     <div class="menu__nav">
         <MenuList items={menuListItems}/>
-        <div class="hover-reveal" id="hover-reveal"></div>
+        <div class="hover-reveal"></div>
     </div>
 
     <div class="menu__links">
@@ -434,34 +434,32 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
     updateMenuHeight();
 
-    const hoverReveal = document.getElementById('hover-reveal') as HTMLDivElement;
-    const menuNav = document.querySelector('.menu__nav');
-    console.log("Checking...");  
+    const hoverReveals = document.querySelectorAll('.hover-reveal');
+    const menuNavs = document.querySelectorAll('.menu__nav');
     
     document.addEventListener('mousemove', (event) => {
-        hoverReveal.style.top = `${25 + event.clientY}px`;
-        hoverReveal.style.left = `${25 + event.clientX}px`;
+        hoverReveals.forEach(hoverReveal => {
+            hoverReveal.style.top = `${25 + event.clientY}px`;
+            hoverReveal.style.left = `${25 + event.clientX}px`;
+        });
     });
 
-    menuNav?.querySelectorAll('* > [data-image]').forEach(menuListItem => { 
-        // console.log("Hello" + menuListItem.getAttribute('title'));
-        // console.log(menuListItem.dataset.image); 
+    menuNavs.forEach(menuNav => {
+        const hoverReveal = menuNav.querySelector('.hover-reveal');
 
-        menuListItem.addEventListener('mouseenter', () => {
-            // console.log("You're hovering over " + menuListItem.textContent);
-            // console.log(menuListItem.dataset.image);
-            if (hoverReveal) { hoverReveal.style.backgroundImage = 'url(`${menuListItem.dataset.image}`)'; }
+        menuNav.querySelectorAll('[data-image]').forEach(menuListItem => { 
+            menuListItem.addEventListener('mouseenter', () => {
+                if (hoverReveal instanceof HTMLDivElement) {
+                    hoverReveal.style.backgroundImage = `url("${menuListItem.getAttribute('data-image')}")`;
+                    hoverReveal.classList.add('is-visible');
+                }
+            });
 
-            if (hoverReveal) {
-                hoverReveal.style.backgroundImage = `url("${menuListItem.dataset.image}")`;
-                hoverReveal.classList.add('is-visible');
-            }
-        });
-
-        menuListItem.addEventListener('mouseleave', () => {
-            if (hoverReveal) {
-                hoverReveal.classList.remove('is-visible');
-            }
+            menuListItem.addEventListener('mouseleave', () => {
+                if (hoverReveal instanceof HTMLDivElement) {
+                    hoverReveal.classList.remove('is-visible');
+                }
+            });
         });
     });
 
