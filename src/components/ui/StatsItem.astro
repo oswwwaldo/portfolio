@@ -1,14 +1,20 @@
 ---
+import CountUp from './CountUp.astro';
+
 interface Props {
     stat: string;
     caption: string;
+    tooltip: string;
 }
 
-const { stat, caption } = Astro.props;
+const { stat, caption, tooltip } = Astro.props;
+const enableCountUp = true;
 ---
 
 <div class="stats__item">
-    <h4 class="stats__item__num"> {stat} </h4>
+    <h4 class="stats__item__num stats__item__nuum" title={tooltip}>
+        {enableCountUp ? <CountUp value={stat} /> : stat}
+    </h4>
     <p class="stats__item__description"> {caption} </p>
 </div>
 

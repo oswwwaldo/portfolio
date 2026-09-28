@@ -26,7 +26,7 @@ const technologies = await getCollection('technologies');
     </div>
     <div class="work-experience__stats">
         { stats.map(stat =>
-            <StatsItem stat={stat.data.figure} caption={stat.data.caption}/> )}
+            <StatsItem stat={stat.data.figure} caption={stat.data.caption} tooltip={stat.data.tooltip} /> )}
     </div>
     <div class="work-experience__tech">
         <h3> TECH STACK </h3>
