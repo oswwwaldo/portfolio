@@ -1,4 +1,6 @@
-# Oswaldo's Portfolio
+<img width="109" height="109" alt="stamp" src="https://github.com/user-attachments/assets/5227394b-45a0-4822-8ea1-3cbeefd28e6d" />
+
+# Oswaldo Fabrizio De Los Santos Ascencio' Portfolio
 
 This project uses Astro.js, TypeScript, React.js, SCSS, GSAP, Figma and Vite. I am using Github Issues to track the incoming workflow and necessary changes/implementations. Because I want to do so much, this will probably take me until Summer 2027 to finish and even then I still have many ideas for things I'd like to add onto this site, it is definitely a passion and labor of love. This project has served as my introduction back into web development after what felt like a ten-year hiatus, it marks the first time I used TypeScript, Astro.js, GSAP, Three.js and this new-kind of workflow. It is also the first time I've made a music player, made a properly responsive website or deployed to Cloudflare live to production.
 
@@ -43,7 +45,6 @@ Curious about where in development this website is in? Check the current milesto
 
 [Ali Zafar Iqbal](https://alizafariqbal.com/) - implements scrolljacking rather welll for scroll stacks
 
-
 I thought about adding scroll stacks like [this component](https://reactbits.dev/components/scroll-stack) and going heavier on scroll animations but I wanted to make sure the website was accessible and friendly for users.
 
 Also another cool tool:
@@ -55,8 +56,6 @@ Also another cool tool:
 [@jorgeb3c](https://www.nexusmods.com/profile/jorgeb3c/mods) for the beautiful UI renders of a variety of characters from the Infinity Blade series.
 
 [@_hortau](https://www.instagram.com/_hortau/) for lending me permission to use his beautiful, beautiful art—you can find more of his website [here](https://aquirin.com/)
-
-<img width="109" height="109" alt="stamp" src="https://github.com/user-attachments/assets/5227394b-45a0-4822-8ea1-3cbeefd28e6d" />
 
 *Designed, developed and deployed by [Oswaldo Fabrizio De Los Santos Ascencio](https://www.linkedin.com/in/oswwwaldo/)*
 
