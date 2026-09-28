@@ -10,7 +10,8 @@ import "../styles/global.scss";
 import "../styles/variables.scss";
 
 interface Props {
-  pageTitle: string;
+  title: string;
+  description: string;
   noHeader?: boolean;
   noFooter?: boolean;
   noEOF?: boolean;
@@ -20,7 +21,8 @@ interface Props {
 }
 
 const {
-  pageTitle,
+  title,
+  description,
   noBG = false, 
   noHeader = false,
   fullScreen = false,
@@ -40,7 +42,8 @@ const noPageMargin = fullScreen || propNoPageMargin;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20260808" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260808" />
     <link rel="shortcut icon" href="/favicon.ico?v=20260808" />

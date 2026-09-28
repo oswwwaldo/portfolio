@@ -26,9 +26,10 @@ export async function getStaticPaths() {
 const { tag } = Astro.params;
 const { projects } = Astro.props;
 
-const pageTitle = `${tag} — oswaldo de los santos (@byoswwwaldo)`;
+const title = `${tag} — oswaldo de los santos (@byoswwwaldo)`;
+const description = `${projects.length} project${projects.length === 1 ? "" : "s"} tagged with #${tag} on oswwwaldo's portfolio.`;
 ---
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <section class="filtered-projects">
             <SectionHeader textContent=`Projects tagged with #${tag}`/>

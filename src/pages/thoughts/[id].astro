@@ -17,12 +17,13 @@ export async function getStaticPaths() {
 
 const { thought } = Astro.props
 const { Content } = await render(thought)
-const pageTitle = `${thought.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+const title = `${thought.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+const description = thought.data.description;
 
 ---
 
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="thought-article">
             <Content />

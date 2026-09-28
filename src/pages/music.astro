@@ -5,7 +5,8 @@ import SectionLayout from '../layouts/SectionLayout.astro';
 import TagCloud from '../components/sections/TagCloud.astro';
 import Button from '../components/ui/Button.astro';
 
-const pageTitle = "♪ — oswaldo de los santos (@byoswwwaldo)";
+const title = "♪ — oswaldo de los santos (@byoswwwaldo)";
+const description = "An experimental music player page for playlists and audio interface ideas.";
 
 const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
@@ -38,7 +39,7 @@ const message = "Hello from the server!";
 
 
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true} noPadding={true}>
         <div class="music">
             <h1 class="music__header"> Music Player </h1>

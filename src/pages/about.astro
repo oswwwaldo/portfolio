@@ -8,13 +8,14 @@ import LandingHero from '../components/sections/LandingHero.astro';
 import AboutMe from '../components/sections/AboutMe.astro';
 import Contact from '../components/sections/Contact.astro';
 
-const pageTitle = "about — oswaldo de los santos (@byoswwwaldo)";
+const title = "about — oswaldo de los santos (@byoswwwaldo)";
+const description = "Learn more about Oswaldo de los Santos, his background, and the story behind this portfolio.";
 import fih from '../assets/fih.jpg';
 import uwu from '../assets/uwu.jpg';
 
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <div class="about-me">
         <SectionLayout firstLayout={true} justifyCentered={true}>
             <div class="section">
