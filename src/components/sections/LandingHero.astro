@@ -26,8 +26,8 @@ import EscKey from '../ui/EscKey.astro';
     <div class="hero__actions">
         <div class="hero__actions-wrapper">
             <div class="hero__buttons">
-                <Button class="hero__buttons__btn" textContent="Contact" type="button" variant="primary"></Button>
-                <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download"></Button>
+                <Button class="hero__buttons__btn" textContent="Contact" type="button" variant="primary" onclick="window.location.href='/contact'"></Button>
+                <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download" onclick="window.open('/resume.pdf', '_blank', 'noopener,noreferrer')"></Button>
             </div>  
             <div class="hero__socials">
                 <Icon 
@@ -121,6 +121,7 @@ import EscKey from '../ui/EscKey.astro';
             gap: 1rem 1.5rem;
             width: 97%;
             max-width: 97%;
+            pointer-events: auto;
         }
 
         &__actions-wrapper {
