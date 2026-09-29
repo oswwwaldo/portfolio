@@ -8,12 +8,18 @@ interface Props {
     class?: string;
     scale?: number;
     duration?: number;
+    topPosition?: string;
+    leftPosition?: string;
 }
 
-const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
+const { src, alt, class: className, scale = 1.1, duration = 0.4, topPosition="30%", leftPosition="70%" } = Astro.props;
+
 ---
 
-<div class:list={["landing-image", className]} data-scale={scale}>
+<div 
+    class:list={["landing-image", className]} 
+    data-scale={scale} 
+    style={{ top: topPosition, left: leftPosition, position: 'absolute' }}>
     <Image src={src} alt={alt} class="photo" />
 </div>
 
@@ -22,8 +28,7 @@ const { src, alt, class: className, scale = 1.1, duration = 0.4 } = Astro.props;
 
     .landing-image {
         position: absolute;
-        top: 30%;
-        left: 70%;
+        top: 30%; left: 70%;
 
         transform: translate3d(calc(-50% - 00px), calc(-35% - 00px), 0);
         transition: transform 1ms ease-in-out;
