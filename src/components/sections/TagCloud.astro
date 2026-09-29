@@ -10,21 +10,10 @@ const { text } = Astro.props;
 
 <div class="tag-cloud">
     {
-        text.map((word) => {
+        text.map((word) => (
             <TagHeader title={word} sum={49} />
-        })
+        ))
     }
-</div>
-
-<div class="tag-cloud">
-    <TagHeader title="Through" sum={49}></TagHeader>
-    <TagHeader title="Over" sum={10}></TagHeader>
-    <TagHeader title="Under" sum={13}></TagHeader>
-    <TagHeader title="Across" sum={17}></TagHeader>
-    <TagHeader title="Within" sum={81}></TagHeader>
-    <TagHeader title="Cross" sum={53}></TagHeader>
-    <TagHeader title="Before" sum={124}></TagHeader>
-    <TagHeader title="Us" sum={5}></TagHeader>
 </div>
 
 <style lang="scss">
