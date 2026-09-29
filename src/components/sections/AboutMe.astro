@@ -1,22 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import SectionHeader from "../ui/SectionHeader.astro"
+import SectionHeader from "../ui/SectionHeader.astro";
 import portrait from '../../assets/media/whele.jpg';
+import andrea from '../../assets/andrea-1.jpg';
 ---
 <div class="about">
-    <d  iv class="about__wrapper">
+    <div class="about__wrapper">
         <div class="about__portrait">
-            <Image class="about__portrait__img" src={portrait} alt="A portrait of me" />
+            <Image class="about__portrait__img" src={andrea} alt="A portrait of me" />
         </div>
         <div class="about__content">
-            <h1 id="about-title"> hi, my name is <span class="ink"> oswaldo\> </span> </h1>
-            <!-- <SectionHeader textContent="Hello my name is" isFullWidth={true}/> -->
+            <SectionHeader textContent="Hi — my name is Oswaldo" isFullWidth={true}/>
+            <!-- <h1 id="about-title"> about me — </h1> -->
+            <!-- <h1 id="about-title"> hi, my name is <span class="ink"> &lt; oswaldo\&gt; </span> </h1> -->
             <p> I'm a full-stack software engineer based in New York City with a passion for building products that
                 sit at the intersection of engineering precision and thoughtful design. I specialize in creating 
                 scalable web applications — from low-level system architecture to polished, pixel-perfect interfaces.
             </p>
+
+            <p>
+                Beyond software, I like to stretch my legs out for a run, video edit and write. I also have a randomly
+                reoccuring addiction to chess every once in awhile.
+            </p>
         </div>
-    </d>
+    </div>
     <div class="about__footer">
         <div class="about__footer__item">
             <div class="about__footer__item__header"> Email </div>
@@ -30,7 +37,7 @@ import portrait from '../../assets/media/whele.jpg';
 
         <div class="about__footer__item">
             <div class="about__footer__item__header"> Sworn fealty to </div>
-            <div class="about__footer__item__content"> King Aegon Targaryen </div>
+            <div class="about__footer__item__content"> King Stannis Baratheon </div>
         </div>
 
         <div class="about__footer__item">
@@ -42,8 +49,8 @@ import portrait from '../../assets/media/whele.jpg';
     @use '../../styles/variables.scss' as *;
 
     #about-title {
-        font-size: var(--font-size-2xl);
-        font-family: var(--font-body);
+        font-size: var(--font-size-lg);
+        font-family: var(--font-heading);
     }   
 
     .ink {
@@ -92,7 +99,7 @@ import portrait from '../../assets/media/whele.jpg';
 
         &__footer {
             display: flex;
-            // display: none;
+            display: none;
             flex-flow: row wrap;
             justify-content: flex-start;
             gap: 5rem;
