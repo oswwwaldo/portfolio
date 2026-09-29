@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 import ProjectCard from '../components/ui/ProjectCard.astro';
+import SlidingCarousel from '../components/ui/SlidingCarousel.astro';
 import fih from '../assets/fih.jpg';
 import throne from '../assets/throne.jpg';
 import uwu from '../assets/uwu.jpg';
@@ -36,10 +37,8 @@ const projects = await getCollection('projects');
 
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="section">
-            <div class="section__landing">
-                <Image class="section__landing__image" src={uwu} alt="wal-ta"/>
-                <h1 class="section__landing__header">All<br> Projects </h1>
-            </div>
+            <h1> Have questions, feedback or an inquiry to make? </h1>
+            <h4> Contact me </h4>
         </div>
     </SectionLayout>
 </BaseLayout>
