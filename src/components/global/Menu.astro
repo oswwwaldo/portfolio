@@ -2,7 +2,7 @@
 import { getImage } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import type { ImageMetadata } from 'astro';
-import Knight from '../../assets/Knight_06.png';
+import Knight from '../../assets/frames/Knight_06/Knight_06-ASCII-SCALE-0x.png';
 
 import fih from '../../assets/fih.jpg'
 import throne from '../../assets/throne.jpg';
@@ -86,14 +86,17 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Explore</h4>
+                    <a class="info-group__link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                     <a class="info-group__link" href="/quest">Start a quest</a>
                     <a class="info-group__link" href="/sign">Sign the guestbook</a>
                     <a class="info-group__link" href="/now">What am I doing?</a>
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Other pages</h4>
-                    <a class="info-group__link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                    <a class="info-group__link" href="/changelog">Changelog</a>
+                    <a class="info-group__link" href="/music">Music</a>
                     <a class="info-group__link" href="/thoughts">Thoughts</a>
+                    <a class="info-group__link" href="/video">Video</a>
                 </div>
             </div>
             <div class="menu__links__content__info">
