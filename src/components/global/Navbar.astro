@@ -221,17 +221,18 @@ import Hamburger from './Hamburger.astro';
     function trackTime() {
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
-        const orientation = new Date('2026-08-20');
-        const firstday = new Date('2026-09-22');
-        const diffInMs = Math.abs(Number(orientation) - Number(today));
-        const tilMarcyOrientation = Math.ceil((Math.abs(Number(orientation) - Number(today))) / (1000 * 60 * 60 * 24)); 
-        const tilMarcyFirstDay = Math.ceil(Math.abs(Number(firstday) - Number(today)) / (1000 * 60 * 60 * 24)); 
+        const fall = new Date('2026-12-20');
+        const firstday = new Date('2027-09-22');
+        const diffInMs = Math.abs(Number(fall) - Number(today));
+        const tilFallEnds = Math.ceil((Math.abs(Number(fall) - Number(today))) / (1000 * 60 * 60 * 24)); 
+        const tilMarcyLastDay = Math.ceil(Math.abs(Number(firstday) - Number(today)) / (1000 * 60 * 60 * 24)); 
         console.log(`${formattedDate}`)
-        console.log(`${tilMarcyOrientation} days left until orientation day at Marcy Lab.`);
-        console.log(`${tilMarcyFirstDay} days left until the fellowship at Marcy Lab begins.`);
+        console.log(`${tilFallEnds} days left until Fall 2026 ends.`);
+        console.log(`${tilMarcyLastDay} days left until the fellowship at Marcy Lab begins.`);
         
         if (siteName) {
-            siteName.title = `And there are ${tilMarcyFirstDay} until Marcy.`;
+            siteName.title = `And there are ${tilMarcyLastDay} days until Marcy Lab ends.`;
+            siteName.textContent = `oswwwaldo — ${tilFallEnds} days left until Fall 2026 ends.`;
         }
     }
 
