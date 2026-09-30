@@ -1,29 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
-
 import PillHeader from '../ui/PillHeader.astro';
 import ListProjectItem from '../ui/ListProjectItem.astro'
 
 const projects = await getCollection('projects');
 ---
-
-<div class="projects">
+<section class="projects" id="projects">
     <PillHeader />
-    <div class="projects__nav">
-        <div class="projects__nav__options">
-            <p class="projects__nav__options__header"> Sort by </p>
-            <p class="projects__nav__options__header"> Filter by </p>
-        </div>
-        <div class="projects__nav__views">
-            <div class="projects__nav__views__btn"> List </div>
-            <div class="projects__nav__views__btn"> Cards </div>
-            <!-- <div class="projects__nav__views__btn"> Panarmomic </div> -->
-        </div>
-    </div> 
     {projects.map((project, index) => 
         <ListProjectItem project={project} index={index + 1} />
     )}
-</div>
+</section>
 <style lang="scss">
     @use '../../styles/variables.scss' as *;
 
@@ -31,59 +18,12 @@ const projects = await getCollection('projects');
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10vh 0; 
+        padding: 10vh 0;    
         color: var(--secondary-color);
 
-
-        &__nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 0 48px 24px;
+        & div {
+            background: red !important;
             border-bottom: var(--border-thin-secondary);
-
-            @media (max-width: 768px) {
-                flex-direction: column;
-                gap: 24px;
-                padding: 0 16px 24px;
-            }
-
-            &__options,
-            &__views {
-                display: flex;
-                gap: 32px;
-                align-items: center;
-            }
-
-            &__options__header,
-            &__views__btn {
-                font-family: var(--font-heading);
-                font-size: var(--font-size-xs);
-                letter-spacing: 5.2px;
-                text-transform: uppercase;
-            }
-
-            &__views__btn {
-                cursor: pointer;
-                transition: opacity 0.2s ease;
-
-                &:hover {
-                    opacity: 0.7;
-                }
-            }
-
-            
-        }
-        @media (max-width: 1200px) {
-            .projects__nav__options {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .projects__nav__views {
-                display: none;
-            }
         }
     }
 </style>

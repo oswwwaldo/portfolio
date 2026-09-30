@@ -48,6 +48,46 @@
     "id": "astro",
     "title": "Astro.js",
     "type": "Framework"
+  },  
+  {
+    "id": "flask",
+    "title": "Flask",
+    "type": "Framework"
+  },
+  {
+    "id": "langchain",
+    "title": "LangChain",
+    "type": "Framework"
+  },
+  {
+    "id": "langgraph",
+    "title": "LangGraph",
+    "type": "Framework"
+  },  
+  {
+    "id": "postman",
+    "title": "Postman",
+    "type": "Tool"
+  },
+  {
+    "id": "posthog",
+    "title": "Posthog",
+    "type": "Tool"
+  },
+  {
+    "id": "express",
+    "title": "Express.js",
+    "type": "Framework"
+  },  
+  {
+    "id": "next",
+    "title": "Next.js",
+    "type": "Framework"
+  },
+  {
+    "id": "electron",
+    "title": "Electron",
+    "type": "Framework"
   },
   {
     "id": "django",

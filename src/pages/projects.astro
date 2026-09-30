@@ -1,8 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 import ProjectCard from '../components/ui/ProjectCard.astro';
+import SlidingCarousel from '../components/ui/SlidingCarousel.astro';
+import fih from '../assets/fih.jpg';
+import throne from '../assets/throne.jpg';
+import uwu from '../assets/uwu.jpg';
 
 const title = "projects — oswaldo de los santos (@byoswwwaldo)";
 const description = "Browse web development projects by Oswaldo de los Santos, including case studies and technical highlights.";
@@ -12,6 +17,15 @@ const projects = await getCollection('projects');
 
 <BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
+        <div class="section">
+            <div class="section__landing">
+                <Image class="section__landing__image" src={uwu} alt="wal-ta"/>
+                <h1 class="section__landing__header">Featured<br> Projects </h1>
+            </div>
+        </div>
+    </SectionLayout>
+
+    <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="projects">
             <h1> Projects </h1>
             {projects.map(project => 
@@ -20,6 +34,13 @@ const projects = await getCollection('projects');
             {projects.length < 1 && (
                 <p> No projects to show. </p>
             )}
+        </div>
+    </SectionLayout>
+
+    <SectionLayout firstLayout={true} justifyCentered={true}>
+        <div class="section">
+            <h1> Have questions, feedback or an inquiry to make? </h1>
+            <h4> Contact me </h4>
         </div>
     </SectionLayout>
 </BaseLayout>
@@ -37,5 +58,39 @@ const projects = await getCollection('projects');
 
         background: var(--primary-color);
         color: var(--secondary-color);
+    }
+
+    .section {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center; 
+        color: var(--secondary-color, #ffffff);
+        position: relative;
+        height: 100dvh;
+
+        &__wrapper {
+        }
+
+        &__landing {
+            display: flex;
+            flex-flow: column nowrap;
+
+            &__header {
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                width: max-content;
+
+                font-size: var(--font-size-3xl);
+                text-align: center;
+            }
+
+            &__image {
+                height: 50vh;
+                width: 100%;
+                filter: brightness(0.2);
+            }
+
+        }
     }
 </style>

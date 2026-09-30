@@ -54,7 +54,7 @@
     "link": "https://youtube.com/@oswwwaldo",
     "category": "media",
     "ariaLabel": "Like, comment, subscribe and hit that bell notification!",
-    "featured": false,
+    "featured": true,
     "displayOrder": 5,
     "target": "_blank",
     "rel": "noopener noreferrer"

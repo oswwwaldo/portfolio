@@ -122,15 +122,19 @@ const technologies = defineCollection({
     })
 });
 
-
 const thoughts = defineCollection({
     loader: glob({ base: 'src/content/thoughts', pattern: '*.md'}),
-    schema: z.object({
+    schema: ({ image }) => z.object({
         title: z.string(),
+        short: z.string(),
         description: z.string(),
         pubDate: z.coerce.date(),
         updatedDate: z.coerce.date().nullable().optional(),
-        thumbnail: z.string(),
+        thumbnail: z.object({
+            title: z.string(),
+            cover: image(),
+            coverAlt: z.string(),
+        }),
         tags: z.array(z.string()),
         featured: z.boolean().default(false),
         draft: z.boolean().default(false),

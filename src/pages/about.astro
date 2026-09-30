@@ -4,169 +4,288 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GridLayout from '../layouts/GridLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
-import LandingHero from '../components/sections/LandingHero.astro';
 import AboutMe from '../components/sections/AboutMe.astro';
-import Contact from '../components/sections/Contact.astro';
+import Signature from '../components/ui/Signature.astro';
 
 const title = "about — oswaldo de los santos (@byoswwwaldo)";
 const description = "Learn more about Oswaldo de los Santos, his background, and the story behind this portfolio.";
 import fih from '../assets/fih.jpg';
+import throne from '../assets/throne.jpg';
 import uwu from '../assets/uwu.jpg';
-
+import mug from '../assets/mug.jpg';
+import sigma from '../assets/sigma.jpg';
+import walter from '../assets/walter.jpg';
+import whale from '../assets/whele.jpg';
+import mount from '../assets/mount_fuji.jpg';
+import example from '../assets/example.webp';
 ---
 
 <BaseLayout title={title} description={description}>
     <div class="about-me">
-        <SectionLayout firstLayout={true} justifyCentered={true}>
-            <div class="section">
-                <div class="section__landing">
-                    <Image class="section__landing__image" src={uwu} alt="wal-ta"/>
-                    <h1 class="section__landing__header">Oswaldo<br>De Los Santos</h1>
+
+        
+        <SectionLayout firstLayout={true} noMargins={true}>
+            <section class="hero">
+
+                <Image class="hero__image" src={mount} alt="I am just a fih!"></Image>
+                <div class="hero__text">
+                    <AboutMe />
+                    <p> I'm Oswaldo — a Full Stack Software Engineer based in New York.  </p>
                 </div>
-            </div>
+            </section>
         </SectionLayout>
+        <style lang="scss">
+            .full {
+                width: 100%;
+                height: 50%;
+            }
 
-        <GridLayout>
-            <div class="section">
-                <div class="section__floating-img">
-                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
-                </div>
-                <div class="section__floating-img">
-                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
-                </div>
-                <div class="section__floating-img">
-                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
-                </div>
-                <div class="section__content">
-                    <!-- <SectionHeader textContent="Some background for the curious" /> -->
-                    <h2> Some background for the curious </h2>
-                    <h3> My name is Oswaldo </h3>
-                    <p> Lorem ipsum dolor sit amet consectetur. Quis ac sed hac eu. Sit convallis tortor proin etiam 
-                        ultrices condimentum proin lacus. Ultricies nunc quis nisl ipsum. Amet porttitor pulvinar lacus
-                        pellentesque habitant dui consectetur dolor purus. 
-                        
-                        Etiam ornare neque nascetur hendrerit aliquam. Eu odio sit et tellus egestas gravida lorem sit.
-                    </p>
-                </div>
-            </div>
-        </GridLayout>
+            .hero {
+                color: var(--secondary-color);
+                position: relative;
 
-        <SectionLayout>
+                &__image {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &__text {
+                    position: absolute;
+                    top: 20%;
+                    left: 10%;
+                    color: var(--secondary-color);
+
+                    width: 50%;
+
+                    
+                    & p {
+                        font-family: var(--font-body);
+                        font-size: var(--font-size-md);
+                    }
+                }
+            }
+        </style>
+       
+
+
+
+        <SectionLayout firstLayout={true} justifyCentered={true}>
             <AboutMe />
         </SectionLayout>
 
-        <SectionLayout firstLayout={true}>
-            <div class="section">
-                <div class="section__floating-img">
-                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
-                </div>
-                <div class="section__floating-img">
-                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
-                </div>
-                <div class="section__floating-img">
-                    <Image class="section__floating-img__image" src={fih} alt="I am just a fih!"></Image>
-                </div>
-                <div class="section__content">
-                    <!-- <SectionHeader textContent="Some background for the curious" /> -->
-                    <h2> Some background for the curious </h2>
-                    <h3> My name is Oswaldo </h3>
+        <SectionLayout justifyCentered={true}>
+            <div class="intro">
+                <Image class="intro__image" src={throne} alt="I am just a fih!"></Image>
+                <div class="intro__text">
+                    <h1> Hello there! </h1>
                     <p> Lorem ipsum dolor sit amet consectetur. Quis ac sed hac eu. Sit convallis tortor proin etiam 
                         ultrices condimentum proin lacus. Ultricies nunc quis nisl ipsum. Amet porttitor pulvinar lacus
+                        pellentesque habitant dui consectetur dolor purus. Lorem ipsum dolor sit amet consectetur. 
+                        Quis ac sed hac eu. Sit convallis tortor proin etiam ultrices condimentum proin lacus. Ultricies
+                        nunc quis nisl ipsum. Amet porttitor pulvinar lacus pellentesque habitant dui consectetur dolor purus. 
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur. Quis ac sed hac eu. Sit convallis tortor proin etiam 
+                        ultrices condimentum proin lacus. Ultricies nunc quis nisl ipsum. Amet porttitor pulvinar lacus
                         pellentesque habitant dui consectetur dolor purus. 
-                        
-                        Etiam ornare neque nascetur hendrerit aliquam. Eu odio sit et tellus egestas gravida lorem sit.
                     </p>
                 </div>
             </div>
         </SectionLayout>
         
-        <SectionLayout>
-            <Contact />
-        </SectionLayout>  
 
+        <GridLayout>
+            <div class="section">
+                <div class="section__gallery">
+                    <Image class="section__gallery__image" src={fih} alt="I am just a fih!"></Image>
+                    <Image class="section__gallery__image" src={uwu} alt="I am just a fih!"></Image>
+                    <Image class="section__gallery__image" src={throne} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__content">
+                    <h1> Some background for the curious </h1>
+                    <p> Lorem ipsum dolor sit amet consectetur. Quis ac sed hac eu. Sit convallis tortor proin etiam 
+                        ultrices condimentum proin lacus. Ultricies nunc quis nisl ipsum. Amet porttitor pulvinar lacus
+                        pellentesque habitant dui consectetur dolor purus. 
+                    </p>
+                    <p>
+                        Etiam ornare neque nascetur hendrerit aliquam. Eu odio sit et tellus egestas gravida lorem sit.
+                    </p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section__gallery">
+                    <Image class="section__gallery__image" src={mug} alt="I am just a fih!"></Image>
+                    <Image class="section__gallery__image" src={sigma} alt="I am just a fih!"></Image>
+                    <Image class="section__gallery__image" src={throne} alt="I am just a fih!"></Image>
+                    <Image class="section__gallery__image" src={walter} alt="I am just a fih!"></Image>
+                    <Image class="section__gallery__image" src={whale} alt="I am just a fih!"></Image>
+                </div>
+                <div class="section__content">
+                    <h1> And what would a good website be without pictures? </h1>
+                    <p> (more pictures)</p>
+                </div>
+            </div>
+        </GridLayout>
+        <!-- 
+        <SectionLayout>
+            <div class="section">
+                <h1> Some other things I like to work on... </h1>
+            </div>
+        </SectionLayout> 
+        -->
+
+        <Signature/>
     </div>
 </BaseLayout>
 
 
 <style lang="scss">
     .about-me {
+        // display: flex;
+        // flex-direction: column;
+        // gap: 5vh;
+    }
+
+    .intro {
         display: flex;
-        flex-direction: column;
-        gap: 5vh;
+        flex-flow: row nowrap;
+        align-items: end;
+        justify-content: center;
+        color: var(--secondary-color);
+        gap: 2rem;
+
+        margin-bottom: 12rem;
+        
+        &__image {
+            height: 100vh;
+            width: 30vw;
+            object-fit: cover;
+        }
+        &__text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
     }
 
     .section {
         display: flex;
         flex-flow: column nowrap;
-        justify-content: center; 
-        color: var(--secondary-color, #ffffff);
-        position: relative;
-        height: 100dvh;
+        justify-content: flex-end;   
+        // background-color: var(--color-secondary-05); 
+        color: var(--secondary-color);
+        padding-bottom: 2rem;
+        margin-bottom: 10rem;
 
-        &__wrapper {
-        }
-
-        &__landing {
-            display: flex;
-            flex-flow: column nowrap;
-
-            &__header {
-                position: absolute;
-                top: 50%; left: 50%;
-                transform: translate(-50%, -50%);
-                width: max-content;
-
-                font-size: var(--font-size-3xl);
-                text-align: center;
-            }
-
-            &__image {
-                height: 50vh;
-                width: 100%;
-                filter: brightness(0.2);
-            }
-
-        }
+        height: 125dvh;
+        width: 100%;
 
         &__content {
             display: flex;
             align-self: flex-start;
             flex-flow: column nowrap;
             gap: 1.5rem;
-            width: 50%;
-            z-index: 2; 
-            padding-left: 5%; 
+
+            width: 60%;
+            padding-left: 2rem; 
+
+            & h1 {
+                font-size: var(--font-size-2xl);
+            }
         }
 
-        &__floating-img {
-            position: absolute;
-            z-index: 1;
-            background: #d3d3d3;
+        &__gallery {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            // background: var(--color-secondary-20);
 
             &__image {
                 display: block;
+
                 width: 100%;
-                height: 100%;
+                height: auto;
                 object-fit: cover;
+                object-position: top;
                 aspect-ratio: 16 / 10;
-            }
 
-            &:nth-of-type(1) {
-                top: 5%;
-                left: 65%;
-                width: 22%;
+                position: absolute;
             }
+        }
 
-            &:nth-of-type(2) {
-                top: 25%;
-                left: 38%;
-                width: 26%;
+        &:nth-of-type(1) {
+            & .section__gallery {
+                &__image {
+                    &:nth-of-type(1) {
+                        top: 0%;
+                        left: 75%;
+                        width: 25%;
+                    }
+                    
+                    &:nth-of-type(2) {
+                        top: 40%;
+                        left: 30%;
+                        width: 35%;
+                    }
+                    
+                    &:nth-of-type(3) {
+                        top: 120%;
+                        left: 65%;
+                        width: 45%;
+                    }
+                }
             }
+        }
 
-            &:nth-of-type(3) {
-                top: 55%;
-                left: 78%;
+        &:nth-of-type(2) {
+            flex-flow: column-reverse nowrap;
+            height: 120dvh;
+
+            & .section__content {
                 width: 35%;
+                padding: 0 1rem;
+                align-self: end;
+                justify-content: flex-end;
+
+                padding: revert-rule;
+                width: 18%;
+                position: absolute;
+
+                width: 36%;
+                right: 7.5%;
+                top: 55%;
+                // right: 15%;
+            }
+
+            & .section__gallery {
+                &__image {
+                    &:nth-of-type(1) {
+                        top: 5%;
+                        left: 30%;
+                        width: 25%;
+                    }
+                    &:nth-of-type(2) {
+                        top: 80%;
+                        left: 90%;
+                        width: 20%;
+                    }
+                    &:nth-of-type(3) {
+                        top: 27.5%;
+                        left: 5%;
+                        width: 40%;
+                    }
+                    &:nth-of-type(4) {
+                        top: 70%;
+                        left: 5%;
+                        width: 15%;
+                    }
+                    &:nth-of-type(5) {
+                        top: 65%;
+                        left: 30%;
+                        width: 50%;
+                    }
+                }
             }
         }
     }

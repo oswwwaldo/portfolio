@@ -365,9 +365,10 @@ const dataset = {
 <style lang="scss">
   @use "../../styles/variables.scss" as *;
 
-    .pixel-snow-container {
+    pixel-snow {
         display: block;
         position: absolute;
+        inset: 0;
 
         position: relative;
         overflow: hidden;
@@ -379,6 +380,7 @@ const dataset = {
         z-index: var(--bg-web-gl-layer);
         z-index: var(--max-layer);
         z-index: 1 !important;
+        z-index: -1;
 
         opacity: 100% !important;
         user-select: none;

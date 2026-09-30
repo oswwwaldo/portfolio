@@ -44,14 +44,10 @@ import Hamburger from './Hamburger.astro';
                 border: 1px solid var(--color-secondary-05);
 
                 &:hover {  
-                    border: 1px solid var(--color-secondary-20);
+                    border-bottom: 1px solid var(--color-secondary-20);
                 }
             }
         }
-    }
-
-    .nav-logo__watermark {
-        display: none;
     }
 
     a {
@@ -95,6 +91,9 @@ import Hamburger from './Hamburger.astro';
 
     .nav-watermark {
         display: none;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .nav-links {
@@ -111,7 +110,7 @@ import Hamburger from './Hamburger.astro';
     @media (max-width: 768px) {
 
         .wrapper {
-            position: absolute;
+            // position: absolute;
             top: 10%;
         }
         .nav-wrapper {
@@ -120,15 +119,23 @@ import Hamburger from './Hamburger.astro';
 
             position: sticky;
             top: 0;
+
+            overflow-y: hidden;
+            overscroll-behavior: none;
+        }
+
+        .nav-watermark {
+            display: none !important;
         }
 
         .nav-links {
+            justify-self: end;
             &__link {
                 display: none !important; 
             }
 
             &__theme {
-                display: none;
+                // display: none;
             }
 
             &__hamburger {
@@ -142,6 +149,7 @@ import Hamburger from './Hamburger.astro';
     @media (max-width: 425px) {
         .nav-wrapper {
             flex-direction: row;
+            justify-content: flex-end;
             padding: 1rem;
 
             & .nav-logo {
@@ -213,18 +221,18 @@ import Hamburger from './Hamburger.astro';
     function trackTime() {
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
-        const orientation = new Date('2026-08-20');
-        const firstday = new Date('2026-09-22');
-        const diffInMs = Math.abs(Number(orientation) - Number(today));
-        const tilMarcyOrientation = Math.ceil((Math.abs(Number(orientation) - Number(today))) / (1000 * 60 * 60 * 24)); 
-        const tilMarcyFirstDay = Math.ceil(Math.abs(Number(firstday) - Number(today)) / (1000 * 60 * 60 * 24)); 
+        const fall = new Date('2026-12-20');
+        const firstday = new Date('2027-09-22');
+        const diffInMs = Math.abs(Number(fall) - Number(today));
+        const tilFallEnds = Math.ceil((Math.abs(Number(fall) - Number(today))) / (1000 * 60 * 60 * 24)); 
+        const tilMarcyLastDay = Math.ceil(Math.abs(Number(firstday) - Number(today)) / (1000 * 60 * 60 * 24)); 
         console.log(`${formattedDate}`)
-        console.log(`${tilMarcyOrientation} days left until orientation day at Marcy Lab.`);
-        console.log(`${tilMarcyFirstDay} days left until the fellowship at Marcy Lab begins.`);
+        console.log(`${tilFallEnds} days left until Fall 2026 ends.`);
+        console.log(`${tilMarcyLastDay} days left until the fellowship at Marcy Lab begins.`);
         
         if (siteName) {
-            siteName.textContent = `oswwwaldo — ${tilMarcyOrientation} days left`;
-            siteName.title = `And there are ${tilMarcyFirstDay} until Marcy.`;
+            siteName.title = `And there are ${tilMarcyLastDay} days until Marcy Lab ends.`;
+            siteName.textContent = `oswwwaldo — ${tilFallEnds} days left until Fall 2026 ends.`;
         }
     }
 
@@ -244,13 +252,6 @@ import Hamburger from './Hamburger.astro';
     hamburger?.addEventListener('click', () => {
         console.log('Mobile menu click event fired');  
         toggleMenu();
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            console.log('Escape key pressed!');
-            toggleMenu();
-        }
     });
 
     document.addEventListener('DOMContentLoaded', (event) => {

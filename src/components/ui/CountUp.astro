@@ -1,0 +1,143 @@
+---
+interface Props {
+    value: string | number;
+    from?: number;
+    direction?: 'up' | 'down';
+    delay?: number;
+    duration?: number;
+    startWhen?: boolean;
+    separator?: string;
+    class?: string;
+}
+
+const {
+    value,
+    from = 0,
+    direction = 'up',
+    delay = 0,
+    duration = 2,
+    startWhen = true,
+    separator = '',
+    class: className,
+} = Astro.props;
+---
+
+<span
+    class={className}
+    data-count-up
+    data-value={String(value)}
+    data-from={String(from)}
+    data-direction={direction}
+    data-delay={String(delay)}
+    data-duration={String(duration)}
+    data-start-when={String(startWhen)}
+    data-separator={separator}
+>
+    {value}
+</span>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const getDecimalPlaces = (num: number): number => {
+            const str = num.toString();
+            if (!str.includes('.')) return 0;
+
+            const decimals = str.split('.')[1];
+            return Number.parseInt(decimals, 10) !== 0 ? decimals.length : 0;
+        };
+
+        const formatValue = (
+            latest: number, 
+            maxDecimals: number, 
+            separator: string, 
+            prefix: string, 
+            suffix: string
+        ): string => {
+            const hasDecimals = maxDecimals > 0;
+            const options: Intl.NumberFormatOptions = {
+                useGrouping: Boolean(separator),
+                minimumFractionDigits: hasDecimals ? maxDecimals : 0,
+                maximumFractionDigits: hasDecimals ? maxDecimals : 0,
+            };
+
+            const formattedNumber = Intl.NumberFormat('en-US', options).format(latest);
+            const number = separator ? formattedNumber.replace(/,/g, separator) : formattedNumber;
+
+            return `${prefix}${number}${suffix}`;
+        };
+
+        const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+        const setupCountUp = (node: HTMLElement) => {
+            if (node.dataset.countUpReady === 'true') return;
+            node.dataset.countUpReady = 'true';
+
+            const rawValue = node.dataset.value ?? '0';
+            const match = rawValue.match(/-?\d+(?:\.\d+)?/);
+
+            if (!match) {
+                node.textContent = rawValue;
+                return;
+            }
+
+            const numericTarget = Number.parseFloat(match[0]);
+            const prefix = rawValue.slice(0, match.index);
+            const suffix = rawValue.slice((match.index ?? 0) + match[0].length);
+
+            const from = Number.parseFloat(node.dataset.from ?? '0');
+            const direction = node.dataset.direction === 'down' ? 'down' : 'up';
+            const delay = Math.max(0, Number.parseFloat(node.dataset.delay ?? '0')) * 1000;
+            const duration = Math.max(0.1, Number.parseFloat(node.dataset.duration ?? '2')) * 1000;
+            const separator = node.dataset.separator ?? '';
+            const startWhen = node.dataset.startWhen !== 'false';
+
+            const startValue = direction === 'down' ? numericTarget : from;
+            const endValue = direction === 'down' ? from : numericTarget;
+            const maxDecimals = Math.max(getDecimalPlaces(startValue), getDecimalPlaces(endValue));
+
+            node.textContent = formatValue(startValue, maxDecimals, separator, prefix, suffix);
+
+            if (!startWhen) {
+                node.textContent = formatValue(endValue, maxDecimals, separator, prefix, suffix);
+                return;
+            }
+
+            let started = false;
+
+            const runAnimation = () => {
+                if (started) return;
+                started = true;
+
+                setTimeout(() => {
+                    const startTime = performance.now();
+
+                    const step = (currentTime: number) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easedProgress = easeOutExpo(progress);
+                        const value = startValue + (endValue - startValue) * easedProgress;
+
+                        node.textContent = formatValue(value, maxDecimals, separator, prefix, suffix);
+
+                        if (progress < 1) requestAnimationFrame(step);
+                    };
+
+                    requestAnimationFrame(step);
+                }, delay);
+            };
+
+            const observer = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    runAnimation();
+                    observer.disconnect();
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(node);
+        };
+
+        document.querySelectorAll<HTMLElement>('[data-count-up]').forEach((node) => setupCountUp(node as HTMLElement));
+    });
+</script>

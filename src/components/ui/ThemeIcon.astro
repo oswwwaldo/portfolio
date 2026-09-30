@@ -9,9 +9,9 @@ interface Props {
 const { size = '20' } = Astro.props;
 
 ---
-<button id="themeToggle" aria-label="Toggle theme" style={`width: ${size}px; height: ${size}px;`}>
+<button id="themeToggle" aria-label="Toggle theme" title="Toggle theme" style={`width: ${size}px; height: ${size}px;`}>
   <svg 
-    aria-hidden="true"  
+    aria-hidden="true" 
     style="width: 100%; height: 100%;"
     xmlns="http://www.w3.org/2000/svg"
     viewBox={`0 0 24 24`}>

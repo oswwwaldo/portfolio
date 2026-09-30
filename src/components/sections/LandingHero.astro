@@ -3,12 +3,9 @@ import LandingImage from '../ui/LandingImage.astro';
 import stoneNotInFocus from '../../assets/media/stone-not-in-focus.jpg';
 import Icon from '../ui/AppIcon.astro';
 import Button from '../ui/Button.astro';
-
-import EscKey from '../ui/EscKey.astro';
 ---
-<EscKey />
 
-<section class="hero">
+<section class="hero" id="home">
     <LandingImage 
         src={stoneNotInFocus} 
         alt="A monkey holding a phone"
@@ -26,7 +23,7 @@ import EscKey from '../ui/EscKey.astro';
     <div class="hero__actions">
         <div class="hero__actions-wrapper">
             <div class="hero__buttons">
-                <Button class="hero__buttons__btn" textContent="Contact" type="button" variant="primary" onclick="window.location.href='/contact'"></Button>
+                <Button class="hero__buttons__btn" textContent="Contact" type="button" variant="primary"></Button>
                 <Button class="hero__buttons__btn" textContent="Resume" type="button" icon="fa6-solid:download" onclick="window.open('/resume.pdf', '_blank', 'noopener,noreferrer')"></Button>
             </div>  
             <div class="hero__socials">

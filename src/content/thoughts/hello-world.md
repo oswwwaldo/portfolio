@@ -1,9 +1,13 @@
 ---
 title: "Hello World"
+short: "Hello"
 description: "A quick reset on why this site exists, what I'm working on, and why I finally built a proper blog section."
 pubDate: "2026-08-10"
 updatedDate: null
-thumbnail: "/assets/thoughts/hello-world/thumbnail.webp"
+thumbnail:
+  title: "thumbnail for hello world"
+  cover: "../../assets/thoughts/hello-world/thumbnail.webp"
+  coverAlt: "monke"
 tags:
   - "meta"
   - "webdev"
