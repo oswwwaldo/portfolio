@@ -64,7 +64,9 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
     </div>
     <div class="menu__nav">
         <MenuList items={menuListItems}/>
-        <div class="hover-reveal" id="hover-reveal"></div>
+        <div class="hover-reveal">
+            <div class="hover-reveal__inner"></div>
+        </div>
     </div>
 
     <div class="menu__links">
@@ -127,19 +129,38 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
         top: 0; left: 0;
         opacity: 0;
         pointer-events: none;
+        overflow: hidden;
+        will-change: transform, opacity, clip-path;
 
         width: 100px;
         height: 100px;
 
-        background: white;
+        clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+        transition:
+            opacity 200ms linear,
+            clip-path 420ms cubic-bezier(0.22, 1, 0.36, 1);
 
-        background-image: none;
-        background-size: cover;
-        background-position: center;
+        &__inner {
+            width: 100%;
+            height: 100%;
+            background: white;
+            background-image: none;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.15) translate3d(0, 4%, 0);
+            transform-origin: center;
+            will-change: transform;
+            transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
         &.is-visible {
             z-index: 1000;
             opacity: 1;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+            .hover-reveal__inner {
+                transform: scale(1) translate3d(0, 0, 0);
+            }
         }
     }
 
@@ -554,30 +575,100 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
 
     updateMenuHeight();
 
-    const hoverReveal = document.getElementById('hover-reveal') as HTMLDivElement;
-    const menuNav = document.querySelector('.menu__nav');
-    console.log("Checking...");  
-    
-    document.addEventListener('mousemove', (event) => {
-        hoverReveal.style.top = `${25 + event.clientY}px`;
-        hoverReveal.style.left = `${25 + event.clientX}px`;
-    });
+    const menuNavs = document.querySelectorAll('.menu__nav');
 
-    menuNav?.querySelectorAll('* > [data-image]').forEach(menuListItem => { 
+    menuNavs.forEach(menuNav => {
+        const hoverReveal = menuNav.querySelector('.hover-reveal');
+        const menuItems = menuNav.querySelectorAll('[data-image]');
 
-        menuListItem.addEventListener('mouseenter', () => {
-            if (hoverReveal) { hoverReveal.style.backgroundImage = 'url(`${menuListItem.dataset.image}`)'; }
+        if (!(hoverReveal instanceof HTMLDivElement)) {
+            return;
+        }
 
-            if (hoverReveal) {
-                hoverReveal.style.backgroundImage = `url("${menuListItem.dataset.image}")`;
-                hoverReveal.classList.add('is-visible');
+        const hoverRevealInner = hoverReveal.querySelector('.hover-reveal__inner');
+
+        if (!(hoverRevealInner instanceof HTMLDivElement)) {
+            return;
+        }
+
+        const offset = 25;
+        const ease = 0.15;
+        const idleThreshold = 0.15;
+        let targetX = 0;
+        let targetY = 0;
+        let renderedX = 0;
+        let renderedY = 0;
+        let hasPosition = false;
+        let animationFrameId: number | null = null;
+        let isPreviewActive = false;
+
+        const applyPosition = () => {
+            hoverReveal.style.transform = `translate3d(${renderedX + offset}px, ${renderedY + offset}px, 0)`;
+        };
+
+        const animate = () => {
+            renderedX += (targetX - renderedX) * ease;
+            renderedY += (targetY - renderedY) * ease;
+            applyPosition();
+
+            const isSettled =
+                Math.abs(targetX - renderedX) < idleThreshold &&
+                Math.abs(targetY - renderedY) < idleThreshold;
+
+            if (isPreviewActive || !isSettled) {
+                animationFrameId = window.requestAnimationFrame(animate);
+            } else {
+                animationFrameId = null;
             }
+        };
+
+        const startAnimation = () => {
+            if (!hasPosition || animationFrameId !== null) {
+                return;
+            }
+
+            animationFrameId = window.requestAnimationFrame(animate);
+        };
+
+        const stopAnimation = () => {
+            if (animationFrameId !== null) {
+                window.cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        };
+
+        menuNav.addEventListener('mousemove', (event) => {
+            targetX = event.clientX;
+            targetY = event.clientY;
+
+            if (!hasPosition) {
+                renderedX = targetX;
+                renderedY = targetY;
+                hasPosition = true;
+                applyPosition();
+            }
+
+            startAnimation();
         });
 
-        menuListItem.addEventListener('mouseleave', () => {
-            if (hoverReveal) {
+        menuNav.addEventListener('mouseleave', () => {
+            isPreviewActive = false;
+            hoverReveal.classList.remove('is-visible');
+            stopAnimation();
+        });
+
+        menuItems.forEach(menuListItem => {
+            menuListItem.addEventListener('mouseenter', () => {
+                hoverRevealInner.style.backgroundImage = `url("${menuListItem.getAttribute('data-image')}")`;
+                hoverReveal.classList.add('is-visible');
+                isPreviewActive = true;
+                startAnimation();
+            });
+
+            menuListItem.addEventListener('mouseleave', () => {
                 hoverReveal.classList.remove('is-visible');
-            }
+                isPreviewActive = false;
+            });
         });
     });
 

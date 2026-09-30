@@ -9,11 +9,13 @@ import fih from '../assets/fih.jpg';
 import throne from '../assets/throne.jpg';
 import uwu from '../assets/uwu.jpg';
 
-const pageTitle = "projects — oswaldo de los santos (@byoswwwaldo)";
+const title = "projects — oswaldo de los santos (@byoswwwaldo)";
+const description = "Browse web development projects by Oswaldo de los Santos, including case studies and technical highlights.";
+
 const projects = await getCollection('projects');
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={true} justifyCentered={true}>
         <div class="section">
             <div class="section__landing">

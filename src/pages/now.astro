@@ -3,11 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GridLayout from '../layouts/GridLayout.astro';
 import SectionLayout from '../layouts/SectionLayout.astro';
 
-const pageTitle = "now — oswaldo de los santos (@byoswwwaldo)";
+const title = "now — oswaldo de los santos (@byoswwwaldo)";
+const description = "A now page with current priorities, active projects, and what Oswaldo de los Santos is focused on lately.";
 
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout title={title} description={description}>
   <SectionLayout firstLayout={true} justifyCentered={true}>
     <h1> /Now </h1>
   </SectionLayout>

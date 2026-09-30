@@ -18,28 +18,16 @@ export async function getStaticPaths() {
     })
 }
 
-interface Props {
-    thought: any;
-    // thumbnail: string;
-}
-
 const { thought } = Astro.props
 const { Content } = await render(thought);
 
-const pageTitle = `${thought.data.title} — oswaldo de los santos (@byoswwwaldo)`;
-console.log("Hello thought:");
-console.log(thought.data.pubDate);
-console.log(thought.data.updatedDate);
-console.log(thought.data.thumbnail.title);
-console.log("No data being found here below, why?")
-console.log(`${thought.data.thumbnail.coverAlt}`);
+const title = `${thought.data.title} — oswaldo de los santos (@byoswwwaldo)`;
+const description = thought.data.description;
 
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-
+<BaseLayout title={title} description={description}>
     <SectionLayout firstLayout={false} justifyCentered={true} topPadding={true}>
-
         <div class="article-intro">
             <h1 class="article-intro__heading"> {thought.data.short} </h1>
 

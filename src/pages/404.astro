@@ -2,10 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
 
-const pageTitle = "404 - oswaldo de los santos (@byoswwwaldo)";
+const title = "404 - oswaldo de los santos (@byoswwwaldo)";
+const description = "The page you requested could not be found on oswwwaldo's portfolio.";
 ---
 
-<BaseLayout pageTitle={pageTitle} fullScreen={true}>
+<BaseLayout title={title} description={description} fullScreen={true}>
     <SectionLayout noSpacing={true}>
         <section class="not-found">
             <div class="text-group">
