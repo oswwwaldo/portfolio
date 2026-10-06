@@ -1,6 +1,12 @@
 ---
-import Navbar from './Navbar.astro';
+import Navbar from "./Navbar.astro";
+
+const pageSettings: Record<string, object> = {
+    '/about': { isTransparent: true }
+}
+
+const navbarSettings = pageSettings[Astro.url.pathname]
+
 ---
 
-<Navbar></Navbar>
-
+<Navbar {...navbarSettings} />

@@ -3,9 +3,16 @@ import Menu from '../global/Menu.astro';
 import ThemeIcon from '../ui/ThemeIcon.astro';
 import Watermark from '../ui/Watermark.astro';
 import Hamburger from './Hamburger.astro';
+
+interface Props {
+    isSticky?: boolean,
+    isTransparent?: boolean
+}
+
+const { isSticky = true, isTransparent = false } = Astro.props
 ---
 
-<div class="wrapper is-sticky" id="nav-wrapper">
+<div class:list={['wrapper', { 'is-sticky': isSticky }, { 'is-transparent': isTransparent}]} id="nav-wrapper">
     <div class="nav-wrapper" id="navbar">
         <div class="nav-logo">
             <a class="nav-logo__title label" id="site-name" href="/"> oswwwaldo </a>
@@ -30,7 +37,6 @@ import Hamburger from './Hamburger.astro';
 @use '../../styles/variables.scss' as *;
 
     .wrapper {
-
         &.is-sticky {
             position: sticky;
             top: 0;
@@ -46,6 +52,12 @@ import Hamburger from './Hamburger.astro';
                 &:hover {  
                     border-bottom: 1px solid var(--color-secondary-20);
                 }
+            }
+        }
+
+        &.is-transparent {
+            & .nav-wrapper {
+                background: transparent !important;
             }
         }
     }
@@ -221,14 +233,14 @@ import Hamburger from './Hamburger.astro';
     function trackTime() {
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
-        const fall = new Date('2026-12-20');
+        const fall = new Date('2026-12-22');
         const firstday = new Date('2027-09-22');
         const diffInMs = Math.abs(Number(fall) - Number(today));
         const tilFallEnds = Math.ceil((Math.abs(Number(fall) - Number(today))) / (1000 * 60 * 60 * 24)); 
         const tilMarcyLastDay = Math.ceil(Math.abs(Number(firstday) - Number(today)) / (1000 * 60 * 60 * 24)); 
         console.log(`${formattedDate}`)
         console.log(`${tilFallEnds} days left until Fall 2026 ends.`);
-        console.log(`${tilMarcyLastDay} days left until the fellowship at Marcy Lab begins.`);
+        console.log(`${tilMarcyLastDay} days left until the fellowship at Marcy Lab ends.`);
         
         if (siteName) {
             siteName.title = `And there are ${tilMarcyLastDay} days until Marcy Lab ends.`;
