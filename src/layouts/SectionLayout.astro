@@ -1,4 +1,6 @@
 ---
+import type { GetImageResult } from 'astro';
+
 
 interface Props {
     noMargins?: boolean;
@@ -7,7 +9,7 @@ interface Props {
     noSpacing?: boolean;
     justifyCentered?: boolean;
     firstLayout?: boolean;
-    background?: boolean;
+    background?: GetImageResult;
 }
 
 const { 
@@ -17,14 +19,16 @@ const {
     noSpacing = false,
     justifyCentered = false, 
     firstLayout = false, 
-    background = false 
+    background = null 
 } = Astro.props;
 
 const noMargins = noSpacing || propNoMargins;
 const noPadding = noSpacing || propNoPadding;
 
 ---
-<section class:list={['section', { 'no-margins': noMargins, 'no-padding': noPadding, 'top-padding': topPadding, 'centered': justifyCentered, 'starter': firstLayout, }]}>
+<section 
+    class:list={['section', { 'no-margins': noMargins, 'no-padding': noPadding, 'top-padding': topPadding, 'centered': justifyCentered, 'starter': firstLayout, }]}
+    style={background ? `background-image: url(${background.src});` : undefined}>
     <slot />
 </section>
 
