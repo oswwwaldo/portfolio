@@ -81,24 +81,21 @@ const variantType = variant === 'nav' ? 'full-menu' : 'reveal-footer';
                 <div class="info-group">
                     <h4 class="info-group__header">Projects ({featuredProjects.length})</h4>
                     {featuredProjects.map(project=> {
-                        if (project.data.featured) {
-                            return <a class="info-group__link" href=`/projects/${project.data.id}`>{project.data.title}</a>
+                            if (project.data.featured) {
+                                return <a class="info-group__link" href=`/projects/${project.data.id}`>{project.data.title}</a>
+                            }
                         }
-                    })}
+                    )}
                 </div>
                 <div class="info-group">
                     <h4 class="info-group__header">Explore</h4>
+                    <a class="info-group__link" href="/changelog">Changelog</a>
+                    <a class="info-group__link" href="/now">Now</a>
                     <a class="info-group__link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-                    <a class="info-group__link" href="/quest">Start a quest</a>
-                    <a class="info-group__link" href="/sign">Sign the guestbook</a>
-                    <a class="info-group__link" href="/now">What am I doing?</a>
+                    <a class="info-group__link" href="/thoughts">Thoughts</a>
                 </div>
                 <div class="info-group">
-                    <h4 class="info-group__header">Other pages</h4>
-                    <a class="info-group__link" href="/changelog">Changelog</a>
-                    <a class="info-group__link" href="/music">Music</a>
-                    <a class="info-group__link" href="/thoughts">Thoughts</a>
-                    <a class="info-group__link" href="/video">Video</a>
+                    <a class="info-group__link" href="/now"> </a>
                 </div>
             </div>
             <div class="menu__links__content__info">
